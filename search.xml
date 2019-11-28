@@ -11,11 +11,14 @@
 <h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2.微服务"></a>2.微服务</h3><p>2014年，由Martin Fowler提出</p>
 <p>微服务：架构风格（服务微化）</p>
 <p>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；</p>
-<p>每一个功能元素最终都是一个可独立替换喝独立升级的软件单元；</p>
-<p>[详细参照微服务文档]<a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">https://martinfowler.com/articles/microservices.html</a></p>
+<p>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；</p>
+<p><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">详细参照微服务文档</a></p>
 <h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3.Spring Boot HelloWorld"></a>3.Spring Boot HelloWorld</h3><p>一个功能：</p>
 <p>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
       <tags>
         <tag>SpringBoot</tag>
       </tags>
