@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="一. Spring Boot入门1. Spring Boot简介 简化Spring应用开发的一个框架 整个Sping技术栈的一个大整合 J2EE开发的一站式解决方案  2.微服务2014年，由Martin Fowler提出 微服务：架构风格（服务微化） 一个应用应该是一组小型服务；可以通过HTTP的方式进行互通； 每一个功能元素最终都是一个可独立替换和独立升级的软件单元； 详细参照微服务文档 3.">
+<meta name="description" content="一. Spring Boot入门1. Spring Boot简介 简化Spring应用开发的一个框架 整个Sping技术栈的一个大整合 J2EE开发的一站式解决方案  2. 微服务2014年，由Martin Fowler提出 微服务：架构风格（服务微化）一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；每一个功能元素最终都是一个可独立替换和独立升级的软件单元；详细参照微服务文档 3. S">
 <meta name="keywords" content="SpringBoot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SpringBoot 笔记">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;27&#x2F;SpringBoot-%E7%AC%94%E8%AE%B0&#x2F;index.html">
 <meta property="og:site_name" content="麦田守望者">
-<meta property="og:description" content="一. Spring Boot入门1. Spring Boot简介 简化Spring应用开发的一个框架 整个Sping技术栈的一个大整合 J2EE开发的一站式解决方案  2.微服务2014年，由Martin Fowler提出 微服务：架构风格（服务微化） 一个应用应该是一组小型服务；可以通过HTTP的方式进行互通； 每一个功能元素最终都是一个可独立替换和独立升级的软件单元； 详细参照微服务文档 3.">
+<meta property="og:description" content="一. Spring Boot入门1. Spring Boot简介 简化Spring应用开发的一个框架 整个Sping技术栈的一个大整合 J2EE开发的一站式解决方案  2. 微服务2014年，由Martin Fowler提出 微服务：架构风格（服务微化）一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；每一个功能元素最终都是一个可独立替换和独立升级的软件单元；详细参照微服务文档 3. S">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-28T23:16:24.486Z">
+<meta property="og:updated_time" content="2019-12-07T03:03:36.739Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -374,13 +374,11 @@
 <p>整个Sping技术栈的一个大整合</p>
 <p>J2EE开发的一站式解决方案</p>
 </blockquote>
-<h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2.微服务"></a>2.微服务</h3><p>2014年，由Martin Fowler提出</p>
-<p>微服务：架构风格（服务微化）</p>
-<p>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；</p>
-<p>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；</p>
-<p><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">详细参照微服务文档</a></p>
-<h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3.Spring Boot HelloWorld"></a>3.Spring Boot HelloWorld</h3><p>一个功能：</p>
-<p>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
+<h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2. 微服务"></a>2. 微服务</h3><p>2014年，由Martin Fowler提出</p>
+<p>微服务：架构风格（服务微化）<br>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；<br>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；<br><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">详细参照微服务文档</a></p>
+<h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3. Spring Boot HelloWorld"></a>3. Spring Boot HelloWorld</h3><p>一个功能：<br>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
+<h4 id="1-主程序类，主入口类"><a href="#1-主程序类，主入口类" class="headerlink" title="(1).主程序类，主入口类"></a>(1).主程序类，主入口类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个spring boot应用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//spring应用启动起来</span></span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>@SpringBootApplication: Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类。</p>
 
       
     </div>
@@ -555,7 +553,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-Spring-Boot入门"><span class="nav-number">1.</span> <span class="nav-text">一. Spring Boot入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Spring-Boot简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. Spring Boot简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-微服务"><span class="nav-number">1.2.</span> <span class="nav-text">2.微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Spring-Boot-HelloWorld"><span class="nav-number">1.3.</span> <span class="nav-text">3.Spring Boot HelloWorld</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一-Spring-Boot入门"><span class="nav-number">1.</span> <span class="nav-text">一. Spring Boot入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Spring-Boot简介"><span class="nav-number">1.1.</span> <span class="nav-text">1. Spring Boot简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-微服务"><span class="nav-number">1.2.</span> <span class="nav-text">2. 微服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Spring-Boot-HelloWorld"><span class="nav-number">1.3.</span> <span class="nav-text">3. Spring Boot HelloWorld</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-主程序类，主入口类"><span class="nav-number">1.3.1.</span> <span class="nav-text">(1).主程序类，主入口类</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
