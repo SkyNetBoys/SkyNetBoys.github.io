@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Windows安装MongoDB</title>
+    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a></li>
+<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
+<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip" target="_blank" rel="noopener">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi" target="_blank" rel="noopener">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
+</ul>
+</blockquote>
+<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
+<li>例如：D:\Program Files\mongodb4.2.2</li>
+</ul>
+<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
+<li>配置到bin目录，并将目录加入到path中</li>
+</ul>
+<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
+<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
+<li>在data文件夹下创建”/db”空文件夹；</li>
+<li>在log文件夹下创建”mongo.log”空文件。</li>
+</ul>
+<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mongod --config <span class="string">"D:\Program Files\mongodb4.2.2\mongo.config"</span> --install --serviceName <span class="string">"MongoDB"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net start MongoDB</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot 笔记</title>
     <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
@@ -122,8 +164,11 @@
 </li>
 </ul>
 ]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
       <tags>
-        <tag>环境搭建</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
 </search>
