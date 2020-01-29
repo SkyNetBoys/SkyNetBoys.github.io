@@ -30,7 +30,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
 
 <h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
 
 
 

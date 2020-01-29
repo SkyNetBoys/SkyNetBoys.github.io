@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="麦田守望者">
 <meta property="og:description" content="Docker1、简介docker是一个开源的应用容器引擎；docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。运行中的这个镜像成为容器，容器启动是非常快速的。 2、核心概念docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);docker客户端(Client)：连接docker主机进行操作；">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-29T05:43:04.996Z">
+<meta property="og:updated_time" content="2020-01-29T11:03:44.163Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -396,7 +396,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
 
 <h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
 
 
 
