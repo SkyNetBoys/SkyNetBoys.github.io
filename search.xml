@@ -111,6 +111,24 @@
 <p>@SpringBootApplication: Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类。</p>
 <p>@SpringBootConfiguration:Spring Boot的配置类：<br>    标注在某个类上，表示这是一个Spring Boot的配置类；<br>    @Configuration：配置类上来标注这个注解<br>        配置类 —— 配置文件；配置类也是容器中的一个组件；@Component</p>
 <p>@EnableAutoConfiguration：开启自动配置功能：<br>    以前我们需要配置的东西，Spring Boot帮助我们自动配置；@EnableAutoConfiguration告诉Spring Boot开启自动配置功能；这样自动配置才能生效；</p>
+<h3 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h3><h4 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="(1)配置文件"></a>(1)配置文件</h4><p>SpringBoot使用一个全局的配置文件，配置文件名是固定的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">application.properties</span><br><span class="line">application.yml/application.yaml</span><br></pre></td></tr></table></figure>
+
+<p>配置文件的作用，修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好。</p>
+<p>YAML-&gt;(YAML  Aln’t Markup Language)<br>YAML:以数据为中心，比json、xml等更适合做配置文件<br>YAML:配置例子</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-YAML语法"><a href="#2-YAML语法" class="headerlink" title="(2)YAML语法"></a>(2)YAML语法</h4><p>1、基本语法<br>K:V 表示一对键值对(空格必须有):<br>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">path:</span>	<span class="string">/hello</span></span><br><span class="line">  <span class="comment"># 属性和值也是大小写敏感；</span></span><br></pre></td></tr></table></figure>
+
+<p>2、值的写法<br>字面量：普通的值(数字，字符串，布尔)<br>K:V:字面直接来写：<br>    字符串默认不用加上单引号或者双引号<br>    “”:双引号:不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思<br>    ‘’:  单引号:会转义字符，特殊字符最终只是一个普通的字符串变量<br>对象、Map(属性和值)(键值对)</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#K:V</span></span><br><span class="line"><span class="comment">#对象还是K:V的方式</span></span><br><span class="line"><span class="attr">friends:</span></span><br><span class="line">   	<span class="attr">lastName:</span> <span class="string">zhangsan</span></span><br><span class="line">	<span class="attr">age:</span> <span class="number">20</span></span><br><span class="line"><span class="comment">#行内写法：</span></span><br><span class="line"><span class="attr">friend:</span> <span class="string">&#123;lastName:</span> <span class="string">zhangsan,age:</span> <span class="number">18</span><span class="string">&#125;</span></span><br><span class="line"><span class="comment">#数组(List、Set)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用-值表示数组中的一个元素</span></span><br><span class="line"><span class="attr">pets:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">cat</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">dog</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pig</span></span><br><span class="line"><span class="comment">#  行内写法：</span></span><br><span class="line"><span class="attr">pets:</span> <span class="string">[cat,dog,pig]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-获取配置文件值"><a href="#3-获取配置文件值" class="headerlink" title="(3)获取配置文件值"></a>(3)获取配置文件值</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//javaBean</span></span><br><span class="line"><span class="meta">@PropertySource</span></span><br></pre></td></tr></table></figure>
+
+
+
+
 ]]></content>
       <categories>
         <category>Java</category>
