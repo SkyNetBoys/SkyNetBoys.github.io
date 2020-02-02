@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Docker," />
+  <meta name="keywords" content="testNG," />
 
 
 
@@ -79,15 +79,15 @@
 
 
 
-<meta name="description" content="Docker1、简介docker是一个开源的应用容器引擎；docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。运行中的这个镜像成为容器，容器启动是非常快速的。 2、核心概念docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);docker客户端(Client)：连接docker主机进行操作；">
-<meta name="keywords" content="Docker">
+<meta name="description" content="@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。  1.DataProvider与Test方法在同一个class中Demo: 12345678910111213public class TestNGDemo &amp;#123;	&#x2F;&#x2F; DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次	@DataProvider(">
+<meta name="keywords" content="testNG">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker学习笔记">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;01&#x2F;29&#x2F;Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0&#x2F;index.html">
+<meta property="og:title" content="TestNG -&gt; @DateProvider注解">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2020&#x2F;02&#x2F;02&#x2F;TestNG-DateProvider%E6%B3%A8%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="麦田守望者">
-<meta property="og:description" content="Docker1、简介docker是一个开源的应用容器引擎；docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。运行中的这个镜像成为容器，容器启动是非常快速的。 2、核心概念docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);docker客户端(Client)：连接docker主机进行操作；">
+<meta property="og:description" content="@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。  1.DataProvider与Test方法在同一个class中Demo: 12345678910111213public class TestNGDemo &amp;#123;	&#x2F;&#x2F; DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次	@DataProvider(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-29T11:03:44.163Z">
+<meta property="og:updated_time" content="2020-02-02T02:08:52.997Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/01/29/Docker学习笔记/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/02/02/TestNG-DateProvider注解/"/>
 
 
 
 
 
-  <title>Docker学习笔记 | 麦田守望者</title>
+  <title>TestNG -> @DateProvider注解 | 麦田守望者</title>
   
 
 
@@ -275,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Edison">
@@ -292,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">TestNG -> @DateProvider注解</h1>
         
 
         <div class="post-meta">
@@ -304,8 +304,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-29T12:14:13+08:00">
-                2020-01-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-02T10:07:00+08:00">
+                2020-02-02
               </time>
             
 
@@ -327,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">环境搭建</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -369,47 +369,19 @@
       
 
       
-        <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
-<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
-<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
-<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-957.el7.x86_64</span><br></pre></td></tr></table></figure>
+        <blockquote>
+<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
+</blockquote>
+<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNGDemo</span> </span>&#123;</span><br><span class="line">	<span class="comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span></span><br><span class="line">	<span class="meta">@DataProvider</span>(name = <span class="string">"myData"</span>)</span><br><span class="line">	<span class="keyword">public</span> Object[][] DataPrObjects() &#123;</span><br><span class="line">		Object[][] obj = <span class="keyword">new</span> Object[][] &#123; &#123; <span class="string">"a1"</span>, <span class="string">"a2"</span> &#125;, &#123; <span class="string">"b1"</span>, <span class="string">"b2"</span> &#125;, &#123; <span class="string">"c1"</span>, <span class="string">"c2"</span> &#125; &#125;;</span><br><span class="line">		<span class="keyword">return</span> obj;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>(dataProvider = <span class="string">"myData"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestDataProvider</span><span class="params">(String data1, String data2)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"-&gt;"</span> + data1 + <span class="string">":"</span> + data2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>2.安装docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker -y</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[RemoteTestNG] detected TestNG version <span class="number">6</span><span class="variable">.11</span><span class="variable">.0</span></span><br><span class="line">-&gt;a1:a2</span><br><span class="line">-&gt;b1:b2</span><br><span class="line">-&gt;c1:c2</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"a1"</span>, <span class="string">"a2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"b1"</span>, <span class="string">"b2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"c1"</span>, <span class="string">"c2"</span>)</span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">    Default test</span><br><span class="line">    Tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">Default suite</span><br><span class="line">Total tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br></pre></td></tr></table></figure>
 
-<p>3.启动docker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]# systemctrl start docker</span><br><span class="line">[root@localhost init.d]# docker -v</span><br><span class="line">Docker version 1.13.1, build 4ef4b30/1.13.1</span><br></pre></td></tr></table></figure>
+<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNGDemoNew</span> </span>&#123;</span><br><span class="line">    <span class="comment">//在这个class中引用DataPro中的@DataProvider</span></span><br><span class="line">    <span class="comment">//dataProviderClass填写DataProvider所在类的全限定类名</span></span><br><span class="line">	<span class="meta">@Test</span>(dataProvider = <span class="string">"myData"</span>,dataProviderClass = com.TestNGDemo<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">	<span class="title">public</span> <span class="title">void</span> <span class="title">TestDataProvider</span>(<span class="title">String</span> <span class="title">data1</span>,<span class="title">String</span> <span class="title">data2</span>) </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"-&gt;"</span>+data1+<span class="string">":"</span>+data2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>4.设置开机自启动docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<p>5.停止docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
-<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># docker search mysql</span></span><br><span class="line">INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]</span><br><span class="line">docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]</span><br><span class="line">docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67</span><br><span class="line">docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60</span><br><span class="line">docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]</span><br><span class="line">docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]</span><br><span class="line">docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34</span><br><span class="line">docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]</span><br><span class="line">docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]</span><br><span class="line">docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24</span><br><span class="line">docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18</span><br><span class="line">docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16</span><br><span class="line">docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14</span><br><span class="line">docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]</span><br><span class="line">docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10</span><br><span class="line">docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6</span><br><span class="line">docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]</span><br><span class="line">docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]</span><br><span class="line">docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="built_in">which</span> deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2</span><br><span class="line">docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1</span><br><span class="line">docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="keyword">for</span> mysql    0</span><br><span class="line">docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]</span><br></pre></td></tr></table></figure>
-<p>2.下载镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载最新版本的镜像</span></span><br><span class="line">docker pull mysql</span><br><span class="line"><span class="comment">#下载指定版本的MySql镜像</span></span><br><span class="line">docker pull mysql:5.5</span><br></pre></td></tr></table></figure>
-<p>3、查看所有镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p>4、删除镜像 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
-
-<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[RemoteTestNG] detected TestNG version <span class="number">6</span><span class="variable">.11</span><span class="variable">.0</span></span><br><span class="line">-&gt;a1:a2</span><br><span class="line">-&gt;b1:b2</span><br><span class="line">-&gt;c1:c2</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"a1"</span>, <span class="string">"a2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"b1"</span>, <span class="string">"b2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"c1"</span>, <span class="string">"c2"</span>)</span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">    Default test</span><br><span class="line">    Tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">Default suite</span><br><span class="line">Total tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br></pre></td></tr></table></figure>
 
 
 
@@ -429,7 +401,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
+            <a href="/tags/testNG/" rel="tag"># testNG</a>
           
         </div>
       
@@ -442,8 +414,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/" rel="next" title="Windows安装MongoDB">
-                <i class="fa fa-chevron-left"></i> Windows安装MongoDB
+              <a href="/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Docker学习笔记">
+                <i class="fa fa-chevron-left"></i> Docker学习笔记
               </a>
             
           </div>
@@ -451,10 +423,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/" rel="prev" title="TestNG -> @DateProvider注解">
-                TestNG -> @DateProvider注解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -590,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Docker"><span class="nav-number">1.</span> <span class="nav-text">Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、简介"><span class="nav-number">1.1.</span> <span class="nav-text">1、简介</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、核心概念"><span class="nav-number">1.2.</span> <span class="nav-text">2、核心概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Linux虚拟机安装docker"><span class="nav-number">1.3.</span> <span class="nav-text">3、Linux虚拟机安装docker</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、docker镜像操作"><span class="nav-number">1.4.</span> <span class="nav-text">4、docker镜像操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5、docker容器操作"><span class="nav-number">1.5.</span> <span class="nav-text">5、docker容器操作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-DataProvider与Test方法在同一个class中"><span class="nav-number">1.</span> <span class="nav-text">1.DataProvider与Test方法在同一个class中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-DataProvider与Test方法不在同一个class中"><span class="nav-number">2.</span> <span class="nav-text">2.DataProvider与Test方法不在同一个class中</span></a></li></ol></div>
             
 
           </div>
