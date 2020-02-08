@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Spring MVC笔记</title>
+    <url>/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h4><p>Spring MVC是目前主流的实现MVC实际模式的企业级开发款框架，Spring框架的一个子模块，无需整合，开发起来更加便捷。</p>
+<h5 id="什么是MVC实际模式"><a href="#什么是MVC实际模式" class="headerlink" title="什么是MVC实际模式"></a>什么是MVC实际模式</h5><p>将应用程序分为Controller、Modle、View三层，Controller接收客户端请求，调用Model生成业务数据，传递给View.</p>
+<p>Spring MVC就是对这套流程的封装，屏蔽了很多底层代码，开发出接口，让开发者可以更加轻松、边界地完成基于MVC模式的Web开发。</p>
+<h5 id="Spring-MVC的核心组件"><a href="#Spring-MVC的核心组件" class="headerlink" title="Spring MVC的核心组件"></a>Spring MVC的核心组件</h5><ul>
+<li>DispatcherServlet：前置控制器，是整个流程控制的核心，控制其他组件的执行，进行统一调度，降低组件之间的耦合度，相当于总指挥。</li>
+<li>Handler：处理器，完成具体的业务逻辑，相当于Servlet或Action。</li>
+<li>HandlerMapping: DispatcherServlet 接收到请求之后，通过HandlerMapping将不同的请求映射到不同的Handler。</li>
+<li>HandlerInterceptor: 处理器拦截器，是一个接口，如果需要完成一些拦截处理，那么可以实现该接口。</li>
+<li>HandlerExecutionChain: 处理器执行链，半酣两部分内同：Handler和HandlerInterceptor（系统会有一个默认的HandlerInterceptor，如果需要额外设置拦截，可以添加拦截器）。</li>
+<li>HandlerAdapter：处理器设配器，Handler执行业务方法之前，需要进行一系列的操作，包括表单数据的验证，数据类型的转换，将表单数据封装到JavaBean，这些操作都是由HandlerAdapter完成，开发者只需要将注意力集中在业务逻辑的处理上，DispatcherServlet通过HandlerAdapter执行不同的Handler。</li>
+<li>ModelAndView: 装在了模型数据和视图信息，作为Handler的处理结果，返回给DispatcherServlet。</li>
+<li>ViewResolver：视图解析器，DispatcherServlet通过它将逻辑视图解析为物理视图，最终将渲染结果响应给客户端。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>TestNG -&gt; @DateProvider注解</title>
     <url>/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/</url>
     <content><![CDATA[<blockquote>
