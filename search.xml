@@ -8,11 +8,11 @@
 <ul>
 <li>Excel  文件如下</li>
 </ul>
-<p><img src="excel.png" alt="excel"></p>
+<p><img src="excel.PNG" alt="excel"></p>
 <ul>
 <li>输出的HTML，使用<a href="http://localhost:5000访问：" target="_blank" rel="noopener">http://localhost:5000访问：</a></li>
 </ul>
-<p><img src="html.png" alt="xueshengbiao"></p>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
 ]]></content>
       <categories>
         <category>自动化测试</category>
