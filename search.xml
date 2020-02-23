@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git命令小结--健忘症患者必备</title>
+    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
+    <content><![CDATA[<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#状态查看操作</span></span><br><span class="line"><span class="comment">#查看工作区，暂存区状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加操作</span></span><br><span class="line"><span class="comment">#将工作区的"新建/修改"添加到暂存区</span></span><br><span class="line">git add [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#提交操作</span></span><br><span class="line"><span class="comment">#将暂存区的内容提交到本地库</span></span><br><span class="line">git commit -m <span class="string">"commit messgae"</span> [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看历史记录操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除文件并找回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#比较文件差异</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>查看APK所需权限命令</title>
     <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
