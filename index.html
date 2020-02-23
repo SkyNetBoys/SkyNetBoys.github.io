@@ -1,26 +1,85 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
 
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
-  </script>
 
-  <meta name="description" content="我就是我，不一样的烟火">
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我就是我，不一样的烟火">
 <meta property="og:type" content="website">
 <meta property="og:title" content="麦田守望者">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;index.html">
@@ -29,17 +88,39 @@
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome: true,
-    isPost: false
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
 
   <title>麦田守望者</title>
   
@@ -49,142 +130,231 @@
 
 
 
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
 
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Navigationsleiste an/ausschalten">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
 
-  <div class="site-meta">
-
-    <div>
-      <a href="/" class="brand" rel="start">
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">麦田守望者</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
 
-  <div class="site-nav-right"></div>
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
-
 
 <nav class="site-nav">
   
-  <ul id="menu" class="menu">
+
+  
+    <ul id="menu" class="menu">
+      
+        
         <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Startseite</a>
+      
+        <li class="menu-item menu-item-search">
+          
+            <a class="popup-trigger" style="cursor:pointer;">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
 
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archiv</a>
-
-  </li>
-  </ul>
-
-</nav>
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
 </div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
     </header>
 
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
+    <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-
-          <div class="content">
+          <div id="content" class="content">
             
+  <section id="posts" class="posts-expand">
+    
+      
 
-  <div class="posts-expand">
-        
+  
+
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/" class="post-title-link" itemprop="url">git命令小结--健忘症患者必备</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/" itemprop="url">git命令小结--健忘症患者必备</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-23T11:39:19+08:00">
+                2020-02-23
+              </time>
+            
 
-              <time title="Erstellt: 2020-02-23 11:39:19 / Geändert am: 11:44:50" itemprop="dateCreated datePublished" datetime="2020-02-23T11:39:19+08:00">2020-02-23</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -192,81 +362,149 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#状态查看操作</span></span><br><span class="line"><span class="comment">#查看工作区，暂存区状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加操作</span></span><br><span class="line"><span class="comment">#将工作区的"新建/修改"添加到暂存区</span></span><br><span class="line">git add [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#提交操作</span></span><br><span class="line"><span class="comment">#将暂存区的内容提交到本地库</span></span><br><span class="line">git commit -m <span class="string">"commit messgae"</span> [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看历史记录操作</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除文件并找回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#比较文件差异</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          Git备忘录1234567891011121314151617#状态查看操作#查看工作区，暂存区状态git status#添加操作#将工作区的"新建/修改"添加到暂存区git add [file name]#提交操作#将暂存区的内容提交到本地库git commit -m "commit messgae" [file name]#查看历史记录操作#删除文件并找回#比较文件差异
+Git工作流程图示
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/" class="post-title-link" itemprop="url">查看APK所需权限命令</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/" itemprop="url">查看APK所需权限命令</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-19T20:48:12+08:00">
+                2020-02-19
+              </time>
+            
 
-              <time title="Erstellt: 2020-02-19 20:48:12" itemprop="dateCreated datePublished" datetime="2020-02-19T20:48:12+08:00">2020-02-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2020-02-22 12:27:36" itemprop="dateModified" datetime="2020-02-22T12:27:36+08:00">2020-02-22</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
                     <span itemprop="name">软件测试</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -274,74 +512,150 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
-<ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name='com.UCMobile' versionCode='1065' versionName='12.8.5.1065' compileSdkVersion='28' compileSdkVersionCodename='9'</span><br><span class="line">install-location:'auto'</span><br><span class="line">sdkVersion:'16'</span><br><span class="line">targetSdkVersion:'28'</span><br><span class="line">uses-permission: name='android.permission.ACCESS_COARSE_LOCATION'</span><br><span class="line">uses-permission: name='android.permission.ACCESS_FINE_LOCATION'</span><br><span class="line">uses-permission: name='android.permission.INTERNET'</span><br><span class="line">uses-permission: name='android.permission.ACCESS_NETWORK_STATE'</span><br><span class="line">uses-permission: name='android.permission.READ_PHONE_STATE'</span><br><span class="line">uses-permission: name='android.permission.CAMERA'</span><br><span class="line">uses-permission: name='android.permission.READ_EXTERNAL_STORAGE'</span><br><span class="line">uses-permission: name='android.permission.WRITE_EXTERNAL_STORAGE'</span><br><span class="line">uses-permission: name='android.permission.VIBRATE'</span><br><span class="line">uses-permission: name='android.permission.WAKE_LOCK'</span><br><span class="line">uses-permission: name='android.permission.ACCESS_WIFI_STATE'</span><br><span class="line">uses-permission: name='android.permission.CHANGE_WIFI_STATE'</span><br><span class="line">uses-permission: name='com.android.launcher.permission.INSTALL_SHORTCUT'</span><br><span class="line">uses-permission: name='com.android.launcher.permission.UNINSTALL_SHORTCUT'</span><br><span class="line">uses-permission: name='android.permission.RECORD_AUDIO'</span><br><span class="line">uses-permission: name='android.permission.GET_TASKS'</span><br><span class="line">uses-permission: name='android.permission.SYSTEM_ALERT_WINDOW'</span><br><span class="line">uses-permission: name='android.permission.SET_WALLPAPER'</span><br><span class="line">uses-permission: name='android.permission.EXPAND_STATUS_BAR'</span><br><span class="line">uses-permission: name='android.permission.CHANGE_NETWORK_STATE'</span><br><span class="line">uses-permission: name='com.android.launcher.permission.READ_SETTINGS'</span><br><span class="line">uses-permission: name='com.android.launcher.permission.WRITE_SETTINGS'</span><br><span class="line">uses-permission: name='com.android.launcher2.permission.READ_SETTINGS'</span><br><span class="line">uses-permission: name='com.android.launcher2.permission.WRITE_SETTINGS'</span><br><span class="line">uses-permission: name='com.android.launcher3.permission.READ_SETTINGS'</span><br><span class="line">uses-permission: name='com.android.launcher3.permission.WRITE_SETTINGS'</span><br><span class="line">uses-permission: name='com.oppo.launcher.permission.READ_SETTINGS'</span><br><span class="line">uses-permission: name='com.oppo.launcher.permission.WRITE_SETTINGS'</span><br><span class="line">uses-permission: name='com.huawei.launcher3.permission.READ_SETTINGS'</span><br><span class="line">uses-permission: name='com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
-</ul>
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:
+
+使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看
+使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限12345678910111213141516171819202122232425262728293031323334353637#attp命令在Android SDK目录下的build-toolsaapt du
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Spring MVC笔记</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/" itemprop="url">Spring MVC笔记</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T14:37:55+08:00">
+                2020-02-08
+              </time>
+            
 
-              <time title="Erstellt: 2020-02-08 14:37:55 / Geändert am: 17:43:24" itemprop="dateCreated datePublished" datetime="2020-02-08T14:37:55+08:00">2020-02-08</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -349,134 +663,150 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h4 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h4><p>Spring MVC是目前主流的实现MVC实际模式的企业级开发款框架，Spring框架的一个子模块，无需整合，开发起来更加便捷。</p>
-<h5 id="什么是MVC实际模式"><a href="#什么是MVC实际模式" class="headerlink" title="什么是MVC实际模式"></a>什么是MVC实际模式</h5><p>将应用程序分为Controller、Modle、View三层，Controller接收客户端请求，调用Model生成业务数据，传递给View.</p>
-<p>Spring MVC就是对这套流程的封装，屏蔽了很多底层代码，开发出接口，让开发者可以更加轻松、边界地完成基于MVC模式的Web开发。</p>
-<h5 id="Spring-MVC的核心组件"><a href="#Spring-MVC的核心组件" class="headerlink" title="Spring MVC的核心组件"></a>Spring MVC的核心组件</h5><ul>
-<li>DispatcherServlet：前置控制器，是整个流程控制的核心，控制其他组件的执行，进行统一调度，降低组件之间的耦合度，相当于总指挥。</li>
-<li>Handler：处理器，完成具体的业务逻辑，相当于Servlet或Action。</li>
-<li>HandlerMapping: DispatcherServlet 接收到请求之后，通过HandlerMapping将不同的请求映射到不同的Handler。</li>
-<li>HandlerInterceptor: 处理器拦截器，是一个接口，如果需要完成一些拦截处理，那么可以实现该接口。</li>
-<li>HandlerExecutionChain: 处理器执行链，半酣两部分内同：Handler和HandlerInterceptor（系统会有一个默认的HandlerInterceptor，如果需要额外设置拦截，可以添加拦截器）。</li>
-<li>HandlerAdapter：处理器设配器，Handler执行业务方法之前，需要进行一系列的操作，包括表单数据的验证，数据类型的转换，将表单数据封装到JavaBean，这些操作都是由HandlerAdapter完成，开发者只需要将注意力集中在业务逻辑的处理上，DispatcherServlet通过HandlerAdapter执行不同的Handler。</li>
-<li>ModelAndView: 装在了模型数据和视图信息，作为Handler的处理结果，返回给DispatcherServlet。</li>
-<li>ViewResolver：视图解析器，DispatcherServlet通过它将逻辑视图解析为物理视图，最终将渲染结果响应给客户端。</li>
-</ul>
-<h5 id="Spring-MVC的工作流程"><a href="#Spring-MVC的工作流程" class="headerlink" title="Spring MVC的工作流程"></a>Spring MVC的工作流程</h5><ul>
-<li>客户端请求被DispatcherServlet接收</li>
-<li>根据HandlerMapping映射到Handler</li>
-<li>生成Handler和HandlerInterceptor</li>
-<li>Handler和HandlerInterceptor以HandlerExecutionChain的形式一并返回给DispatcherServlet</li>
-<li>DispatcherServlet通过HandlerAdapter调用Handler的方法完成业务逻辑处理</li>
-<li>Handler返回一个ModelAndView给DispatcherServlet</li>
-<li>DispatcherServlet将获取的ModelAndView对象传给ViewResolver视图解析器，讲逻辑视图解析为物理视图View。</li>
-<li>ViewResolver返回一个View给DispatcherServlet。</li>
-<li>DispatcherServlet根据View进行视图渲染（将模式数据Model填充到视图View中）</li>
-<li>DispatcherServlet将渲染后的结果响应给客户端。</li>
-</ul>
-<blockquote>
-<p>Sping MVC流程非常复杂，实际开发中很简单，因为大部分组件不需要开发者创建，管理，只需要通过配置文件的方式完成配置即可，真正需要开发者进行处理的只有Handler、View。</p>
-</blockquote>
-<h4 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h4><ul>
-<li><p>创建Maven Project，pom.xml</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-webmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.0.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在web.xml中配置DispatcherServlet。</p>
-</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">web-app</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">display-name</span>&gt;</span>Archetype Created Web Application<span class="tag">&lt;/<span class="name">display-name</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>classpath:springmvc.xml<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>dispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>springmvc.xml配置</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">    http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--自动扫描--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--配置视图解析器--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">class</span>=<span class="string">"org.springframework.web.servlet.view.InternalResourceView"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"prefix"</span> <span class="attr">value</span>=<span class="string">"/"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"suffix"</span> <span class="attr">value</span>=<span class="string">".jsp"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建Handler</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.southwind.controller;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Controller;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloHandler</span> </span>&#123;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/index"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"执行了index..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Spring-MVC-注解"><a href="#Spring-MVC-注解" class="headerlink" title="Spring MVC 注解"></a>Spring MVC 注解</h4><ul>
-<li>@RequestMapping</li>
-</ul>
-<p>Spring MVC通过@RequestMapping注解将URL请求与业务方法进行映射，同时在Handler的类定义处以及方法定义处都可以添加@RequestMapping，在类定义处添加，相当于客户端多了一层访问路径。</p>
-<ul>
-<li>@Controller</li>
-</ul>
-<p>@Controller在类定义处，将该类交给IoC容器来管理，同时使其成为一个控制器（结合springmvc.xml中的自动扫描开启），可以接收客户端请求。</p>
-<ul>
-<li><p>@RequestMapping相关参数</p>
-<ul>
-<li>value：指定URL请求的实际地址，是@RequestMapping的默认值。</li>
-<li>method：指定请求的method类型，GET、POST、PUT、DELET</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping</span>(value = <span class="string">"/index"</span>,method = RequestMethod.GET)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">index</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"执行了index..."</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"index"</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>上述代码表示index方法只能接收GET请求。</p>
-</li>
-</ul>
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          Spring MVCSpring MVC是目前主流的实现MVC实际模式的企业级开发款框架，Spring框架的一个子模块，无需整合，开发起来更加便捷。
+什么是MVC实际模式将应用程序分为Controller、Modle、View三层，Controller接收客户端请求，调用Model生成业务数据，传递给View.
+Spring MVC就是对这套流程的封装，屏蔽了很多底层代码，开发出接口，让开发者可以更加轻松、边界地完成基于MVC模式的Web开发。
+Spring M
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/" class="post-title-link" itemprop="url">TestNG -> @DateProvider注解</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/" itemprop="url">TestNG -> @DateProvider注解</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-02T10:07:00+08:00">
+                2020-02-02
+              </time>
+            
 
-              <time title="Erstellt: 2020-02-02 10:07:00 / Geändert am: 10:11:40" itemprop="dateCreated datePublished" datetime="2020-02-02T10:07:00+08:00">2020-02-02</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -484,83 +814,151 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
-</blockquote>
-<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNGDemo</span> </span>&#123;</span><br><span class="line">	<span class="comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span></span><br><span class="line">	<span class="meta">@DataProvider</span>(name = <span class="string">"myData"</span>)</span><br><span class="line">	<span class="keyword">public</span> Object[][] DataPrObjects() &#123;</span><br><span class="line">		Object[][] obj = <span class="keyword">new</span> Object[][] &#123; &#123; <span class="string">"a1"</span>, <span class="string">"a2"</span> &#125;, &#123; <span class="string">"b1"</span>, <span class="string">"b2"</span> &#125;, &#123; <span class="string">"c1"</span>, <span class="string">"c2"</span> &#125; &#125;;</span><br><span class="line">		<span class="keyword">return</span> obj;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Test</span>(dataProvider = <span class="string">"myData"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">TestDataProvider</span><span class="params">(String data1, String data2)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"-&gt;"</span> + data1 + <span class="string">":"</span> + data2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[RemoteTestNG] detected TestNG version <span class="number">6</span><span class="variable">.11</span><span class="variable">.0</span></span><br><span class="line">-&gt;a1:a2</span><br><span class="line">-&gt;b1:b2</span><br><span class="line">-&gt;c1:c2</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"a1"</span>, <span class="string">"a2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"b1"</span>, <span class="string">"b2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"c1"</span>, <span class="string">"c2"</span>)</span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">    Default test</span><br><span class="line">    Tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">Default suite</span><br><span class="line">Total tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestNGDemoNew</span> </span>&#123;</span><br><span class="line">    <span class="comment">//在这个class中引用DataPro中的@DataProvider</span></span><br><span class="line">    <span class="comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span></span><br><span class="line">	<span class="meta">@Test</span>(dataProvider = <span class="string">"myData"</span>,dataProviderClass = com.TestNGDemo<span class="class">.<span class="keyword">class</span>)</span></span><br><span class="line"><span class="class">	<span class="title">public</span> <span class="title">void</span> <span class="title">TestDataProvider</span>(<span class="title">String</span> <span class="title">data1</span>,<span class="title">String</span> <span class="title">data2</span>) </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"-&gt;"</span>+data1+<span class="string">":"</span>+data2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[RemoteTestNG] detected TestNG version <span class="number">6</span><span class="variable">.11</span><span class="variable">.0</span></span><br><span class="line">-&gt;a1:a2</span><br><span class="line">-&gt;b1:b2</span><br><span class="line">-&gt;c1:c2</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"a1"</span>, <span class="string">"a2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"b1"</span>, <span class="string">"b2"</span>)</span><br><span class="line">PASSED: TestDataProvider(<span class="string">"c1"</span>, <span class="string">"c2"</span>)</span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">    Default test</span><br><span class="line">    Tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">===============================================</span><br><span class="line">Default suite</span><br><span class="line">Total tests run: <span class="number">3</span>, Failures: <span class="number">0</span>, Skips: <span class="number">0</span></span><br><span class="line">===============================================</span><br></pre></td></tr></table></figure>
-
-
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          
+@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。
+
+1.DataProvider与Test方法在同一个class中Demo:
+12345678910111213public class TestNGDemo &#123;	// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次	@DataProvider(name = "myData")	public Object[][
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/02/02/TestNG-DateProvider%E6%B3%A8%E8%A7%A3/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Docker学习笔记</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">Docker学习笔记</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-29T12:14:13+08:00">
+                2020-01-29
+              </time>
+            
 
-              <time title="Erstellt: 2020-01-29 12:14:13 / Geändert am: 19:03:44" itemprop="dateCreated datePublished" datetime="2020-01-29T12:14:13+08:00">2020-01-29</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
                     <span itemprop="name">环境搭建</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -568,111 +966,148 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
-<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
-<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
-<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-957.el7.x86_64</span><br></pre></td></tr></table></figure>
-
-<p>2.安装docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install docker -y</span><br></pre></td></tr></table></figure>
-
-<p>3.启动docker</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]# systemctrl start docker</span><br><span class="line">[root@localhost init.d]# docker -v</span><br><span class="line">Docker version 1.13.1, build 4ef4b30/1.13.1</span><br></pre></td></tr></table></figure>
-
-<p>4.设置开机自启动docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<p>5.停止docker</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
-<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># docker search mysql</span></span><br><span class="line">INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]</span><br><span class="line">docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]</span><br><span class="line">docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67</span><br><span class="line">docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60</span><br><span class="line">docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]</span><br><span class="line">docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]</span><br><span class="line">docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34</span><br><span class="line">docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]</span><br><span class="line">docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]</span><br><span class="line">docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24</span><br><span class="line">docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18</span><br><span class="line">docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16</span><br><span class="line">docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14</span><br><span class="line">docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]</span><br><span class="line">docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10</span><br><span class="line">docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6</span><br><span class="line">docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]</span><br><span class="line">docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]</span><br><span class="line">docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="built_in">which</span> deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2</span><br><span class="line">docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1</span><br><span class="line">docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="keyword">for</span> mysql    0</span><br><span class="line">docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]</span><br></pre></td></tr></table></figure>
-<p>2.下载镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载最新版本的镜像</span></span><br><span class="line">docker pull mysql</span><br><span class="line"><span class="comment">#下载指定版本的MySql镜像</span></span><br><span class="line">docker pull mysql:5.5</span><br></pre></td></tr></table></figure>
-<p>3、查看所有镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p>4、删除镜像 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
-
-<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          Docker1、简介docker是一个开源的应用容器引擎；docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。运行中的这个镜像成为容器，容器启动是非常快速的。
+2、核心概念docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);docker客户端(Client)：连接docker主机进行操作；docker仓库(Registry)：用来保存各种打包好的软件镜像
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/" class="post-title-link" itemprop="url">Windows安装MongoDB</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/" itemprop="url">Windows安装MongoDB</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-01-11T14:56:46+08:00">
+                2020-01-11
+              </time>
+            
 
-              <time title="Erstellt: 2020-01-11 14:56:46 / Geändert am: 15:02:40" itemprop="dateCreated datePublished" datetime="2020-01-11T14:56:46+08:00">2020-01-11</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url" rel="index">
                     <span itemprop="name">环境搭建</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -680,105 +1115,151 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<ul>
-<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community" target="_blank" rel="noopener">https://www.mongodb.com/download-center/community</a></li>
-<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
-<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip" target="_blank" rel="noopener">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi" target="_blank" rel="noopener">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
-</ul>
-</blockquote>
-<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
-<li>例如：D:\Program Files\mongodb4.2.2</li>
-</ul>
-<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
-<li>配置到bin目录，并将目录加入到path中</li>
-</ul>
-<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
-<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
-<li>在data文件夹下创建”/db”空文件夹；</li>
-<li>在log文件夹下创建”mongo.log”空文件。</li>
-</ul>
-<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongod --config <span class="string">"D:\Program Files\mongodb4.2.2\mongo.config"</span> --install --serviceName <span class="string">"MongoDB"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start MongoDB</span><br></pre></td></tr></table></figure>
-
-<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          
+
+MongoDB官网下载链接：https://www.mongodb.com/download-center/community
+MongoDB官网安装教程：https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
+MongoDB 3.6.11版本，官网下载：绿色版（.zip）：https://fastdl.mongodb.org/win32/mongodb-win32-x86_6
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">SpringBoot 笔记</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/" itemprop="url">SpringBoot 笔记</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-27T23:35:56+08:00">
+                2019-11-27
+              </time>
+            
 
-              <time title="Erstellt: 2019-11-27 23:35:56" itemprop="dateCreated datePublished" datetime="2019-11-27T23:35:56+08:00">2019-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2020-02-23 12:40:10" itemprop="dateModified" datetime="2020-02-23T12:40:10+08:00">2020-02-23</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Java/" itemprop="url" rel="index">
                     <span itemprop="name">Java</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -786,104 +1267,154 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
-<p>简化Spring应用开发的一个框架</p>
-<p>整个Sping技术栈的一个大整合</p>
-<p>J2EE开发的一站式解决方案</p>
-</blockquote>
-<h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2. 微服务"></a>2. 微服务</h3><p>2014年，由Martin Fowler提出</p>
-<p>微服务：架构风格（服务微化）<br>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；<br>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；<br><a href="https://martinfowler.com/articles/microservices.html" target="_blank" rel="noopener">详细参照微服务文档</a></p>
-<h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3. Spring Boot HelloWorld"></a>3. Spring Boot HelloWorld</h3><p>一个功能：<br>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
-<h4 id="1-主程序类，主入口类"><a href="#1-主程序类，主入口类" class="headerlink" title="(1).主程序类，主入口类"></a>(1).主程序类，主入口类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个spring boot应用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldMainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//spring应用启动起来</span></span><br><span class="line">        SpringApplication.run(HelloWorldMainApplication<span class="class">.<span class="keyword">class</span>,<span class="title">args</span>)</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>@SpringBootApplication: Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类。</p>
-<p>@SpringBootConfiguration:Spring Boot的配置类：<br>    标注在某个类上，表示这是一个Spring Boot的配置类；<br>    @Configuration：配置类上来标注这个注解<br>        配置类 —— 配置文件；配置类也是容器中的一个组件；@Component</p>
-<p>@EnableAutoConfiguration：开启自动配置功能：<br>    以前我们需要配置的东西，Spring Boot帮助我们自动配置；@EnableAutoConfiguration告诉Spring Boot开启自动配置功能；这样自动配置才能生效；</p>
-<h3 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h3><h4 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="(1)配置文件"></a>(1)配置文件</h4><p>SpringBoot使用一个全局的配置文件，配置文件名是固定的：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">application.properties</span><br><span class="line">application.yml/application.yaml</span><br></pre></td></tr></table></figure>
-
-<p>配置文件的作用，修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好。</p>
-<p>YAML-&gt;(YAML  Aln’t Markup Language)<br>YAML:以数据为中心，比json、xml等更适合做配置文件<br>YAML:配置例子</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="2-YAML语法"><a href="#2-YAML语法" class="headerlink" title="(2)YAML语法"></a>(2)YAML语法</h4><p>1、基本语法<br>K:V 表示一对键值对(空格必须有):<br>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">path:</span>	<span class="string">/hello</span></span><br><span class="line">  <span class="comment"># 属性和值也是大小写敏感；</span></span><br></pre></td></tr></table></figure>
-
-<p>2、值的写法<br>字面量：普通的值(数字，字符串，布尔)<br>K:V:字面直接来写：<br>    字符串默认不用加上单引号或者双引号<br>    “”:双引号:不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思<br>    ‘’:  单引号:会转义字符，特殊字符最终只是一个普通的字符串变量<br>对象、Map(属性和值)(键值对)</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#K:V</span></span><br><span class="line"><span class="comment">#对象还是K:V的方式</span></span><br><span class="line"><span class="attr">friends:</span></span><br><span class="line">   	<span class="attr">lastName:</span> <span class="string">zhangsan</span></span><br><span class="line">	<span class="attr">age:</span> <span class="number">20</span></span><br><span class="line"><span class="comment">#行内写法：</span></span><br><span class="line"><span class="attr">friend:</span> <span class="string">&#123;lastName:</span> <span class="string">zhangsan,age:</span> <span class="number">18</span><span class="string">&#125;</span></span><br><span class="line"><span class="comment">#数组(List、Set)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#用-值表示数组中的一个元素</span></span><br><span class="line"><span class="attr">pets:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">cat</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">dog</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">pig</span></span><br><span class="line"><span class="comment">#  行内写法：</span></span><br><span class="line"><span class="attr">pets:</span> <span class="string">[cat,dog,pig]</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="3-获取配置文件值"><a href="#3-获取配置文件值" class="headerlink" title="(3)获取配置文件值"></a>(3)获取配置文件值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//javaBean</span></span><br><span class="line"><span class="meta">@PropertySource</span></span><br></pre></td></tr></table></figure>
-
-
-
-
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          一. Spring Boot入门1. Spring Boot简介
+简化Spring应用开发的一个框架
+整个Sping技术栈的一个大整合
+J2EE开发的一站式解决方案
+
+2. 微服务2014年，由Martin Fowler提出
+微服务：架构风格（服务微化）一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；每一个功能元素最终都是一个可独立替换和独立升级的软件单元；详细参照微服务文档
+3. Spring Boot HelloWorld一个功能：浏览器发送he
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/" class="post-title-link" itemprop="url">秋菊男的故事</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/" itemprop="url">秋菊男的故事</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-23T12:49:40+08:00">
+                2019-11-23
+              </time>
+            
 
-              <time title="Erstellt: 2019-11-23 12:49:40" itemprop="dateCreated datePublished" datetime="2019-11-23T12:49:40+08:00">2019-11-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2020-02-19 21:02:43" itemprop="dateModified" datetime="2020-02-19T21:02:43+08:00">2020-02-19</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%AF%BB%E4%B9%A6/" itemprop="url" rel="index">
                     <span itemprop="name">读书</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -891,91 +1422,150 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>   罗永浩</p>
-</blockquote>
-<p>十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游小册子，“咋还不信呢？自个儿看看吧。” </p>
-<p>那时候我刚好失恋，又赶上一个阴冷的冬天，为了缓解负面情绪带来的压力，我恶学了二十来天英语，在那个初级班结课考试的时候，考了个班里的第一名。按照事先的约定，我去学校领取数额为几百元的奖金(我不记得具体数字了，好像是三百元)。一个正方形脸蛋的中年韩国校长告诉我说，这个奖金我们不能给你钱，只能从你学习中级班时的学费里减免，我说那叫“优惠”，或者是“打折”，不叫“奖金”，你们承诺的是给“奖金”。何况，我也没答应过你们我一定会继续学习你们的中级班。韩国校长说，我们就是为了让你们努力学习才设立这个奖学金的，不是为了让你们得到钱，你们拿了钱去喝酒抽烟什么的就违背了我们设立这个奖学金的目的。我说我对你们的目的不感兴趣，我只知道你们说了给奖金就不能在考完了之后改成优惠打折，至于这个钱我拿到了之后是抽烟喝酒还是大鱼大肉，都跟你们没关系。韩国校长把脸拉成长方形，然后说，年轻人，在我们韩国，你要是对长辈这样没有礼貌，早就挨打了。 </p>
-<p>和我无能的前半生的大部分时候一样，我拿这些西装革履的流氓完全没有办法，我不能抑制地又说了脏话，“我操，你们他妈的怎么这么流氓？” </p>
-<p>和那个时代所有受了刺激的“善良市民”一样，我想到了找报社，我怯生生地生平第一次走进报社，在门口登记的时候，我学着从电视里看到的，对门卫说，我是一个“市民”，我是来“反映情况”的。非常走运的是，接待我的报社记者竟然是我的初中同学，她仔细听完我“反映情况”，充满了想来是因对老同学热心而产生的愤怒；她对我说，我一定彻底揭发他们，下午我就去他们学校采访一下，核实完情况以后，争取几天之内就让它见报。 </p>
-<p>出了报社的大门想了想，觉得我还可以再做点什么，干是又去了市教委“反映情况”。一个教委的中年马脸男斜叼着烟，皱着眉头，时不时喝口茶，听了半天后说，好，我们都知道了，你留个联系方式等我们通知你吧。 </p>
-<p>就像我从他表情里预感到的那样，这个人始终没有跟我联系。而且后来我试图再去找他的时候，也被门卫挡在了外面。一周后的坏消息是，《Y市晚报》的同学告诉我说，这个“三育”学校是和市教委合作办学的一个机构，《Y市晚报》是市委办的报纸，因此她写的稿子被总编毙掉了。 </p>
-<p>我下了很大的决心，才敢走迸Y市法院。在那之前的一个星期里，我每天都对着自己念叨：“傻逼，你总得有第一次吧。”1995年的中国，我不知道有多少人像我这样对于第一次尝试用法律保护自己的权益感到兴奋、紧张和好奇，但我想这些跃跃欲试的人里，很多都是受了《秋菊打官司》的影响(无论从哪个角度看，这部1993年红遍全国的电影都是一部了不起的作品。） </p>
-<p>在法院的大厅前台，一个胖胖的中年接待男听完我来的目的之后，直接把我轰到了门外，“去去去!你这个小同志以为法院是啥地方？！这种鸡毛蒜皮的屁事儿也来捣乱！”我头脑一片空白，在法院门口愣了半天，然后发现法院对面全都是挂着简陋牌子的律师事务所。我犹豫了一下，还是硬着头皮敲开了其中一个门，很尴尬地对里面的人表示我没有钱付给他，但是很希望他能给我一些建议。一个笑眯眯的李姓律师给我耐心地讲解了半天，并且对我表示了鼓励和钦佩。在1995年的中国，在人口不到30万的小城Y市，一个决定用法律手段解决这类问题的小伙子在他看来，是一个“了不起的年轻人”，“观念很超前啊”，他这样说。当然我也由衷地表示，他肯这样花时间，热心无偿地帮助一个陌生人，“真是一位了不起的律师啊”。 </p>
-<p>两个了不起的中国男人依依惜别后，年轻人重新杀进了法院。按照律师指点的那样，气势汹汹地要求中年接待男，“少废话，给我拿一份表格(我忘了是叫民事诉讼立案表还是什么)来！”接待男根据这个年轻人的狰狞嘴脸，看出他已经成为一个诉讼常识方面的暴发户，于是乖乖地摸出了一份表格。填完表格之后，在法院的二楼，一个非常客气但又明显冷漠的女法官接待了我，或者难确地说，是打发了我。她让我到河南(就是把Y市打劈成两半的那条河的对面)的民事立案庭(民事调解办公室？)去“试试”,我试图再多请救两句，“你上那边问吧，”她说，接着她又说了中国人都很熟悉的那句公务员用语，“这事儿不归我们管。” </p>
-<p>跟膀大腰圆的市法院不一样，河南的那个民事诉讼立案庭在一栋灰头土脸的二层小楼里。我在一群神情愁苦的乡下群众后面排了将近三个多小时的队，听到前面人申述的都是真刀真枪的冤情，比如自己家的地被强占了，比如自己家的媳妇被强占了，比如自己家的地和媳妇一起被强占了……这使得我在排队过程中感到越来越没底气，除非我申述的时候他们能给我清场，不然我实在没勇气在这样一群不幸的人当中把我那点“鸡毛蒜皮的屁事儿”坦然地说出来。何况，每一个老乡说完之后，立案庭的中年妇女都会用让人彻底绝望的口气重复同一句话，“哎呀，同志，你这个事情很难办啊。”终干，到了还差两个人就轮到我的时候，我逃离了这个鬼地方。 </p>
-<p>最后，我想到了上街去喊一喊。几乎可以肯定这个选择是受了一些文艺作品的影响，应该是掺杂了一个年轻人在生命某个阶段产生的自我戏剧化的需要(那时候我还没有接触过这类唬人的名词，我只是模糊地意识到了一些不纯粹的东西)。 </p>
-<p>初步设想的方案大概是这样的：我穿着“反映情况”的详情的T恤衫，斜挎着大功率的收录机(口号提前录好），设法把两棍竹竿斜着捆在背上并在脑袋上方用它们撑起一个较大的口号条幅，比如“倒也谈不上天理难容”，胸前再挂一个仪仗队用的鼓，就可以上路了。我还可以发动我所有的狐朋狗友都去远远地围观，免得真的出现冷场(如果他们不敢的话)。事实上后来他们都兴奋地表示一定会去，至少会去围观。除了对我这个做法确实很支持之外，这种事情毕竟也是平淡生活里难得一见的调剂，这解释了他们为什么在电话里表示要去的时候，夹杂了大量兴奋的、音色失真的“我操”！ </p>
-<p>计划中的路线是从市医院门口出发，放着录音口号，敲着鼓，经过市公安局、市委(在市委门口会多待一会儿，可能还应该呼唤马脸男出来对个话什么的，当然，这个比较没有创意)、州委、州政府，最后到达位于铁南(即铁路之南)的“三育“学校门口。这个倒霉学校刚好在一条大马路的边上，所以基本上，当造型醒目的我，我走到门口（这个时候录音机可以短暂地改放一会儿Roxette的Look Sharp），只要往那儿一杵，就会引起足够的围观了。我想如果我能坚持上一个星期，这个手巴掌大的城市里的所有市民就都该知道这件事了。 </p>
-<p>我简单学习了一下相关法律条例，然后就写了一份书面申请去公安局。窗门的小同志显然没见过这种申请，甚至不知道该如何处理，埋头焦虑地不停拨打电话询问。我想了想，就给在市公安局工作的老同学李神探打了个电话，李神探神情凝重地出来把我拽到他的办公室，“我操，你不想活了？”一一和所有体制内谋生的人一样，他会把做这类事情直接看成是自寻短见。 </p>
-<p>因为担心劝阻无效，李神探索性就把这件事告诉了我的父母，结果可想而知。我是说，我的父母和那个时代的绝大多数中国父母没有本质区别(其实我很能理解他们，年轻的时候就能，我只是不同意他们而已）。 </p>
-<p>开春的时候，我和一些朋友包括我的表哥到一个郊区的网球场去打球。突然，我们看到那个韩国校长和几个人也走进了场地。大家亢奋起来，七嘴八舌地出主意，最后我们决定主动去招惹他，逼他先发作，然后大伙就围上去群殴。 </p>
-<p>那时候我还很年轻，也很幼稚，没有意识到这种做法的软弱本质。我只是迟疑了一下，就兴冲冲地跟着大家在场地外边围成了半个圈子，然后大家一起恶狠狠地看着韩国校长。这小子明显慌了，假装不经意地在场内转来转去。最后，他终于发现，无论转到哪个方向，基本上都至少有一双兽兽的眼睛盯着他。 </p>
-<p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
-<p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
-<p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          
+   罗永浩
+
+十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/" class="post-title-link" itemprop="url">Appium环境安装(Windows环境)</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/" itemprop="url">Appium环境安装(Windows环境)</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
               
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-23T11:15:54+08:00">
+                2019-11-23
+              </time>
+            
 
-              <time title="Erstellt: 2019-11-23 11:15:54 / Geändert am: 12:38:48" itemprop="dateCreated datePublished" datetime="2019-11-23T11:15:54+08:00">2019-11-23</time>
-            </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
                     <span itemprop="name">自动化测试</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -983,101 +1573,148 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/，现在和操作系统匹配的版本。" target="_blank" rel="noopener">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
-<h4 id="二、配置Android-sdk环境"><a href="#二、配置Android-sdk环境" class="headerlink" title="二、配置Android sdk环境"></a>二、配置Android sdk环境</h4><p>1.安装jdk并配置环境变量<br>a)    在Java官方网站上下载相应系统的jdk文件安装，全部选择默认的安装路径即可安装完成<br>b)    配置JAVA_HOME, 新建 JAVA_HOME 环境变量，变量值是自己安装JDK 的路径，我的是：D:\Java\jdk1.8；<br>c)    配置ClASSPATH, 新建 CLASSPATH 环境变量，变量值是：%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar<br>d)    配置PATH, 找到PATH变量，追加如下目录：%JAVA_HOME%/bin;%JAVA_HOME%/jre/bin;<br>e)    验证安装是否成功<br><img src="jdk.png" alt="jdk"><br>2.Android SDK环境搭建<br>a)    安装Eclipse<br><img src="eclipse.png" alt="eclipse"><br>b)    安装ADT插件<br>启动Eclipse，点击菜单Help -&gt; Install New Software<br>在弹出的菜单中，点击Add，输入名称，然后在URL中输入：<a href="http://dl-ssl.google.com/android/eclipse/" target="_blank" rel="noopener">http://dl-ssl.google.com/android/eclipse/</a><br>之后点击Next，选择勾选ADT和NDK插件，选择安装即可，安装过程比较慢，需要耐心等待。<br>安装完成后，重启Eclipse后，点击Windows，在Windows下可以查看安装好的ADT插件。<br><img src="adt.png" alt="adt"><br>c)    安装SDK Tools<br>解压下载下来的文件，尽量不要解压到带有中文路径的文件目录下，目录也不要过深，我的目录为：D:\Program Files\adt_bundle。<br>d)    配置Android SDK环境变量<br>i.    新建 ANDROID_HOME 环境变量，变量值是SDK解压的路径，我的是：D:\Program Files\adt_bundle<br>ii.    追加sdk如下目录到PATH变量<br>1.tools目录：%ANDROID_HOME%\tools<br>2.platform-tools目录：%ANDROID_HOME%\platform-tools<br>3.build-tools目录：%ANDROID_HOME%\build-tools\android-4.3<br>iii.配置Eclipse的ADT插件<br>1.双击打开eclipse，点击菜单栏中的选项 Window—&gt;Perferences<br>2.在打开的对话框中，查看第二选项 Android，后面有一个 SDK Loaction，如果在 SDKLocation 后面没有内容，则通过点击后面的按钮【Browser】按钮，找到自己所配置的SDK文件目录下选中， 然后点击【Apply】，如直接有路径可忽略，然后点击【OK】就好了。<br>配置完成后，在命令提示符下输入adb命令，看到有回显信息的时候，说明Android的环境命令已经安装完成。<br>3.虚拟机设置</p>
-<ul>
-<li>打开eclipse，点击菜单栏中的选项 Window—&gt;Android Virtual Device Manager，可以用来管理android emulator</li>
-<li>点击【create…】可以新建虚拟机</li>
-<li>选中虚拟机，然后点【Start】就可以启动该虚拟机</li>
-<li>android虚拟机启动比较慢，需要耐心等待，启动好后如下图<br><img src="vm.png" alt="vm"></li>
-</ul>
-<h4 id="三、安装Appium环境"><a href="#三、安装Appium环境" class="headerlink" title="三、安装Appium环境"></a>三、安装Appium环境</h4><ol>
-<li>下载安装文件：<a href="https://bitbucket.org/appium/appium.app/downloads/" target="_blank" rel="noopener">https://bitbucket.org/appium/appium.app/downloads/</a></li>
-<li>直接双击appium-installer.exe文件安装就好，桌面会生成一个appium的图标</li>
-<li>把node_modules的bin目录放到系统的Path路径里</li>
-<li>检查appium所需的环境是否OK:<br>进入cmd命令行，输入appium-doctor ，出现以下提示，All Checks were successful ,说明环境成功。<br><img src="appium.png" alt="appium"></li>
-</ol>
-<h4 id="四、Appium入门实例（Java-demo）"><a href="#四、Appium入门实例（Java-demo）" class="headerlink" title="四、Appium入门实例（Java demo）"></a>四、Appium入门实例（Java demo）</h4><ol>
-<li>启动Android模拟器<br><img src="java.png" alt="java"></li>
-</ol>
-<ul>
-<li>直接双击appium gui图标(如下图)：</li>
-<li>点击右上角启动名按钮</li>
-</ul>
-<h4 id="五、问题备注："><a href="#五、问题备注：" class="headerlink" title="五、问题备注："></a>五、问题备注：</h4><ul>
-<li>获取包名的方法：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb logcat &gt; d:\log.txt</span><br></pre></td></tr></table></figure>
-搜索Displayed，找PACKAGE和Activity。</li>
-<li>更改代理，加快SDK下载速度：<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mirrors.zzu.edu.cn 80</span><br></pre></td></tr></table></figure></li>
-<li>arm平台的虚拟机运行速度较慢，建议使用X86平台。</li>
-</ul>
+      
 
       
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
         
+          
+          Appium环境安装（Windows环境）一、安装node.jsAppium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。1.到官网下载node.js：https://nodejs.org/en/download/，现在和操作系统匹配的版本。2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：4.
+二、配置Android sdk环境
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="Edison">
-      <meta itemprop="description" content="我就是我，不一样的烟火">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="麦田守望者">
     </span>
+
+    
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/" class="post-title-link" itemprop="url">CentOS6安装中文支持</a>
-        </h1>
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/" itemprop="url">CentOS6安装中文支持</a></h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-10T12:42:30+08:00">
+                2019-11-10
+              </time>
+            
 
-              <time title="Erstellt: 2019-11-10 12:42:30" itemprop="dateCreated datePublished" datetime="2019-11-10T12:42:30+08:00">2019-11-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Bearbeitet am</span>
-                <time title="Geändert am: 2019-11-21 01:55:35" itemprop="dateModified" datetime="2019-11-21T01:55:35+08:00">2019-11-21</time>
-              </span>
-            <span class="post-meta-item">
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Linux/" itemprop="url" rel="index">
                     <span itemprop="name">Linux</span>
                   </a>
                 </span>
+
+                
+                
+              
             </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
 
           
 
         </div>
       </header>
+    
 
     
     
@@ -1085,34 +1722,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+      
 
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+      
+        
+          
+          安装中文支持包。
+12yum install fonts-chineseyum install fonts-ISO8859-2
 
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+一.安装中文支持
+方法1：在安装光盘找到包进行安装
+12rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpmrpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm
+
+方法2：使用yum进行安装
+12yum install fonts-chinesey
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
+    
+    
+    
 
     
+
     
+
     
-      <footer class="post-footer">
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
         <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+      
+    </footer>
   </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Nächste Seite"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="accessibility.next_page"></i></a>
   </nav>
 
 
@@ -1120,113 +1789,159 @@
           </div>
           
 
-<script>
-  window.addEventListener('tabs:register', () => {
-    let activeClass = CONFIG.comments.activeClass;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
+
+          
 
         </div>
+        
           
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
   </div>
 
-  <aside class="sidebar">
+  <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Inhaltsverzeichnis
-        </li>
-        <li class="sidebar-nav-overview">
-          Übersicht
-        </li>
-      </ul>
+      
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
+      
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Edison</p>
-  <div class="site-description" itemprop="description">我就是我，不一样的烟火</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">11</span>
-          <span class="site-state-item-name">Artikel</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">Kategorien</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-        <span class="site-state-item-count">10</span>
-        <span class="site-state-item-name">schlagwörter</span></a>
-      </div>
-  </nav>
-</div>
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Edison" />
+            
+              <p class="site-author-name" itemprop="name">Edison</p>
+              <p class="site-description motion-element" itemprop="description">我就是我，不一样的烟火</p>
+          </div>
 
+          <nav class="site-state motion-element">
 
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
 
-      </div>
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
 
     </div>
+	
+	
+	
+           <div>
+              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width="210" height="110" src="//music.163.com/outchain/player?type=2&id=442331&auto=1&height=66"></iframe>
+           </div>
+	
+	
+	
   </aside>
-  <div id="sidebar-dimmer"></div>
 
 
+        
       </div>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="footer-inner">
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Edison</span>
+
+  
 </div>
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
-  </div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">Design – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
-  </div>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
 
 
 
@@ -1235,17 +1950,34 @@
 
 
 
+        
       </div>
     </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
   </div>
 
   
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
-<script src="/js/schemes/pisces.js"></script>
-<script src="/js/next-boot.js"></script>
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
 
 
 
@@ -1262,8 +1994,431 @@
 
 
 
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
 
   
 
