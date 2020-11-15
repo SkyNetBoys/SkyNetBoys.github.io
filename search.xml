@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>git clone中常见问题的总结</title>
+    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
+<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global http.postBuffer 524288000</span><br><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>方法2: 浅层克隆，深度设置为1</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://github.com/target.git --depth 1  <span class="comment"># target.git 为目标地址</span></span><br><span class="line"><span class="built_in">cd</span> target  <span class="comment">#先进入库路径下</span></span><br><span class="line">git fetch --unshallow <span class="comment"># 获取完整库</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
+<p>fatal: unable to access “<a href="https://github.com/subying/jsbook.git/&quot;" target="_blank" rel="noopener">https://github.com/subying/jsbook.git/&quot;</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
+</blockquote>
+<ul>
+<li>解决方法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global http.sslVerify <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -235,7 +266,7 @@
 <h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
 ]]></content>
       <categories>
-        <category>Java</category>
+        <category>Linux</category>
       </categories>
       <tags>
         <tag>Git</tag>
