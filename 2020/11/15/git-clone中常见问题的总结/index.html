@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="麦田守望者">
 <meta property="og:description" content="国内速度慢 方法1：重新设置全局的通信缓存大小，增加git缓冲区大小  12git config --global http.postBuffer 524288000git config --list   方法2: 浅层克隆，深度设置为1  123git clone http:&#x2F;&#x2F;github.com&#x2F;target.git --depth 1  # target.git 为目标地址cd targe">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-11-15T13:29:55.324Z">
+<meta property="og:updated_time" content="2020-12-05T02:07:42.310Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -380,7 +380,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> http://github.com/target.git --depth 1  <span class="comment"># target.git 为目标地址</span></span><br><span class="line"><span class="built_in">cd</span> target  <span class="comment">#先进入库路径下</span></span><br><span class="line">git fetch --unshallow <span class="comment"># 获取完整库</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
-<p>fatal: unable to access “<a href="https://github.com/subying/jsbook.git/&quot;" target="_blank" rel="noopener">https://github.com/subying/jsbook.git/&quot;</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
+<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/" target="_blank" rel="noopener">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
 </blockquote>
 <ul>
 <li>解决方法</li>
