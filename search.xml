@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -43,68 +67,6 @@
       </categories>
       <tags>
         <tag>Appium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
-</blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
-
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# docker images</span><br><span class="line">REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">mysql                                                  latest    5c62e459e087   11 days ago    556MB</span><br><span class="line">hello-world                                            latest    d1165f221234   4 months ago   13.3kB</span><br><span class="line">centos                                                 latest    300e315adb2f   6 months ago   209MB</span><br><span class="line">registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解释</span></span><br><span class="line">REPOSITORY	镜像的仓库源</span><br><span class="line">TAG		镜像的标签</span><br><span class="line">IMAGE ID 	镜像的ID</span><br><span class="line">CREATED		镜像的创建时间</span><br><span class="line">SIZE		镜像的大小</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项</span></span><br><span class="line">-a, -all	# 列出所有镜像</span><br><span class="line">-q, --quiet	# 只显示镜像的ID</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# docker search mysql</span><br><span class="line">NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                             MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]</span><br><span class="line">mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]</span><br><span class="line">mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88</span><br><span class="line">centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88</span><br><span class="line">centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]</span><br><span class="line">databack/mysql-backup             Back up mysql databases to... anywhere!         44</span><br><span class="line">deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]</span><br><span class="line">prom/mysqld-exporter                                                              39                   [OK]</span><br><span class="line">tutum/mysql                       Base docker image to run a MySQL database se…   35</span><br><span class="line">linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30</span><br><span class="line">schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]</span><br><span class="line">mysql/mysql-router                MySQL Router provides transparent routing be…   21</span><br><span class="line">centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20</span><br><span class="line">arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]</span><br><span class="line">fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]</span><br><span class="line">yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]</span><br><span class="line">genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]</span><br><span class="line">openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6</span><br><span class="line">devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3</span><br><span class="line">ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">jelastic/mysql                    An image of the MySQL database server mainta…   1</span><br><span class="line">widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]</span><br><span class="line">vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]</span><br><span class="line">centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span></span><br><span class="line">--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line">[root@localhost ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…   4200      [OK]</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -153,6 +115,44 @@
 
 
 
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# docker images</span><br><span class="line">REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE</span><br><span class="line">mysql                                                  latest    5c62e459e087   11 days ago    556MB</span><br><span class="line">hello-world                                            latest    d1165f221234   4 months ago   13.3kB</span><br><span class="line">centos                                                 latest    300e315adb2f   6 months ago   209MB</span><br><span class="line">registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解释</span></span><br><span class="line">REPOSITORY	镜像的仓库源</span><br><span class="line">TAG		镜像的标签</span><br><span class="line">IMAGE ID 	镜像的ID</span><br><span class="line">CREATED		镜像的创建时间</span><br><span class="line">SIZE		镜像的大小</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项</span></span><br><span class="line">-a, -all	# 列出所有镜像</span><br><span class="line">-q, --quiet	# 只显示镜像的ID</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# docker search mysql</span><br><span class="line">NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                             MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]</span><br><span class="line">mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]</span><br><span class="line">mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88</span><br><span class="line">centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88</span><br><span class="line">centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]</span><br><span class="line">databack/mysql-backup             Back up mysql databases to... anywhere!         44</span><br><span class="line">deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]</span><br><span class="line">prom/mysqld-exporter                                                              39                   [OK]</span><br><span class="line">tutum/mysql                       Base docker image to run a MySQL database se…   35</span><br><span class="line">linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30</span><br><span class="line">schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]</span><br><span class="line">mysql/mysql-router                MySQL Router provides transparent routing be…   21</span><br><span class="line">centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20</span><br><span class="line">arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]</span><br><span class="line">fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]</span><br><span class="line">yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]</span><br><span class="line">genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]</span><br><span class="line">openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6</span><br><span class="line">devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3</span><br><span class="line">ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">jelastic/mysql                    An image of the MySQL database server mainta…   1</span><br><span class="line">widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]</span><br><span class="line">vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]</span><br><span class="line">centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span></span><br><span class="line">--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line">[root@localhost ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…   4200      [OK]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>环境搭建</category>
