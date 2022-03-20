@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -86,6 +67,25 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -873,6 +873,30 @@
       </tags>
   </entry>
   <entry>
+    <title>自动化用例中如何获得testcase名称</title>
+    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
+    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Rule</span></span><br><span class="line"><span class="keyword">public</span> TestName testName = <span class="keyword">new</span> TestName();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行输出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String testcaseName = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeMethod</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">(Method method)</span> </span>&#123;</span><br><span class="line">    testcaseName = method.getName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行输出:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>秋菊男的故事</title>
     <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
     <content><![CDATA[<blockquote>
@@ -904,30 +928,6 @@
       </categories>
       <tags>
         <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自动化用例中如何获得testcase名称</title>
-    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
-    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Rule</span></span><br><span class="line"><span class="keyword">public</span> TestName testName = <span class="keyword">new</span> TestName();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行输出</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String testcaseName = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeMethod</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">(Method method)</span> </span>&#123;</span><br><span class="line">    testcaseName = method.getName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行输出:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
       </tags>
   </entry>
 </search>
