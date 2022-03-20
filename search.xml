@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -70,25 +89,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker命令小结</title>
     <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
@@ -99,60 +99,6 @@
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[root@localhost ~]# docker search mysql</span><br><span class="line">NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql                             MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]</span><br><span class="line">mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]</span><br><span class="line">mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88</span><br><span class="line">centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88</span><br><span class="line">centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]</span><br><span class="line">databack/mysql-backup             Back up mysql databases to... anywhere!         44</span><br><span class="line">deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]</span><br><span class="line">prom/mysqld-exporter                                                              39                   [OK]</span><br><span class="line">tutum/mysql                       Base docker image to run a MySQL database se…   35</span><br><span class="line">linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30</span><br><span class="line">schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]</span><br><span class="line">mysql/mysql-router                MySQL Router provides transparent routing be…   21</span><br><span class="line">centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20</span><br><span class="line">arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]</span><br><span class="line">fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]</span><br><span class="line">yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]</span><br><span class="line">genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]</span><br><span class="line">openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6</span><br><span class="line">devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3</span><br><span class="line">ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">jelastic/mysql                    An image of the MySQL database server mainta…   1</span><br><span class="line">widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]</span><br><span class="line">vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]</span><br><span class="line">centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span></span><br><span class="line">--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的</span><br><span class="line">[root@localhost ~]# docker search mysql --filter=STARS=3000</span><br><span class="line">NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">mysql     MySQL is a widely used, open-source relation…   11085     [OK]</span><br><span class="line">mariadb   MariaDB Server is a high performing open sou…   4200      [OK]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker学习笔记</title>
-    <url>/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
-<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
-<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
-<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-957.el7.x86_64</span><br></pre></td></tr></table></figure>
-
-<p>2.安装docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker -y</span><br></pre></td></tr></table></figure>
-
-<p>3.启动docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]# systemctrl start docker</span><br><span class="line">[root@localhost init.d]# docker -v</span><br><span class="line">Docker version 1.13.1, build 4ef4b30/1.13.1</span><br></pre></td></tr></table></figure>
-
-<p>4.设置开机自启动docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
-
-<p>5.停止docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
-<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># docker search mysql</span></span><br><span class="line">INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]</span><br><span class="line">docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]</span><br><span class="line">docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67</span><br><span class="line">docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60</span><br><span class="line">docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]</span><br><span class="line">docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]</span><br><span class="line">docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34</span><br><span class="line">docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]</span><br><span class="line">docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]</span><br><span class="line">docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24</span><br><span class="line">docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18</span><br><span class="line">docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16</span><br><span class="line">docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14</span><br><span class="line">docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]</span><br><span class="line">docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10</span><br><span class="line">docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6</span><br><span class="line">docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]</span><br><span class="line">docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]</span><br><span class="line">docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="built_in">which</span> deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2</span><br><span class="line">docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1</span><br><span class="line">docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="keyword">for</span> mysql    0</span><br><span class="line">docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]</span><br></pre></td></tr></table></figure>
-<p>2.下载镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载最新版本的镜像</span></span><br><span class="line">docker pull mysql</span><br><span class="line"><span class="comment">#下载指定版本的MySql镜像</span></span><br><span class="line">docker pull mysql:5.5</span><br></pre></td></tr></table></figure>
-<p>3、查看所有镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-<p>4、删除镜像 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
-
-<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ]]></content>
       <categories>
         <category>环境搭建</category>
@@ -223,6 +169,60 @@
       </categories>
       <tags>
         <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker学习笔记</title>
+    <url>/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
+<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
+<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
+<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-957.el7.x86_64</span><br></pre></td></tr></table></figure>
+
+<p>2.安装docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install docker -y</span><br></pre></td></tr></table></figure>
+
+<p>3.启动docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]# systemctrl start docker</span><br><span class="line">[root@localhost init.d]# docker -v</span><br><span class="line">Docker version 1.13.1, build 4ef4b30/1.13.1</span><br></pre></td></tr></table></figure>
+
+<p>4.设置开机自启动docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">enable</span> docker</span><br></pre></td></tr></table></figure>
+
+<p>5.停止docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl stop docker</span><br></pre></td></tr></table></figure>
+<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@localhost init.d]<span class="comment"># docker search mysql</span></span><br><span class="line">INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED</span><br><span class="line">docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]</span><br><span class="line">docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]</span><br><span class="line">docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67</span><br><span class="line">docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]</span><br><span class="line">docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60</span><br><span class="line">docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]</span><br><span class="line">docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]</span><br><span class="line">docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34</span><br><span class="line">docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]</span><br><span class="line">docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]</span><br><span class="line">docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24</span><br><span class="line">docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18</span><br><span class="line">docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16</span><br><span class="line">docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14</span><br><span class="line">docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]</span><br><span class="line">docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10</span><br><span class="line">docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6</span><br><span class="line">docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]</span><br><span class="line">docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]</span><br><span class="line">docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="built_in">which</span> deploys RHSCL MySQL                2                    [OK]</span><br><span class="line">docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2</span><br><span class="line">docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1</span><br><span class="line">docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="keyword">for</span> mysql    0</span><br><span class="line">docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]</span><br></pre></td></tr></table></figure>
+<p>2.下载镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#下载最新版本的镜像</span></span><br><span class="line">docker pull mysql</span><br><span class="line"><span class="comment">#下载指定版本的MySql镜像</span></span><br><span class="line">docker pull mysql:5.5</span><br></pre></td></tr></table></figure>
+<p>3、查看所有镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+<p>4、删除镜像 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rmi image-id</span><br></pre></td></tr></table></figure>
+
+<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#1、搜索镜像</span></span><br><span class="line">docker search tomcat</span><br><span class="line"><span class="comment">#2、拉取镜像</span></span><br><span class="line">docker pull tomcat</span><br><span class="line"><span class="comment">#3、根据镜像启动容器</span></span><br><span class="line">docker run --name mytomcat -d tomcat:latest</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -873,30 +873,6 @@
       </tags>
   </entry>
   <entry>
-    <title>自动化用例中如何获得testcase名称</title>
-    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
-    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Rule</span></span><br><span class="line"><span class="keyword">public</span> TestName testName = <span class="keyword">new</span> TestName();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行输出</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String testcaseName = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeMethod</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">(Method method)</span> </span>&#123;</span><br><span class="line">    testcaseName = method.getName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行输出:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>秋菊男的故事</title>
     <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
     <content><![CDATA[<blockquote>
@@ -928,6 +904,30 @@
       </categories>
       <tags>
         <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自动化用例中如何获得testcase名称</title>
+    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
+    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Rule</span></span><br><span class="line"><span class="keyword">public</span> TestName testName = <span class="keyword">new</span> TestName();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span></span>&#123;</span><br><span class="line">    System.out.println(testName.getMethodName());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行输出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String testcaseName = <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">@BeforeMethod</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beforeMethod</span><span class="params">(Method method)</span> </span>&#123;</span><br><span class="line">    testcaseName = method.getName();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_001</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testcase_002</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(testcaseName);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行输出:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">testcase_001</span><br><span class="line">testcase_002</span><br></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
       </tags>
   </entry>
 </search>
