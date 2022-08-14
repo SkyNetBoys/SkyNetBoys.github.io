@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -105,6 +86,25 @@
       </categories>
       <tags>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -828,6 +828,23 @@
       </tags>
   </entry>
   <entry>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>性能测试笔记</title>
     <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>性能测试：</p>
@@ -871,23 +888,6 @@
       </categories>
       <tags>
         <tag>PT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
-<ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>软件测试</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
