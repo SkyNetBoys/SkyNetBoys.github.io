@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -46,27 +70,22 @@
       </tags>
   </entry>
   <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
-</blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
 
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
 
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Java</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -86,25 +105,6 @@
       </categories>
       <tags>
         <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -828,23 +828,6 @@
       </tags>
   </entry>
   <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
-<ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>软件测试</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>性能测试笔记</title>
     <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>性能测试：</p>
@@ -891,23 +874,20 @@
       </tags>
   </entry>
   <entry>
-    <title>物理班</title>
-    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
-    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
-<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
-<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
-<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
-<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
-<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
-<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
-<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
-<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
 ]]></content>
       <categories>
-        <category>读书</category>
+        <category>软件测试</category>
       </categories>
       <tags>
-        <tag>杂文</tag>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -936,6 +916,26 @@
 <p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
 <p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
 <p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
+]]></content>
+      <categories>
+        <category>读书</category>
+      </categories>
+      <tags>
+        <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>物理班</title>
+    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
+    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
+<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
+<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
+<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
+<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
+<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
+<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
+<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
+<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
 ]]></content>
       <categories>
         <category>读书</category>
