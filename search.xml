@@ -353,61 +353,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pytest使用介绍</title>
-    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
-<thead>
-<tr>
-<th>item</th>
-<th>unittest</th>
-<th>pytest</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用例编写规则</td>
-<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
-<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
-</tr>
-<tr>
-<td>用例分类执行</td>
-<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
-<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
-</tr>
-<tr>
-<td>用例前置和后置</td>
-<td>提供了setUp/tearDown，只能针对所有case</td>
-<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
-</tr>
-<tr>
-<td>参数化</td>
-<td>需要依赖ddt库</td>
-<td>使用@pytest.mark.parametrize装饰器</td>
-</tr>
-<tr>
-<td>断言</td>
-<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
-<td>只有assert一个表达式，用起来比较方便</td>
-</tr>
-<tr>
-<td>报告</td>
-<td>使用HTMLTestRunnerNew库</td>
-<td>有pytest-HTML，allure插件</td>
-</tr>
-<tr>
-<td>失败重跑</td>
-<td>无此功能</td>
-<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NFS文件系统</title>
     <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
@@ -482,6 +427,61 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytest使用介绍</title>
+    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
+<thead>
+<tr>
+<th>item</th>
+<th>unittest</th>
+<th>pytest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例编写规则</td>
+<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
+<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
+</tr>
+<tr>
+<td>用例分类执行</td>
+<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
+<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
+</tr>
+<tr>
+<td>用例前置和后置</td>
+<td>提供了setUp/tearDown，只能针对所有case</td>
+<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>需要依赖ddt库</td>
+<td>使用@pytest.mark.parametrize装饰器</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
+<td>只有assert一个表达式，用起来比较方便</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>使用HTMLTestRunnerNew库</td>
+<td>有pytest-HTML，allure插件</td>
+</tr>
+<tr>
+<td>失败重跑</td>
+<td>无此功能</td>
+<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -776,6 +776,48 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows安装MongoDB</title>
+    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
+<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
+<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
+</ul>
+</blockquote>
+<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
+<li>例如：D:\Program Files\mongodb4.2.2</li>
+</ul>
+<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
+<li>配置到bin目录，并将目录加入到path中</li>
+</ul>
+<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
+<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
+<li>在data文件夹下创建”/db”空文件夹；</li>
+<li>在log文件夹下创建”mongo.log”空文件。</li>
+</ul>
+<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mongod -<span class="literal">-config</span> <span class="string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="literal">-install</span> -<span class="literal">-serviceName</span> <span class="string">&quot;MongoDB&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net <span class="built_in">start</span> MongoDB</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vite快速上手</title>
     <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
     <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
@@ -816,48 +858,6 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows安装MongoDB</title>
-    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
-<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
-<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
-</ul>
-</blockquote>
-<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
-<li>例如：D:\Program Files\mongodb4.2.2</li>
-</ul>
-<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
-<li>配置到bin目录，并将目录加入到path中</li>
-</ul>
-<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
-<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
-<li>在data文件夹下创建”/db”空文件夹；</li>
-<li>在log文件夹下创建”mongo.log”空文件。</li>
-</ul>
-<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mongod -<span class="literal">-config</span> <span class="string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="literal">-install</span> -<span class="literal">-serviceName</span> <span class="string">&quot;MongoDB&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net <span class="built_in">start</span> MongoDB</span><br></pre></td></tr></table></figure>
-
-<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -902,6 +902,80 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>samba服务简介</title>
+    <url>/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="SMB简介"><a href="#SMB简介" class="headerlink" title="SMB简介"></a>SMB简介</h2><pre><code>SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix
+系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。
+SMB协议又称为CIFS（Common Internet File System）协议。
+</code></pre>
+<p><img src="smb.png" alt="smb"></p>
+<p>Samba是著名的开源软件项目，在Linux/UNIX系统中实现了SMB网络协议，因此使得跨平台的文件共享变得更加容易。在部署Windows、Linux/UNIX混合平台的企业环境时，使用Smaba可以很好地解决不同系统之间的文件互访问题。</p>
+<h3 id="samba主要功能"><a href="#samba主要功能" class="headerlink" title="samba主要功能"></a>samba主要功能</h3><p>samba服务是SMB的一个开源实现，主要功能如下：</p>
+<ul>
+<li>通过SMB协议进行文件共享</li>
+<li>通过SMB协议进行打印共享</li>
+<li>加入一个windows2000/2003/2008域环境</li>
+<li>通过windows域环境进行认证操作</li>
+</ul>
+<h3 id="samba安装"><a href="#samba安装" class="headerlink" title="samba安装"></a>samba安装</h3><p>samba的软件包组成:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">samba-3.0.23c-2.i386.rpm</span><br><span class="line">samba-client-3.0.23c-2.i386.rpm</span><br><span class="line">samba-common-3.0.23c-2.i386.rpm</span><br><span class="line">samba-swat-3.0.23c-2.i386.rpm</span><br><span class="line">system-config-samba-1.2.39-1.el5.noarch.rpm</span><br><span class="line"><span class="meta">#</span><span class="bash">查看当前系统是否已经安装了samba</span></span><br><span class="line">rpm –qa | grep samba</span><br><span class="line"><span class="meta">#</span><span class="bash">如果没有安装，我们执行以下命令，安装samba</span></span><br><span class="line">yum install –y samba</span><br></pre></td></tr></table></figure>
+<p>samba拥有3个相关服务，分别是：</p>
+<ul>
+<li>smbd<br>  提供文件及打印共享功能，使用139，445端口</li>
+<li>nmbd<br>  提供NetBIOS名称解析，使用137端口（现在已经逐渐淘汰掉，使用DNS）</li>
+<li>winbendd<br>  提供对windows 2000\2003\2008的用户及组信息的解析功能</li>
+</ul>
+<p><strong>一般作为文件共享使用samba，则只需要smbd服务</strong></p>
+<h3 id="访问samba服务器"><a href="#访问samba服务器" class="headerlink" title="访问samba服务器"></a>访问samba服务器</h3><p>客户端访问samba服务器:</p>
+<ul>
+<li>Windows客户端直接使用以下方式连接即可：<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">\\192.168.0.100\skynet</span><br></pre></td></tr></table></figure></li>
+<li>Linux或类Unix系统图形界面使用以下方式连接:<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">smb://192.168.0.100/skynet</span><br></pre></td></tr></table></figure></li>
+<li>Linux使用CLI下可以使用smbclient命令链接：<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">注：smbclient默认是不安装的，需要单独安装</span></span><br><span class="line">smbclient//192.168.0.100/skynet –U test</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">也可以通过mount命令挂载smb共享：</span></span><br><span class="line">mount -o username=test //192.168.0.100/bxy-share /mnt/test/</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="samba配置"><a href="#samba配置" class="headerlink" title="samba配置"></a>samba配置</h3><p><strong>samba服务</strong><br>samba服务的主配置文件为</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/etc/samba/smb.conf</span><br></pre></td></tr></table></figure>
+
+
+<p>samba服务可以作为独立的服务器，也可以加入windows域环境使用。</p>
+<p><strong>samba作为独立服务器使用时，samba使用Linux用户作为其用户，但是单独需<br>要创建密码。</strong></p>
+<p>当加入windows域环境使用时，一般使用的是windows域用户。</p>
+<p>samba有两种安全模式：</p>
+<ul>
+<li>User-Level 默认安全模式，使用用户名、密码进行认证。</li>
+<li>Share-Level 只需要密码即可访问共享，但与部分windows客户端有兼容性问题，不推荐使用。（官方文档，但在实际的使用没有遇到此类问题）</li>
+</ul>
+<p>samba服务的主配置文件为</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">/etc/samba/smb.conf</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">配置文件分为三个部分：</span></span><br><span class="line">[global]        #定义全局性配置</span><br><span class="line">[homes]         #定义用户家目录的共享配置</span><br><span class="line">[printers]      #定义打印机共享配置</span><br></pre></td></tr></table></figure>
+
+<h3 id="Global配置"><a href="#Global配置" class="headerlink" title="Global配置"></a>Global配置</h3><p>samba常用的global配置如下：</p>
+<p>配置工作组信息：</p>
+<p>例如： </p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">设置当前的工作信息</span></span><br><span class="line">workgroup=bxy     </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">服务器的简介</span></span><br><span class="line">server string=this is bxy samba server    </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">配置安全模式</span></span><br><span class="line">Security = user（默认是user）</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 设置服务器的安全级别，可设为以下4个值中的一个：</span></span><br><span class="line">share    #可匿名访问</span><br><span class="line">user     #需由本服务器验证用户名及密码</span><br><span class="line">server   #由另一台服务器验证用户名及密码</span><br><span class="line">domain   #由Windows域控制器验证用户名及密码</span><br><span class="line">ads      #域环境</span><br></pre></td></tr></table></figure>
+
+<h3 id="用户家目录共享"><a href="#用户家目录共享" class="headerlink" title="用户家目录共享"></a>用户家目录共享</h3><p>Samba服务配置文件默认配置好了用户家目录共享，每一个Linux用户的家目录</p>
+<p>均可以使用smb协议访问：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[home]</span><br><span class="line">Comment=Home Directories</span><br><span class="line">Broseable=no</span><br><span class="line">Writable=yes</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">为要通过smb协议访问家目录的用户创建samba密码：</span></span><br><span class="line">smbpasswd -a 123456</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">启动smaba服务</span></span><br><span class="line">Service smb start</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">通过smbclient登录验证用户共享</span></span><br><span class="line">smbclient //your IP/skynet –U bxy</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建独立共享"><a href="#创建独立共享" class="headerlink" title="创建独立共享"></a>创建独立共享</h3><p>我们可以通过向/etc/samba/smb.conf 添加如下的配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">[skynet-share]</span><br><span class="line"><span class="meta">#</span><span class="bash">共享注释信息</span></span><br><span class="line">comment = This is a share directory. </span><br><span class="line">path = /bxy-share</span><br><span class="line">public = no </span><br><span class="line">valid users = test</span><br><span class="line">browsable=yes</span><br><span class="line">writable = yes</span><br><span class="line">create mask = 0755</span><br><span class="line">directory mask = 0755</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建匿名共享"><a href="#创建匿名共享" class="headerlink" title="创建匿名共享"></a>创建匿名共享</h3><p>如果我们需要创建一个不需要用户名密码就可以访问的开放共享，可以使用如下配置：</p>
+<p><strong>修改samba的安全级别为share</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">[global]</span><br><span class="line">secuity=share</span><br><span class="line">[bxy-share]</span><br><span class="line">comment = This is a share directory. –共享注释信息</span><br><span class="line">path = /bxy-share</span><br><span class="line">read only=yes</span><br><span class="line">guest only=yes</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">注意：使用share安全级别可能会与windows客户端不兼容，如果在非常严格的生产环境中，还是需要注意，避免使用。</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">其他：</span></span><br><span class="line"><span class="meta">#</span><span class="bash">可以使用testparm命令检查samba配置文件语法是否正确</span></span><br><span class="line">testparm</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">我们可以通过smbclient查看一个指定服务器都有哪些共享:</span></span><br><span class="line">smbclient –L 192.168.0.102</span><br><span class="line">smbclient –L 192.168.0.102 –U test</span><br></pre></td></tr></table></figure>
+
+<p>练习：挂载一个windows共享的文件夹？</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mount -o username=Administrator,password=123456 //192.168.0.200/win-share /mnt/test/</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -951,23 +1025,6 @@
       </tags>
   </entry>
   <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
-<ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>软件测试</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>物理班</title>
     <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
     <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
@@ -985,6 +1042,23 @@
       </categories>
       <tags>
         <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
