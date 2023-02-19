@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -86,6 +67,25 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm</span><br><span class="line">rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm</span><br></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install fonts-chinese</span><br><span class="line">yum install fonts-ISO8859-2</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -485,6 +485,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python Enum小结</title>
     <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
@@ -514,27 +535,6 @@
 <p>4:设置value唯一性，不允许出现相同的value</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#引入 unique</span></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum,unique</span><br><span class="line"><span class="comment">#添加 unique 装饰器</span></span><br><span class="line"><span class="meta">@unique</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Color</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    <span class="comment"># 为序列值指定value值</span></span><br><span class="line">    red = <span class="number">1</span></span><br><span class="line">    green = <span class="number">1</span></span><br><span class="line">    blue = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(Color[<span class="string">&#x27;green&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 运行结果报错：</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;test.py&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Color</span>(<span class="params">Enum</span>):</span></span><br><span class="line">  File <span class="string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="number">834</span>, <span class="keyword">in</span> unique</span><br><span class="line">    (enumeration, alias_details))</span><br><span class="line">ValueError: duplicate values found <span class="keyword">in</span> &lt;enum <span class="string">&#x27;Color&#x27;</span>&gt;: green -&gt; red</span><br></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
 ]]></content>
       <categories>
         <category>自动化测试</category>
@@ -776,48 +776,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Windows安装MongoDB</title>
-    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
-<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
-<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
-</ul>
-</blockquote>
-<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
-<li>例如：D:\Program Files\mongodb4.2.2</li>
-</ul>
-<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
-<li>配置到bin目录，并将目录加入到path中</li>
-</ul>
-<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
-<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
-<li>在data文件夹下创建”/db”空文件夹；</li>
-<li>在log文件夹下创建”mongo.log”空文件。</li>
-</ul>
-<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mongod -<span class="literal">-config</span> <span class="string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="literal">-install</span> -<span class="literal">-serviceName</span> <span class="string">&quot;MongoDB&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net <span class="built_in">start</span> MongoDB</span><br></pre></td></tr></table></figure>
-
-<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vite快速上手</title>
     <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
     <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
@@ -858,6 +816,48 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows安装MongoDB</title>
+    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
+<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
+<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
+</ul>
+</blockquote>
+<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
+<li>例如：D:\Program Files\mongodb4.2.2</li>
+</ul>
+<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
+<li>配置到bin目录，并将目录加入到path中</li>
+</ul>
+<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
+<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
+<li>在data文件夹下创建”/db”空文件夹；</li>
+<li>在log文件夹下创建”mongo.log”空文件。</li>
+</ul>
+<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="comment">#数据库文件的存放位置</span></span><br><span class="line"><span class="attr">dbpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\data\db</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#日志文件存放的路径</span></span><br><span class="line"><span class="attr">logpath</span>=<span class="string">D:\Program Files\mongodb4.2.2\log\mongo.log</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">mongod -<span class="literal">-config</span> <span class="string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="literal">-install</span> -<span class="literal">-serviceName</span> <span class="string">&quot;MongoDB&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net <span class="built_in">start</span> MongoDB</span><br></pre></td></tr></table></figure>
+
+<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">net stop MongoDB</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1025,23 +1025,52 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </tags>
   </entry>
   <entry>
-    <title>物理班</title>
-    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
-    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
-<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
-<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
-<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
-<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
-<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
-<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
-<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
-<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
-]]></content>
+    <title>vsftpd服务简介</title>
+    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
+<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
+<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
+<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
+<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
+<p><strong>主动模式与被动模式的比较：</strong>     </p>
+<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
+<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
+<ul>
+<li><p>IIS（FTP）、Serv-U</p>
+</li>
+<li><p>wu-ftpd、Proftpd</p>
+</li>
+<li><p>vsftpd（Very Secure FTP Daemon）</p>
+</li>
+</ul>
+<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
+<p>使用以下命令安装vsftpd:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install –y vsftpd</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> vsftpd的启动与关闭：</span></span><br><span class="line">service vsftpd start</span><br><span class="line">service vsftpd stop</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> vsftpd主配置文件</span></span><br><span class="line">/etc/vsftpd/vsftpd.conf   </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span></span><br><span class="line">/etc/vsftpd/ftpusers   </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span></span><br><span class="line">/etc/vsftpd/user_list  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ftp共享目录</span></span><br><span class="line">/var/ftp                </span><br><span class="line"></span><br><span class="line">/var/ftp/xferlog       </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 用户控制列表文件</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span></span><br><span class="line">/etc/vsftpd/ftpusers  </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span></span><br><span class="line">/etc/vsftpd/user_list  </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span></span><br><span class="line">anonymous_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span></span><br><span class="line">local_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本地用户是否有上传权限</span></span><br><span class="line">write_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span></span><br><span class="line">local_umask=022</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span></span><br><span class="line">anon_upload_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span></span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span></span><br><span class="line">anon_other_write_enable=NO</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span></span><br><span class="line">anon_world_readable_only=NO</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span></span><br><span class="line">dirmessage_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否打开传输日志</span></span><br><span class="line">xferlog_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span></span><br><span class="line">connect_from_port_20=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span></span><br><span class="line">chown_uploads=YES</span><br><span class="line">chown_username=whoever</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="built_in">log</span>/messages中</span></span><br><span class="line">xferlog_file=/var/log/xferlog</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义日志的格式</span></span><br><span class="line">xferlog_std_format=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 会话的超时时间</span></span><br><span class="line">idle_session_timeout=600</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 数据连接的超时时间</span></span><br><span class="line">data_connection_timeout=120</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span></span><br><span class="line">nopriv_user=ftpsecure</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="string">&quot;async ABOR&quot;</span>，一般不启用</span></span><br><span class="line">async_abor_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span></span><br><span class="line">ascii_upload_enable=YES</span><br><span class="line">ascii_download_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 登录ftp的欢迎信息</span></span><br><span class="line">ftpd_banner=Welcome to blah FTP service.</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span></span><br><span class="line">deny_email_enable=YES</span><br><span class="line">banned_email_file=/etc/vsftpd/banned_emails</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span></span><br><span class="line">chroot_list_enable=YES</span><br><span class="line">chroot_list_file=/etc/vsftpd/chroot_list</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span></span><br><span class="line">chroot_local_user=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span></span><br><span class="line">ls_recurse_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 以独立守护进程工作</span></span><br><span class="line">listen=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span></span><br><span class="line">listen_ipv6=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span></span><br><span class="line">pam_service_name=vsftpd</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span></span><br><span class="line">userlist_enable=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span></span><br><span class="line">userlist_deny=YES</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span></span><br><span class="line">tcp_wrappers=YES</span><br></pre></td></tr></table></figure>
+
+<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
+<ul>
+<li>正常用户（系统用户）</li>
+<li>匿名用户（anonymous）</li>
+<li>虚拟用户(ftp-only)</li>
+</ul>
+<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
+<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
+<p>匿名用户共享</p>
+<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
+<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install –y lftp</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span></span><br><span class="line">lftp 192.168.0.133</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 可以指定登录用户：</span></span><br><span class="line">lftp –u test 192.168.0.133</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> FTP基本命令</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span></span><br><span class="line">lftp 192.168.0.100</span><br><span class="line"></span><br><span class="line">cd pu</span><br><span class="line">get demo.tar.gz</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span></span><br><span class="line">lftp –u test 192.168.0.133</span><br><span class="line">cd DownLoad</span><br><span class="line">put demo.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span></span><br></pre></td></tr></table></figure>
+<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改vsftpd.conf</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开启匿名用户（默认）</span></span><br><span class="line">anonymous_enable=YES        </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 打开你匿名用户上传功能</span></span><br><span class="line">anon_upload_enable=YES      </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span></span><br><span class="line">anon_mkdir_write_enable=YES </span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  </span><br><span class="line">chmod 777 /var/ftp/pub</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>读书</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>杂文</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1059,6 +1088,26 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>物理班</title>
+    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
+    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
+<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
+<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
+<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
+<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
+<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
+<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
+<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
+<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
+]]></content>
+      <categories>
+        <category>读书</category>
+      </categories>
+      <tags>
+        <tag>杂文</tag>
       </tags>
   </entry>
   <entry>
