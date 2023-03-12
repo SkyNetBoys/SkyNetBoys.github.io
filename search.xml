@@ -89,8 +89,8 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS下搭建LNMP</title>
-    <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALNMP/</url>
+    <title>CentOS下搭建LAMP</title>
+    <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
 <table>
 <thead>
@@ -270,6 +270,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="attr">Feature:</span> Hello World</span><br><span class="line"></span><br><span class="line">  Scenario <span class="attr">Outline:</span> Baidu Page</span><br><span class="line">    Given user fill <span class="keyword">in</span> the <span class="string">&quot;&lt;keyword&gt;&quot;</span></span><br><span class="line">    And click the search button</span><br><span class="line">    Then user can get the result</span><br><span class="line"></span><br><span class="line">    <span class="symbol">Examples:</span></span><br><span class="line">      | keyword |</span><br><span class="line">      | java    |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BaiduPage page = <span class="keyword">new</span> BaiduPage();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_fill_in_the</span><span class="params">(String keyword)</span> </span>&#123;</span><br><span class="line">        page.goToBaidu(keyword);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@And(&quot;^click the search button$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">click_the_search_button</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.clickSearchBtn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Then(&quot;^user can get the result$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_can_get_the_result</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.verify();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith(Cucumber.class)</span></span><br><span class="line"><span class="meta">@CucumberOptions(</span></span><br><span class="line"><span class="meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span></span><br><span class="line"><span class="meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)</span><br><span class="line">And click the search button   # BaiduStep.click_the_search_button()</span><br><span class="line">Then user can get the result  # BaiduStep.user_can_get_the_result()</span><br><span class="line"></span><br><span class="line">1 Scenarios (1 passed)</span><br><span class="line">3 Steps (3 passed)</span><br><span class="line">0m8.945s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java - Enum小结</title>
     <url>/2020/03/21/Java-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<p>工作中很少使用枚举类，每次想用的时候总是偷懒使用直接定义常量的方式了，今天有时间好好探究下Enum.<br>为什么我们需要枚举类<br>以学生管理系统的权限管理为例，该系统管理员一般有3个权限类名：系统管理员，教师，学生，我们可以将其定义为静态常量：</p>
@@ -331,50 +375,6 @@
       </categories>
       <tags>
         <tag>Enum</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="attr">Feature:</span> Hello World</span><br><span class="line"></span><br><span class="line">  Scenario <span class="attr">Outline:</span> Baidu Page</span><br><span class="line">    Given user fill <span class="keyword">in</span> the <span class="string">&quot;&lt;keyword&gt;&quot;</span></span><br><span class="line">    And click the search button</span><br><span class="line">    Then user can get the result</span><br><span class="line"></span><br><span class="line">    <span class="symbol">Examples:</span></span><br><span class="line">      | keyword |</span><br><span class="line">      | java    |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BaiduPage page = <span class="keyword">new</span> BaiduPage();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_fill_in_the</span><span class="params">(String keyword)</span> </span>&#123;</span><br><span class="line">        page.goToBaidu(keyword);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@And(&quot;^click the search button$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">click_the_search_button</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.clickSearchBtn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Then(&quot;^user can get the result$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_can_get_the_result</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.verify();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith(Cucumber.class)</span></span><br><span class="line"><span class="meta">@CucumberOptions(</span></span><br><span class="line"><span class="meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span></span><br><span class="line"><span class="meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)</span><br><span class="line">And click the search button   # BaiduStep.click_the_search_button()</span><br><span class="line">Then user can get the result  # BaiduStep.user_can_get_the_result()</span><br><span class="line"></span><br><span class="line">1 Scenarios (1 passed)</span><br><span class="line">3 Steps (3 passed)</span><br><span class="line">0m8.945s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -461,6 +461,61 @@
       </tags>
   </entry>
   <entry>
+    <title>Pytest使用介绍</title>
+    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
+<thead>
+<tr>
+<th>item</th>
+<th>unittest</th>
+<th>pytest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例编写规则</td>
+<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
+<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
+</tr>
+<tr>
+<td>用例分类执行</td>
+<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
+<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
+</tr>
+<tr>
+<td>用例前置和后置</td>
+<td>提供了setUp/tearDown，只能针对所有case</td>
+<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>需要依赖ddt库</td>
+<td>使用@pytest.mark.parametrize装饰器</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
+<td>只有assert一个表达式，用起来比较方便</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>使用HTMLTestRunnerNew库</td>
+<td>有pytest-HTML，allure插件</td>
+</tr>
+<tr>
+<td>失败重跑</td>
+<td>无此功能</td>
+<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NFS文件系统</title>
     <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
@@ -535,61 +590,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pytest使用介绍</title>
-    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
-<thead>
-<tr>
-<th>item</th>
-<th>unittest</th>
-<th>pytest</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用例编写规则</td>
-<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
-<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
-</tr>
-<tr>
-<td>用例分类执行</td>
-<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
-<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
-</tr>
-<tr>
-<td>用例前置和后置</td>
-<td>提供了setUp/tearDown，只能针对所有case</td>
-<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
-</tr>
-<tr>
-<td>参数化</td>
-<td>需要依赖ddt库</td>
-<td>使用@pytest.mark.parametrize装饰器</td>
-</tr>
-<tr>
-<td>断言</td>
-<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
-<td>只有assert一个表达式，用起来比较方便</td>
-</tr>
-<tr>
-<td>报告</td>
-<td>使用HTMLTestRunnerNew库</td>
-<td>有pytest-HTML，allure插件</td>
-</tr>
-<tr>
-<td>失败重跑</td>
-<td>无此功能</td>
-<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
