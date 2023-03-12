@@ -89,6 +89,114 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS下搭建LNMP</title>
+    <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALNMP/</url>
+    <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
+<table>
+<thead>
+<tr>
+<th align="center">WebSite</th>
+<th align="center">System</th>
+<th align="center">Server</th>
+<th align="center">Database</th>
+<th align="center">language</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Yahoo</td>
+<td align="center">FreeBSD + Linux</td>
+<td align="center">Apache</td>
+<td align="center">MySQL</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Facebook</td>
+<td align="center">FreeBSD</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Wikimedia</td>
+<td align="center">Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Flickr</td>
+<td align="center">Redhat</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP + Perl</td>
+</tr>
+<tr>
+<td align="center">Sina</td>
+<td align="center">FreeBSD + Solaris</td>
+<td align="center">Apache + Nginx</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">YouTube</td>
+<td align="center">Suse Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL</td>
+<td align="center">Python</td>
+</tr>
+</tbody></table>
+<h3 id="搭建LNMP"><a href="#搭建LNMP" class="headerlink" title="搭建LNMP"></a>搭建LNMP</h3><p>源代码编译安装</p>
+<ol>
+<li>首先准备一下软件包，如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql-5.0.22.tar.gz</span><br><span class="line">httpd-2.2.17.tar.gz</span><br><span class="line">php-5.3.5.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>以上是LAMP搭建必备的安装包，可以去各个官方网站上下载，这三个安装包没有先后的安装顺序，先将以上三个包上出至Linux下的/usr/local/src目录下，并给予可执行权限。</p>
+<ol start="2">
+<li>安装mysql，这里要介绍mysql的源代码编译安装方式，进入已经部署好饿的Centos linux学习环境，通过命令ps -ef | grep mysql来查看是否有运行的mysql进程，然后可以通过一些命令来查找mysql是否已经安装，具体如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd mysql</span><br><span class="line"><span class="comment">#创建mysql用户，并将用户指定至mysql组</span></span><br><span class="line">useradd mysql -g mysql</span><br><span class="line"><span class="comment">#解压到mysql-5.0.22目录下</span></span><br><span class="line">tar -zxvf mysql-5.0.22.tar.gz</span><br><span class="line"><span class="comment">#这里是配置mysql的安装目录</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/mysql                     </span><br><span class="line">make</span><br><span class="line"><span class="comment">#安装</span></span><br><span class="line">make install</span><br><span class="line"><span class="comment">#待安装完成之后，将当前目录下的配置文件拷贝到系统配置文件下，并更名为my.cnf</span></span><br><span class="line">cp support-files/my-medium.cnf /etc/my.cnf          </span><br><span class="line"><span class="comment">#切换到mysql安装目录下</span></span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/mysql                                              </span><br><span class="line"><span class="comment">#将该目录的用户权限全部更改为mysql用户</span></span><br><span class="line">chown -R mysql .                                                </span><br><span class="line"><span class="comment">#将该目录的用户组全部更改为mysql用户组</span></span><br><span class="line">chgrp -R mysql .                                                </span><br><span class="line"><span class="comment">#将mysql目录的数据使用权限指定为mysql</span></span><br><span class="line">bin/mysql_install_db --user=mysql                      </span><br><span class="line">chown -R mysql var</span><br><span class="line"><span class="comment">#指定mysql用户启动mysql </span></span><br><span class="line">bin/mysqld_safe --user=mysql &amp;                         </span><br><span class="line"><span class="comment">#执行这个命令用于设置或者更改数据库的密码</span></span><br><span class="line">bin/mysqladmin -u root password 新密码</span><br><span class="line"><span class="comment">#这里将mysql的启动文件拷贝到系统的启动目录下</span></span><br><span class="line">cp /usr/<span class="built_in">local</span>/src/mysql-5.0.22/support-files/mysql.server  /etc/rc.d/init.d/mysql      //</span><br><span class="line"><span class="comment">#给系统目录的mysql命令以可执行权限</span></span><br><span class="line">chmod +x /etc/rc.d/init.d/mysql                         </span><br><span class="line"><span class="comment">#将mysql启动添加到系统自启动列表下</span></span><br><span class="line">chkconfig --add mysql         </span><br><span class="line"><span class="comment">#当然这里还有另外一些方法来设置mysql自动启动，以上就是mysql源代码编译安装全过程，为了验证mysql安装是否成功，需要执行如下命令：</span></span><br><span class="line"><span class="comment">#//启动mysql数据库服务</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysqld_safe --user=mysql &amp;</span><br><span class="line"><span class="comment">#进入并访问mysql数据，如果进入mysql数据库命令行，说明mysql数据库安装成功。</span></span><br><span class="line">/usr/<span class="built_in">local</span>/mysql/bin/mysql -uroot -proot              </span><br></pre></td></tr></table></figure>
+
+<p>如图所示：<br><img src="1.jpg" alt="1">  </p>
+<ol start="3">
+<li>安装apache，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf httpd-2.2.4.tar.gz</span><br><span class="line"><span class="built_in">cd</span> httpd-2.2.4</span><br><span class="line"><span class="comment">#配置与mysql的关联，并启动动态连接库</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/apache --with-mysql=/usr/<span class="built_in">local</span>/mysql --enable-module=so --enable-shared=max </span><br><span class="line">mark</span><br><span class="line">mark install</span><br></pre></td></tr></table></figure>
+
+<p>启动apache服务，如下图所示：<br><img src="2.jpg" alt="2"><br>设置apache自动随操作系统启动，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将apache的启动程序命令放置系统启动文件下，当然mysql也可以这么设置</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;/usr/local/apache/bin/apachectl start&quot;</span> &gt;&gt; /etc/rc.local          </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安装php，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf php-5.2.2.tar.gz</span><br><span class="line"><span class="built_in">cd</span> php-5.2.2</span><br><span class="line"><span class="comment">#这里是配置php与apache、mysql的关联</span></span><br><span class="line">./configure --prefix=/usr/<span class="built_in">local</span>/php/ --with-mysql=/usr/<span class="built_in">local</span>/mysql --with-apxs2=/usr/<span class="built_in">local</span>/apache/bin/apxs --enable-sockets  </span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">cp php.ini-development /usr/<span class="built_in">local</span>/php/lib/php.ini                      //这里需要注意的是，在新版的php配置文件将php.ini-dist更改成php.ini-development</span><br><span class="line">vi /usr/<span class="built_in">local</span>/php/lib/php.ini   </span><br></pre></td></tr></table></figure>
+
+<p>上述就是PHP的安装过程。</p>
+<ol start="5">
+<li>测试<br>安装完成以上个包之后，需要更改apache的配置文件，来达到解析php文件的目的</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /usr/<span class="built_in">local</span>/apache/conf/httpd.conf</span><br></pre></td></tr></table></figure>
+
+<p>通过“/”来查找到AddType application/x-gzip .tgz，这里需要注意的是，不是带有的注意标记的#，在找到AddType application/x-gzip .tgz的后面添加如图所示文件：<br><img src="3.jpg" alt="3"></p>
+<p>添加文件为AddType application/x-httpd-php .php .phtml，表示apache服务中可以解析php格式文件<br>接下来要检查apache目录下生成的php动态连接库文件，在目录/usr/local/apache/modules，找到是否存在 libphp5.so文件<br>一系列安装结束之后，通过一个简单的php测试页面来测试LAMP环境搭建成功与否。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi /usr/<span class="built_in">local</span>/apache/htdocs/index.php</span><br></pre></td></tr></table></figure>
+
+<p>内容为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">phpinfo();</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>启动httpd<br>在浏览器上输入：<a href="http://ip/index.php%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%A6%82%E4%B8%8B%E9%A1%B5%E9%9D%A2%EF%BC%8C%E8%A1%A8%E6%98%8E%E6%88%90%E5%8A%9F%EF%BC%9B">http://ip/index.php，显示如下页面，表明成功；</a><br><img src="4.jpg" alt="4"><br>里面分别显示php、apache和mysql的相关版本信息等内容。<br><strong>yum安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#安装apache</span></span><br><span class="line">yum install –y httpd</span><br><span class="line"><span class="comment">#安装MySQL</span></span><br><span class="line">yum install –y mysql-server mysql</span><br><span class="line"><span class="comment">#安装PHP及相关模块</span></span><br><span class="line">yum install –y php php-mysql</span><br></pre></td></tr></table></figure>
+
+<p>练习：部署并发布禅道</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker命令小结</title>
     <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
@@ -485,27 +593,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python Enum小结</title>
     <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
@@ -535,6 +622,27 @@
 <p>4:设置value唯一性，不允许出现相同的value</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#引入 unique</span></span><br><span class="line"><span class="keyword">from</span> enum <span class="keyword">import</span> Enum,unique</span><br><span class="line"><span class="comment">#添加 unique 装饰器</span></span><br><span class="line"><span class="meta">@unique</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Color</span>(<span class="params">Enum</span>):</span></span><br><span class="line">    <span class="comment"># 为序列值指定value值</span></span><br><span class="line">    red = <span class="number">1</span></span><br><span class="line">    green = <span class="number">1</span></span><br><span class="line">    blue = <span class="number">3</span></span><br><span class="line"><span class="built_in">print</span>(Color[<span class="string">&#x27;green&#x27;</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment">### 运行结果报错：</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">&quot;test.py&quot;</span>, line <span class="number">3</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Color</span>(<span class="params">Enum</span>):</span></span><br><span class="line">  File <span class="string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="number">834</span>, <span class="keyword">in</span> unique</span><br><span class="line">    (enumeration, alias_details))</span><br><span class="line">ValueError: duplicate values found <span class="keyword">in</span> &lt;enum <span class="string">&#x27;Color&#x27;</span>&gt;: green -&gt; red</span><br></pre></td></tr></table></figure>
 
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
 ]]></content>
       <categories>
         <category>自动化测试</category>
@@ -979,52 +1087,6 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </tags>
   </entry>
   <entry>
-    <title>性能测试笔记</title>
-    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>性能测试：</p>
-<ul>
-<li>所谓性能测试其实就是效率的测试。</li>
-</ul>
-<p>目前市场主流的性能测试工具：</p>
-<ul>
-<li>Jemter</li>
-<li>Loadrunner</li>
-<li>Locust</li>
-<li>gatling</li>
-</ul>
-<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
-<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
-<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
-<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
-<ul>
-<li><p>需求分析，分析系统的性能指标。</p>
-</li>
-<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
-</li>
-<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
-</li>
-<li><p>执行脚本，获取数据。</p>
-</li>
-<li><p>判定指标是否满足要求。</p>
-<ul>
-<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
-<li>如果不达标，进入到性能诊断</li>
-</ul>
-</li>
-<li><p>性能诊断</p>
-</li>
-<li><p>提供优化建议</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能测试</category>
-      </categories>
-      <tags>
-        <tag>PT</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vsftpd服务简介</title>
     <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
@@ -1071,6 +1133,52 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能测试笔记</title>
+    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>性能测试：</p>
+<ul>
+<li>所谓性能测试其实就是效率的测试。</li>
+</ul>
+<p>目前市场主流的性能测试工具：</p>
+<ul>
+<li>Jemter</li>
+<li>Loadrunner</li>
+<li>Locust</li>
+<li>gatling</li>
+</ul>
+<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
+<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
+<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
+<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
+<ul>
+<li><p>需求分析，分析系统的性能指标。</p>
+</li>
+<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
+</li>
+<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
+</li>
+<li><p>执行脚本，获取数据。</p>
+</li>
+<li><p>判定指标是否满足要求。</p>
+<ul>
+<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
+<li>如果不达标，进入到性能诊断</li>
+</ul>
+</li>
+<li><p>性能诊断</p>
+</li>
+<li><p>提供优化建议</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能测试</category>
+      </categories>
+      <tags>
+        <tag>PT</tag>
       </tags>
   </entry>
   <entry>
