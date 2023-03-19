@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -43,30 +67,6 @@
       </categories>
       <tags>
         <tag>Appium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
-</blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> EnterpriseDbService service;</span><br></pre></td></tr></table></figure>
-
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> EnterpriseDbService service;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">EnterpriseDbController</span><span class="params">(EnterpriseDbService service)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.service = service;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -270,50 +270,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="attr">Feature:</span> Hello World</span><br><span class="line"></span><br><span class="line">  Scenario <span class="attr">Outline:</span> Baidu Page</span><br><span class="line">    Given user fill <span class="keyword">in</span> the <span class="string">&quot;&lt;keyword&gt;&quot;</span></span><br><span class="line">    And click the search button</span><br><span class="line">    Then user can get the result</span><br><span class="line"></span><br><span class="line">    <span class="symbol">Examples:</span></span><br><span class="line">      | keyword |</span><br><span class="line">      | java    |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BaiduPage page = <span class="keyword">new</span> BaiduPage();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_fill_in_the</span><span class="params">(String keyword)</span> </span>&#123;</span><br><span class="line">        page.goToBaidu(keyword);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@And(&quot;^click the search button$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">click_the_search_button</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.clickSearchBtn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Then(&quot;^user can get the result$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_can_get_the_result</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.verify();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith(Cucumber.class)</span></span><br><span class="line"><span class="meta">@CucumberOptions(</span></span><br><span class="line"><span class="meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span></span><br><span class="line"><span class="meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)</span><br><span class="line">And click the search button   # BaiduStep.click_the_search_button()</span><br><span class="line">Then user can get the result  # BaiduStep.user_can_get_the_result()</span><br><span class="line"></span><br><span class="line">1 Scenarios (1 passed)</span><br><span class="line">3 Steps (3 passed)</span><br><span class="line">0m8.945s</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Selenium</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java - Enum小结</title>
     <url>/2020/03/21/Java-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<p>工作中很少使用枚举类，每次想用的时候总是偷懒使用直接定义常量的方式了，今天有时间好好探究下Enum.<br>为什么我们需要枚举类<br>以学生管理系统的权限管理为例，该系统管理员一般有3个权限类名：系统管理员，教师，学生，我们可以将其定义为静态常量：</p>
@@ -375,6 +331,50 @@
       </categories>
       <tags>
         <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.cucumber<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cucumber-junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>selenium-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.14.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="attr">Feature:</span> Hello World</span><br><span class="line"></span><br><span class="line">  Scenario <span class="attr">Outline:</span> Baidu Page</span><br><span class="line">    Given user fill <span class="keyword">in</span> the <span class="string">&quot;&lt;keyword&gt;&quot;</span></span><br><span class="line">    And click the search button</span><br><span class="line">    Then user can get the result</span><br><span class="line"></span><br><span class="line">    <span class="symbol">Examples:</span></span><br><span class="line">      | keyword |</span><br><span class="line">      | java    |</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> BaiduPage page = <span class="keyword">new</span> BaiduPage();</span><br><span class="line"></span><br><span class="line"><span class="meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_fill_in_the</span><span class="params">(String keyword)</span> </span>&#123;</span><br><span class="line">        page.goToBaidu(keyword);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@And(&quot;^click the search button$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">click_the_search_button</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.clickSearchBtn();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Then(&quot;^user can get the result$&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">user_can_get_the_result</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        page.verify();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RunWith(Cucumber.class)</span></span><br><span class="line"><span class="meta">@CucumberOptions(</span></span><br><span class="line"><span class="meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span></span><br><span class="line"><span class="meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyRunner</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)</span><br><span class="line">And click the search button   # BaiduStep.click_the_search_button()</span><br><span class="line">Then user can get the result  # BaiduStep.user_can_get_the_result()</span><br><span class="line"></span><br><span class="line">1 Scenarios (1 passed)</span><br><span class="line">3 Steps (3 passed)</span><br><span class="line">0m8.945s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -461,61 +461,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pytest使用介绍</title>
-    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
-<thead>
-<tr>
-<th>item</th>
-<th>unittest</th>
-<th>pytest</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用例编写规则</td>
-<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
-<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
-</tr>
-<tr>
-<td>用例分类执行</td>
-<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
-<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
-</tr>
-<tr>
-<td>用例前置和后置</td>
-<td>提供了setUp/tearDown，只能针对所有case</td>
-<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
-</tr>
-<tr>
-<td>参数化</td>
-<td>需要依赖ddt库</td>
-<td>使用@pytest.mark.parametrize装饰器</td>
-</tr>
-<tr>
-<td>断言</td>
-<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
-<td>只有assert一个表达式，用起来比较方便</td>
-</tr>
-<tr>
-<td>报告</td>
-<td>使用HTMLTestRunnerNew库</td>
-<td>有pytest-HTML，allure插件</td>
-</tr>
-<tr>
-<td>失败重跑</td>
-<td>无此功能</td>
-<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NFS文件系统</title>
     <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
@@ -593,6 +538,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Postfix环境搭建</title>
+    <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
+<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
+<p>常见的MUA软件有：</p>
+<ol>
+<li>Outlook</li>
+<li>Mac Mail</li>
+<li>Thunderbird</li>
+<li>Foxmail</li>
+<li>Mutt</li>
+</ol>
+<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
+<p><strong>IMAP、POP3</strong></p>
+<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
+<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
+<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
+<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
+<p><strong>IMAP的用户体验更好。</strong></p>
+<p>MTA</p>
+<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
+<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
+<p>所有的MTA都是对SMTP的一种实现</p>
+<p>Linux中最主流的MTA有：sendmail、postfix</p>
+<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
+<p>MDA</p>
+<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
+<p>Linux上，邮件默认保存目录是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/var/spool/mail/username</span><br></pre></td></tr></table></figure>
+
+<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
+<p>Linux常用的MDA有：procmail、maildrop</p>
+<p>Sendmail、postfix默认使用的MDA是promail</p>
+<p>MRA</p>
+<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
+<p>Linux下使用最广泛的的MRA是：Dovecot</p>
+<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
+<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
+<ol>
+<li>postfix速度比sendmail约快3倍</li>
+<li>更加稳定健壮</li>
+<li>配置更加灵活</li>
+<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
+</ol>
+<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install –y postfix</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#修改主配置文件</span></span><br><span class="line">[root@localhost postfix]<span class="comment"># vim main.cf		</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#主要配置如下几个地方</span></span><br><span class="line"><span class="comment">#本机主机名</span></span><br><span class="line">myhostname = mail.example.com</span><br><span class="line"><span class="comment">#域名</span></span><br><span class="line">mydomain = example.com				</span><br><span class="line"><span class="comment">#设置由本机寄出去的邮件所使用的域名或主机名</span></span><br><span class="line">myorigin = <span class="variable">$mydomain</span>			   		</span><br><span class="line"><span class="comment">#postfix所监听的网络</span></span><br><span class="line">inet_interfaces = all			    </span><br><span class="line"><span class="comment">#设置可接受邮件的主机名和域名</span></span><br><span class="line">mydestination = <span class="variable">$myhostname</span>, localhost.<span class="variable">$mydomain</span>, localhost, example.com	</span><br><span class="line"><span class="comment">#设置在什么网络内收发邮件</span></span><br><span class="line">mynetworks = 192.169.0.0/24		   </span><br><span class="line"><span class="comment">#设置在什么网域内收发邮件</span></span><br><span class="line">relay_domains = <span class="variable">$mydestination</span>	   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost postfix]<span class="comment"># service postfix restart</span></span><br><span class="line">关闭 postfix：                                             [确定]</span><br><span class="line">启动 postfix：                                             [确定]</span><br><span class="line"><span class="comment">#切换默认的MTA</span></span><br><span class="line">alterconfig –config mta，在选项中勾选postfix</span><br></pre></td></tr></table></figure>
+
+<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install –y dovecot</span><br></pre></td></tr></table></figure>
+
+<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
+<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
+<p>练习：</p>
+<ol>
+<li>配置foxmail</li>
+<li>搭建webmail</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python Enum小结</title>
     <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
@@ -631,18 +643,52 @@
       </tags>
   </entry>
   <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
+    <title>Pytest使用介绍</title>
+    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
+<thead>
+<tr>
+<th>item</th>
+<th>unittest</th>
+<th>pytest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例编写规则</td>
+<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
+<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
+</tr>
+<tr>
+<td>用例分类执行</td>
+<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
+<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
+</tr>
+<tr>
+<td>用例前置和后置</td>
+<td>提供了setUp/tearDown，只能针对所有case</td>
+<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>需要依赖ddt库</td>
+<td>使用@pytest.mark.parametrize装饰器</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
+<td>只有assert一个表达式，用起来比较方便</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>使用HTMLTestRunnerNew库</td>
+<td>有pytest-HTML，allure插件</td>
+</tr>
+<tr>
+<td>失败重跑</td>
+<td>无此功能</td>
+<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>自动化测试</category>
@@ -723,6 +769,27 @@
       </categories>
       <tags>
         <tag>RobotFramework</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">show_excel</span>():</span></span><br><span class="line">    df = pd.read_excel(<span class="string">&quot;./学生信息表.xlsx&quot;</span>)</span><br><span class="line">    table_html = df.to_html()</span><br><span class="line">    <span class="keyword">return</span> <span class="string">f&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">            &lt;body&gt;</span></span><br><span class="line"><span class="string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span></span><br><span class="line"><span class="string">                &lt;div&gt;<span class="subst">&#123;table_html&#125;</span>&lt;/div&gt;</span></span><br><span class="line"><span class="string">            &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&quot;0.0.0.0&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -969,6 +1036,19 @@
       </tags>
   </entry>
   <entry>
+    <title>git命令小结--健忘症患者必备(持续更新中)</title>
+    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
+    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#状态查看操作</span></span><br><span class="line"><span class="comment">#查看工作区，暂存区状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加操作</span></span><br><span class="line"><span class="comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span></span><br><span class="line">git add [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#提交操作</span></span><br><span class="line"><span class="comment">#将暂存区的内容提交到本地库</span></span><br><span class="line">git commit -m <span class="string">&quot;commit messgae&quot;</span> [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看历史记录操作</span></span><br><span class="line"><span class="comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br><span class="line">89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="keyword">for</span> WeChat</span><br><span class="line">2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="keyword">for</span> WeChat.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除文件并找回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#比较文件差异</span></span><br></pre></td></tr></table></figure>
+<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git clone中常见问题的总结</title>
     <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
@@ -991,19 +1071,6 @@
 
 
 
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git命令小结--健忘症患者必备(持续更新中)</title>
-    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
-    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#状态查看操作</span></span><br><span class="line"><span class="comment">#查看工作区，暂存区状态</span></span><br><span class="line">git status</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加操作</span></span><br><span class="line"><span class="comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span></span><br><span class="line">git add [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#提交操作</span></span><br><span class="line"><span class="comment">#将暂存区的内容提交到本地库</span></span><br><span class="line">git commit -m <span class="string">&quot;commit messgae&quot;</span> [file name]</span><br><span class="line"></span><br><span class="line"><span class="comment">#查看历史记录操作</span></span><br><span class="line"><span class="comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span></span><br><span class="line">git <span class="built_in">log</span></span><br><span class="line">git <span class="built_in">log</span> --pretty=oneline</span><br><span class="line">git <span class="built_in">log</span> --oneline</span><br><span class="line"></span><br><span class="line"><span class="comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span></span><br><span class="line">git reflog</span><br><span class="line"></span><br><span class="line">89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="keyword">for</span> WeChat</span><br><span class="line">2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="keyword">for</span> WeChat.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#删除文件并找回</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#比较文件差异</span></span><br></pre></td></tr></table></figure>
-<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1136,6 +1203,23 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </tags>
   </entry>
   <entry>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>性能测试笔记</title>
     <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<p>性能测试：</p>
@@ -1179,23 +1263,6 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </categories>
       <tags>
         <tag>PT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
-<ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span></span><br><span class="line">aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk</span><br><span class="line"><span class="meta">#</span><span class="bash">结果如下</span></span><br><span class="line">package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;</span><br><span class="line">install-location:&#x27;auto&#x27;</span><br><span class="line">sdkVersion:&#x27;16&#x27;</span><br><span class="line">targetSdkVersion:&#x27;28&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.INTERNET&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CAMERA&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.VIBRATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;</span><br><span class="line">uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;</span><br><span class="line">uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS</span><br></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>软件测试</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
       </tags>
   </entry>
   <entry>

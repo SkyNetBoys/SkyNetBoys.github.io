@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -79,15 +79,22 @@
 
 
 
-<meta name="description" content="我就是我，不一样的烟火">
-<meta property="og:type" content="website">
-<meta property="og:title" content="麦田守望者">
-<meta property="og:url" content="http://yoursite.com/archives/2020/07/index.html">
+<meta name="description" content="Postfix电子邮件系统电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postfix环境搭建">
+<meta property="og:url" content="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="麦田守望者">
-<meta property="og:description" content="我就是我，不一样的烟火">
+<meta property="og:description" content="Postfix电子邮件系统电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱）">
 <meta property="og:locale">
+<meta property="og:image" content="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/postfix.png">
+<meta property="og:image" content="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/mail.png">
+<meta property="og:image" content="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/code.png">
+<meta property="article:published_time" content="2023-03-19T11:57:52.000Z">
+<meta property="article:modified_time" content="2023-03-19T12:04:16.717Z">
 <meta property="article:author" content="Edison">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/postfix.png">
 
 
 
@@ -117,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2020/07/"/>
+  <link rel="canonical" href="http://yoursite.com/2023/03/19/Postfix环境搭建/"/>
 
 
 
 
 
-  <title>归档 | 麦田守望者</title>
+  <title>Postfix环境搭建 | 麦田守望者</title>
   
 
 
@@ -142,7 +149,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -260,74 +267,229 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 30 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="麦田守望者">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" itemprop="url">
-              
-                <span itemprop="name">Java+Selenium+Cucumber+Maven/Gradle环境搭建</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Postfix环境搭建</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2020-07-02T07:55:52+08:00"
-              content="2020-07-02" >
-          07-02
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-03-19T19:57:52+08:00">
+                2023-03-19
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
+      
 
+      
+        <h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
+<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
+<p>常见的MUA软件有：</p>
+<ol>
+<li>Outlook</li>
+<li>Mac Mail</li>
+<li>Thunderbird</li>
+<li>Foxmail</li>
+<li>Mutt</li>
+</ol>
+<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
+<p><strong>IMAP、POP3</strong></p>
+<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
+<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
+<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
+<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
+<p><strong>IMAP的用户体验更好。</strong></p>
+<p>MTA</p>
+<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
+<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
+<p>所有的MTA都是对SMTP的一种实现</p>
+<p>Linux中最主流的MTA有：sendmail、postfix</p>
+<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
+<p>MDA</p>
+<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
+<p>Linux上，邮件默认保存目录是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/var/spool/mail/username</span><br></pre></td></tr></table></figure>
+
+<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
+<p>Linux常用的MDA有：procmail、maildrop</p>
+<p>Sendmail、postfix默认使用的MDA是promail</p>
+<p>MRA</p>
+<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
+<p>Linux下使用最广泛的的MRA是：Dovecot</p>
+<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
+<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
+<ol>
+<li>postfix速度比sendmail约快3倍</li>
+<li>更加稳定健壮</li>
+<li>配置更加灵活</li>
+<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
+</ol>
+<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install –y postfix</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#修改主配置文件</span></span><br><span class="line">[root@localhost postfix]<span class="comment"># vim main.cf		</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#主要配置如下几个地方</span></span><br><span class="line"><span class="comment">#本机主机名</span></span><br><span class="line">myhostname = mail.example.com</span><br><span class="line"><span class="comment">#域名</span></span><br><span class="line">mydomain = example.com				</span><br><span class="line"><span class="comment">#设置由本机寄出去的邮件所使用的域名或主机名</span></span><br><span class="line">myorigin = <span class="variable">$mydomain</span>			   		</span><br><span class="line"><span class="comment">#postfix所监听的网络</span></span><br><span class="line">inet_interfaces = all			    </span><br><span class="line"><span class="comment">#设置可接受邮件的主机名和域名</span></span><br><span class="line">mydestination = <span class="variable">$myhostname</span>, localhost.<span class="variable">$mydomain</span>, localhost, example.com	</span><br><span class="line"><span class="comment">#设置在什么网络内收发邮件</span></span><br><span class="line">mynetworks = 192.169.0.0/24		   </span><br><span class="line"><span class="comment">#设置在什么网域内收发邮件</span></span><br><span class="line">relay_domains = <span class="variable">$mydestination</span>	   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">[root@localhost postfix]<span class="comment"># service postfix restart</span></span><br><span class="line">关闭 postfix：                                             [确定]</span><br><span class="line">启动 postfix：                                             [确定]</span><br><span class="line"><span class="comment">#切换默认的MTA</span></span><br><span class="line">alterconfig –config mta，在选项中勾选postfix</span><br></pre></td></tr></table></figure>
+
+<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install –y dovecot</span><br></pre></td></tr></table></figure>
+
+<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
+<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
+<p>练习：</p>
+<ol>
+<li>配置foxmail</li>
+<li>搭建webmail</li>
+</ol>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/" rel="next" title="CentOS下搭建LAMP">
+                <i class="fa fa-chevron-left"></i> CentOS下搭建LAMP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -335,6 +497,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -355,8 +521,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -420,6 +595,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Postfix"><span class="nav-number">1.</span> <span class="nav-text">Postfix</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.1.</span> <span class="nav-text">电子邮件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#postfix%E7%AE%80%E4%BB%8B"><span class="nav-number">1.2.</span> <span class="nav-text">postfix简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85postfix"><span class="nav-number">1.3.</span> <span class="nav-text">安装postfix</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AEpostfix"><span class="nav-number">1.3.1.</span> <span class="nav-text">配置postfix</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dovecot%E9%85%8D%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">dovecot配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -592,6 +783,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
