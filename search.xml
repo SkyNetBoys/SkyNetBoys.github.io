@@ -70,6 +70,421 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker学习笔记</title>
+    <url>/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
+<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
+<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
+<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@localhost init.d]<span class="hljs-comment"># uname -r</span><br>3.10.0-957.el7.x86_64<br></code></pre></td></tr></table></figure>
+
+<p>2.安装docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install docker -y<br></code></pre></td></tr></table></figure>
+
+<p>3.启动docker</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs bas">[root@localhost init.d]# systemctrl start docker<br>[root@localhost init.d]# docker -v<br>Docker version 1.13.1, build 4ef4b30/1.13.1<br></code></pre></td></tr></table></figure>
+
+<p>4.设置开机自启动docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">enable</span> docker<br></code></pre></td></tr></table></figure>
+
+<p>5.停止docker</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">systemctl stop docker<br></code></pre></td></tr></table></figure>
+<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@localhost init.d]<span class="hljs-comment"># docker search mysql</span><br>INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]<br>docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]<br>docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]<br>docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67<br>docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]<br>docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60<br>docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]<br>docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]<br>docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34<br>docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]<br>docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]<br>docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24<br>docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18<br>docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16<br>docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14<br>docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]<br>docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10<br>docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6<br>docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]<br>docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]<br>docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="hljs-built_in">which</span> deploys RHSCL MySQL                2                    [OK]<br>docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2<br>docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1<br>docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="hljs-keyword">for</span> mysql    0<br>docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]<br></code></pre></td></tr></table></figure>
+<p>2.下载镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#下载最新版本的镜像</span><br>docker pull mysql<br><span class="hljs-comment">#下载指定版本的MySql镜像</span><br>docker pull mysql:5.5<br></code></pre></td></tr></table></figure>
+<p>3、查看所有镜像</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker images<br></code></pre></td></tr></table></figure>
+<p>4、删除镜像 </p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker rmi image-id<br></code></pre></td></tr></table></figure>
+
+<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#1、搜索镜像</span><br>docker search tomcat<br><span class="hljs-comment">#2、拉取镜像</span><br>docker pull tomcat<br><span class="hljs-comment">#3、根据镜像启动容器</span><br>docker run --name mytomcat -d tomcat:latest<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java - Enum小结</title>
+    <url>/2020/03/21/Java-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<p>工作中很少使用枚举类，每次想用的时候总是偷懒使用直接定义常量的方式了，今天有时间好好探究下Enum.<br>为什么我们需要枚举类<br>以学生管理系统的权限管理为例，该系统管理员一般有3个权限类名：系统管理员，教师，学生，我们可以将其定义为静态常量：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Student = <span class="hljs-number">1</span>;	<span class="hljs-comment">//学生</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Teacher = <span class="hljs-number">2</span>;	<span class="hljs-comment">//教师</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Admin = <span class="hljs-number">3</span>;	<span class="hljs-comment">//管理员</span><br></code></pre></td></tr></table></figure>
+
+<p>这种直接常量的方式定义本身没有问题，但是缺少了约束，存在安全隐患。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">judgeUser</span><span class="hljs-params">(<span class="hljs-keyword">int</span> user)</span></span>&#123;<br>        ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>比如这个方法是判断传入的用户类型，但是在调用该方法时，开发者时可以传入任意的值，并无限制。<br>现在我们就要切换到Enum的方式，我们刚好对比下有什么值得我们update的地方。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">User</span> </span>&#123;<br>    ROLE_ADMIN,<br>    ROLE_TEACHER,<br>    ROLE_STUDENT<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>接下来我们就用这个User为例先看看枚举类的基本用法有那些？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserSIT</span> </span>&#123;<br>    User user1 = User.ROLE_ADMIN;<br>    User user2 = User.ROLE_TEACHER;<br>    User user3 = User.ROLE_STUDENT;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enum_testcae</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//value()方法：返回所有枚举常量的数组集合</span><br>        <span class="hljs-keyword">for</span> (User user : User.values()) &#123;<br>            System.out.println(user);<br>        &#125;<br>        <span class="hljs-comment">//打印：</span><br>        <span class="hljs-comment">//ROLE_ADMIN</span><br>        <span class="hljs-comment">//ROLE_TEACHER</span><br>        <span class="hljs-comment">//ROLE_STUDENT</span><br><br>        <span class="hljs-comment">//ordinal()方法：返回枚举常量的序数，从0开始</span><br>        System.out.println(user1.ordinal());<span class="hljs-comment">//打印0</span><br>        System.out.println(user2.ordinal());<span class="hljs-comment">//打印1</span><br>        System.out.println(user3.ordinal());<span class="hljs-comment">//打印2</span><br><br>        <span class="hljs-comment">//compareTo()方法：枚举常量间的比较</span><br>        <span class="hljs-comment">//调用compareTo方法返回的结果，正值代表方法中参数在调用该方法的枚举对象位置之前</span><br>		<span class="hljs-comment">//0代表两个成员在相同的位置；</span><br>		<span class="hljs-comment">//负值代表方法中参数在调用该方法的枚举对象位置之后</span><br>        System.out.println(user1.compareTo(user2));<span class="hljs-comment">//打印-1</span><br>        System.out.println(user2.compareTo(user3));<span class="hljs-comment">//打印-1</span><br>        System.out.println(user1.compareTo(user3));<span class="hljs-comment">//打印-2</span><br><br>        <span class="hljs-comment">//name()方法：获得枚举常量的名称</span><br>        System.out.println(user1.name());<span class="hljs-comment">//打印ROLE_ADMIN</span><br>        System.out.println(user2.name());<span class="hljs-comment">//打印ROLE_TEACHER</span><br>        System.out.println(user3.name());<span class="hljs-comment">//打印ROLE_STUDENT</span><br><br>        <span class="hljs-comment">//valueOf()方法：返回指定名称的枚举常量</span><br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_ADMIN&quot;</span>));<br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_TEACHER&quot;</span>));<br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_STUDENT&quot;</span>));<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p> 除此之外，枚举类也可以用在switch中:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enum_testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    User user = User.ROLE_ADMIN;<br>    <span class="hljs-keyword">switch</span> (user) &#123;<br>        <span class="hljs-keyword">case</span> ROLE_ADMIN:<br>            System.out.println(<span class="hljs-string">&quot;管理员&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> ROLE_TEACHER:<br>            System.out.println(<span class="hljs-string">&quot;教师&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> ROLE_STUDENT:<br>            System.out.println(<span class="hljs-string">&quot;学生&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然枚举也存在多值的用法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">UserRole</span> </span>&#123;<br>    ROLE_ROOT_ADMIN(<span class="hljs-string">&quot;系统管理员&quot;</span>, <span class="hljs-number">000000</span>),<br>    ROLE_ORDER_ADMIN(<span class="hljs-string">&quot;订单管理员&quot;</span>, <span class="hljs-number">100000</span>),<br>    ROLE_NORMAL(<span class="hljs-string">&quot;普通用户&quot;</span>, <span class="hljs-number">20000</span>),<br>    ;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String roleName;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Integer roleCode;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getRoleName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> roleName;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getRoleCode</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> roleCode;<br>    &#125;<br><br>    UserRole(String roleName, Integer roleCode) &#123;<br>        <span class="hljs-keyword">this</span>.roleName = roleName;<br>        <span class="hljs-keyword">this</span>.roleCode = roleCode;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Integer <span class="hljs-title">getRoleNameByRoleName</span><span class="hljs-params">(String roleName)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (UserRole enums : UserRole.values()) &#123;<br>            <span class="hljs-keyword">if</span> (enums.getRoleName().equals(roleName)) &#123;<br>                <span class="hljs-keyword">return</span> enums.getRoleCode();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>枚举也有一些其他的用法：<br>比如<strong>枚举+接口</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">RoleOperstion</span> </span>&#123;<br>    <span class="hljs-function">String <span class="hljs-title">op</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">RoleEnum</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RoleOperstion</span> </span>&#123;<br>    ROLE_ROOT_ADMIN &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;,<br>    ROLE_ORDER_ADMIN &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;,<br>    ROLE_NORMAL &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们再看看如何调用：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">judgeRole</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">judge</span><span class="hljs-params">(String roleName)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> RoleEnum.valueOf(roleName).op();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>这样的方式就可以避免if/else的大量使用。<br>还有<strong>枚举和设计模式的结合</strong></p>
+<ul>
+<li>单例模式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span> </span>&#123;<br><br>    <span class="hljs-comment">//构造函数私有化，避免外部创建实例</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-comment">//定义一个内部枚举</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SingletonEnum</span></span>&#123;<br>        SEED;   <span class="hljs-comment">//唯一一个枚举对象</span><br><br>        <span class="hljs-keyword">private</span> Singleton singleton;<br><br>        SingletonEnum()&#123;<br>            singleton = <span class="hljs-keyword">new</span> Singleton(); <span class="hljs-comment">//真正的对象创建隐藏再这里</span><br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> singleton;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//故意外露的对象获取方法，也是外边获取实例的唯一入口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> SingletonEnum.SEED.getInstance(); <span class="hljs-comment">//通过枚举类来完成</span><br>    &#125;<br><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li> 策略模式</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Calculator</span> </span>&#123;<br>        ADDITION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x + y;<br>            &#125;<br>        &#125;,<br>        SUBTRACTION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x - y;<br>            &#125;<br>        &#125;,<br>        MULTIPLICATION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x * y;<br>            &#125;<br>        &#125;,<br>        DIVSION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x / y;<br>            &#125;<br>        &#125;;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span></span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        System.out.println(Calculator.ADDITION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.SUBTRACTION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.MULTIPLICATION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.DIVSION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>    &#125;<br>    <span class="hljs-comment">//console print：</span><br>    <span class="hljs-comment">//6.0</span><br>    <span class="hljs-comment">//2.0</span><br>    <span class="hljs-comment">//8.0</span><br>    <span class="hljs-comment">//2.0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>专门用用于枚举的集合类</p>
+<p>EnumSet和EnumMap</p>
+</li>
+</ul>
+<ol>
+<li>EnumSet</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">UserRole</span> </span>&#123;<br>    ROLE_ROOT_ADMIN,<br>    ROLE_ORDER_ADMIN,<br>    ROLE_NORMAL<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>      <span class="hljs-comment">//定义一个管理员角色的专属集合</span><br>      EnumSet&lt;UserRole&gt; userRolesForAdmin<br>              = EnumSet.of(<br>              UserRole.ROLE_ROOT_ADMIN,<br>              UserRole.ROLE_ORDER_ADMIN<br>      );<br>      <br>      <span class="hljs-comment">//判断某个进来的用户是不是管理员</span><br>      <span class="hljs-function">Boolean <span class="hljs-title">isAdmin</span><span class="hljs-params">(User user)</span></span>&#123;<br>          <span class="hljs-keyword">if</span>(userRolesForAdmin.contains(user.getUserRole))&#123;<br>              <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>          &#125;<span class="hljs-keyword">else</span> &#123;<br>              <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>          &#125;   <br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+
+<p>​    2.EnumMap</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SIT</span> </span>&#123;<br>    <span class="hljs-comment">//比如系统新进入的一些人，我们需要统计下不同的角色到底有多少人</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>        Map&lt;UserRole,Integer&gt; userRoleIntegerMap = <span class="hljs-keyword">new</span> EnumMap&lt;UserRole, Integer&gt;(UserRole.class);<br>        <span class="hljs-keyword">for</span>(User user : userList)&#123;<br>            Integer num = userRoleIntegerMap.get(user.getUserRole());<br>            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">null</span>!=num)&#123;<br>                userRoleIntegerMap.put(user.getUserRole(),num+<span class="hljs-number">1</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                userRoleIntegerMap.put(user.getUserRole(),<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Enum</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java命名规则总结</title>
+    <url>/2020/03/24/Java%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<blockquote>
+<p>Class名应是首字母大写的名词。命名时应该使其简洁而又具有描述性。异常类的命名，应以Exception结尾。Interface的命名规则与Class相同。</p>
+</blockquote>
+<ol>
+<li><p><strong>JAVA源文件的命名</strong></p>
+<p>JAVA源文件名必须和源文件中所定义的类的类名相同。</p>
+</li>
+<li><p><strong>Package的命名</strong></p>
+<p>Package名的第一部分应是小写ASCII字符，并且是顶级域名之一，通常是com、edu、gov、mil、net、org或由ISO标准3166、1981定义的国家唯一标志码。Package名的后续部分由各组织内部命名规则决定，内部命名规则指定了各组件的目录名，所属部门名、项目名等。   </p>
+</li>
+<li><p><strong>Class/Interface的命名</strong></p>
+<p>Class名应是首字母大写的名词。命名时应该使其简洁而又具有描述性。异常类的命名，应以Exception结尾。Interface的命名规则与Class相同。</p>
+</li>
+<li><p><strong>常量的命名</strong></p>
+<p>常量名的字母应全部大写，不同的单词之间通过下划线进行连接，并且名字组合应该赋予含义。</p>
+</li>
+<li><p><strong>变量的命名</strong></p>
+<ul>
+<li><p>普通变量　　</p>
+<p> ​    普通变量名的首字母小写，其它每个单词的首字母大写。命名时应该使其简短而又有特定含义，简洁明了的向使用者展示其使用意图。   </p>
+</li>
+<li><p>约定变量　　</p>
+<p> ​    所谓约定变量，是指那些使用后即可抛弃（throwaway）的临时变量。通常i、j、k、m和n代表整型变量；c、d和e代表字符型变量。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>方法的命名</strong></p>
+<p>方法名的第一个单词应是动词，并且首字母小写，其它每个单词首字母大写。  </p>
+</li>
+<li><p><strong>方法参数的命名</strong></p>
+<p>应该选择有意义的名称作为方法的参数名。如果可能的话，选择和需要赋值的字段一样的名字。 </p>
+</li>
+</ol>
+<p><strong>补充资料:</strong></p>
+<ol>
+<li><p>类名首字母应该大写。属性（成员变量）、方法、对象变量以及所有标识符（如形式参数、实际参数、局部变量）的首字母应小写，其中包含的所有单词都应紧靠在一起，而且大写中间单词的首字母。例如：<br>类名：ThisIsAClassName 属性或方法名：thisIsMethodOrFieldName对象变量：thisIsAClassVariable</p>
+</li>
+<li><p>Java 包（Package）属于一种特殊情况，它们全都是小写字母，即便中间的单词亦是如此。对于全局包，将你的Internet 域名反转并接上包名。例如：<br>cn.edu.usst.dingyuewei.package。<br>另外，package 行要在import 行之前，import 中标准的包名要在本地的包名之前，而且按照字母顺序排列。如果import 行中包含了同一个包中的不同子目录，则应该用 * 来处理。例如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> hotlava.net.stats;<br><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.util.Observable;<br><span class="hljs-keyword">import</span> hotlava.util.Application;<br></code></pre></td></tr></table></figure>
+<p>这里 java.io.* 是用来代替InputStream and OutputStream 的。</p>
+</li>
+<li><p>接口（Interface）：采用完整的英文描述符说明接口封装，所有单词的第一个字母大写。习惯上，名字后面加上后缀 able， ible 或者 er。例如：Contactable，Prompter。</p>
+</li>
+<li><p>组件（Component）使用完整的英文描述来说明组件的用途，末端应接上组件类型。例如：okButton，customerList，fileMenu。</p>
+</li>
+<li><p>类中常用方法的命名：</p>
+</li>
+</ol>
+<ul>
+<li><p>类的获取方法（一般具有返回值）一般要求被方法名使用被访问字段名，前面加上前缀get，例如getFirstName(), getLastName()。</p>
+</li>
+<li><p>类的布尔型的判断方法一般要求方法名使用单词 is 做前缀，如isPersistent(),isString()。或者使用具有逻辑意义的单词，例如equal 或equals</p>
+</li>
+<li><p>类的设置方法（一般返回类型为void）：被访问字段名的前面加上前缀 set，例如setFirstName(),setLastName()，setWarpSpeed()</p>
+</li>
+<li><p>类的普通方法一般采用完整的英文描述说明成员方法功能，第一个单词尽可能采用一个生动的动词，第一个字母小写，例如 openFile(), addAccount()。</p>
+</li>
+<li><p>构造方法应该用递增的方式写（比如：参数多的写在后面）。例如：</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CounterSet</span><span class="hljs-params">()</span></span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CounterSet</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size)</span></span>&#123;<br>    <span class="hljs-keyword">this</span>.size = size;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>toString 方法：一般情况下，每一个类都应该定义toString 方法，其格式为：</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>一般应考虑置入一个main()方法，其中包含用于测试那个类的代码，如果包含了main() 方法, 那么它应该写在类的底部。</p>
+</li>
+</ul>
+<ol start="6">
+<li><p>静态常量字段（static final）一般全部采用大写字母，单词之间用下划线分隔（也有特例，如Java 类库中关于颜色的常数没有严格地全部使用大写字母）。例如MIN_BALANCE,DEFAULT_DATE。</p>
+</li>
+<li><p>循环计数变量通常采用字母 i，j，k 或者 counter。而数组应该总是用下面的方式来命名：objectType[]或 byte[] buffer。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>NFS文件系统</title>
+    <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
+<p><strong>NFS文件系统</strong></p>
+<p>NFS是UNIX（Linux）系统之见进行文件共享的网络服务，<strong>NFS即网络文件系统（Network File System）</strong>，是主机间通过网络进行文件共享的网络协议。<strong>NFS服务器提供的共享目录可以被NFS客户机作为文件系统挂载到目录（挂载点）中</strong>。NFS最早是由Sun公司提出的。</p>
+<ul>
+<li>1.NFS的用途</li>
+</ul>
+<p>NFS通常在局域网环境中使用，用于多于多台主机共享同一主机上的共享文件（目录）资源。由于NFS具有共享文件访问速度快、稳定性高等特点，在实际的生产系统中得到了广泛的应用。</p>
+<p>对于使用NFS进行系统之间文件的共享，通常可以进行一下概括：</p>
+<ul>
+<li><p>NFS是系统间提供文件共享的一种网络协议，与HTTP和FTP等用于在网络中传输文件的协议不同，NFS不需要将文件从服务器下载到本地系统来访问文件。</p>
+</li>
+<li><p>在使用NFS协议进行文件共享的系统中，可划分为服务器和客户机两部分角色：NFS服务器输出共享的目录供其他主机访问，NFS客户机读取NFS服务器中的共享目录。</p>
+</li>
+<li><p>通过NFS网络协议，作为NFS客户端的主机可以把NFS服务器中输出的共享目录（NFS文件系统）直接挂载（mount）到本机文件系统中的挂载点（目录），并且像访问本地文件系统一样访问已经挂载NFS文件系统。</p>
+</li>
+<li><p>在同一台主机中即可以作为NFS服务器为其他主机提供共享目录，也可以作为NFS客户机读取其他NFS服务器中的共享目录。</p>
+</li>
+</ul>
+<p><strong>NFS有三个主流发行版本</strong>：</p>
+<ol>
+<li><p> NFSv2</p>
+</li>
+<li><p>NFSv3</p>
+</li>
+<li><p>NFSv4.</p>
+</li>
+</ol>
+<p>CentOS6/REHEL6默认的NFS共享服务支持所有三个版本的客户端连接。</p>
+<p>NFS协议</p>
+<p>NFSv2、NFSv3默认需要使用rpc服务，所以计算机的rpc服务必须启动：</p>
+<p>rpc是远程进程调用，很多服务需要通过rpc获取一些端口信息，在Linux中rpc服务我们称之为rpcbind，我们可以将它通过以下命令启动：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">service rpcbind start<br>chkconfig rpcbind on<br></code></pre></td></tr></table></figure>
+
+<p>NFSv4不再需要rpc支持，并且是防火墙友好的。</p>
+<p>NFSv2、NFSv3既可以使用TCP协议进行传输、也可以使用UDP协议，UDP协议效率较高，但是不保证传输可靠性，不建议使用。NFSv4使用TCP协议进行传输。</p>
+<p>NFS服务默认是安装的，我们可以通过以下命令可以启动：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">service nfs start<br>chkconfig nfs on<br></code></pre></td></tr></table></figure>
+
+<p>默认NFS需要使用5个端口，其中4个是动态的（nfs工作需要的端口），以及rpc服务的端口，动态端口无法通过防火墙，如果需要通过防火墙，则需要配置NFS使用指定的静态端口：</p>
+<p>配置NFS的配置文件/etc/sysconfig/nfs,添加静态端口设置：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">MOUNT_PORT=&quot;4001&quot;		#挂载使用端口*<br>STATD_PORT=&quot;4002&quot;		#状态使用端口*<br>LOCKD_TCPPORT=&quot;4003&quot;	#TCP锁使用端口*<br>LOCKD_UDPPORT=&quot;4004&quot;	#UDP锁使用端口*<br></code></pre></td></tr></table></figure>
+
+<p>防火墙需要配置允许以上端口，以及NFS协议的2049端口，RPC的111端口允许通过，才能正常使用NFS。</p>
+<p><strong>NFS共享配置</strong></p>
+<p>NFS服务的共享配置文件为/etc/exports</p>
+<p>每一共享占用一行，格式如下：</p>
+<p>在允许的客户机处，我们可以选择一个网段，或者一个固定的主机IP地址，也可以是域名。</p>
+<p>共享目录   允许的客户主机（选项）</p>
+<p>如：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">/bxy-nfs   192.168.0.0/24(ro,saync)<br>/bxy-nfs   192.168.0.133(rw,sync)<br>/bxy-nfs   *.bxy.com<br><span class="hljs-meta">#</span><span class="bash"> 配置好共享后，可以使用以下命令启动共享：*</span><br>service nfs start<br><span class="hljs-meta">#</span><span class="bash"> 或</span><br>exportfs -r<br><span class="hljs-meta">#</span><span class="bash"> 可以通过以下命令查看当前共享状态</span><br>exportfs –v 	<br></code></pre></td></tr></table></figure>
+
+<p>NFS共享选项</p>
+<p>默认选项如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-ro				# 只读共享<br>-sync			# 所有操作返回前必须已经写入磁盘<br>-wdelay     	# 延迟写操作，等待更多的写操作一起执行<br>-root_squash	# 防止远程root用户使用root权限对共享进行访问<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 常用选项：</span><br>-rw   			# 读写共享<br>-async          # 操作可以延迟写入磁盘，立即响应，可提高速度<br>-no_wdelay      # 关闭写延迟，需要与sync选项同时使用<br>-no_root_squash # 关闭root_squash<br></code></pre></td></tr></table></figure>
+
+<p>客户端挂载NFS共享</p>
+<p>客户端可以通过mount命令挂载NFS共享，命令格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">mount -t nfs 192.168.1.100:/bxy-nfs /mnt<br></code></pre></td></tr></table></figure>
+
+<p>注：这里的192.168.1.100就是NFS服务器所在的地址</p>
+<p>也可以将配置信息写入到/etc/fstab中，在启动时自动挂载：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">192.168.1.100:/bxy-nfs /mnt nfs defaults 0 0<br></code></pre></td></tr></table></figure>
+
+<p>挂载的时候可以使用-o指定挂载选项，常用选项如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-ro 		# 只读挂载<br>-rw 		# 读写挂载<br>-vers=4 	# 指定使用NFSv4方式挂载<br><span class="hljs-meta">#</span><span class="bash"> 例如：</span><br>mount -t nfs 192.168.1.100:/bxy-nfs /mnt –rw<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytest使用介绍</title>
+    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
+<thead>
+<tr>
+<th>item</th>
+<th>unittest</th>
+<th>pytest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例编写规则</td>
+<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
+<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
+</tr>
+<tr>
+<td>用例分类执行</td>
+<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
+<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
+</tr>
+<tr>
+<td>用例前置和后置</td>
+<td>提供了setUp/tearDown，只能针对所有case</td>
+<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>需要依赖ddt库</td>
+<td>使用@pytest.mark.parametrize装饰器</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
+<td>只有assert一个表达式，用起来比较方便</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>使用HTMLTestRunnerNew库</td>
+<td>有pytest-HTML，allure插件</td>
+</tr>
+<tr>
+<td>失败重跑</td>
+<td>无此功能</td>
+<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS下搭建LAMP</title>
     <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
@@ -178,302 +593,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker学习笔记</title>
-    <url>/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
-<h4 id="2、核心概念"><a href="#2、核心概念" class="headerlink" title="2、核心概念"></a>2、核心概念</h4><p>docker主机(Host)：安装了Docker程序的机器(Docker直接安装再操作系统之上);<br>docker客户端(Client)：连接docker主机进行操作；<br>docker仓库(Registry)：用来保存各种打包好的软件镜像；<br>docker镜像(Images)： 软件打包好的镜像；放在docker仓库中；<br>docker容器(Container)：镜像启动后的实例成为一个容器；容器是独立运行的一个或一组应用；</p>
-<p>使用docker的步骤：<br>1）安装docker<br>2）去docker仓库中找到这个软件对应的镜像；<br>3）使用docker运行这个镜像，这个镜像就会生成一个docker容器<br>4）对容器的启动停止就是对软件的启动停止</p>
-<h4 id="3、Linux虚拟机安装docker"><a href="#3、Linux虚拟机安装docker" class="headerlink" title="3、Linux虚拟机安装docker"></a>3、Linux虚拟机安装docker</h4><p>步骤：<br>1.检查内核版本，必须是3.10及以上</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@localhost init.d]<span class="hljs-comment"># uname -r</span><br>3.10.0-957.el7.x86_64<br></code></pre></td></tr></table></figure>
-
-<p>2.安装docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install docker -y<br></code></pre></td></tr></table></figure>
-
-<p>3.启动docker</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs bas">[root@localhost init.d]# systemctrl start docker<br>[root@localhost init.d]# docker -v<br>Docker version 1.13.1, build 4ef4b30/1.13.1<br></code></pre></td></tr></table></figure>
-
-<p>4.设置开机自启动docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">enable</span> docker<br></code></pre></td></tr></table></figure>
-
-<p>5.停止docker</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">systemctl stop docker<br></code></pre></td></tr></table></figure>
-<h4 id="4、docker镜像操作"><a href="#4、docker镜像操作" class="headerlink" title="4、docker镜像操作"></a>4、docker镜像操作</h4><p>1、搜索镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">[root@localhost init.d]<span class="hljs-comment"># docker search mysql</span><br>INDEX       NAME                                        DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>docker.io   docker.io/mysql                             MySQL is a widely used, open-source relati...   9073      [OK]<br>docker.io   docker.io/mariadb                           MariaDB is a community-developed fork of M...   3206      [OK]<br>docker.io   docker.io/mysql/mysql-server                Optimized MySQL Server Docker images. Crea...   673                  [OK]<br>docker.io   docker.io/centos/mysql-57-centos7           MySQL 5.7 SQL database server                   67<br>docker.io   docker.io/centurylink/mysql                 Image containing mysql. Optimized to be li...   61                   [OK]<br>docker.io   docker.io/mysql/mysql-cluster               Experimental MySQL Cluster Docker images. ...   60<br>docker.io   docker.io/deitch/mysql-backup               REPLACED! Please use http://hub.docker.com...   41                   [OK]<br>docker.io   docker.io/bitnami/mysql                     Bitnami MySQL Docker Image                      35                   [OK]<br>docker.io   docker.io/tutum/mysql                       Base docker image to run a MySQL database ...   34<br>docker.io   docker.io/schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic back...   28                   [OK]<br>docker.io   docker.io/prom/mysqld-exporter                                                              26                   [OK]<br>docker.io   docker.io/linuxserver/mysql                 A Mysql container, brought to you by Linux...   24<br>docker.io   docker.io/centos/mysql-56-centos7           MySQL 5.6 SQL database server                   18<br>docker.io   docker.io/circleci/mysql                    MySQL is a widely used, open-source relati...   16<br>docker.io   docker.io/mysql/mysql-router                MySQL Router provides transparent routing ...   14<br>docker.io   docker.io/arey/mysql-client                 Run a MySQL client from a docker container      13                   [OK]<br>docker.io   docker.io/databack/mysql-backup             Back up mysql databases to... anywhere!         10<br>docker.io   docker.io/openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 ima...   6<br>docker.io   docker.io/fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron t...   4                    [OK]<br>docker.io   docker.io/genschsa/mysql-employees          MySQL Employee Sample Database                  4                    [OK]<br>docker.io   docker.io/ansibleplaybookbundle/mysql-apb   An APB <span class="hljs-built_in">which</span> deploys RHSCL MySQL                2                    [OK]<br>docker.io   docker.io/devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offi...   2<br>docker.io   docker.io/jelastic/mysql                    An image of the MySQL database server main...   1<br>docker.io   docker.io/monasca/mysql-init                A minimal decoupled init container <span class="hljs-keyword">for</span> mysql    0<br>docker.io   docker.io/widdpim/mysql-client              Dockerized MySQL Client (5.7) including Cu...   0                    [OK]<br></code></pre></td></tr></table></figure>
-<p>2.下载镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#下载最新版本的镜像</span><br>docker pull mysql<br><span class="hljs-comment">#下载指定版本的MySql镜像</span><br>docker pull mysql:5.5<br></code></pre></td></tr></table></figure>
-<p>3、查看所有镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker images<br></code></pre></td></tr></table></figure>
-<p>4、删除镜像 </p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">docker rmi image-id<br></code></pre></td></tr></table></figure>
-
-<h4 id="5、docker容器操作"><a href="#5、docker容器操作" class="headerlink" title="5、docker容器操作"></a>5、docker容器操作</h4><p>软件镜像—运行镜像—产生一个容器（正在运行的软件）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#1、搜索镜像</span><br>docker search tomcat<br><span class="hljs-comment">#2、拉取镜像</span><br>docker pull tomcat<br><span class="hljs-comment">#3、根据镜像启动容器</span><br>docker run --name mytomcat -d tomcat:latest<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Selenium</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java命名规则总结</title>
-    <url>/2020/03/24/Java%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<blockquote>
-<p>Class名应是首字母大写的名词。命名时应该使其简洁而又具有描述性。异常类的命名，应以Exception结尾。Interface的命名规则与Class相同。</p>
-</blockquote>
-<ol>
-<li><p><strong>JAVA源文件的命名</strong></p>
-<p>JAVA源文件名必须和源文件中所定义的类的类名相同。</p>
-</li>
-<li><p><strong>Package的命名</strong></p>
-<p>Package名的第一部分应是小写ASCII字符，并且是顶级域名之一，通常是com、edu、gov、mil、net、org或由ISO标准3166、1981定义的国家唯一标志码。Package名的后续部分由各组织内部命名规则决定，内部命名规则指定了各组件的目录名，所属部门名、项目名等。   </p>
-</li>
-<li><p><strong>Class/Interface的命名</strong></p>
-<p>Class名应是首字母大写的名词。命名时应该使其简洁而又具有描述性。异常类的命名，应以Exception结尾。Interface的命名规则与Class相同。</p>
-</li>
-<li><p><strong>常量的命名</strong></p>
-<p>常量名的字母应全部大写，不同的单词之间通过下划线进行连接，并且名字组合应该赋予含义。</p>
-</li>
-<li><p><strong>变量的命名</strong></p>
-<ul>
-<li><p>普通变量　　</p>
-<p> ​    普通变量名的首字母小写，其它每个单词的首字母大写。命名时应该使其简短而又有特定含义，简洁明了的向使用者展示其使用意图。   </p>
-</li>
-<li><p>约定变量　　</p>
-<p> ​    所谓约定变量，是指那些使用后即可抛弃（throwaway）的临时变量。通常i、j、k、m和n代表整型变量；c、d和e代表字符型变量。</p>
-</li>
-</ul>
-</li>
-<li><p><strong>方法的命名</strong></p>
-<p>方法名的第一个单词应是动词，并且首字母小写，其它每个单词首字母大写。  </p>
-</li>
-<li><p><strong>方法参数的命名</strong></p>
-<p>应该选择有意义的名称作为方法的参数名。如果可能的话，选择和需要赋值的字段一样的名字。 </p>
-</li>
-</ol>
-<p><strong>补充资料:</strong></p>
-<ol>
-<li><p>类名首字母应该大写。属性（成员变量）、方法、对象变量以及所有标识符（如形式参数、实际参数、局部变量）的首字母应小写，其中包含的所有单词都应紧靠在一起，而且大写中间单词的首字母。例如：<br>类名：ThisIsAClassName 属性或方法名：thisIsMethodOrFieldName对象变量：thisIsAClassVariable</p>
-</li>
-<li><p>Java 包（Package）属于一种特殊情况，它们全都是小写字母，即便中间的单词亦是如此。对于全局包，将你的Internet 域名反转并接上包名。例如：<br>cn.edu.usst.dingyuewei.package。<br>另外，package 行要在import 行之前，import 中标准的包名要在本地的包名之前，而且按照字母顺序排列。如果import 行中包含了同一个包中的不同子目录，则应该用 * 来处理。例如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> hotlava.net.stats;<br><span class="hljs-keyword">import</span> java.io.*;<br><span class="hljs-keyword">import</span> java.util.Observable;<br><span class="hljs-keyword">import</span> hotlava.util.Application;<br></code></pre></td></tr></table></figure>
-<p>这里 java.io.* 是用来代替InputStream and OutputStream 的。</p>
-</li>
-<li><p>接口（Interface）：采用完整的英文描述符说明接口封装，所有单词的第一个字母大写。习惯上，名字后面加上后缀 able， ible 或者 er。例如：Contactable，Prompter。</p>
-</li>
-<li><p>组件（Component）使用完整的英文描述来说明组件的用途，末端应接上组件类型。例如：okButton，customerList，fileMenu。</p>
-</li>
-<li><p>类中常用方法的命名：</p>
-</li>
-</ol>
-<ul>
-<li><p>类的获取方法（一般具有返回值）一般要求被方法名使用被访问字段名，前面加上前缀get，例如getFirstName(), getLastName()。</p>
-</li>
-<li><p>类的布尔型的判断方法一般要求方法名使用单词 is 做前缀，如isPersistent(),isString()。或者使用具有逻辑意义的单词，例如equal 或equals</p>
-</li>
-<li><p>类的设置方法（一般返回类型为void）：被访问字段名的前面加上前缀 set，例如setFirstName(),setLastName()，setWarpSpeed()</p>
-</li>
-<li><p>类的普通方法一般采用完整的英文描述说明成员方法功能，第一个单词尽可能采用一个生动的动词，第一个字母小写，例如 openFile(), addAccount()。</p>
-</li>
-<li><p>构造方法应该用递增的方式写（比如：参数多的写在后面）。例如：</p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CounterSet</span><span class="hljs-params">()</span></span>&#123;&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CounterSet</span><span class="hljs-params">(<span class="hljs-keyword">int</span> size)</span></span>&#123;<br>    <span class="hljs-keyword">this</span>.size = size;<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>toString 方法：一般情况下，每一个类都应该定义toString 方法，其格式为：</p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">toString</span><span class="hljs-params">()</span> </span>&#123;…&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>一般应考虑置入一个main()方法，其中包含用于测试那个类的代码，如果包含了main() 方法, 那么它应该写在类的底部。</p>
-</li>
-</ul>
-<ol start="6">
-<li><p>静态常量字段（static final）一般全部采用大写字母，单词之间用下划线分隔（也有特例，如Java 类库中关于颜色的常数没有严格地全部使用大写字母）。例如MIN_BALANCE,DEFAULT_DATE。</p>
-</li>
-<li><p>循环计数变量通常采用字母 i，j，k 或者 counter。而数组应该总是用下面的方式来命名：objectType[]或 byte[] buffer。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>NFS文件系统</title>
-    <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
-    <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
-<p><strong>NFS文件系统</strong></p>
-<p>NFS是UNIX（Linux）系统之见进行文件共享的网络服务，<strong>NFS即网络文件系统（Network File System）</strong>，是主机间通过网络进行文件共享的网络协议。<strong>NFS服务器提供的共享目录可以被NFS客户机作为文件系统挂载到目录（挂载点）中</strong>。NFS最早是由Sun公司提出的。</p>
-<ul>
-<li>1.NFS的用途</li>
-</ul>
-<p>NFS通常在局域网环境中使用，用于多于多台主机共享同一主机上的共享文件（目录）资源。由于NFS具有共享文件访问速度快、稳定性高等特点，在实际的生产系统中得到了广泛的应用。</p>
-<p>对于使用NFS进行系统之间文件的共享，通常可以进行一下概括：</p>
-<ul>
-<li><p>NFS是系统间提供文件共享的一种网络协议，与HTTP和FTP等用于在网络中传输文件的协议不同，NFS不需要将文件从服务器下载到本地系统来访问文件。</p>
-</li>
-<li><p>在使用NFS协议进行文件共享的系统中，可划分为服务器和客户机两部分角色：NFS服务器输出共享的目录供其他主机访问，NFS客户机读取NFS服务器中的共享目录。</p>
-</li>
-<li><p>通过NFS网络协议，作为NFS客户端的主机可以把NFS服务器中输出的共享目录（NFS文件系统）直接挂载（mount）到本机文件系统中的挂载点（目录），并且像访问本地文件系统一样访问已经挂载NFS文件系统。</p>
-</li>
-<li><p>在同一台主机中即可以作为NFS服务器为其他主机提供共享目录，也可以作为NFS客户机读取其他NFS服务器中的共享目录。</p>
-</li>
-</ul>
-<p><strong>NFS有三个主流发行版本</strong>：</p>
-<ol>
-<li><p> NFSv2</p>
-</li>
-<li><p>NFSv3</p>
-</li>
-<li><p>NFSv4.</p>
-</li>
-</ol>
-<p>CentOS6/REHEL6默认的NFS共享服务支持所有三个版本的客户端连接。</p>
-<p>NFS协议</p>
-<p>NFSv2、NFSv3默认需要使用rpc服务，所以计算机的rpc服务必须启动：</p>
-<p>rpc是远程进程调用，很多服务需要通过rpc获取一些端口信息，在Linux中rpc服务我们称之为rpcbind，我们可以将它通过以下命令启动：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">service rpcbind start<br>chkconfig rpcbind on<br></code></pre></td></tr></table></figure>
-
-<p>NFSv4不再需要rpc支持，并且是防火墙友好的。</p>
-<p>NFSv2、NFSv3既可以使用TCP协议进行传输、也可以使用UDP协议，UDP协议效率较高，但是不保证传输可靠性，不建议使用。NFSv4使用TCP协议进行传输。</p>
-<p>NFS服务默认是安装的，我们可以通过以下命令可以启动：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">service nfs start<br>chkconfig nfs on<br></code></pre></td></tr></table></figure>
-
-<p>默认NFS需要使用5个端口，其中4个是动态的（nfs工作需要的端口），以及rpc服务的端口，动态端口无法通过防火墙，如果需要通过防火墙，则需要配置NFS使用指定的静态端口：</p>
-<p>配置NFS的配置文件/etc/sysconfig/nfs,添加静态端口设置：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">MOUNT_PORT=&quot;4001&quot;		#挂载使用端口*<br>STATD_PORT=&quot;4002&quot;		#状态使用端口*<br>LOCKD_TCPPORT=&quot;4003&quot;	#TCP锁使用端口*<br>LOCKD_UDPPORT=&quot;4004&quot;	#UDP锁使用端口*<br></code></pre></td></tr></table></figure>
-
-<p>防火墙需要配置允许以上端口，以及NFS协议的2049端口，RPC的111端口允许通过，才能正常使用NFS。</p>
-<p><strong>NFS共享配置</strong></p>
-<p>NFS服务的共享配置文件为/etc/exports</p>
-<p>每一共享占用一行，格式如下：</p>
-<p>在允许的客户机处，我们可以选择一个网段，或者一个固定的主机IP地址，也可以是域名。</p>
-<p>共享目录   允许的客户主机（选项）</p>
-<p>如：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">/bxy-nfs   192.168.0.0/24(ro,saync)<br>/bxy-nfs   192.168.0.133(rw,sync)<br>/bxy-nfs   *.bxy.com<br><span class="hljs-meta">#</span><span class="bash"> 配置好共享后，可以使用以下命令启动共享：*</span><br>service nfs start<br><span class="hljs-meta">#</span><span class="bash"> 或</span><br>exportfs -r<br><span class="hljs-meta">#</span><span class="bash"> 可以通过以下命令查看当前共享状态</span><br>exportfs –v 	<br></code></pre></td></tr></table></figure>
-
-<p>NFS共享选项</p>
-<p>默认选项如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-ro				# 只读共享<br>-sync			# 所有操作返回前必须已经写入磁盘<br>-wdelay     	# 延迟写操作，等待更多的写操作一起执行<br>-root_squash	# 防止远程root用户使用root权限对共享进行访问<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 常用选项：</span><br>-rw   			# 读写共享<br>-async          # 操作可以延迟写入磁盘，立即响应，可提高速度<br>-no_wdelay      # 关闭写延迟，需要与sync选项同时使用<br>-no_root_squash # 关闭root_squash<br></code></pre></td></tr></table></figure>
-
-<p>客户端挂载NFS共享</p>
-<p>客户端可以通过mount命令挂载NFS共享，命令格式如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">mount -t nfs 192.168.1.100:/bxy-nfs /mnt<br></code></pre></td></tr></table></figure>
-
-<p>注：这里的192.168.1.100就是NFS服务器所在的地址</p>
-<p>也可以将配置信息写入到/etc/fstab中，在启动时自动挂载：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">192.168.1.100:/bxy-nfs /mnt nfs defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>挂载的时候可以使用-o指定挂载选项，常用选项如下：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-ro 		# 只读挂载<br>-rw 		# 读写挂载<br>-vers=4 	# 指定使用NFSv4方式挂载<br><span class="hljs-meta">#</span><span class="bash"> 例如：</span><br>mount -t nfs 192.168.1.100:/bxy-nfs /mnt –rw<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Postfix环境搭建</title>
     <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
     <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
@@ -541,163 +660,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java - Enum小结</title>
-    <url>/2020/03/21/Java-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<p>工作中很少使用枚举类，每次想用的时候总是偷懒使用直接定义常量的方式了，今天有时间好好探究下Enum.<br>为什么我们需要枚举类<br>以学生管理系统的权限管理为例，该系统管理员一般有3个权限类名：系统管理员，教师，学生，我们可以将其定义为静态常量：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Student = <span class="hljs-number">1</span>;	<span class="hljs-comment">//学生</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Teacher = <span class="hljs-number">2</span>;	<span class="hljs-comment">//教师</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> Admin = <span class="hljs-number">3</span>;	<span class="hljs-comment">//管理员</span><br></code></pre></td></tr></table></figure>
-
-<p>这种直接常量的方式定义本身没有问题，但是缺少了约束，存在安全隐患。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">judgeUser</span><span class="hljs-params">(<span class="hljs-keyword">int</span> user)</span></span>&#123;<br>        ...<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>比如这个方法是判断传入的用户类型，但是在调用该方法时，开发者时可以传入任意的值，并无限制。<br>现在我们就要切换到Enum的方式，我们刚好对比下有什么值得我们update的地方。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">User</span> </span>&#123;<br>    ROLE_ADMIN,<br>    ROLE_TEACHER,<br>    ROLE_STUDENT<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>接下来我们就用这个User为例先看看枚举类的基本用法有那些？</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserSIT</span> </span>&#123;<br>    User user1 = User.ROLE_ADMIN;<br>    User user2 = User.ROLE_TEACHER;<br>    User user3 = User.ROLE_STUDENT;<br><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enum_testcae</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-comment">//value()方法：返回所有枚举常量的数组集合</span><br>        <span class="hljs-keyword">for</span> (User user : User.values()) &#123;<br>            System.out.println(user);<br>        &#125;<br>        <span class="hljs-comment">//打印：</span><br>        <span class="hljs-comment">//ROLE_ADMIN</span><br>        <span class="hljs-comment">//ROLE_TEACHER</span><br>        <span class="hljs-comment">//ROLE_STUDENT</span><br><br>        <span class="hljs-comment">//ordinal()方法：返回枚举常量的序数，从0开始</span><br>        System.out.println(user1.ordinal());<span class="hljs-comment">//打印0</span><br>        System.out.println(user2.ordinal());<span class="hljs-comment">//打印1</span><br>        System.out.println(user3.ordinal());<span class="hljs-comment">//打印2</span><br><br>        <span class="hljs-comment">//compareTo()方法：枚举常量间的比较</span><br>        <span class="hljs-comment">//调用compareTo方法返回的结果，正值代表方法中参数在调用该方法的枚举对象位置之前</span><br>		<span class="hljs-comment">//0代表两个成员在相同的位置；</span><br>		<span class="hljs-comment">//负值代表方法中参数在调用该方法的枚举对象位置之后</span><br>        System.out.println(user1.compareTo(user2));<span class="hljs-comment">//打印-1</span><br>        System.out.println(user2.compareTo(user3));<span class="hljs-comment">//打印-1</span><br>        System.out.println(user1.compareTo(user3));<span class="hljs-comment">//打印-2</span><br><br>        <span class="hljs-comment">//name()方法：获得枚举常量的名称</span><br>        System.out.println(user1.name());<span class="hljs-comment">//打印ROLE_ADMIN</span><br>        System.out.println(user2.name());<span class="hljs-comment">//打印ROLE_TEACHER</span><br>        System.out.println(user3.name());<span class="hljs-comment">//打印ROLE_STUDENT</span><br><br>        <span class="hljs-comment">//valueOf()方法：返回指定名称的枚举常量</span><br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_ADMIN&quot;</span>));<br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_TEACHER&quot;</span>));<br>        System.out.println(User.valueOf(<span class="hljs-string">&quot;ROLE_STUDENT&quot;</span>));<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p> 除此之外，枚举类也可以用在switch中:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">enum_testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    User user = User.ROLE_ADMIN;<br>    <span class="hljs-keyword">switch</span> (user) &#123;<br>        <span class="hljs-keyword">case</span> ROLE_ADMIN:<br>            System.out.println(<span class="hljs-string">&quot;管理员&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> ROLE_TEACHER:<br>            System.out.println(<span class="hljs-string">&quot;教师&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> ROLE_STUDENT:<br>            System.out.println(<span class="hljs-string">&quot;学生&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>当然枚举也存在多值的用法：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">UserRole</span> </span>&#123;<br>    ROLE_ROOT_ADMIN(<span class="hljs-string">&quot;系统管理员&quot;</span>, <span class="hljs-number">000000</span>),<br>    ROLE_ORDER_ADMIN(<span class="hljs-string">&quot;订单管理员&quot;</span>, <span class="hljs-number">100000</span>),<br>    ROLE_NORMAL(<span class="hljs-string">&quot;普通用户&quot;</span>, <span class="hljs-number">20000</span>),<br>    ;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> String roleName;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Integer roleCode;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getRoleName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> roleName;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Integer <span class="hljs-title">getRoleCode</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> roleCode;<br>    &#125;<br><br>    UserRole(String roleName, Integer roleCode) &#123;<br>        <span class="hljs-keyword">this</span>.roleName = roleName;<br>        <span class="hljs-keyword">this</span>.roleCode = roleCode;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Integer <span class="hljs-title">getRoleNameByRoleName</span><span class="hljs-params">(String roleName)</span> </span>&#123;<br>        <span class="hljs-keyword">for</span> (UserRole enums : UserRole.values()) &#123;<br>            <span class="hljs-keyword">if</span> (enums.getRoleName().equals(roleName)) &#123;<br>                <span class="hljs-keyword">return</span> enums.getRoleCode();<br>            &#125;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>枚举也有一些其他的用法：<br>比如<strong>枚举+接口</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">RoleOperstion</span> </span>&#123;<br>    <span class="hljs-function">String <span class="hljs-title">op</span><span class="hljs-params">()</span></span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">RoleEnum</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">RoleOperstion</span> </span>&#123;<br>    ROLE_ROOT_ADMIN &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;,<br>    ROLE_ORDER_ADMIN &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;,<br>    ROLE_NORMAL &#123;<br>        <span class="hljs-meta">@Override</span><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">op</span><span class="hljs-params">()</span> </span>&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>我们再看看如何调用：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">judgeRole</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">judge</span><span class="hljs-params">(String roleName)</span></span>&#123;<br>        <span class="hljs-keyword">return</span> RoleEnum.valueOf(roleName).op();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>这样的方式就可以避免if/else的大量使用。<br>还有<strong>枚举和设计模式的结合</strong></p>
-<ul>
-<li>单例模式</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Singleton</span> </span>&#123;<br><br>    <span class="hljs-comment">//构造函数私有化，避免外部创建实例</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">Singleton</span><span class="hljs-params">()</span></span>&#123;&#125;<br><br>    <span class="hljs-comment">//定义一个内部枚举</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">SingletonEnum</span></span>&#123;<br>        SEED;   <span class="hljs-comment">//唯一一个枚举对象</span><br><br>        <span class="hljs-keyword">private</span> Singleton singleton;<br><br>        SingletonEnum()&#123;<br>            singleton = <span class="hljs-keyword">new</span> Singleton(); <span class="hljs-comment">//真正的对象创建隐藏再这里</span><br>        &#125;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>            <span class="hljs-keyword">return</span> singleton;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">//故意外露的对象获取方法，也是外边获取实例的唯一入口</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Singleton <span class="hljs-title">getInstance</span><span class="hljs-params">()</span></span>&#123;<br>        <span class="hljs-keyword">return</span> SingletonEnum.SEED.getInstance(); <span class="hljs-comment">//通过枚举类来完成</span><br>    &#125;<br><br></code></pre></td></tr></table></figure>
-
-<ul>
-<li> 策略模式</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">Calculator</span> </span>&#123;<br>        ADDITION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x + y;<br>            &#125;<br>        &#125;,<br>        SUBTRACTION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x - y;<br>            &#125;<br>        &#125;,<br>        MULTIPLICATION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x * y;<br>            &#125;<br>        &#125;,<br>        DIVSION &#123;<br>            <span class="hljs-function"><span class="hljs-keyword">public</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span> </span>&#123;<br>                <span class="hljs-keyword">return</span> x / y;<br>            &#125;<br>        &#125;;<br><br>        <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> Double <span class="hljs-title">execute</span><span class="hljs-params">(Double x, Double y)</span></span>;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        System.out.println(Calculator.ADDITION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.SUBTRACTION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.MULTIPLICATION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>        System.out.println(Calculator.DIVSION.execute(<span class="hljs-number">4.0</span>, <span class="hljs-number">2.0</span>));<br>    &#125;<br>    <span class="hljs-comment">//console print：</span><br>    <span class="hljs-comment">//6.0</span><br>    <span class="hljs-comment">//2.0</span><br>    <span class="hljs-comment">//8.0</span><br>    <span class="hljs-comment">//2.0</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li><p>专门用用于枚举的集合类</p>
-<p>EnumSet和EnumMap</p>
-</li>
-</ul>
-<ol>
-<li>EnumSet</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">UserRole</span> </span>&#123;<br>    ROLE_ROOT_ADMIN,<br>    ROLE_ORDER_ADMIN,<br>    ROLE_NORMAL<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>      <span class="hljs-comment">//定义一个管理员角色的专属集合</span><br>      EnumSet&lt;UserRole&gt; userRolesForAdmin<br>              = EnumSet.of(<br>              UserRole.ROLE_ROOT_ADMIN,<br>              UserRole.ROLE_ORDER_ADMIN<br>      );<br>      <br>      <span class="hljs-comment">//判断某个进来的用户是不是管理员</span><br>      <span class="hljs-function">Boolean <span class="hljs-title">isAdmin</span><span class="hljs-params">(User user)</span></span>&#123;<br>          <span class="hljs-keyword">if</span>(userRolesForAdmin.contains(user.getUserRole))&#123;<br>              <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>          &#125;<span class="hljs-keyword">else</span> &#123;<br>              <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>          &#125;   <br>      &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
-
-<p>​    2.EnumMap</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SIT</span> </span>&#123;<br>    <span class="hljs-comment">//比如系统新进入的一些人，我们需要统计下不同的角色到底有多少人</span><br>    <span class="hljs-meta">@Test</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>        Map&lt;UserRole,Integer&gt; userRoleIntegerMap = <span class="hljs-keyword">new</span> EnumMap&lt;UserRole, Integer&gt;(UserRole.class);<br>        <span class="hljs-keyword">for</span>(User user : userList)&#123;<br>            Integer num = userRoleIntegerMap.get(user.getUserRole());<br>            <span class="hljs-keyword">if</span>(<span class="hljs-keyword">null</span>!=num)&#123;<br>                userRoleIntegerMap.put(user.getUserRole(),num+<span class="hljs-number">1</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                userRoleIntegerMap.put(user.getUserRole(),<span class="hljs-number">1</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Enum</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Pytest使用介绍</title>
-    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
-<thead>
-<tr>
-<th>item</th>
-<th>unittest</th>
-<th>pytest</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用例编写规则</td>
-<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
-<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
-</tr>
-<tr>
-<td>用例分类执行</td>
-<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
-<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
-</tr>
-<tr>
-<td>用例前置和后置</td>
-<td>提供了setUp/tearDown，只能针对所有case</td>
-<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
-</tr>
-<tr>
-<td>参数化</td>
-<td>需要依赖ddt库</td>
-<td>使用@pytest.mark.parametrize装饰器</td>
-</tr>
-<tr>
-<td>断言</td>
-<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
-<td>只有assert一个表达式，用起来比较方便</td>
-</tr>
-<tr>
-<td>报告</td>
-<td>使用HTMLTestRunnerNew库</td>
-<td>有pytest-HTML，allure插件</td>
-</tr>
-<tr>
-<td>失败重跑</td>
-<td>无此功能</td>
-<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python Enum小结</title>
-    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
-<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
-<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
-<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
-<li>name不允许重复，value允许重复</li>
-<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
-<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
-</ul>
-<p>创建方式1：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<p>创建方式2：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
-
-<p>使用方式1:正常使用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
-
-<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
-
-<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
-<p>4:设置value唯一性，不允许出现相同的value</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python读取Excel例子</title>
     <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
     <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
@@ -716,80 +678,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>RobotFramework学习笔记</title>
-    <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
-<p>简介：RF是一个基于Python语言开发的，可扩展的，是以关键字驱动模式的自动化测试框架，RF最新的版本是2019年的7月份发布的，7月份之前只能支持到Python2.7，目前的最新版本已经可以支持到Python3.7</p>
-</blockquote>
-<h4 id="关键字驱动和数据驱动的区别？"><a href="#关键字驱动和数据驱动的区别？" class="headerlink" title="关键字驱动和数据驱动的区别？"></a>关键字驱动和数据驱动的区别？</h4><ul>
-<li><p>关键字驱动：表示把项目中的一些逻辑封装成关键字（一个函数,例如login,register）,调用不同的关键字组合实现不同地 业务逻辑，从而驱动测试用例的执行。</p>
-</li>
-<li><p>数据驱动：数据驱动是把测试用例里面的数据提取到Excel或者YAML文件里面，然后通过改变Excel或者YAML中的数据驱动测试用例执行。</p>
-</li>
-</ul>
-<p>特点：</p>
-<ol>
-<li>编写用例简单，可以用robot,txt,tsv或html的格式编写用例。</li>
-<li>自动生成HTML格式的测试报告和日志。(HTMLTestRunner.py,allure)</li>
-<li>除了自带的类库外，还有很多的使用的扩展类库。</li>
-<li>可以根据项目需要自定义一些关键字。</li>
-<li>可以使用GUI的方式运行，可以和SVN、GIT以及Jenkins集成</li>
-</ol>
-<h3 id="二、RF环境安装"><a href="#二、RF环境安装" class="headerlink" title="二、RF环境安装"></a>二、RF环境安装</h3><ol>
-<li><p>安装Python3.7.3（过高的python版本可能存在兼容性问题），并配置环境变量</p>
-</li>
-<li><p>使用管理员的身份打开DOS窗口。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework==3.1<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>在DOS窗口安装RIDE工具。（开发IDE）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework-ride<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework-ride<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行RIDE图标或者DOS窗口输入ride.py</p>
-</li>
-</ol>
-<h3 id="三、创建RF项目"><a href="#三、创建RF项目" class="headerlink" title="三、创建RF项目"></a>三、创建RF项目</h3><ol>
-<li>创建项目：new project<ol>
-<li>注意：输入项目名称，选则项目路径，选则Dictionary目录</li>
-</ol>
-</li>
-<li>创建测试套件（是测试用例的载体） new testsuite<ol>
-<li>注意：选则File</li>
-<li>关注：Edit页签，主要有四大块<ol>
-<li>Setting设置：<ol>
-<li>描述</li>
-<li>测试套件之前的准备工作</li>
-<li>测试套件之后的准备工作</li>
-<li>测试用例之前的准备工作</li>
-<li>测试用例之后的准备工作</li>
-<li>测试用例模板</li>
-<li>测试用例超时的时间</li>
-<li>强制标记</li>
-<li>默认标记</li>
-</ol>
-</li>
-<li>Import导入外部文件</li>
-<li>定义内部变量：</li>
-<li>定义元数据：</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>创建测试用例 new testcase</li>
-<li>创建业务关键字（资源文件，它是自定义关键字的载体。） new resource<ol>
-<li>注意:只能在文件夹下面创建，并且是txt格式。</li>
-</ol>
-</li>
-<li>创建用户自定义关键字 new user keyword</li>
-</ol>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>RobotFramework</tag>
       </tags>
   </entry>
   <entry>
@@ -870,6 +758,80 @@
       </tags>
   </entry>
   <entry>
+    <title>RobotFramework学习笔记</title>
+    <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
+<p>简介：RF是一个基于Python语言开发的，可扩展的，是以关键字驱动模式的自动化测试框架，RF最新的版本是2019年的7月份发布的，7月份之前只能支持到Python2.7，目前的最新版本已经可以支持到Python3.7</p>
+</blockquote>
+<h4 id="关键字驱动和数据驱动的区别？"><a href="#关键字驱动和数据驱动的区别？" class="headerlink" title="关键字驱动和数据驱动的区别？"></a>关键字驱动和数据驱动的区别？</h4><ul>
+<li><p>关键字驱动：表示把项目中的一些逻辑封装成关键字（一个函数,例如login,register）,调用不同的关键字组合实现不同地 业务逻辑，从而驱动测试用例的执行。</p>
+</li>
+<li><p>数据驱动：数据驱动是把测试用例里面的数据提取到Excel或者YAML文件里面，然后通过改变Excel或者YAML中的数据驱动测试用例执行。</p>
+</li>
+</ul>
+<p>特点：</p>
+<ol>
+<li>编写用例简单，可以用robot,txt,tsv或html的格式编写用例。</li>
+<li>自动生成HTML格式的测试报告和日志。(HTMLTestRunner.py,allure)</li>
+<li>除了自带的类库外，还有很多的使用的扩展类库。</li>
+<li>可以根据项目需要自定义一些关键字。</li>
+<li>可以使用GUI的方式运行，可以和SVN、GIT以及Jenkins集成</li>
+</ol>
+<h3 id="二、RF环境安装"><a href="#二、RF环境安装" class="headerlink" title="二、RF环境安装"></a>二、RF环境安装</h3><ol>
+<li><p>安装Python3.7.3（过高的python版本可能存在兼容性问题），并配置环境变量</p>
+</li>
+<li><p>使用管理员的身份打开DOS窗口。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework==3.1<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在DOS窗口安装RIDE工具。（开发IDE）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework-ride<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework-ride<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行RIDE图标或者DOS窗口输入ride.py</p>
+</li>
+</ol>
+<h3 id="三、创建RF项目"><a href="#三、创建RF项目" class="headerlink" title="三、创建RF项目"></a>三、创建RF项目</h3><ol>
+<li>创建项目：new project<ol>
+<li>注意：输入项目名称，选则项目路径，选则Dictionary目录</li>
+</ol>
+</li>
+<li>创建测试套件（是测试用例的载体） new testsuite<ol>
+<li>注意：选则File</li>
+<li>关注：Edit页签，主要有四大块<ol>
+<li>Setting设置：<ol>
+<li>描述</li>
+<li>测试套件之前的准备工作</li>
+<li>测试套件之后的准备工作</li>
+<li>测试用例之前的准备工作</li>
+<li>测试用例之后的准备工作</li>
+<li>测试用例模板</li>
+<li>测试用例超时的时间</li>
+<li>强制标记</li>
+<li>默认标记</li>
+</ol>
+</li>
+<li>Import导入外部文件</li>
+<li>定义内部变量：</li>
+<li>定义元数据：</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>创建测试用例 new testcase</li>
+<li>创建业务关键字（资源文件，它是自定义关键字的载体。） new resource<ol>
+<li>注意:只能在文件夹下面创建，并且是txt格式。</li>
+</ol>
+</li>
+<li>创建用户自定义关键字 new user keyword</li>
+</ol>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>RobotFramework</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot 笔记</title>
     <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
@@ -933,6 +895,79 @@
       </tags>
   </entry>
   <entry>
+    <title>Windows安装MongoDB</title>
+    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
+    <content><![CDATA[<blockquote>
+<ul>
+<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
+<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
+<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
+</ul>
+</blockquote>
+<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
+<li>例如：D:\Program Files\mongodb4.2.2</li>
+</ul>
+<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
+<li>配置到bin目录，并将目录加入到path中</li>
+</ul>
+<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
+<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
+<li>在data文件夹下创建”/db”空文件夹；</li>
+<li>在log文件夹下创建”mongo.log”空文件。</li>
+</ul>
+<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#数据库文件的存放位置</span><br><span class="hljs-attr">dbpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\data\db</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#日志文件存放的路径</span><br><span class="hljs-attr">logpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\log\mongo.log</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">mongod -<span class="hljs-literal">-config</span> <span class="hljs-string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="hljs-literal">-install</span> -<span class="hljs-literal">-serviceName</span> <span class="hljs-string">&quot;MongoDB&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net <span class="hljs-built_in">start</span> MongoDB<br></code></pre></td></tr></table></figure>
+
+<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net stop MongoDB<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git clone中常见问题的总结</title>
+    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
+<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>方法2: 浅层克隆，深度设置为1</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
+<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
+</blockquote>
+<ul>
+<li>解决方法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VirtualBox虚拟机鼠标不能使用</title>
     <url>/2019/11/10/VirtualBox%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%BC%A0%E6%A0%87%E4%B8%8D%E8%83%BD%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><p>1.Question：VirtualBox虚拟机鼠标不能使用</p>
@@ -948,6 +983,19 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git命令小结--健忘症患者必备(持续更新中)</title>
+    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
+    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#状态查看操作</span><br><span class="hljs-comment">#查看工作区，暂存区状态</span><br>git status<br><br><span class="hljs-comment">#添加操作</span><br><span class="hljs-comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span><br>git add [file name]<br><br><span class="hljs-comment">#提交操作</span><br><span class="hljs-comment">#将暂存区的内容提交到本地库</span><br>git commit -m <span class="hljs-string">&quot;commit messgae&quot;</span> [file name]<br><br><span class="hljs-comment">#查看历史记录操作</span><br><span class="hljs-comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span><br>git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span><br>git reflog<br><br>89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="hljs-keyword">for</span> WeChat<br>2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="hljs-keyword">for</span> WeChat.<br><br><br><span class="hljs-comment">#删除文件并找回</span><br><br><span class="hljs-comment">#比较文件差异</span><br></code></pre></td></tr></table></figure>
+<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -994,89 +1042,41 @@
       </tags>
   </entry>
   <entry>
-    <title>git clone中常见问题的总结</title>
-    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
-<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
+    <title>Python Enum小结</title>
+    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
+<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
+<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
+<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
+<li>name不允许重复，value允许重复</li>
+<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
+<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
+<p>创建方式1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
 
-<ul>
-<li>方法2: 浅层克隆，深度设置为1</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
+<p>创建方式2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
 
-<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
-<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
-</blockquote>
-<ul>
-<li>解决方法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<p>使用方式1:正常使用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
 
+<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
 
+<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
+<p>4:设置value唯一性，不允许出现相同的value</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
-        <category>Linux</category>
+        <category>自动化测试</category>
       </categories>
       <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows安装MongoDB</title>
-    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
-<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
-<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
-</ul>
-</blockquote>
-<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
-<li>例如：D:\Program Files\mongodb4.2.2</li>
-</ul>
-<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
-<li>配置到bin目录，并将目录加入到path中</li>
-</ul>
-<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
-<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
-<li>在data文件夹下创建”/db”空文件夹；</li>
-<li>在log文件夹下创建”mongo.log”空文件。</li>
-</ul>
-<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#数据库文件的存放位置</span><br><span class="hljs-attr">dbpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\data\db</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#日志文件存放的路径</span><br><span class="hljs-attr">logpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\log\mongo.log</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">mongod -<span class="hljs-literal">-config</span> <span class="hljs-string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="hljs-literal">-install</span> -<span class="hljs-literal">-serviceName</span> <span class="hljs-string">&quot;MongoDB&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net <span class="hljs-built_in">start</span> MongoDB<br></code></pre></td></tr></table></figure>
-
-<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net stop MongoDB<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git命令小结--健忘症患者必备(持续更新中)</title>
-    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
-    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#状态查看操作</span><br><span class="hljs-comment">#查看工作区，暂存区状态</span><br>git status<br><br><span class="hljs-comment">#添加操作</span><br><span class="hljs-comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span><br>git add [file name]<br><br><span class="hljs-comment">#提交操作</span><br><span class="hljs-comment">#将暂存区的内容提交到本地库</span><br>git commit -m <span class="hljs-string">&quot;commit messgae&quot;</span> [file name]<br><br><span class="hljs-comment">#查看历史记录操作</span><br><span class="hljs-comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span><br>git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span><br>git reflog<br><br>89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="hljs-keyword">for</span> WeChat<br>2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="hljs-keyword">for</span> WeChat.<br><br><br><span class="hljs-comment">#删除文件并找回</span><br><br><span class="hljs-comment">#比较文件差异</span><br></code></pre></td></tr></table></figure>
-<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1154,6 +1154,52 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </tags>
   </entry>
   <entry>
+    <title>性能测试笔记</title>
+    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>性能测试：</p>
+<ul>
+<li>所谓性能测试其实就是效率的测试。</li>
+</ul>
+<p>目前市场主流的性能测试工具：</p>
+<ul>
+<li>Jemter</li>
+<li>Loadrunner</li>
+<li>Locust</li>
+<li>gatling</li>
+</ul>
+<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
+<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
+<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
+<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
+<ul>
+<li><p>需求分析，分析系统的性能指标。</p>
+</li>
+<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
+</li>
+<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
+</li>
+<li><p>执行脚本，获取数据。</p>
+</li>
+<li><p>判定指标是否满足要求。</p>
+<ul>
+<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
+<li>如果不达标，进入到性能诊断</li>
+</ul>
+</li>
+<li><p>性能诊断</p>
+</li>
+<li><p>提供优化建议</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能测试</category>
+      </categories>
+      <tags>
+        <tag>PT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vsftpd服务简介</title>
     <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
     <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
@@ -1203,49 +1249,37 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </tags>
   </entry>
   <entry>
-    <title>性能测试笔记</title>
-    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>性能测试：</p>
-<ul>
-<li>所谓性能测试其实就是效率的测试。</li>
-</ul>
-<p>目前市场主流的性能测试工具：</p>
-<ul>
-<li>Jemter</li>
-<li>Loadrunner</li>
-<li>Locust</li>
-<li>gatling</li>
-</ul>
-<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
-<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
-<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
-<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
-<ul>
-<li><p>需求分析，分析系统的性能指标。</p>
-</li>
-<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
-</li>
-<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
-</li>
-<li><p>执行脚本，获取数据。</p>
-</li>
-<li><p>判定指标是否满足要求。</p>
-<ul>
-<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
-<li>如果不达标，进入到性能诊断</li>
-</ul>
-</li>
-<li><p>性能诊断</p>
-</li>
-<li><p>提供优化建议</p>
-</li>
-</ul>
+    <title>秋菊男的故事</title>
+    <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
+    <content><![CDATA[<blockquote>
+<p>   罗永浩</p>
+</blockquote>
+<p>十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游小册子，“咋还不信呢？自个儿看看吧。” </p>
+<p>那时候我刚好失恋，又赶上一个阴冷的冬天，为了缓解负面情绪带来的压力，我恶学了二十来天英语，在那个初级班结课考试的时候，考了个班里的第一名。按照事先的约定，我去学校领取数额为几百元的奖金(我不记得具体数字了，好像是三百元)。一个正方形脸蛋的中年韩国校长告诉我说，这个奖金我们不能给你钱，只能从你学习中级班时的学费里减免，我说那叫“优惠”，或者是“打折”，不叫“奖金”，你们承诺的是给“奖金”。何况，我也没答应过你们我一定会继续学习你们的中级班。韩国校长说，我们就是为了让你们努力学习才设立这个奖学金的，不是为了让你们得到钱，你们拿了钱去喝酒抽烟什么的就违背了我们设立这个奖学金的目的。我说我对你们的目的不感兴趣，我只知道你们说了给奖金就不能在考完了之后改成优惠打折，至于这个钱我拿到了之后是抽烟喝酒还是大鱼大肉，都跟你们没关系。韩国校长把脸拉成长方形，然后说，年轻人，在我们韩国，你要是对长辈这样没有礼貌，早就挨打了。 </p>
+<p>和我无能的前半生的大部分时候一样，我拿这些西装革履的流氓完全没有办法，我不能抑制地又说了脏话，“我操，你们他妈的怎么这么流氓？” </p>
+<p>和那个时代所有受了刺激的“善良市民”一样，我想到了找报社，我怯生生地生平第一次走进报社，在门口登记的时候，我学着从电视里看到的，对门卫说，我是一个“市民”，我是来“反映情况”的。非常走运的是，接待我的报社记者竟然是我的初中同学，她仔细听完我“反映情况”，充满了想来是因对老同学热心而产生的愤怒；她对我说，我一定彻底揭发他们，下午我就去他们学校采访一下，核实完情况以后，争取几天之内就让它见报。 </p>
+<p>出了报社的大门想了想，觉得我还可以再做点什么，干是又去了市教委“反映情况”。一个教委的中年马脸男斜叼着烟，皱着眉头，时不时喝口茶，听了半天后说，好，我们都知道了，你留个联系方式等我们通知你吧。 </p>
+<p>就像我从他表情里预感到的那样，这个人始终没有跟我联系。而且后来我试图再去找他的时候，也被门卫挡在了外面。一周后的坏消息是，《Y市晚报》的同学告诉我说，这个“三育”学校是和市教委合作办学的一个机构，《Y市晚报》是市委办的报纸，因此她写的稿子被总编毙掉了。 </p>
+<p>我下了很大的决心，才敢走迸Y市法院。在那之前的一个星期里，我每天都对着自己念叨：“傻逼，你总得有第一次吧。”1995年的中国，我不知道有多少人像我这样对于第一次尝试用法律保护自己的权益感到兴奋、紧张和好奇，但我想这些跃跃欲试的人里，很多都是受了《秋菊打官司》的影响(无论从哪个角度看，这部1993年红遍全国的电影都是一部了不起的作品。） </p>
+<p>在法院的大厅前台，一个胖胖的中年接待男听完我来的目的之后，直接把我轰到了门外，“去去去!你这个小同志以为法院是啥地方？！这种鸡毛蒜皮的屁事儿也来捣乱！”我头脑一片空白，在法院门口愣了半天，然后发现法院对面全都是挂着简陋牌子的律师事务所。我犹豫了一下，还是硬着头皮敲开了其中一个门，很尴尬地对里面的人表示我没有钱付给他，但是很希望他能给我一些建议。一个笑眯眯的李姓律师给我耐心地讲解了半天，并且对我表示了鼓励和钦佩。在1995年的中国，在人口不到30万的小城Y市，一个决定用法律手段解决这类问题的小伙子在他看来，是一个“了不起的年轻人”，“观念很超前啊”，他这样说。当然我也由衷地表示，他肯这样花时间，热心无偿地帮助一个陌生人，“真是一位了不起的律师啊”。 </p>
+<p>两个了不起的中国男人依依惜别后，年轻人重新杀进了法院。按照律师指点的那样，气势汹汹地要求中年接待男，“少废话，给我拿一份表格(我忘了是叫民事诉讼立案表还是什么)来！”接待男根据这个年轻人的狰狞嘴脸，看出他已经成为一个诉讼常识方面的暴发户，于是乖乖地摸出了一份表格。填完表格之后，在法院的二楼，一个非常客气但又明显冷漠的女法官接待了我，或者难确地说，是打发了我。她让我到河南(就是把Y市打劈成两半的那条河的对面)的民事立案庭(民事调解办公室？)去“试试”,我试图再多请救两句，“你上那边问吧，”她说，接着她又说了中国人都很熟悉的那句公务员用语，“这事儿不归我们管。” </p>
+<p>跟膀大腰圆的市法院不一样，河南的那个民事诉讼立案庭在一栋灰头土脸的二层小楼里。我在一群神情愁苦的乡下群众后面排了将近三个多小时的队，听到前面人申述的都是真刀真枪的冤情，比如自己家的地被强占了，比如自己家的媳妇被强占了，比如自己家的地和媳妇一起被强占了……这使得我在排队过程中感到越来越没底气，除非我申述的时候他们能给我清场，不然我实在没勇气在这样一群不幸的人当中把我那点“鸡毛蒜皮的屁事儿”坦然地说出来。何况，每一个老乡说完之后，立案庭的中年妇女都会用让人彻底绝望的口气重复同一句话，“哎呀，同志，你这个事情很难办啊。”终干，到了还差两个人就轮到我的时候，我逃离了这个鬼地方。 </p>
+<p>最后，我想到了上街去喊一喊。几乎可以肯定这个选择是受了一些文艺作品的影响，应该是掺杂了一个年轻人在生命某个阶段产生的自我戏剧化的需要(那时候我还没有接触过这类唬人的名词，我只是模糊地意识到了一些不纯粹的东西)。 </p>
+<p>初步设想的方案大概是这样的：我穿着“反映情况”的详情的T恤衫，斜挎着大功率的收录机(口号提前录好），设法把两棍竹竿斜着捆在背上并在脑袋上方用它们撑起一个较大的口号条幅，比如“倒也谈不上天理难容”，胸前再挂一个仪仗队用的鼓，就可以上路了。我还可以发动我所有的狐朋狗友都去远远地围观，免得真的出现冷场(如果他们不敢的话)。事实上后来他们都兴奋地表示一定会去，至少会去围观。除了对我这个做法确实很支持之外，这种事情毕竟也是平淡生活里难得一见的调剂，这解释了他们为什么在电话里表示要去的时候，夹杂了大量兴奋的、音色失真的“我操”！ </p>
+<p>计划中的路线是从市医院门口出发，放着录音口号，敲着鼓，经过市公安局、市委(在市委门口会多待一会儿，可能还应该呼唤马脸男出来对个话什么的，当然，这个比较没有创意)、州委、州政府，最后到达位于铁南(即铁路之南)的“三育“学校门口。这个倒霉学校刚好在一条大马路的边上，所以基本上，当造型醒目的我，我走到门口（这个时候录音机可以短暂地改放一会儿Roxette的Look Sharp），只要往那儿一杵，就会引起足够的围观了。我想如果我能坚持上一个星期，这个手巴掌大的城市里的所有市民就都该知道这件事了。 </p>
+<p>我简单学习了一下相关法律条例，然后就写了一份书面申请去公安局。窗门的小同志显然没见过这种申请，甚至不知道该如何处理，埋头焦虑地不停拨打电话询问。我想了想，就给在市公安局工作的老同学李神探打了个电话，李神探神情凝重地出来把我拽到他的办公室，“我操，你不想活了？”一一和所有体制内谋生的人一样，他会把做这类事情直接看成是自寻短见。 </p>
+<p>因为担心劝阻无效，李神探索性就把这件事告诉了我的父母，结果可想而知。我是说，我的父母和那个时代的绝大多数中国父母没有本质区别(其实我很能理解他们，年轻的时候就能，我只是不同意他们而已）。 </p>
+<p>开春的时候，我和一些朋友包括我的表哥到一个郊区的网球场去打球。突然，我们看到那个韩国校长和几个人也走进了场地。大家亢奋起来，七嘴八舌地出主意，最后我们决定主动去招惹他，逼他先发作，然后大伙就围上去群殴。 </p>
+<p>那时候我还很年轻，也很幼稚，没有意识到这种做法的软弱本质。我只是迟疑了一下，就兴冲冲地跟着大家在场地外边围成了半个圈子，然后大家一起恶狠狠地看着韩国校长。这小子明显慌了，假装不经意地在场内转来转去。最后，他终于发现，无论转到哪个方向，基本上都至少有一双兽兽的眼睛盯着他。 </p>
+<p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
+<p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
+<p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
 ]]></content>
       <categories>
-        <category>性能测试</category>
+        <category>读书</category>
       </categories>
       <tags>
-        <tag>PT</tag>
+        <tag>杂文</tag>
       </tags>
   </entry>
   <entry>
@@ -1277,40 +1311,6 @@ SMB协议又称为CIFS（Common Internet File System）协议。
 <p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
 <p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
 <p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
-]]></content>
-      <categories>
-        <category>读书</category>
-      </categories>
-      <tags>
-        <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>秋菊男的故事</title>
-    <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
-    <content><![CDATA[<blockquote>
-<p>   罗永浩</p>
-</blockquote>
-<p>十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游小册子，“咋还不信呢？自个儿看看吧。” </p>
-<p>那时候我刚好失恋，又赶上一个阴冷的冬天，为了缓解负面情绪带来的压力，我恶学了二十来天英语，在那个初级班结课考试的时候，考了个班里的第一名。按照事先的约定，我去学校领取数额为几百元的奖金(我不记得具体数字了，好像是三百元)。一个正方形脸蛋的中年韩国校长告诉我说，这个奖金我们不能给你钱，只能从你学习中级班时的学费里减免，我说那叫“优惠”，或者是“打折”，不叫“奖金”，你们承诺的是给“奖金”。何况，我也没答应过你们我一定会继续学习你们的中级班。韩国校长说，我们就是为了让你们努力学习才设立这个奖学金的，不是为了让你们得到钱，你们拿了钱去喝酒抽烟什么的就违背了我们设立这个奖学金的目的。我说我对你们的目的不感兴趣，我只知道你们说了给奖金就不能在考完了之后改成优惠打折，至于这个钱我拿到了之后是抽烟喝酒还是大鱼大肉，都跟你们没关系。韩国校长把脸拉成长方形，然后说，年轻人，在我们韩国，你要是对长辈这样没有礼貌，早就挨打了。 </p>
-<p>和我无能的前半生的大部分时候一样，我拿这些西装革履的流氓完全没有办法，我不能抑制地又说了脏话，“我操，你们他妈的怎么这么流氓？” </p>
-<p>和那个时代所有受了刺激的“善良市民”一样，我想到了找报社，我怯生生地生平第一次走进报社，在门口登记的时候，我学着从电视里看到的，对门卫说，我是一个“市民”，我是来“反映情况”的。非常走运的是，接待我的报社记者竟然是我的初中同学，她仔细听完我“反映情况”，充满了想来是因对老同学热心而产生的愤怒；她对我说，我一定彻底揭发他们，下午我就去他们学校采访一下，核实完情况以后，争取几天之内就让它见报。 </p>
-<p>出了报社的大门想了想，觉得我还可以再做点什么，干是又去了市教委“反映情况”。一个教委的中年马脸男斜叼着烟，皱着眉头，时不时喝口茶，听了半天后说，好，我们都知道了，你留个联系方式等我们通知你吧。 </p>
-<p>就像我从他表情里预感到的那样，这个人始终没有跟我联系。而且后来我试图再去找他的时候，也被门卫挡在了外面。一周后的坏消息是，《Y市晚报》的同学告诉我说，这个“三育”学校是和市教委合作办学的一个机构，《Y市晚报》是市委办的报纸，因此她写的稿子被总编毙掉了。 </p>
-<p>我下了很大的决心，才敢走迸Y市法院。在那之前的一个星期里，我每天都对着自己念叨：“傻逼，你总得有第一次吧。”1995年的中国，我不知道有多少人像我这样对于第一次尝试用法律保护自己的权益感到兴奋、紧张和好奇，但我想这些跃跃欲试的人里，很多都是受了《秋菊打官司》的影响(无论从哪个角度看，这部1993年红遍全国的电影都是一部了不起的作品。） </p>
-<p>在法院的大厅前台，一个胖胖的中年接待男听完我来的目的之后，直接把我轰到了门外，“去去去!你这个小同志以为法院是啥地方？！这种鸡毛蒜皮的屁事儿也来捣乱！”我头脑一片空白，在法院门口愣了半天，然后发现法院对面全都是挂着简陋牌子的律师事务所。我犹豫了一下，还是硬着头皮敲开了其中一个门，很尴尬地对里面的人表示我没有钱付给他，但是很希望他能给我一些建议。一个笑眯眯的李姓律师给我耐心地讲解了半天，并且对我表示了鼓励和钦佩。在1995年的中国，在人口不到30万的小城Y市，一个决定用法律手段解决这类问题的小伙子在他看来，是一个“了不起的年轻人”，“观念很超前啊”，他这样说。当然我也由衷地表示，他肯这样花时间，热心无偿地帮助一个陌生人，“真是一位了不起的律师啊”。 </p>
-<p>两个了不起的中国男人依依惜别后，年轻人重新杀进了法院。按照律师指点的那样，气势汹汹地要求中年接待男，“少废话，给我拿一份表格(我忘了是叫民事诉讼立案表还是什么)来！”接待男根据这个年轻人的狰狞嘴脸，看出他已经成为一个诉讼常识方面的暴发户，于是乖乖地摸出了一份表格。填完表格之后，在法院的二楼，一个非常客气但又明显冷漠的女法官接待了我，或者难确地说，是打发了我。她让我到河南(就是把Y市打劈成两半的那条河的对面)的民事立案庭(民事调解办公室？)去“试试”,我试图再多请救两句，“你上那边问吧，”她说，接着她又说了中国人都很熟悉的那句公务员用语，“这事儿不归我们管。” </p>
-<p>跟膀大腰圆的市法院不一样，河南的那个民事诉讼立案庭在一栋灰头土脸的二层小楼里。我在一群神情愁苦的乡下群众后面排了将近三个多小时的队，听到前面人申述的都是真刀真枪的冤情，比如自己家的地被强占了，比如自己家的媳妇被强占了，比如自己家的地和媳妇一起被强占了……这使得我在排队过程中感到越来越没底气，除非我申述的时候他们能给我清场，不然我实在没勇气在这样一群不幸的人当中把我那点“鸡毛蒜皮的屁事儿”坦然地说出来。何况，每一个老乡说完之后，立案庭的中年妇女都会用让人彻底绝望的口气重复同一句话，“哎呀，同志，你这个事情很难办啊。”终干，到了还差两个人就轮到我的时候，我逃离了这个鬼地方。 </p>
-<p>最后，我想到了上街去喊一喊。几乎可以肯定这个选择是受了一些文艺作品的影响，应该是掺杂了一个年轻人在生命某个阶段产生的自我戏剧化的需要(那时候我还没有接触过这类唬人的名词，我只是模糊地意识到了一些不纯粹的东西)。 </p>
-<p>初步设想的方案大概是这样的：我穿着“反映情况”的详情的T恤衫，斜挎着大功率的收录机(口号提前录好），设法把两棍竹竿斜着捆在背上并在脑袋上方用它们撑起一个较大的口号条幅，比如“倒也谈不上天理难容”，胸前再挂一个仪仗队用的鼓，就可以上路了。我还可以发动我所有的狐朋狗友都去远远地围观，免得真的出现冷场(如果他们不敢的话)。事实上后来他们都兴奋地表示一定会去，至少会去围观。除了对我这个做法确实很支持之外，这种事情毕竟也是平淡生活里难得一见的调剂，这解释了他们为什么在电话里表示要去的时候，夹杂了大量兴奋的、音色失真的“我操”！ </p>
-<p>计划中的路线是从市医院门口出发，放着录音口号，敲着鼓，经过市公安局、市委(在市委门口会多待一会儿，可能还应该呼唤马脸男出来对个话什么的，当然，这个比较没有创意)、州委、州政府，最后到达位于铁南(即铁路之南)的“三育“学校门口。这个倒霉学校刚好在一条大马路的边上，所以基本上，当造型醒目的我，我走到门口（这个时候录音机可以短暂地改放一会儿Roxette的Look Sharp），只要往那儿一杵，就会引起足够的围观了。我想如果我能坚持上一个星期，这个手巴掌大的城市里的所有市民就都该知道这件事了。 </p>
-<p>我简单学习了一下相关法律条例，然后就写了一份书面申请去公安局。窗门的小同志显然没见过这种申请，甚至不知道该如何处理，埋头焦虑地不停拨打电话询问。我想了想，就给在市公安局工作的老同学李神探打了个电话，李神探神情凝重地出来把我拽到他的办公室，“我操，你不想活了？”一一和所有体制内谋生的人一样，他会把做这类事情直接看成是自寻短见。 </p>
-<p>因为担心劝阻无效，李神探索性就把这件事告诉了我的父母，结果可想而知。我是说，我的父母和那个时代的绝大多数中国父母没有本质区别(其实我很能理解他们，年轻的时候就能，我只是不同意他们而已）。 </p>
-<p>开春的时候，我和一些朋友包括我的表哥到一个郊区的网球场去打球。突然，我们看到那个韩国校长和几个人也走进了场地。大家亢奋起来，七嘴八舌地出主意，最后我们决定主动去招惹他，逼他先发作，然后大伙就围上去群殴。 </p>
-<p>那时候我还很年轻，也很幼稚，没有意识到这种做法的软弱本质。我只是迟疑了一下，就兴冲冲地跟着大家在场地外边围成了半个圈子，然后大家一起恶狠狠地看着韩国校长。这小子明显慌了，假装不经意地在场内转来转去。最后，他终于发现，无论转到哪个方向，基本上都至少有一双兽兽的眼睛盯着他。 </p>
-<p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
-<p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
-<p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
 ]]></content>
       <categories>
         <category>读书</category>
