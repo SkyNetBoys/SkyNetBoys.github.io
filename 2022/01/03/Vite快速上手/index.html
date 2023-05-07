@@ -24,7 +24,7 @@
 <meta property="og:description" content="Vite快速上手快速上手 Vite官方目前提供了一个比较简单的脚手架：create-vite-app，可以使用这个脚手架快速创建一个使用Vite构建的Vue.js应用。 1234$ npm init vite-app &lt;project-name&gt;$ cd &lt;project-name&gt;$ npm install$ npm run dev  如果使用yarn: 1234$ ya">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-03T02:33:22.000Z">
-<meta property="article:modified_time" content="2022-01-18T14:07:02.017Z">
+<meta property="article:modified_time" content="2023-05-07T02:41:42.591Z">
 <meta property="article:author" content="Edison">
 <meta property="article:tag" content="语言基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -220,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          747 words
+          750 words
         
       </span>
     
@@ -284,7 +284,7 @@
 <blockquote>
 <p>P.S.</p>
 <p>npm init或者yarn create是这两个包管理工具提供的新功能。</p>
-<p>其内部就是自动安装一个create-<xxx>的模块（临时），然后自动执行这个木块中的斌。</p>
+<p>其内部就是自动去安装一个create-<xxx>的模块（临时），然后自动执行这个模块中的bin。</p>
 <p>例如：</p>
 <p>yarn create react-app my-react-app就相当于先yarn gloable add create-react-app，然后自动执行create-react-app my-react-app</p>
 </blockquote>
@@ -300,11 +300,9 @@
 </ul>
 <p><strong>Vite的由来</strong></p>
 <ul>
-<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。<ul>
+<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。</li>
 <li>Webpack Dev Serve冷启动时间会比较长</li>
 <li>Webpack HMR热更新的反应速度比较慢</li>
-</ul>
-</li>
 </ul>
 
                 
