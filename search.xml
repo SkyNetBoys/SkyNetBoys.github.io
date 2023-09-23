@@ -89,25 +89,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS下搭建LAMP</title>
     <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
@@ -213,6 +194,25 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -870,29 +870,6 @@
       </tags>
   </entry>
   <entry>
-    <title>TestNG下DateProvider使用</title>
-    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<blockquote>
-<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
-</blockquote>
-<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringBoot 笔记</title>
     <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
@@ -930,6 +907,29 @@
       </categories>
       <tags>
         <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TestNG下DateProvider使用</title>
+    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<blockquote>
+<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
+</blockquote>
+<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
       </tags>
   </entry>
   <entry>
@@ -1080,10 +1080,9 @@
   <entry>
     <title>samba服务简介</title>
     <url>/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="SMB简介"><a href="#SMB简介" class="headerlink" title="SMB简介"></a>SMB简介</h2><pre><code class="hljs">SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix
-系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。
-SMB协议又称为CIFS（Common Internet File System）协议。
-</code></pre>
+    <content><![CDATA[<h2 id="SMB简介"><a href="#SMB简介" class="headerlink" title="SMB简介"></a>SMB简介</h2><blockquote>
+<p>SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。SMB协议又称为CIFS（Common Internet File System）协议。</p>
+</blockquote>
 <p><img src="smb.png" alt="smb"></p>
 <p>Samba是著名的开源软件项目，在Linux/UNIX系统中实现了SMB网络协议，因此使得跨平台的文件共享变得更加容易。在部署Windows、Linux/UNIX混合平台的企业环境时，使用Smaba可以很好地解决不同系统之间的文件互访问题。</p>
 <h3 id="samba主要功能"><a href="#samba主要功能" class="headerlink" title="samba主要功能"></a>samba主要功能</h3><p>samba服务是SMB的一个开源实现，主要功能如下：</p>
@@ -1198,6 +1197,32 @@ SMB协议又称为CIFS（Common Internet File System）协议。
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>yaml文件处理-Python篇</title>
+    <url>/2023/09/24/yaml%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86-Python%E7%AF%87/</url>
+    <content><![CDATA[<blockquote>
+<p>在自动化测试数据存储中，比较常见的有csv、json、excel文件等，另外一个非常简单、好用的，而且更简洁的文件，那就是咱们今天的主角yaml文件。</p>
+</blockquote>
+<p><img src="yaml.png" alt="yaml"></p>
+<h3 id="yaml文件遵循规则"><a href="#yaml文件遵循规则" class="headerlink" title="yaml文件遵循规则"></a>yaml文件遵循规则</h3><ul>
+<li>大小写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进时不允许使用Tab键，只允许使用空格</li>
+<li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li>
+<li>使用#进行注释，从这个字符一直到行尾，都会被解析器忽略</li>
+</ul>
+<h3 id="pip安装Yaml"><a href="#pip安装Yaml" class="headerlink" title="pip安装Yaml"></a>pip安装Yaml</h3><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">pip install pyyaml<br><span class="hljs-meta">#</span><span class="bash"> ruamel.yaml是pyyaml的衍生版，可以支持YAML类型文件最新版本</span><br>pip install ruamel.yaml<br></code></pre></td></tr></table></figure>
+
+<h3 id="Code-Demo"><a href="#Code-Demo" class="headerlink" title="Code Demo"></a>Code Demo</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> yaml<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># test.yaml 文件在当前的文件的子目录 static 下</span><br><span class="hljs-comment"># 获取当前脚本所在文件夹路径</span><br>curPath = os.path.dirname(os.path.realpath(__file__))<br><span class="hljs-comment"># 获取yaml文件路径</span><br>yamlFile = os.path.join(curPath, <span class="hljs-string">&quot;static/test.yaml&quot;</span>)<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_dict</span>():</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	读取数据</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>	    d = yaml.load(f.read(), Loader=yaml.FullLoader)<br>	<span class="hljs-keyword">return</span> d<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">repair_data</span>(<span class="hljs-params">key, data</span>):</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	更新、追加操作</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        dict_temp = yaml.load(f, Loader=yaml.FullLoader)<br>        <span class="hljs-keyword">try</span>:<br>            dict_temp[key] = data<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> dict_temp:<br>                dict_temp = &#123;&#125;<br>            dict_temp.update(&#123;key:data&#125;)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        yaml.dump(dict_temp, f, allow_unicode=<span class="hljs-literal">True</span>) <span class="hljs-comment"># allow_unicode=True，解决存储时unicode编码问题。</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    repair_data(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&quot;value&quot;</span>)<br>    <span class="hljs-built_in">print</span>(get_dict())<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
