@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -189,6 +170,25 @@
 
 <p>练习：部署并发布禅道</p>
 ]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -375,6 +375,55 @@
       </categories>
       <tags>
         <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java generics</title>
+    <url>/2023/09/26/Java-generics/</url>
+    <content><![CDATA[<blockquote>
+<p>Java泛型是J2 SE1.5中引入的一个新特性，其本质是参数化类型，也就是说所操作的数据类型被指定为一个参数（type parameter）这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。</p>
+</blockquote>
+<h3 id="在class中应用"><a href="#在class中应用" class="headerlink" title="在class中应用"></a>在class中应用</h3><p>传统实现方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringPrinter</span> </span>&#123;  <br>    String content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringPrinter</span><span class="hljs-params">(String content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerPrinter</span> </span>&#123;  <br>    Integer content;  <br>  <br>    IntegerPrinter(Integer content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们测试下这两个类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    StringPrinter printer = <span class="hljs-keyword">new</span> StringPrinter(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    IntegerPrinter printer = <span class="hljs-keyword">new</span> IntegerPrinter(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 分别在控制台打印 “Hello World” 和 123</span><br></code></pre></td></tr></table></figure>
+<p>上面的例子是我们传统思维的解决方法，下面使用泛型来重构代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    Printer(T content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;String&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">//使用测试用例，同样会在控制台打印&quot;Hello World&quot; 和 123</span><br></code></pre></td></tr></table></figure>
+<p>T占位符号可以是任何字符，也可以传入多个</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">K</span>&gt; </span>&#123;  <br>    T content;  <br>    K content2;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>        <span class="hljs-keyword">this</span>.content2 = content2;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>        System.out.println(content2);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;String, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>, <span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-comment">// 控制台输出 =&gt; &quot;Hello World&quot; 123  </span><br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Integer, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 控制台输出 =&gt; 123 456</span><br></code></pre></td></tr></table></figure>
+<p>我们也可以对泛型进行一些约束(bounded generics)，比如规定传入的泛型类型必须是某一个类型的子类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCarGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Car&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">290000</span>, <span class="hljs-string">&quot;Model X&quot;</span>));  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBusGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Bus&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Bus(<span class="hljs-number">35</span>));  <br>    printer.print();  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>同时我们可以在约束继承类的同时，可以同样加入到接口实现的约束，但是要注意先后顺序，继承类在前，接口在后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span> &amp; <span class="hljs-title">Thing</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br><span class="hljs-comment">// 如果传入的类未实现该接口，在会直接报错(e.g. Bus不在类型变量T的范围内)</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="Method-中的应用"><a href="#Method-中的应用" class="headerlink" title="Method 中的应用"></a>Method 中的应用</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    print(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    print(<span class="hljs-number">1234567</span>);  <br>    print(<span class="hljs-number">12L</span>);  <br>    print(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">150000</span>,<span class="hljs-string">&quot;X5&quot;</span>));  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在method中我们同样可以使用bounded generics</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T extends Vehicle &amp; Thing&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content )</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;<br><br><span class="hljs-comment">// 传入多个泛型参数</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T,K&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>    System.out.println(content);  <br>    System.out.println(content2);  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在List中我们可以使用通配符(wildcard)来处理</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;?&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-number">123</span>);  <br>    list.add(<span class="hljs-number">456</span>);  <br>    print(list);  <br>    ArrayList&lt;String&gt; list2 = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list2.add(<span class="hljs-string">&quot;Hello&quot;</span>);  <br>    list2.add(<span class="hljs-string">&quot;World&quot;</span>);  <br>    print(list2);  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通配符的使用场景下我们同样可以引入约束</p>
+<ul>
+<li>upper bounded wildcard</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? extends Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Car&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">300000</span>,<span class="hljs-string">&quot;320&quot;</span>));  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">700000</span>,<span class="hljs-string">&quot;750&quot;</span>));  <br>    print(list);  <br>  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>lower bounded wildcard</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? <span class="hljs-keyword">super</span> Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;<br><span class="hljs-comment">// 传入的类型必须是Car本身或者Car的父类，如果传入Bus就会直接报错</span><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight puppet"><table><tr><td class="code"><pre><code class="hljs puppet">备注：博文涉及到的英文单次小结：<br>Generics<br><span class="hljs-keyword">Wildcard</span><br>&#123;&#125; <span class="hljs-keyword">Curly</span> <span class="hljs-keyword">Braces</span><br>&lt;&gt; Angle Brackets<br>? Question Mark<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
