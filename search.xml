@@ -70,6 +70,25 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS下搭建LAMP</title>
     <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
@@ -170,25 +189,6 @@
 
 <p>练习：部署并发布禅道</p>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -383,7 +383,7 @@
     <content><![CDATA[<blockquote>
 <p>Java泛型是J2 SE1.5中引入的一个新特性，其本质是参数化类型，也就是说所操作的数据类型被指定为一个参数（type parameter）这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。</p>
 </blockquote>
-<h3 id="在class中应用"><a href="#在class中应用" class="headerlink" title="在class中应用"></a>在class中应用</h3><p>传统实现方法</p>
+<h3 id="在Class中应用"><a href="#在Class中应用" class="headerlink" title="在Class中应用"></a>在Class中应用</h3><p>传统实现方法</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringPrinter</span> </span>&#123;  <br>    String content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringPrinter</span><span class="hljs-params">(String content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerPrinter</span> </span>&#123;  <br>    Integer content;  <br>  <br>    IntegerPrinter(Integer content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
 <p>我们测试下这两个类</p>
@@ -651,6 +651,36 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PyQT5 GUI中内置CMD</title>
+    <url>/2023/09/26/PyQT5-GUI%E4%B8%AD%E5%86%85%E7%BD%AECMD/</url>
+    <content><![CDATA[<blockquote>
+<p>PyQt实现了一个Python模块集。它有超过300类，将近6000个函数和方法。它是一个多平台的工具包，可以运行在所有主要操作系统上，包括UNIX，Windows和Mac。 PyQt采用双许可证，开发人员可以选择GPL和商业许可。在此之前，GPL的版本只能用在Unix上，从PyQt的版本4开始，GPL许可证可用于所有支持的平台。</p>
+</blockquote>
+<p><img src="qt.png" alt="qt"></p>
+<h3 id="直接在QT中内置CMD"><a href="#直接在QT中内置CMD" class="headerlink" title="直接在QT中内置CMD"></a>直接在QT中内置CMD</h3><p>在PyQT5下，将CMD应用直接内置到窗体应用中去：</p>
+<p><img src="qt1.png" alt="qt1"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">import</span> subprocess<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> win32gui<br><br><span class="hljs-keyword">from</span> PyQt5.QtCore <span class="hljs-keyword">import</span> QProcess, Qt<br><span class="hljs-keyword">from</span> PyQt5.QtGui <span class="hljs-keyword">import</span> QWindow, QIcon, QFont<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QMainWindow<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QMdiArea, QSplitter, QTextBrowser<br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QWidget, QApplication, QVBoxLayout<br><span class="hljs-keyword">from</span> win32com <span class="hljs-keyword">import</span> client<br><span class="hljs-keyword">from</span> win32gui <span class="hljs-keyword">import</span> GetWindowText, EnumWindows,SetForegroundWindow<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Example</span>(<span class="hljs-params">QMainWindow</span>):</span><br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        self.p = QProcess()<br>        self.layout = QVBoxLayout()<br>        self.mdi = QMdiArea()<br>        self.mainSplitter = QSplitter(Qt.Vertical)<br>        self.setCentralWidget(self.mainSplitter)<br>        self.mainSplitter.addWidget(QTextBrowser())<br>        self.initUI()<br><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">initUI</span>(<span class="hljs-params">self</span>):</span><br>        self.runExe()<br>        EnumWindows(self.set_cmd_to_foreground, <span class="hljs-literal">None</span>)<br>        hwnd1 = win32gui.GetForegroundWindow()<br>        <span class="hljs-comment">#hwnd1 = win32gui.FindWindow(None, &quot;C:\\Windows\\system32\\calc.exe&quot;)</span><br>        <span class="hljs-built_in">print</span>(hwnd1)<br>        window = QWindow.fromWinId(hwnd1)<br>        container_widge = self.createWindowContainer(window, self)<br>        container_widge.setFocusPolicy(Qt.TabFocus)<br>        container_widge.setFocus()<br>        container_widge.setWindowTitle(<span class="hljs-string">&quot;ain&quot;</span>)<br>        container_widge.setFont(QFont(<span class="hljs-string">&quot;Times New Roman&quot;</span>))<br>        container_widge.setGeometry(<span class="hljs-number">500</span>, <span class="hljs-number">500</span>, <span class="hljs-number">450</span>, <span class="hljs-number">400</span>)<br>        <span class="hljs-comment">#container_widge.setFocusPolicy()</span><br>        container_widge.activateWindow()<br>        container_widge.acceptDrops()<br>        container_widge.grabMouse()<br>        container_widge.setMouseTracking(<span class="hljs-literal">True</span>)<br>        self.mainSplitter.addWidget(container_widge)<br>        self.showMaximized()<br>        <span class="hljs-comment">#self.setGeometry(200, 200, 700, 700)</span><br>        <span class="hljs-comment">#self.show()</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">runExe</span>(<span class="hljs-params">self</span>):</span><br>        shell.run(<span class="hljs-string">&quot;cmd.exe&quot;</span>)<br>        time.sleep(<span class="hljs-number">1</span>)<br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">set_cmd_to_foreground</span>(<span class="hljs-params">self, hwnd, extra</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;sets first command prompt to forgeround&quot;&quot;&quot;</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-string">&quot;cmd.exe&quot;</span> <span class="hljs-keyword">in</span> GetWindowText(hwnd):<br>            <span class="hljs-built_in">print</span>(hwnd)<br>            SetForegroundWindow(hwnd)<br>            <span class="hljs-keyword">return</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_script</span>(<span class="hljs-params">self, shell, scripts</span>):</span><br>        <span class="hljs-string">&quot;&quot;&quot;runs the py script&quot;&quot;&quot;</span><br>        shell.SendKeys(scripts+<span class="hljs-string">&quot;&#123;ENTER&#125;&quot;</span>)<br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    shell = client.Dispatch(<span class="hljs-string">&quot;WScript.Shell&quot;</span>)<br>    app = QApplication(sys.argv)<br>    ex = Example()<br>    <span class="hljs-comment">#ex.run_script(shell, &quot;python -m pip list&quot;)</span><br>    <span class="hljs-comment">#ex.show()</span><br>    sys.exit(app.exec_())<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="将CMD命令结果返回到QT"><a href="#将CMD命令结果返回到QT" class="headerlink" title="将CMD命令结果返回到QT"></a>将CMD命令结果返回到QT</h3><p><img src="qt2.png" alt="qt2"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys  <br>  <br><span class="hljs-keyword">from</span> PyQt5.QtCore <span class="hljs-keyword">import</span> QProcess, QTextStream  <br><span class="hljs-keyword">from</span> PyQt5.QtWidgets <span class="hljs-keyword">import</span> QApplication, QMainWindow, QTextEdit, QLineEdit, QVBoxLayout, QHBoxLayout, QWidget, \  <br>    QPushButton  <br>  <br>  <br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainWindow</span>(<span class="hljs-params">QMainWindow</span>):</span>  <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span>  <br>        <span class="hljs-built_in">super</span>().__init__()  <br>  <br>        self.process = QProcess(self)  <br>        self.output = QTextEdit(self)  <br>        self.<span class="hljs-built_in">input</span> = QLineEdit(self)  <br>        self.run_command_button = QPushButton(<span class="hljs-string">&quot;Run Command&quot;</span>, self)  <br>  <br>        layout = QVBoxLayout()  <br>        input_layout = QHBoxLayout()  <br>        input_layout.addWidget(self.<span class="hljs-built_in">input</span>)  <br>        input_layout.addWidget(self.run_command_button)  <br>        layout.addLayout(input_layout)  <br>        layout.addWidget(self.output)  <br>        central_widget = QWidget(self)  <br>        central_widget.setLayout(layout)  <br>        self.setCentralWidget(central_widget)  <br>  <br>        self.process.readyReadStandardOutput.connect(self.read_output)  <br>        self.run_command_button.clicked.connect(self.run_command)  <br>        self.process.start(<span class="hljs-string">&quot;cmd.exe&quot;</span>)  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_output</span>(<span class="hljs-params">self</span>):</span>  <br>        stream = QTextStream(self.process)  <br>        self.output.append(stream.readAll())  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_command</span>(<span class="hljs-params">self</span>):</span>  <br>        command = self.<span class="hljs-built_in">input</span>.text() + <span class="hljs-string">&quot;\n&quot;</span>  <br>        self.process.write(command.encode())  <br>  <br>  <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:  <br>    app = QApplication(sys.argv)  <br>    window = MainWindow()  <br>    window.show()  <br>    sys.exit(app.exec_())<br></code></pre></td></tr></table></figure>
+
+
+
+<p>QT QProcess调用py文件，使用readyReadStandardOutput()无法获得信号的解决办法:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 解决办法是在py文件的每一行print()后面添加一行代码</span><br>sys.stdout.flush()<br></code></pre></td></tr></table></figure>
+
+<p>因为python中print()一次并不是立即打印，而是要等缓冲区满了再打印，用这种办法强制刷新缓冲区后，可以立即触发信号。</p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
