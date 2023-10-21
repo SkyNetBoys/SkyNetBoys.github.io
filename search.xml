@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -86,6 +67,25 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -532,7 +532,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">()</span></span>;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
 <p>Email实现类 </p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Email</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <br>    String email;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Email</span><span class="hljs-params">()</span> </span>&#123;&#125;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">()</span> </span>&#123;<br>	    System.out.println(<span class="hljs-string">&quot;This is a email.&quot;</span>);   <br>	    &#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Email</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <br>    String email;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Email</span><span class="hljs-params">()</span> </span>&#123;&#125;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">()</span> </span>&#123;<br>	    System.out.println(<span class="hljs-string">&quot;This is a email.&quot;</span>);   <br>	&#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
 <p>SMS实现类 </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Sms</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <br>    String phoneNumber;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Sms</span><span class="hljs-params">()</span> </span>&#123;&#125;  <br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">()</span> </span>&#123;        <br>	    System.out.println(<span class="hljs-string">&quot;This is a sms.&quot;</span>);    <br>	&#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
@@ -541,7 +541,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SIT</span> </span>&#123;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message message)</span> </span>&#123;        <br>	    message.send();    <br>	&#125;  <br>    <br>    <span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_email</span><span class="hljs-params">()</span> </span>&#123;        <br>	    Message message = <span class="hljs-keyword">new</span> Email();        <br>	    sendMessage(message);    <br>	&#125;  <br>    <br>    <span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_sms</span><span class="hljs-params">()</span> </span>&#123;        <br>	    Message message = <span class="hljs-keyword">new</span> Sms();        <br>	    sendMessage(message);    <br>	&#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
 <p>这种传统方法的弊端显而易见，创建了多个实现类，Lambda表达式应运而生  </p>
-<h3 id="Lambda实现方式"><a href="#Lambda实现方式" class="headerlink" title="Lambda实现方式"></a>Lambda实现方式</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSIT</span> </span>&#123;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message message)</span> </span>&#123;        <br>	    message.send();    <br>    &#125;  <br>    <span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_email</span><span class="hljs-params">()</span> </span>&#123;        <br>		    <span class="hljs-comment">//如果只包含一条实现语句，也可以取消大括号，详见test_message_sms的写法，如果实现包含多条语句，则要求使用大括号        </span><br>		    sendMessage(() -&gt; &#123;            <br>	        System.out.println(<span class="hljs-string">&quot;This is email.&quot;</span>);        <br>        &#125;);    <br>    &#125;  <br>    <br>    <span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_sms</span><span class="hljs-params">()</span> </span>&#123;        <br>	    sendMessage(() -&gt; System.out.println(<span class="hljs-string">&quot;This is sms.&quot;</span>));    <br>    &#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
+<h3 id="Lambda实现方式"><a href="#Lambda实现方式" class="headerlink" title="Lambda实现方式"></a>Lambda实现方式</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestSIT</span> </span>&#123;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sendMessage</span><span class="hljs-params">(Message message)</span> </span>&#123;        <br>	    message.send();    <br>    &#125;  <br>    <br>	<span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_email</span><span class="hljs-params">()</span> </span>&#123;        <br>		    <span class="hljs-comment">/*</span><br><span class="hljs-comment">			如果只包含一条实现语句，也可以取消大括号，详见test_message_sms的写法，如果</span><br><span class="hljs-comment">			实现包含多条语句，则要求使用大括号        </span><br><span class="hljs-comment">			*/</span><br>		    sendMessage(() -&gt; &#123;            <br>	        System.out.println(<span class="hljs-string">&quot;This is email.&quot;</span>);        <br>        &#125;);    <br>    &#125;  <br>    <br>    <span class="hljs-meta">@Test</span>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_sms</span><span class="hljs-params">()</span> </span>&#123;        <br>	    sendMessage(() -&gt; System.out.println(<span class="hljs-string">&quot;This is sms.&quot;</span>));    <br>    &#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
 <h4 id="实现的方法包含参数的情况"><a href="#实现的方法包含参数的情况" class="headerlink" title="实现的方法包含参数的情况"></a>实现的方法包含参数的情况</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">send</span><span class="hljs-params">(String name)</span></span>;<br>&#125;  <br></code></pre></td></tr></table></figure>
 
@@ -839,27 +839,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>RobotFramework学习笔记</title>
     <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
@@ -931,6 +910,27 @@
       </categories>
       <tags>
         <tag>RobotFramework</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
