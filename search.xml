@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -43,6 +67,133 @@
       </categories>
       <tags>
         <tag>Appium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS下搭建LAMP</title>
+    <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
+    <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
+<table>
+<thead>
+<tr>
+<th align="center">WebSite</th>
+<th align="center">System</th>
+<th align="center">Server</th>
+<th align="center">Database</th>
+<th align="center">language</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Yahoo</td>
+<td align="center">FreeBSD + Linux</td>
+<td align="center">Apache</td>
+<td align="center">MySQL</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Facebook</td>
+<td align="center">FreeBSD</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Wikimedia</td>
+<td align="center">Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Flickr</td>
+<td align="center">Redhat</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP + Perl</td>
+</tr>
+<tr>
+<td align="center">Sina</td>
+<td align="center">FreeBSD + Solaris</td>
+<td align="center">Apache + Nginx</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">YouTube</td>
+<td align="center">Suse Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL</td>
+<td align="center">Python</td>
+</tr>
+</tbody></table>
+<h3 id="搭建LNMP"><a href="#搭建LNMP" class="headerlink" title="搭建LNMP"></a>搭建LNMP</h3><p>源代码编译安装</p>
+<ol>
+<li>首先准备一下软件包，如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">mysql-5.0.22.tar.gz<br>httpd-2.2.17.tar.gz<br>php-5.3.5.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>以上是LAMP搭建必备的安装包，可以去各个官方网站上下载，这三个安装包没有先后的安装顺序，先将以上三个包上出至Linux下的/usr/local/src目录下，并给予可执行权限。</p>
+<ol start="2">
+<li>安装mysql，这里要介绍mysql的源代码编译安装方式，进入已经部署好饿的Centos linux学习环境，通过命令ps -ef | grep mysql来查看是否有运行的mysql进程，然后可以通过一些命令来查找mysql是否已经安装，具体如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">groupadd mysql<br><span class="hljs-comment">#创建mysql用户，并将用户指定至mysql组</span><br>useradd mysql -g mysql<br><span class="hljs-comment">#解压到mysql-5.0.22目录下</span><br>tar -zxvf mysql-5.0.22.tar.gz<br><span class="hljs-comment">#这里是配置mysql的安装目录</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/mysql                     <br>make<br><span class="hljs-comment">#安装</span><br>make install<br><span class="hljs-comment">#待安装完成之后，将当前目录下的配置文件拷贝到系统配置文件下，并更名为my.cnf</span><br>cp support-files/my-medium.cnf /etc/my.cnf          <br><span class="hljs-comment">#切换到mysql安装目录下</span><br><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/mysql                                              <br><span class="hljs-comment">#将该目录的用户权限全部更改为mysql用户</span><br>chown -R mysql .                                                <br><span class="hljs-comment">#将该目录的用户组全部更改为mysql用户组</span><br>chgrp -R mysql .                                                <br><span class="hljs-comment">#将mysql目录的数据使用权限指定为mysql</span><br>bin/mysql_install_db --user=mysql                      <br>chown -R mysql var<br><span class="hljs-comment">#指定mysql用户启动mysql </span><br>bin/mysqld_safe --user=mysql &amp;                         <br><span class="hljs-comment">#执行这个命令用于设置或者更改数据库的密码</span><br>bin/mysqladmin -u root password 新密码<br><span class="hljs-comment">#这里将mysql的启动文件拷贝到系统的启动目录下</span><br>cp /usr/<span class="hljs-built_in">local</span>/src/mysql-5.0.22/support-files/mysql.server  /etc/rc.d/init.d/mysql      //<br><span class="hljs-comment">#给系统目录的mysql命令以可执行权限</span><br>chmod +x /etc/rc.d/init.d/mysql                         <br><span class="hljs-comment">#将mysql启动添加到系统自启动列表下</span><br>chkconfig --add mysql         <br><span class="hljs-comment">#当然这里还有另外一些方法来设置mysql自动启动，以上就是mysql源代码编译安装全过程，为了验证mysql安装是否成功，需要执行如下命令：</span><br><span class="hljs-comment">#//启动mysql数据库服务</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysqld_safe --user=mysql &amp;<br><span class="hljs-comment">#进入并访问mysql数据，如果进入mysql数据库命令行，说明mysql数据库安装成功。</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysql -uroot -proot              <br></code></pre></td></tr></table></figure>
+
+<p>如图所示：<br><img src="1.jpg" alt="1">  </p>
+<ol start="3">
+<li>安装apache，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -zxvf httpd-2.2.4.tar.gz<br><span class="hljs-built_in">cd</span> httpd-2.2.4<br><span class="hljs-comment">#配置与mysql的关联，并启动动态连接库</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/apache --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --enable-module=so --enable-shared=max <br>mark<br>mark install<br></code></pre></td></tr></table></figure>
+
+<p>启动apache服务，如下图所示：<br><img src="2.jpg" alt="2"><br>设置apache自动随操作系统启动，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将apache的启动程序命令放置系统启动文件下，当然mysql也可以这么设置</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/usr/local/apache/bin/apachectl start&quot;</span> &gt;&gt; /etc/rc.local          <br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安装php，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -zxvf php-5.2.2.tar.gz<br><span class="hljs-built_in">cd</span> php-5.2.2<br><span class="hljs-comment">#这里是配置php与apache、mysql的关联</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/php/ --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --with-apxs2=/usr/<span class="hljs-built_in">local</span>/apache/bin/apxs --enable-sockets  <br>make<br>make install<br>cp php.ini-development /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini                      //这里需要注意的是，在新版的php配置文件将php.ini-dist更改成php.ini-development<br>vi /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini   <br></code></pre></td></tr></table></figure>
+
+<p>上述就是PHP的安装过程。</p>
+<ol start="5">
+<li>测试<br>安装完成以上个包之后，需要更改apache的配置文件，来达到解析php文件的目的</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/conf/httpd.conf<br></code></pre></td></tr></table></figure>
+
+<p>通过“/”来查找到AddType application/x-gzip .tgz，这里需要注意的是，不是带有的注意标记的#，在找到AddType application/x-gzip .tgz的后面添加如图所示文件：<br><img src="3.jpg" alt="3"></p>
+<p>添加文件为AddType application/x-httpd-php .php .phtml，表示apache服务中可以解析php格式文件<br>接下来要检查apache目录下生成的php动态连接库文件，在目录/usr/local/apache/modules，找到是否存在 libphp5.so文件<br>一系列安装结束之后，通过一个简单的php测试页面来测试LAMP环境搭建成功与否。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/htdocs/index.php<br></code></pre></td></tr></table></figure>
+
+<p>内容为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>phpinfo();<br>?&gt;<br></code></pre></td></tr></table></figure>
+
+<p>启动httpd<br>在浏览器上输入：<a href="http://ip/index.php%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%A6%82%E4%B8%8B%E9%A1%B5%E9%9D%A2%EF%BC%8C%E8%A1%A8%E6%98%8E%E6%88%90%E5%8A%9F%EF%BC%9B">http://ip/index.php，显示如下页面，表明成功；</a><br><img src="4.jpg" alt="4"><br>里面分别显示php、apache和mysql的相关版本信息等内容。<br><strong>yum安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装apache</span><br>yum install –y httpd<br><span class="hljs-comment">#安装MySQL</span><br>yum install –y mysql-server mysql<br><span class="hljs-comment">#安装PHP及相关模块</span><br>yum install –y php php-mysql<br></code></pre></td></tr></table></figure>
+
+<p>练习：部署并发布禅道</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -227,27 +378,52 @@
       </tags>
   </entry>
   <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+    <title>Java generics</title>
+    <url>/2023/09/26/Java-generics/</url>
+    <content><![CDATA[<blockquote>
+<p>Java泛型是J2 SE1.5中引入的一个新特性，其本质是参数化类型，也就是说所操作的数据类型被指定为一个参数（type parameter）这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。</p>
 </blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
+<h3 id="在Class中应用"><a href="#在Class中应用" class="headerlink" title="在Class中应用"></a>在Class中应用</h3><p>传统实现方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringPrinter</span> </span>&#123;  <br>    String content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringPrinter</span><span class="hljs-params">(String content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerPrinter</span> </span>&#123;  <br>    Integer content;  <br>  <br>    IntegerPrinter(Integer content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>我们测试下这两个类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    StringPrinter printer = <span class="hljs-keyword">new</span> StringPrinter(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    IntegerPrinter printer = <span class="hljs-keyword">new</span> IntegerPrinter(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 分别在控制台打印 “Hello World” 和 123</span><br></code></pre></td></tr></table></figure>
+<p>上面的例子是我们传统思维的解决方法，下面使用泛型来重构代码</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    Printer(T content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;String&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">//使用测试用例，同样会在控制台打印&quot;Hello World&quot; 和 123</span><br></code></pre></td></tr></table></figure>
+<p>T占位符号可以是任何字符，也可以传入多个</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">K</span>&gt; </span>&#123;  <br>    T content;  <br>    K content2;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>        <span class="hljs-keyword">this</span>.content2 = content2;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>        System.out.println(content2);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;String, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>, <span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-comment">// 控制台输出 =&gt; &quot;Hello World&quot; 123  </span><br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Integer, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 控制台输出 =&gt; 123 456</span><br></code></pre></td></tr></table></figure>
+<p>我们也可以对泛型进行一些约束(bounded generics)，比如规定传入的泛型类型必须是某一个类型的子类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCarGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Car&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">290000</span>, <span class="hljs-string">&quot;Model X&quot;</span>));  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBusGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Bus&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Bus(<span class="hljs-number">35</span>));  <br>    printer.print();  <br>&#125;<br></code></pre></td></tr></table></figure>
+<p>同时我们可以在约束继承类的同时，可以同样加入到接口实现的约束，但是要注意先后顺序，继承类在前，接口在后</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span> &amp; <span class="hljs-title">Thing</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br><span class="hljs-comment">// 如果传入的类未实现该接口，在会直接报错(e.g. Bus不在类型变量T的范围内)</span><br></code></pre></td></tr></table></figure>
 
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Method-中的应用"><a href="#Method-中的应用" class="headerlink" title="Method 中的应用"></a>Method 中的应用</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    print(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    print(<span class="hljs-number">1234567</span>);  <br>    print(<span class="hljs-number">12L</span>);  <br>    print(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">150000</span>,<span class="hljs-string">&quot;X5&quot;</span>));  <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在method中我们同样可以使用bounded generics</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T extends Vehicle &amp; Thing&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content )</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;<br><br><span class="hljs-comment">// 传入多个泛型参数</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T,K&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>    System.out.println(content);  <br>    System.out.println(content2);  <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
+<p>在List中我们可以使用通配符(wildcard)来处理</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;?&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-number">123</span>);  <br>    list.add(<span class="hljs-number">456</span>);  <br>    print(list);  <br>    ArrayList&lt;String&gt; list2 = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list2.add(<span class="hljs-string">&quot;Hello&quot;</span>);  <br>    list2.add(<span class="hljs-string">&quot;World&quot;</span>);  <br>    print(list2);  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>通配符的使用场景下我们同样可以引入约束</p>
+<ul>
+<li>upper bounded wildcard</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? extends Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Car&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">300000</span>,<span class="hljs-string">&quot;320&quot;</span>));  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">700000</span>,<span class="hljs-string">&quot;750&quot;</span>));  <br>    print(list);  <br>  <br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>lower bounded wildcard</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? <span class="hljs-keyword">super</span> Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;<br><span class="hljs-comment">// 传入的类型必须是Car本身或者Car的父类，如果传入Bus就会直接报错</span><br></code></pre></td></tr></table></figure>
+
+
+<figure class="highlight puppet"><table><tr><td class="code"><pre><code class="hljs puppet">备注：博文涉及到的英文单次小结：<br>Generics<br><span class="hljs-keyword">Wildcard</span><br>&#123;&#125; <span class="hljs-keyword">Curly</span> <span class="hljs-keyword">Braces</span><br>&lt;&gt; Angle Brackets<br>? Question Mark<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
+        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
@@ -280,7 +456,7 @@
 <p>接下来我们使用Optional来改造下开始的例子</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简介，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
+<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
@@ -401,25 +577,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Lambda Expression in Java</title>
     <url>/2023/10/21/Lambda-Expression-in-Java/</url>
     <content><![CDATA[<blockquote>
@@ -474,55 +631,6 @@
 
 <p>有且只有一个抽象方法的interface上，同时我们成这样的接收为Functional Interface，同时我们可以在接口上加注解@FunctionalInterface  </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FunctionalInterface</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <span class="hljs-function">String <span class="hljs-title">send</span><span class="hljs-params">(String name,String title)</span></span>;  <br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java generics</title>
-    <url>/2023/09/26/Java-generics/</url>
-    <content><![CDATA[<blockquote>
-<p>Java泛型是J2 SE1.5中引入的一个新特性，其本质是参数化类型，也就是说所操作的数据类型被指定为一个参数（type parameter）这种参数类型可以用在类、接口和方法的创建中，分别称为泛型类、泛型接口、泛型方法。</p>
-</blockquote>
-<h3 id="在Class中应用"><a href="#在Class中应用" class="headerlink" title="在Class中应用"></a>在Class中应用</h3><p>传统实现方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StringPrinter</span> </span>&#123;  <br>    String content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StringPrinter</span><span class="hljs-params">(String content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">IntegerPrinter</span> </span>&#123;  <br>    Integer content;  <br>  <br>    IntegerPrinter(Integer content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
-<p>我们测试下这两个类</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    StringPrinter printer = <span class="hljs-keyword">new</span> StringPrinter(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    IntegerPrinter printer = <span class="hljs-keyword">new</span> IntegerPrinter(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 分别在控制台打印 “Hello World” 和 123</span><br></code></pre></td></tr></table></figure>
-<p>上面的例子是我们传统思维的解决方法，下面使用泛型来重构代码</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    Printer(T content) &#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;String&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span></span>&#123;  <br>    Printer&lt;Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">//使用测试用例，同样会在控制台打印&quot;Hello World&quot; 和 123</span><br></code></pre></td></tr></table></figure>
-<p>T占位符号可以是任何字符，也可以传入多个</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span>, <span class="hljs-title">K</span>&gt; </span>&#123;  <br>    T content;  <br>    K content2;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>        <span class="hljs-keyword">this</span>.content2 = content2;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>        System.out.println(content2);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testStringGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;String, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-string">&quot;Hello World&quot;</span>, <span class="hljs-number">123</span>);  <br>    printer.print();  <br>&#125;  <br><span class="hljs-comment">// 控制台输出 =&gt; &quot;Hello World&quot; 123  </span><br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testIntegerGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Integer, Integer&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-number">123</span>, <span class="hljs-number">456</span>);  <br>    printer.print();  <br>&#125;<br><span class="hljs-comment">// 控制台输出 =&gt; 123 456</span><br></code></pre></td></tr></table></figure>
-<p>我们也可以对泛型进行一些约束(bounded generics)，比如规定传入的泛型类型必须是某一个类型的子类型</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCarGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Car&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">290000</span>, <span class="hljs-string">&quot;Model X&quot;</span>));  <br>    printer.print();  <br>&#125;  <br>  <br><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testBusGenericsPrinter</span><span class="hljs-params">()</span> </span>&#123;  <br>    Printer&lt;Bus&gt; printer = <span class="hljs-keyword">new</span> Printer&lt;&gt;(<span class="hljs-keyword">new</span> Bus(<span class="hljs-number">35</span>));  <br>    printer.print();  <br>&#125;<br></code></pre></td></tr></table></figure>
-<p>同时我们可以在约束继承类的同时，可以同样加入到接口实现的约束，但是要注意先后顺序，继承类在前，接口在后</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Printer</span>&lt;<span class="hljs-title">T</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Vehicle</span> &amp; <span class="hljs-title">Thing</span>&gt; </span>&#123;  <br>    T content;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Printer</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>        <span class="hljs-keyword">this</span>.content = content;  <br>    &#125;  <br>  <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">()</span> </span>&#123;  <br>        System.out.println(content);  <br>    &#125;  <br>&#125;<br><span class="hljs-comment">// 如果传入的类未实现该接口，在会直接报错(e.g. Bus不在类型变量T的范围内)</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="Method-中的应用"><a href="#Method-中的应用" class="headerlink" title="Method 中的应用"></a>Method 中的应用</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content)</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    print(<span class="hljs-string">&quot;Hello World&quot;</span>);  <br>    print(<span class="hljs-number">1234567</span>);  <br>    print(<span class="hljs-number">12L</span>);  <br>    print(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">150000</span>,<span class="hljs-string">&quot;X5&quot;</span>));  <br>&#125;<br></code></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在method中我们同样可以使用bounded generics</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T extends Vehicle &amp; Thing&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content )</span> </span>&#123;  <br>    System.out.println(content);  <br>&#125;<br><br><span class="hljs-comment">// 传入多个泛型参数</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T,K&gt; <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(T content, K content2)</span> </span>&#123;  <br>    System.out.println(content);  <br>    System.out.println(content2);  <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>在List中我们可以使用通配符(wildcard)来处理</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;?&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Integer&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-number">123</span>);  <br>    list.add(<span class="hljs-number">456</span>);  <br>    print(list);  <br>    ArrayList&lt;String&gt; list2 = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list2.add(<span class="hljs-string">&quot;Hello&quot;</span>);  <br>    list2.add(<span class="hljs-string">&quot;World&quot;</span>);  <br>    print(list2);  <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>通配符的使用场景下我们同样可以引入约束</p>
-<ul>
-<li>upper bounded wildcard</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? extends Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;  <br>    ArrayList&lt;Car&gt; list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">300000</span>,<span class="hljs-string">&quot;320&quot;</span>));  <br>    list.add(<span class="hljs-keyword">new</span> Car(<span class="hljs-number">700000</span>,<span class="hljs-string">&quot;750&quot;</span>));  <br>    print(list);  <br>  <br>&#125;<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>lower bounded wildcard</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(List&lt;? <span class="hljs-keyword">super</span> Vehicle&gt; list)</span> </span>&#123;  <br>    System.out.println(list);  <br>&#125;<br><span class="hljs-comment">// 传入的类型必须是Car本身或者Car的父类，如果传入Bus就会直接报错</span><br></code></pre></td></tr></table></figure>
-
-
-<figure class="highlight puppet"><table><tr><td class="code"><pre><code class="hljs puppet">备注：博文涉及到的英文单次小结：<br>Generics<br><span class="hljs-keyword">Wildcard</span><br>&#123;&#125; <span class="hljs-keyword">Curly</span> <span class="hljs-keyword">Braces</span><br>&lt;&gt; Angle Brackets<br>? Question Mark<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Java</category>
       </categories>
@@ -675,44 +783,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python Enum小结</title>
-    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
-<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
-<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
-<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
-<li>name不允许重复，value允许重复</li>
-<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
-<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
-</ul>
-<p>创建方式1：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<p>创建方式2：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
-
-<p>使用方式1:正常使用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
-
-<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
-
-<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
-<p>4:设置value唯一性，不允许出现相同的value</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PyQT5 GUI中内置CMD</title>
     <url>/2023/09/26/PyQT5-GUI%E4%B8%AD%E5%86%85%E7%BD%AECMD/</url>
     <content><![CDATA[<blockquote>
@@ -798,6 +868,65 @@
       </tags>
   </entry>
   <entry>
+    <title>Python Enum小结</title>
+    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
+<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
+<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
+<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
+<li>name不允许重复，value允许重复</li>
+<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
+<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
+</ul>
+<p>创建方式1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p>创建方式2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
+
+<p>使用方式1:正常使用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
+
+<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
+<p>4:设置value唯一性，不允许出现相同的value</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>RobotFramework学习笔记</title>
     <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
@@ -869,50 +998,6 @@
       </categories>
       <tags>
         <tag>RobotFramework</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>TestNG下DateProvider使用</title>
-    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<blockquote>
-<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
-</blockquote>
-<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
-
-<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
       </tags>
   </entry>
   <entry>
@@ -993,114 +1078,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS下搭建LAMP</title>
-    <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
-    <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
-<table>
-<thead>
-<tr>
-<th align="center">WebSite</th>
-<th align="center">System</th>
-<th align="center">Server</th>
-<th align="center">Database</th>
-<th align="center">language</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Yahoo</td>
-<td align="center">FreeBSD + Linux</td>
-<td align="center">Apache</td>
-<td align="center">MySQL</td>
-<td align="center">PHP</td>
-</tr>
-<tr>
-<td align="center">Facebook</td>
-<td align="center">FreeBSD</td>
-<td align="center">Apache</td>
-<td align="center">MySQL + Memcached</td>
-<td align="center">PHP</td>
-</tr>
-<tr>
-<td align="center">Wikimedia</td>
-<td align="center">Linux</td>
-<td align="center">Apache + Lighttpd</td>
-<td align="center">MySQL + Memcached</td>
-<td align="center">PHP</td>
-</tr>
-<tr>
-<td align="center">Flickr</td>
-<td align="center">Redhat</td>
-<td align="center">Apache</td>
-<td align="center">MySQL + Memcached</td>
-<td align="center">PHP + Perl</td>
-</tr>
-<tr>
-<td align="center">Sina</td>
-<td align="center">FreeBSD + Solaris</td>
-<td align="center">Apache + Nginx</td>
-<td align="center">MySQL + Memcached</td>
-<td align="center">PHP</td>
-</tr>
-<tr>
-<td align="center">YouTube</td>
-<td align="center">Suse Linux</td>
-<td align="center">Apache + Lighttpd</td>
-<td align="center">MySQL</td>
-<td align="center">Python</td>
-</tr>
-</tbody></table>
-<h3 id="搭建LNMP"><a href="#搭建LNMP" class="headerlink" title="搭建LNMP"></a>搭建LNMP</h3><p>源代码编译安装</p>
-<ol>
-<li>首先准备一下软件包，如下：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">mysql-5.0.22.tar.gz<br>httpd-2.2.17.tar.gz<br>php-5.3.5.tar.gz<br></code></pre></td></tr></table></figure>
-
-<p>以上是LAMP搭建必备的安装包，可以去各个官方网站上下载，这三个安装包没有先后的安装顺序，先将以上三个包上出至Linux下的/usr/local/src目录下，并给予可执行权限。</p>
-<ol start="2">
-<li>安装mysql，这里要介绍mysql的源代码编译安装方式，进入已经部署好饿的Centos linux学习环境，通过命令ps -ef | grep mysql来查看是否有运行的mysql进程，然后可以通过一些命令来查找mysql是否已经安装，具体如下：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">groupadd mysql<br><span class="hljs-comment">#创建mysql用户，并将用户指定至mysql组</span><br>useradd mysql -g mysql<br><span class="hljs-comment">#解压到mysql-5.0.22目录下</span><br>tar -zxvf mysql-5.0.22.tar.gz<br><span class="hljs-comment">#这里是配置mysql的安装目录</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/mysql                     <br>make<br><span class="hljs-comment">#安装</span><br>make install<br><span class="hljs-comment">#待安装完成之后，将当前目录下的配置文件拷贝到系统配置文件下，并更名为my.cnf</span><br>cp support-files/my-medium.cnf /etc/my.cnf          <br><span class="hljs-comment">#切换到mysql安装目录下</span><br><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/mysql                                              <br><span class="hljs-comment">#将该目录的用户权限全部更改为mysql用户</span><br>chown -R mysql .                                                <br><span class="hljs-comment">#将该目录的用户组全部更改为mysql用户组</span><br>chgrp -R mysql .                                                <br><span class="hljs-comment">#将mysql目录的数据使用权限指定为mysql</span><br>bin/mysql_install_db --user=mysql                      <br>chown -R mysql var<br><span class="hljs-comment">#指定mysql用户启动mysql </span><br>bin/mysqld_safe --user=mysql &amp;                         <br><span class="hljs-comment">#执行这个命令用于设置或者更改数据库的密码</span><br>bin/mysqladmin -u root password 新密码<br><span class="hljs-comment">#这里将mysql的启动文件拷贝到系统的启动目录下</span><br>cp /usr/<span class="hljs-built_in">local</span>/src/mysql-5.0.22/support-files/mysql.server  /etc/rc.d/init.d/mysql      //<br><span class="hljs-comment">#给系统目录的mysql命令以可执行权限</span><br>chmod +x /etc/rc.d/init.d/mysql                         <br><span class="hljs-comment">#将mysql启动添加到系统自启动列表下</span><br>chkconfig --add mysql         <br><span class="hljs-comment">#当然这里还有另外一些方法来设置mysql自动启动，以上就是mysql源代码编译安装全过程，为了验证mysql安装是否成功，需要执行如下命令：</span><br><span class="hljs-comment">#//启动mysql数据库服务</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysqld_safe --user=mysql &amp;<br><span class="hljs-comment">#进入并访问mysql数据，如果进入mysql数据库命令行，说明mysql数据库安装成功。</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysql -uroot -proot              <br></code></pre></td></tr></table></figure>
-
-<p>如图所示：<br><img src="1.jpg" alt="1">  </p>
-<ol start="3">
-<li>安装apache，命令行如下：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -zxvf httpd-2.2.4.tar.gz<br><span class="hljs-built_in">cd</span> httpd-2.2.4<br><span class="hljs-comment">#配置与mysql的关联，并启动动态连接库</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/apache --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --enable-module=so --enable-shared=max <br>mark<br>mark install<br></code></pre></td></tr></table></figure>
-
-<p>启动apache服务，如下图所示：<br><img src="2.jpg" alt="2"><br>设置apache自动随操作系统启动，命令如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将apache的启动程序命令放置系统启动文件下，当然mysql也可以这么设置</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/usr/local/apache/bin/apachectl start&quot;</span> &gt;&gt; /etc/rc.local          <br></code></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>安装php，命令行如下：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tar -zxvf php-5.2.2.tar.gz<br><span class="hljs-built_in">cd</span> php-5.2.2<br><span class="hljs-comment">#这里是配置php与apache、mysql的关联</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/php/ --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --with-apxs2=/usr/<span class="hljs-built_in">local</span>/apache/bin/apxs --enable-sockets  <br>make<br>make install<br>cp php.ini-development /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini                      //这里需要注意的是，在新版的php配置文件将php.ini-dist更改成php.ini-development<br>vi /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini   <br></code></pre></td></tr></table></figure>
-
-<p>上述就是PHP的安装过程。</p>
-<ol start="5">
-<li>测试<br>安装完成以上个包之后，需要更改apache的配置文件，来达到解析php文件的目的</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/conf/httpd.conf<br></code></pre></td></tr></table></figure>
-
-<p>通过“/”来查找到AddType application/x-gzip .tgz，这里需要注意的是，不是带有的注意标记的#，在找到AddType application/x-gzip .tgz的后面添加如图所示文件：<br><img src="3.jpg" alt="3"></p>
-<p>添加文件为AddType application/x-httpd-php .php .phtml，表示apache服务中可以解析php格式文件<br>接下来要检查apache目录下生成的php动态连接库文件，在目录/usr/local/apache/modules，找到是否存在 libphp5.so文件<br>一系列安装结束之后，通过一个简单的php测试页面来测试LAMP环境搭建成功与否。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/htdocs/index.php<br></code></pre></td></tr></table></figure>
-
-<p>内容为:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>phpinfo();<br>?&gt;<br></code></pre></td></tr></table></figure>
-
-<p>启动httpd<br>在浏览器上输入：<a href="http://ip/index.php%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%A6%82%E4%B8%8B%E9%A1%B5%E9%9D%A2%EF%BC%8C%E8%A1%A8%E6%98%8E%E6%88%90%E5%8A%9F%EF%BC%9B">http://ip/index.php，显示如下页面，表明成功；</a><br><img src="4.jpg" alt="4"><br>里面分别显示php、apache和mysql的相关版本信息等内容。<br><strong>yum安装</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装apache</span><br>yum install –y httpd<br><span class="hljs-comment">#安装MySQL</span><br>yum install –y mysql-server mysql<br><span class="hljs-comment">#安装PHP及相关模块</span><br>yum install –y php php-mysql<br></code></pre></td></tr></table></figure>
-
-<p>练习：部署并发布禅道</p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>SpringBoot 笔记</title>
     <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
@@ -1141,34 +1118,26 @@
       </tags>
   </entry>
   <entry>
-    <title>git clone中常见问题的总结</title>
-    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
-<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>方法2: 浅层克隆，深度设置为1</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
-<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
+    <title>TestNG下DateProvider使用</title>
+    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<blockquote>
+<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
 </blockquote>
-<ul>
-<li>解决方法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
 
+<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-]]></content>
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Linux</category>
+        <category>Java</category>
       </categories>
       <tags>
-        <tag>Git</tag>
+        <tag>Automation</tag>
       </tags>
   </entry>
   <entry>
@@ -1187,109 +1156,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>git命令小结--健忘症患者必备(持续更新中)</title>
-    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
-    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#状态查看操作</span><br><span class="hljs-comment">#查看工作区，暂存区状态</span><br>git status<br><br><span class="hljs-comment">#添加操作</span><br><span class="hljs-comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span><br>git add [file name]<br><br><span class="hljs-comment">#提交操作</span><br><span class="hljs-comment">#将暂存区的内容提交到本地库</span><br>git commit -m <span class="hljs-string">&quot;commit messgae&quot;</span> [file name]<br><br><span class="hljs-comment">#查看历史记录操作</span><br><span class="hljs-comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span><br>git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span><br>git reflog<br><br>89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="hljs-keyword">for</span> WeChat<br>2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="hljs-keyword">for</span> WeChat.<br><br><br><span class="hljs-comment">#删除文件并找回</span><br><br><span class="hljs-comment">#比较文件差异</span><br></code></pre></td></tr></table></figure>
-<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vsftpd服务简介</title>
-    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
-<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
-<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
-<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
-<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
-<p><strong>主动模式与被动模式的比较：</strong>     </p>
-<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
-<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
-<ul>
-<li><p>IIS（FTP）、Serv-U</p>
-</li>
-<li><p>wu-ftpd、Proftpd</p>
-</li>
-<li><p>vsftpd（Very Secure FTP Daemon）</p>
-</li>
-</ul>
-<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
-<p>使用以下命令安装vsftpd:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
-
-
-<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
-
-<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
-<ul>
-<li>正常用户（系统用户）</li>
-<li>匿名用户（anonymous）</li>
-<li>虚拟用户(ftp-only)</li>
-</ul>
-<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
-<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
-<p>匿名用户共享</p>
-<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
-<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
-<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vite快速上手</title>
-    <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
-    <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
-<p>Vite官方目前提供了一个比较简单的脚手架：create-vite-app，可以使用这个脚手架快速创建一个使用Vite构建的Vue.js应用。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm init vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ npm install<br>$ npm run dev<br></code></pre></td></tr></table></figure>
-
-<p>如果使用yarn:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ yarn create vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ yarn<br>$ yarn dev<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>P.S.</p>
-<p>npm init或者yarn create是这两个包管理工具提供的新功能。</p>
-<p>其内部就是自动去安装一个create-<xxx>的模块（临时），然后自动执行这个模块中的bin。</p>
-<p>例如：</p>
-<p>yarn create react-app my-react-app就相当于先yarn gloable add create-react-app，然后自动执行create-react-app my-react-app</p>
-</blockquote>
-<p><strong>对比差异点</strong></p>
-<p>打开生成的项目，会发现就是一个很普通的Vue.js应用，没有太多特殊的地方。</p>
-<p>不过相比于之前vue-cli创建的项目或者是基于Webpack搭建的Vue.js项目，这里的开发依赖非常简单，只有vite和@vue/compiler-sfc.</p>
-<p><strong>Vite带来的优势主要体现在提升开发者在开发过程中的体验。</strong></p>
-<ul>
-<li>Dev Server无需等待，即时启动</li>
-<li>几乎实时的模块热更新</li>
-<li>所需文件按需编译，避免编译用不到的文件</li>
-<li>开箱即用，避免各种Loader和Plugin的配置</li>
-</ul>
-<p><strong>Vite的由来</strong></p>
-<ul>
-<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。</li>
-<li>Webpack Dev Serve冷启动时间会比较长</li>
-<li>Webpack HMR热更新的反应速度比较慢</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1335,170 +1201,88 @@
       </tags>
   </entry>
   <entry>
-    <title>yaml文件处理-Python篇</title>
-    <url>/2023/09/24/yaml%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86-Python%E7%AF%87/</url>
-    <content><![CDATA[<blockquote>
-<p>在自动化测试数据存储中，比较常见的有csv、json、excel文件等，另外一个非常简单、好用的，而且更简洁的文件，那就是咱们今天的主角yaml文件。</p>
+    <title>Vite快速上手</title>
+    <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
+    <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
+<p>Vite官方目前提供了一个比较简单的脚手架：create-vite-app，可以使用这个脚手架快速创建一个使用Vite构建的Vue.js应用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm init vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ npm install<br>$ npm run dev<br></code></pre></td></tr></table></figure>
+
+<p>如果使用yarn:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ yarn create vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ yarn<br>$ yarn dev<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>P.S.</p>
+<p>npm init或者yarn create是这两个包管理工具提供的新功能。</p>
+<p>其内部就是自动去安装一个create-<xxx>的模块（临时），然后自动执行这个模块中的bin。</p>
+<p>例如：</p>
+<p>yarn create react-app my-react-app就相当于先yarn gloable add create-react-app，然后自动执行create-react-app my-react-app</p>
 </blockquote>
-<p><img src="yaml.png" alt="yaml"></p>
-<h3 id="yaml文件遵循规则"><a href="#yaml文件遵循规则" class="headerlink" title="yaml文件遵循规则"></a>yaml文件遵循规则</h3><ul>
-<li>大小写敏感</li>
-<li>使用缩进表示层级关系</li>
-<li>缩进时不允许使用Tab键，只允许使用空格</li>
-<li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li>
-<li>使用#进行注释，从这个字符一直到行尾，都会被解析器忽略</li>
+<p><strong>对比差异点</strong></p>
+<p>打开生成的项目，会发现就是一个很普通的Vue.js应用，没有太多特殊的地方。</p>
+<p>不过相比于之前vue-cli创建的项目或者是基于Webpack搭建的Vue.js项目，这里的开发依赖非常简单，只有vite和@vue/compiler-sfc.</p>
+<p><strong>Vite带来的优势主要体现在提升开发者在开发过程中的体验。</strong></p>
+<ul>
+<li>Dev Server无需等待，即时启动</li>
+<li>几乎实时的模块热更新</li>
+<li>所需文件按需编译，避免编译用不到的文件</li>
+<li>开箱即用，避免各种Loader和Plugin的配置</li>
 </ul>
-<h3 id="pip安装Yaml"><a href="#pip安装Yaml" class="headerlink" title="pip安装Yaml"></a>pip安装Yaml</h3><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">pip install pyyaml<br><span class="hljs-meta">#</span><span class="bash"> ruamel.yaml是pyyaml的衍生版，可以支持YAML类型文件最新版本</span><br>pip install ruamel.yaml<br></code></pre></td></tr></table></figure>
+<p><strong>Vite的由来</strong></p>
+<ul>
+<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。</li>
+<li>Webpack Dev Serve冷启动时间会比较长</li>
+<li>Webpack HMR热更新的反应速度比较慢</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git clone中常见问题的总结</title>
+    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
+<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
 
-<h3 id="Code-Demo"><a href="#Code-Demo" class="headerlink" title="Code Demo"></a>Code Demo</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> yaml<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># test.yaml 文件在当前的文件的子目录 static 下</span><br><span class="hljs-comment"># 获取当前脚本所在文件夹路径</span><br>curPath = os.path.dirname(os.path.realpath(__file__))<br><span class="hljs-comment"># 获取yaml文件路径</span><br>yamlFile = os.path.join(curPath, <span class="hljs-string">&quot;static/test.yaml&quot;</span>)<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_dict</span>():</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	读取数据</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>	    d = yaml.load(f.read(), Loader=yaml.FullLoader)<br>	<span class="hljs-keyword">return</span> d<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">repair_data</span>(<span class="hljs-params">key, data</span>):</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	更新、追加操作</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        dict_temp = yaml.load(f, Loader=yaml.FullLoader)<br>        <span class="hljs-keyword">try</span>:<br>            dict_temp[key] = data<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> dict_temp:<br>                dict_temp = &#123;&#125;<br>            dict_temp.update(&#123;key:data&#125;)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        yaml.dump(dict_temp, f, allow_unicode=<span class="hljs-literal">True</span>) <span class="hljs-comment"># allow_unicode=True，解决存储时unicode编码问题。</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    repair_data(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&quot;value&quot;</span>)<br>    <span class="hljs-built_in">print</span>(get_dict())<br></code></pre></td></tr></table></figure>
+<ul>
+<li>方法2: 浅层克隆，深度设置为1</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>物理班</title>
-    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
-    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
-<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
-<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
-<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
-<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
-<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
-<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
-<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
-<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
-]]></content>
-      <categories>
-        <category>读书</category>
-      </categories>
-      <tags>
-        <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>性能测试笔记</title>
-    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>性能测试：</p>
-<ul>
-<li>所谓性能测试其实就是效率的测试。</li>
-</ul>
-<p>目前市场主流的性能测试工具：</p>
-<ul>
-<li>Jemter</li>
-<li>Loadrunner</li>
-<li>Locust</li>
-<li>gatling</li>
-</ul>
-<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
-<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
-<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
-<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
-<ul>
-<li><p>需求分析，分析系统的性能指标。</p>
-</li>
-<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
-</li>
-<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
-</li>
-<li><p>执行脚本，获取数据。</p>
-</li>
-<li><p>判定指标是否满足要求。</p>
-<ul>
-<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
-<li>如果不达标，进入到性能诊断</li>
-</ul>
-</li>
-<li><p>性能诊断</p>
-</li>
-<li><p>提供优化建议</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能测试</category>
-      </categories>
-      <tags>
-        <tag>PT</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>秋菊男的故事</title>
-    <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
-    <content><![CDATA[<blockquote>
-<p>   罗永浩</p>
+<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
+<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
 </blockquote>
-<p>十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游小册子，“咋还不信呢？自个儿看看吧。” </p>
-<p>那时候我刚好失恋，又赶上一个阴冷的冬天，为了缓解负面情绪带来的压力，我恶学了二十来天英语，在那个初级班结课考试的时候，考了个班里的第一名。按照事先的约定，我去学校领取数额为几百元的奖金(我不记得具体数字了，好像是三百元)。一个正方形脸蛋的中年韩国校长告诉我说，这个奖金我们不能给你钱，只能从你学习中级班时的学费里减免，我说那叫“优惠”，或者是“打折”，不叫“奖金”，你们承诺的是给“奖金”。何况，我也没答应过你们我一定会继续学习你们的中级班。韩国校长说，我们就是为了让你们努力学习才设立这个奖学金的，不是为了让你们得到钱，你们拿了钱去喝酒抽烟什么的就违背了我们设立这个奖学金的目的。我说我对你们的目的不感兴趣，我只知道你们说了给奖金就不能在考完了之后改成优惠打折，至于这个钱我拿到了之后是抽烟喝酒还是大鱼大肉，都跟你们没关系。韩国校长把脸拉成长方形，然后说，年轻人，在我们韩国，你要是对长辈这样没有礼貌，早就挨打了。 </p>
-<p>和我无能的前半生的大部分时候一样，我拿这些西装革履的流氓完全没有办法，我不能抑制地又说了脏话，“我操，你们他妈的怎么这么流氓？” </p>
-<p>和那个时代所有受了刺激的“善良市民”一样，我想到了找报社，我怯生生地生平第一次走进报社，在门口登记的时候，我学着从电视里看到的，对门卫说，我是一个“市民”，我是来“反映情况”的。非常走运的是，接待我的报社记者竟然是我的初中同学，她仔细听完我“反映情况”，充满了想来是因对老同学热心而产生的愤怒；她对我说，我一定彻底揭发他们，下午我就去他们学校采访一下，核实完情况以后，争取几天之内就让它见报。 </p>
-<p>出了报社的大门想了想，觉得我还可以再做点什么，干是又去了市教委“反映情况”。一个教委的中年马脸男斜叼着烟，皱着眉头，时不时喝口茶，听了半天后说，好，我们都知道了，你留个联系方式等我们通知你吧。 </p>
-<p>就像我从他表情里预感到的那样，这个人始终没有跟我联系。而且后来我试图再去找他的时候，也被门卫挡在了外面。一周后的坏消息是，《Y市晚报》的同学告诉我说，这个“三育”学校是和市教委合作办学的一个机构，《Y市晚报》是市委办的报纸，因此她写的稿子被总编毙掉了。 </p>
-<p>我下了很大的决心，才敢走迸Y市法院。在那之前的一个星期里，我每天都对着自己念叨：“傻逼，你总得有第一次吧。”1995年的中国，我不知道有多少人像我这样对于第一次尝试用法律保护自己的权益感到兴奋、紧张和好奇，但我想这些跃跃欲试的人里，很多都是受了《秋菊打官司》的影响(无论从哪个角度看，这部1993年红遍全国的电影都是一部了不起的作品。） </p>
-<p>在法院的大厅前台，一个胖胖的中年接待男听完我来的目的之后，直接把我轰到了门外，“去去去!你这个小同志以为法院是啥地方？！这种鸡毛蒜皮的屁事儿也来捣乱！”我头脑一片空白，在法院门口愣了半天，然后发现法院对面全都是挂着简陋牌子的律师事务所。我犹豫了一下，还是硬着头皮敲开了其中一个门，很尴尬地对里面的人表示我没有钱付给他，但是很希望他能给我一些建议。一个笑眯眯的李姓律师给我耐心地讲解了半天，并且对我表示了鼓励和钦佩。在1995年的中国，在人口不到30万的小城Y市，一个决定用法律手段解决这类问题的小伙子在他看来，是一个“了不起的年轻人”，“观念很超前啊”，他这样说。当然我也由衷地表示，他肯这样花时间，热心无偿地帮助一个陌生人，“真是一位了不起的律师啊”。 </p>
-<p>两个了不起的中国男人依依惜别后，年轻人重新杀进了法院。按照律师指点的那样，气势汹汹地要求中年接待男，“少废话，给我拿一份表格(我忘了是叫民事诉讼立案表还是什么)来！”接待男根据这个年轻人的狰狞嘴脸，看出他已经成为一个诉讼常识方面的暴发户，于是乖乖地摸出了一份表格。填完表格之后，在法院的二楼，一个非常客气但又明显冷漠的女法官接待了我，或者难确地说，是打发了我。她让我到河南(就是把Y市打劈成两半的那条河的对面)的民事立案庭(民事调解办公室？)去“试试”,我试图再多请救两句，“你上那边问吧，”她说，接着她又说了中国人都很熟悉的那句公务员用语，“这事儿不归我们管。” </p>
-<p>跟膀大腰圆的市法院不一样，河南的那个民事诉讼立案庭在一栋灰头土脸的二层小楼里。我在一群神情愁苦的乡下群众后面排了将近三个多小时的队，听到前面人申述的都是真刀真枪的冤情，比如自己家的地被强占了，比如自己家的媳妇被强占了，比如自己家的地和媳妇一起被强占了……这使得我在排队过程中感到越来越没底气，除非我申述的时候他们能给我清场，不然我实在没勇气在这样一群不幸的人当中把我那点“鸡毛蒜皮的屁事儿”坦然地说出来。何况，每一个老乡说完之后，立案庭的中年妇女都会用让人彻底绝望的口气重复同一句话，“哎呀，同志，你这个事情很难办啊。”终干，到了还差两个人就轮到我的时候，我逃离了这个鬼地方。 </p>
-<p>最后，我想到了上街去喊一喊。几乎可以肯定这个选择是受了一些文艺作品的影响，应该是掺杂了一个年轻人在生命某个阶段产生的自我戏剧化的需要(那时候我还没有接触过这类唬人的名词，我只是模糊地意识到了一些不纯粹的东西)。 </p>
-<p>初步设想的方案大概是这样的：我穿着“反映情况”的详情的T恤衫，斜挎着大功率的收录机(口号提前录好），设法把两棍竹竿斜着捆在背上并在脑袋上方用它们撑起一个较大的口号条幅，比如“倒也谈不上天理难容”，胸前再挂一个仪仗队用的鼓，就可以上路了。我还可以发动我所有的狐朋狗友都去远远地围观，免得真的出现冷场(如果他们不敢的话)。事实上后来他们都兴奋地表示一定会去，至少会去围观。除了对我这个做法确实很支持之外，这种事情毕竟也是平淡生活里难得一见的调剂，这解释了他们为什么在电话里表示要去的时候，夹杂了大量兴奋的、音色失真的“我操”！ </p>
-<p>计划中的路线是从市医院门口出发，放着录音口号，敲着鼓，经过市公安局、市委(在市委门口会多待一会儿，可能还应该呼唤马脸男出来对个话什么的，当然，这个比较没有创意)、州委、州政府，最后到达位于铁南(即铁路之南)的“三育“学校门口。这个倒霉学校刚好在一条大马路的边上，所以基本上，当造型醒目的我，我走到门口（这个时候录音机可以短暂地改放一会儿Roxette的Look Sharp），只要往那儿一杵，就会引起足够的围观了。我想如果我能坚持上一个星期，这个手巴掌大的城市里的所有市民就都该知道这件事了。 </p>
-<p>我简单学习了一下相关法律条例，然后就写了一份书面申请去公安局。窗门的小同志显然没见过这种申请，甚至不知道该如何处理，埋头焦虑地不停拨打电话询问。我想了想，就给在市公安局工作的老同学李神探打了个电话，李神探神情凝重地出来把我拽到他的办公室，“我操，你不想活了？”一一和所有体制内谋生的人一样，他会把做这类事情直接看成是自寻短见。 </p>
-<p>因为担心劝阻无效，李神探索性就把这件事告诉了我的父母，结果可想而知。我是说，我的父母和那个时代的绝大多数中国父母没有本质区别(其实我很能理解他们，年轻的时候就能，我只是不同意他们而已）。 </p>
-<p>开春的时候，我和一些朋友包括我的表哥到一个郊区的网球场去打球。突然，我们看到那个韩国校长和几个人也走进了场地。大家亢奋起来，七嘴八舌地出主意，最后我们决定主动去招惹他，逼他先发作，然后大伙就围上去群殴。 </p>
-<p>那时候我还很年轻，也很幼稚，没有意识到这种做法的软弱本质。我只是迟疑了一下，就兴冲冲地跟着大家在场地外边围成了半个圈子，然后大家一起恶狠狠地看着韩国校长。这小子明显慌了，假装不经意地在场内转来转去。最后，他终于发现，无论转到哪个方向，基本上都至少有一双兽兽的眼睛盯着他。 </p>
-<p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
-<p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
-<p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
-]]></content>
-      <categories>
-        <category>读书</category>
-      </categories>
-      <tags>
-        <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自动化用例中如何获得testcase名称</title>
-    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
-    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行输出</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String testcaseName = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-meta">@BeforeMethod</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeMethod</span><span class="hljs-params">(Method method)</span> </span>&#123;<br>    testcaseName = method.getName();<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行输出:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
 <ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span><br>aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk<br><span class="hljs-meta">#</span><span class="bash">结果如下</span><br>package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;<br>install-location:&#x27;auto&#x27;<br>sdkVersion:&#x27;16&#x27;<br>targetSdkVersion:&#x27;28&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.INTERNET&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CAMERA&#x27;<br>uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.VIBRATE&#x27;<br>uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;<br>uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;<br>uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;<br>uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;<br>uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS<br></code></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+<li>解决方法</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+
+
 ]]></content>
       <categories>
-        <category>软件测试</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>Android</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>git命令小结--健忘症患者必备(持续更新中)</title>
+    <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
+    <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#状态查看操作</span><br><span class="hljs-comment">#查看工作区，暂存区状态</span><br>git status<br><br><span class="hljs-comment">#添加操作</span><br><span class="hljs-comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span><br>git add [file name]<br><br><span class="hljs-comment">#提交操作</span><br><span class="hljs-comment">#将暂存区的内容提交到本地库</span><br>git commit -m <span class="hljs-string">&quot;commit messgae&quot;</span> [file name]<br><br><span class="hljs-comment">#查看历史记录操作</span><br><span class="hljs-comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span><br>git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span><br>git reflog<br><br>89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="hljs-keyword">for</span> WeChat<br>2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="hljs-keyword">for</span> WeChat.<br><br><br><span class="hljs-comment">#删除文件并找回</span><br><br><span class="hljs-comment">#比较文件差异</span><br></code></pre></td></tr></table></figure>
+<h3 id="Git工作流程图示"><a href="#Git工作流程图示" class="headerlink" title="Git工作流程图示"></a>Git工作流程图示</h3><p><img src="git.jpg" alt="git"></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -1572,6 +1356,222 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vsftpd服务简介</title>
+    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
+<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
+<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
+<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
+<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
+<p><strong>主动模式与被动模式的比较：</strong>     </p>
+<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
+<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
+<ul>
+<li><p>IIS（FTP）、Serv-U</p>
+</li>
+<li><p>wu-ftpd、Proftpd</p>
+</li>
+<li><p>vsftpd（Very Secure FTP Daemon）</p>
+</li>
+</ul>
+<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
+<p>使用以下命令安装vsftpd:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
+
+
+<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
+
+<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
+<ul>
+<li>正常用户（系统用户）</li>
+<li>匿名用户（anonymous）</li>
+<li>虚拟用户(ftp-only)</li>
+</ul>
+<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
+<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
+<p>匿名用户共享</p>
+<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
+<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
+<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>yaml文件处理-Python篇</title>
+    <url>/2023/09/24/yaml%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86-Python%E7%AF%87/</url>
+    <content><![CDATA[<blockquote>
+<p>在自动化测试数据存储中，比较常见的有csv、json、excel文件等，另外一个非常简单、好用的，而且更简洁的文件，那就是咱们今天的主角yaml文件。</p>
+</blockquote>
+<p><img src="yaml.png" alt="yaml"></p>
+<h3 id="yaml文件遵循规则"><a href="#yaml文件遵循规则" class="headerlink" title="yaml文件遵循规则"></a>yaml文件遵循规则</h3><ul>
+<li>大小写敏感</li>
+<li>使用缩进表示层级关系</li>
+<li>缩进时不允许使用Tab键，只允许使用空格</li>
+<li>缩进的空格数目不重要，只要相同层级的元素左侧对齐即可</li>
+<li>使用#进行注释，从这个字符一直到行尾，都会被解析器忽略</li>
+</ul>
+<h3 id="pip安装Yaml"><a href="#pip安装Yaml" class="headerlink" title="pip安装Yaml"></a>pip安装Yaml</h3><figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">pip install pyyaml<br><span class="hljs-meta">#</span><span class="bash"> ruamel.yaml是pyyaml的衍生版，可以支持YAML类型文件最新版本</span><br>pip install ruamel.yaml<br></code></pre></td></tr></table></figure>
+
+<h3 id="Code-Demo"><a href="#Code-Demo" class="headerlink" title="Code Demo"></a>Code Demo</h3><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> yaml<br><span class="hljs-keyword">import</span> os<br><br><span class="hljs-comment"># test.yaml 文件在当前的文件的子目录 static 下</span><br><span class="hljs-comment"># 获取当前脚本所在文件夹路径</span><br>curPath = os.path.dirname(os.path.realpath(__file__))<br><span class="hljs-comment"># 获取yaml文件路径</span><br>yamlFile = os.path.join(curPath, <span class="hljs-string">&quot;static/test.yaml&quot;</span>)<br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_dict</span>():</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	读取数据</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>	<span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;r&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>	    d = yaml.load(f.read(), Loader=yaml.FullLoader)<br>	<span class="hljs-keyword">return</span> d<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">repair_data</span>(<span class="hljs-params">key, data</span>):</span><br>	<span class="hljs-string">&#x27;&#x27;&#x27;</span><br><span class="hljs-string">	更新、追加操作</span><br><span class="hljs-string">	&#x27;&#x27;&#x27;</span><br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        dict_temp = yaml.load(f, Loader=yaml.FullLoader)<br>        <span class="hljs-keyword">try</span>:<br>            dict_temp[key] = data<br>        <span class="hljs-keyword">except</span>:<br>            <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> dict_temp:<br>                dict_temp = &#123;&#125;<br>            dict_temp.update(&#123;key:data&#125;)<br>    <span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(yamlFile, <span class="hljs-string">&#x27;w&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>        yaml.dump(dict_temp, f, allow_unicode=<span class="hljs-literal">True</span>) <span class="hljs-comment"># allow_unicode=True，解决存储时unicode编码问题。</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    repair_data(<span class="hljs-string">&#x27;key&#x27;</span>, <span class="hljs-string">&quot;value&quot;</span>)<br>    <span class="hljs-built_in">print</span>(get_dict())<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>性能测试笔记</title>
+    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>性能测试：</p>
+<ul>
+<li>所谓性能测试其实就是效率的测试。</li>
+</ul>
+<p>目前市场主流的性能测试工具：</p>
+<ul>
+<li>Jemter</li>
+<li>Loadrunner</li>
+<li>Locust</li>
+<li>gatling</li>
+</ul>
+<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
+<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
+<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
+<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
+<ul>
+<li><p>需求分析，分析系统的性能指标。</p>
+</li>
+<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
+</li>
+<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
+</li>
+<li><p>执行脚本，获取数据。</p>
+</li>
+<li><p>判定指标是否满足要求。</p>
+<ul>
+<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
+<li>如果不达标，进入到性能诊断</li>
+</ul>
+</li>
+<li><p>性能诊断</p>
+</li>
+<li><p>提供优化建议</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>性能测试</category>
+      </categories>
+      <tags>
+        <tag>PT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span><br>aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk<br><span class="hljs-meta">#</span><span class="bash">结果如下</span><br>package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;<br>install-location:&#x27;auto&#x27;<br>sdkVersion:&#x27;16&#x27;<br>targetSdkVersion:&#x27;28&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.INTERNET&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CAMERA&#x27;<br>uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.VIBRATE&#x27;<br>uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;<br>uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;<br>uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;<br>uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;<br>uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS<br></code></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>物理班</title>
+    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
+    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
+<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
+<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
+<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
+<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
+<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
+<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
+<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
+<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
+]]></content>
+      <categories>
+        <category>读书</category>
+      </categories>
+      <tags>
+        <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>秋菊男的故事</title>
+    <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
+    <content><![CDATA[<blockquote>
+<p>   罗永浩</p>
+</blockquote>
+<p>十四年前……这是一个真实的故事，十四年前，我在东北老家Y市的一个外语培训机构学过一段许国璋的英语。这是一个韩国人开的私立学校，名字很土，叫“三育”。学校的水准很糟糕，国内教师通常是本地大学或中学教师出来兼职的，外教大都是些口音诡异的菲律宾人和马来西亚人。经常能看到的场面是，一些学生在“外教口语班”开课后，纷纷赶到前台表示愤怒，工作人员则慈眉善目地解释说，菲律宾和马来西亚的官方语言确实是英语。有时候，他们还会笨拙地拿出一本脏乎乎的介绍菲律宾的旅游小册子，“咋还不信呢？自个儿看看吧。” </p>
+<p>那时候我刚好失恋，又赶上一个阴冷的冬天，为了缓解负面情绪带来的压力，我恶学了二十来天英语，在那个初级班结课考试的时候，考了个班里的第一名。按照事先的约定，我去学校领取数额为几百元的奖金(我不记得具体数字了，好像是三百元)。一个正方形脸蛋的中年韩国校长告诉我说，这个奖金我们不能给你钱，只能从你学习中级班时的学费里减免，我说那叫“优惠”，或者是“打折”，不叫“奖金”，你们承诺的是给“奖金”。何况，我也没答应过你们我一定会继续学习你们的中级班。韩国校长说，我们就是为了让你们努力学习才设立这个奖学金的，不是为了让你们得到钱，你们拿了钱去喝酒抽烟什么的就违背了我们设立这个奖学金的目的。我说我对你们的目的不感兴趣，我只知道你们说了给奖金就不能在考完了之后改成优惠打折，至于这个钱我拿到了之后是抽烟喝酒还是大鱼大肉，都跟你们没关系。韩国校长把脸拉成长方形，然后说，年轻人，在我们韩国，你要是对长辈这样没有礼貌，早就挨打了。 </p>
+<p>和我无能的前半生的大部分时候一样，我拿这些西装革履的流氓完全没有办法，我不能抑制地又说了脏话，“我操，你们他妈的怎么这么流氓？” </p>
+<p>和那个时代所有受了刺激的“善良市民”一样，我想到了找报社，我怯生生地生平第一次走进报社，在门口登记的时候，我学着从电视里看到的，对门卫说，我是一个“市民”，我是来“反映情况”的。非常走运的是，接待我的报社记者竟然是我的初中同学，她仔细听完我“反映情况”，充满了想来是因对老同学热心而产生的愤怒；她对我说，我一定彻底揭发他们，下午我就去他们学校采访一下，核实完情况以后，争取几天之内就让它见报。 </p>
+<p>出了报社的大门想了想，觉得我还可以再做点什么，干是又去了市教委“反映情况”。一个教委的中年马脸男斜叼着烟，皱着眉头，时不时喝口茶，听了半天后说，好，我们都知道了，你留个联系方式等我们通知你吧。 </p>
+<p>就像我从他表情里预感到的那样，这个人始终没有跟我联系。而且后来我试图再去找他的时候，也被门卫挡在了外面。一周后的坏消息是，《Y市晚报》的同学告诉我说，这个“三育”学校是和市教委合作办学的一个机构，《Y市晚报》是市委办的报纸，因此她写的稿子被总编毙掉了。 </p>
+<p>我下了很大的决心，才敢走迸Y市法院。在那之前的一个星期里，我每天都对着自己念叨：“傻逼，你总得有第一次吧。”1995年的中国，我不知道有多少人像我这样对于第一次尝试用法律保护自己的权益感到兴奋、紧张和好奇，但我想这些跃跃欲试的人里，很多都是受了《秋菊打官司》的影响(无论从哪个角度看，这部1993年红遍全国的电影都是一部了不起的作品。） </p>
+<p>在法院的大厅前台，一个胖胖的中年接待男听完我来的目的之后，直接把我轰到了门外，“去去去!你这个小同志以为法院是啥地方？！这种鸡毛蒜皮的屁事儿也来捣乱！”我头脑一片空白，在法院门口愣了半天，然后发现法院对面全都是挂着简陋牌子的律师事务所。我犹豫了一下，还是硬着头皮敲开了其中一个门，很尴尬地对里面的人表示我没有钱付给他，但是很希望他能给我一些建议。一个笑眯眯的李姓律师给我耐心地讲解了半天，并且对我表示了鼓励和钦佩。在1995年的中国，在人口不到30万的小城Y市，一个决定用法律手段解决这类问题的小伙子在他看来，是一个“了不起的年轻人”，“观念很超前啊”，他这样说。当然我也由衷地表示，他肯这样花时间，热心无偿地帮助一个陌生人，“真是一位了不起的律师啊”。 </p>
+<p>两个了不起的中国男人依依惜别后，年轻人重新杀进了法院。按照律师指点的那样，气势汹汹地要求中年接待男，“少废话，给我拿一份表格(我忘了是叫民事诉讼立案表还是什么)来！”接待男根据这个年轻人的狰狞嘴脸，看出他已经成为一个诉讼常识方面的暴发户，于是乖乖地摸出了一份表格。填完表格之后，在法院的二楼，一个非常客气但又明显冷漠的女法官接待了我，或者难确地说，是打发了我。她让我到河南(就是把Y市打劈成两半的那条河的对面)的民事立案庭(民事调解办公室？)去“试试”,我试图再多请救两句，“你上那边问吧，”她说，接着她又说了中国人都很熟悉的那句公务员用语，“这事儿不归我们管。” </p>
+<p>跟膀大腰圆的市法院不一样，河南的那个民事诉讼立案庭在一栋灰头土脸的二层小楼里。我在一群神情愁苦的乡下群众后面排了将近三个多小时的队，听到前面人申述的都是真刀真枪的冤情，比如自己家的地被强占了，比如自己家的媳妇被强占了，比如自己家的地和媳妇一起被强占了……这使得我在排队过程中感到越来越没底气，除非我申述的时候他们能给我清场，不然我实在没勇气在这样一群不幸的人当中把我那点“鸡毛蒜皮的屁事儿”坦然地说出来。何况，每一个老乡说完之后，立案庭的中年妇女都会用让人彻底绝望的口气重复同一句话，“哎呀，同志，你这个事情很难办啊。”终干，到了还差两个人就轮到我的时候，我逃离了这个鬼地方。 </p>
+<p>最后，我想到了上街去喊一喊。几乎可以肯定这个选择是受了一些文艺作品的影响，应该是掺杂了一个年轻人在生命某个阶段产生的自我戏剧化的需要(那时候我还没有接触过这类唬人的名词，我只是模糊地意识到了一些不纯粹的东西)。 </p>
+<p>初步设想的方案大概是这样的：我穿着“反映情况”的详情的T恤衫，斜挎着大功率的收录机(口号提前录好），设法把两棍竹竿斜着捆在背上并在脑袋上方用它们撑起一个较大的口号条幅，比如“倒也谈不上天理难容”，胸前再挂一个仪仗队用的鼓，就可以上路了。我还可以发动我所有的狐朋狗友都去远远地围观，免得真的出现冷场(如果他们不敢的话)。事实上后来他们都兴奋地表示一定会去，至少会去围观。除了对我这个做法确实很支持之外，这种事情毕竟也是平淡生活里难得一见的调剂，这解释了他们为什么在电话里表示要去的时候，夹杂了大量兴奋的、音色失真的“我操”！ </p>
+<p>计划中的路线是从市医院门口出发，放着录音口号，敲着鼓，经过市公安局、市委(在市委门口会多待一会儿，可能还应该呼唤马脸男出来对个话什么的，当然，这个比较没有创意)、州委、州政府，最后到达位于铁南(即铁路之南)的“三育“学校门口。这个倒霉学校刚好在一条大马路的边上，所以基本上，当造型醒目的我，我走到门口（这个时候录音机可以短暂地改放一会儿Roxette的Look Sharp），只要往那儿一杵，就会引起足够的围观了。我想如果我能坚持上一个星期，这个手巴掌大的城市里的所有市民就都该知道这件事了。 </p>
+<p>我简单学习了一下相关法律条例，然后就写了一份书面申请去公安局。窗门的小同志显然没见过这种申请，甚至不知道该如何处理，埋头焦虑地不停拨打电话询问。我想了想，就给在市公安局工作的老同学李神探打了个电话，李神探神情凝重地出来把我拽到他的办公室，“我操，你不想活了？”一一和所有体制内谋生的人一样，他会把做这类事情直接看成是自寻短见。 </p>
+<p>因为担心劝阻无效，李神探索性就把这件事告诉了我的父母，结果可想而知。我是说，我的父母和那个时代的绝大多数中国父母没有本质区别(其实我很能理解他们，年轻的时候就能，我只是不同意他们而已）。 </p>
+<p>开春的时候，我和一些朋友包括我的表哥到一个郊区的网球场去打球。突然，我们看到那个韩国校长和几个人也走进了场地。大家亢奋起来，七嘴八舌地出主意，最后我们决定主动去招惹他，逼他先发作，然后大伙就围上去群殴。 </p>
+<p>那时候我还很年轻，也很幼稚，没有意识到这种做法的软弱本质。我只是迟疑了一下，就兴冲冲地跟着大家在场地外边围成了半个圈子，然后大家一起恶狠狠地看着韩国校长。这小子明显慌了，假装不经意地在场内转来转去。最后，他终于发现，无论转到哪个方向，基本上都至少有一双兽兽的眼睛盯着他。 </p>
+<p>大家渐渐按捺不住了，于是开始冲着他做侮辱性的手势，由于不确定一个韩国人是否能看懂，我们很体贴地做了两个非本地传统的手势，一个从美国电影里学的(当然就是竖中指了，那时候这在中国还不太流行），和一个最近刚从俄罗斯流传过来的。这时候韩国校长有些狼狈地朝场边的长椅处看了一眼，我顺着他的眼光瞄过去，看到一个神色慌张的韩国女人手里拉着两个孩子站了起来。小一点的孩子朝我们这个方向看了一会儿，然后抬头看妈妈，没有得到反应之后，他拉了一下妈蚂的袖子。 </p>
+<p>即使是在我的道德感相对模糊的青年时代，我也能感觉到当着一个男人老婆孩子的面羞辱他，是一件令人非常不安的事情。于是我突然没了兴致，招呼大家走掉了。 </p>
+<p>在回家的路土，在表哥的车里，在推推搡搡的打闹和七嘴八舌吹牛逼的声音中，我感到巨大的委屈像童年时常常感受到的那样，铺天盖地地压了下来。</p>
+]]></content>
+      <categories>
+        <category>读书</category>
+      </categories>
+      <tags>
+        <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>自动化用例中如何获得testcase名称</title>
+    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
+    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行输出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String testcaseName = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-meta">@BeforeMethod</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeMethod</span><span class="hljs-params">(Method method)</span> </span>&#123;<br>    testcaseName = method.getName();<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行输出:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
       </tags>
   </entry>
 </search>
