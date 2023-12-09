@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
-</blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
-
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Appium环境安装(Windows环境)</title>
     <url>/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/</url>
     <content><![CDATA[<h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" alt="cmd"><br>4.</p>
@@ -67,6 +43,30 @@
       </categories>
       <tags>
         <tag>Appium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -197,25 +197,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker学习笔记</title>
     <url>/2020/01/29/Docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><h4 id="1、简介"><a href="#1、简介" class="headerlink" title="1、简介"></a>1、简介</h4><p><strong>docker</strong>是一个开源的应用容器引擎；<br>docker支持将软件编译成一个镜像；然后再镜像中各种软件做好配置，将镜像发布出去，其他使用者可以直接使用这个镜像。<br>运行中的这个镜像成为容器，容器启动是非常快速的。</p>
@@ -261,6 +242,25 @@
 
 
 
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>环境搭建</category>
@@ -639,6 +639,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Postfix环境搭建</title>
+    <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
+<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
+<p>常见的MUA软件有：</p>
+<ol>
+<li>Outlook</li>
+<li>Mac Mail</li>
+<li>Thunderbird</li>
+<li>Foxmail</li>
+<li>Mutt</li>
+</ol>
+<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
+<p><strong>IMAP、POP3</strong></p>
+<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
+<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
+<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
+<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
+<p><strong>IMAP的用户体验更好。</strong></p>
+<p>MTA</p>
+<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
+<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
+<p>所有的MTA都是对SMTP的一种实现</p>
+<p>Linux中最主流的MTA有：sendmail、postfix</p>
+<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
+<p>MDA</p>
+<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
+<p>Linux上，邮件默认保存目录是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/var/spool/mail/username<br></code></pre></td></tr></table></figure>
+
+<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
+<p>Linux常用的MDA有：procmail、maildrop</p>
+<p>Sendmail、postfix默认使用的MDA是promail</p>
+<p>MRA</p>
+<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
+<p>Linux下使用最广泛的的MRA是：Dovecot</p>
+<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
+<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
+<ol>
+<li>postfix速度比sendmail约快3倍</li>
+<li>更加稳定健壮</li>
+<li>配置更加灵活</li>
+<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
+</ol>
+<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y postfix<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#修改主配置文件</span><br>[root@localhost postfix]<span class="hljs-comment"># vim main.cf		</span><br><br><span class="hljs-comment">#主要配置如下几个地方</span><br><span class="hljs-comment">#本机主机名</span><br>myhostname = mail.example.com<br><span class="hljs-comment">#域名</span><br>mydomain = example.com				<br><span class="hljs-comment">#设置由本机寄出去的邮件所使用的域名或主机名</span><br>myorigin = <span class="hljs-variable">$mydomain</span>			   		<br><span class="hljs-comment">#postfix所监听的网络</span><br>inet_interfaces = all			    <br><span class="hljs-comment">#设置可接受邮件的主机名和域名</span><br>mydestination = <span class="hljs-variable">$myhostname</span>, localhost.<span class="hljs-variable">$mydomain</span>, localhost, example.com	<br><span class="hljs-comment">#设置在什么网络内收发邮件</span><br>mynetworks = 192.169.0.0/24		   <br><span class="hljs-comment">#设置在什么网域内收发邮件</span><br>relay_domains = <span class="hljs-variable">$mydestination</span>	   <br><br><br>[root@localhost postfix]<span class="hljs-comment"># service postfix restart</span><br>关闭 postfix：                                             [确定]<br>启动 postfix：                                             [确定]<br><span class="hljs-comment">#切换默认的MTA</span><br>alterconfig –config mta，在选项中勾选postfix<br></code></pre></td></tr></table></figure>
+
+<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y dovecot<br></code></pre></td></tr></table></figure>
+
+<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
+<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
+<p>练习：</p>
+<ol>
+<li>配置foxmail</li>
+<li>搭建webmail</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NFS文件系统</title>
     <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
@@ -707,73 +774,6 @@
 <p>挂载的时候可以使用-o指定挂载选项，常用选项如下：</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">-ro 		# 只读挂载<br>-rw 		# 读写挂载<br>-vers=4 	# 指定使用NFSv4方式挂载<br><span class="hljs-meta">#</span><span class="bash"> 例如：</span><br>mount -t nfs 192.168.1.100:/bxy-nfs /mnt –rw<br></code></pre></td></tr></table></figure>
 
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Postfix环境搭建</title>
-    <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
-<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
-<p>常见的MUA软件有：</p>
-<ol>
-<li>Outlook</li>
-<li>Mac Mail</li>
-<li>Thunderbird</li>
-<li>Foxmail</li>
-<li>Mutt</li>
-</ol>
-<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
-<p><strong>IMAP、POP3</strong></p>
-<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
-<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
-<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
-<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
-<p><strong>IMAP的用户体验更好。</strong></p>
-<p>MTA</p>
-<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
-<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
-<p>所有的MTA都是对SMTP的一种实现</p>
-<p>Linux中最主流的MTA有：sendmail、postfix</p>
-<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
-<p>MDA</p>
-<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
-<p>Linux上，邮件默认保存目录是：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/var/spool/mail/username<br></code></pre></td></tr></table></figure>
-
-<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
-<p>Linux常用的MDA有：procmail、maildrop</p>
-<p>Sendmail、postfix默认使用的MDA是promail</p>
-<p>MRA</p>
-<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
-<p>Linux下使用最广泛的的MRA是：Dovecot</p>
-<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
-<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
-<ol>
-<li>postfix速度比sendmail约快3倍</li>
-<li>更加稳定健壮</li>
-<li>配置更加灵活</li>
-<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
-</ol>
-<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y postfix<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#修改主配置文件</span><br>[root@localhost postfix]<span class="hljs-comment"># vim main.cf		</span><br><br><span class="hljs-comment">#主要配置如下几个地方</span><br><span class="hljs-comment">#本机主机名</span><br>myhostname = mail.example.com<br><span class="hljs-comment">#域名</span><br>mydomain = example.com				<br><span class="hljs-comment">#设置由本机寄出去的邮件所使用的域名或主机名</span><br>myorigin = <span class="hljs-variable">$mydomain</span>			   		<br><span class="hljs-comment">#postfix所监听的网络</span><br>inet_interfaces = all			    <br><span class="hljs-comment">#设置可接受邮件的主机名和域名</span><br>mydestination = <span class="hljs-variable">$myhostname</span>, localhost.<span class="hljs-variable">$mydomain</span>, localhost, example.com	<br><span class="hljs-comment">#设置在什么网络内收发邮件</span><br>mynetworks = 192.169.0.0/24		   <br><span class="hljs-comment">#设置在什么网域内收发邮件</span><br>relay_domains = <span class="hljs-variable">$mydestination</span>	   <br><br><br>[root@localhost postfix]<span class="hljs-comment"># service postfix restart</span><br>关闭 postfix：                                             [确定]<br>启动 postfix：                                             [确定]<br><span class="hljs-comment">#切换默认的MTA</span><br>alterconfig –config mta，在选项中勾选postfix<br></code></pre></td></tr></table></figure>
-
-<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y dovecot<br></code></pre></td></tr></table></figure>
-
-<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
-<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
-<p>练习：</p>
-<ol>
-<li>配置foxmail</li>
-<li>搭建webmail</li>
-</ol>
 ]]></content>
       <categories>
         <category>Linux</category>
@@ -1159,6 +1159,47 @@
       </tags>
   </entry>
   <entry>
+    <title>Vite快速上手</title>
+    <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
+    <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
+<p>Vite官方目前提供了一个比较简单的脚手架：create-vite-app，可以使用这个脚手架快速创建一个使用Vite构建的Vue.js应用。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm init vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ npm install<br>$ npm run dev<br></code></pre></td></tr></table></figure>
+
+<p>如果使用yarn:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ yarn create vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ yarn<br>$ yarn dev<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>P.S.</p>
+<p>npm init或者yarn create是这两个包管理工具提供的新功能。</p>
+<p>其内部就是自动去安装一个create-<xxx>的模块（临时），然后自动执行这个模块中的bin。</p>
+<p>例如：</p>
+<p>yarn create react-app my-react-app就相当于先yarn gloable add create-react-app，然后自动执行create-react-app my-react-app</p>
+</blockquote>
+<p><strong>对比差异点</strong></p>
+<p>打开生成的项目，会发现就是一个很普通的Vue.js应用，没有太多特殊的地方。</p>
+<p>不过相比于之前vue-cli创建的项目或者是基于Webpack搭建的Vue.js项目，这里的开发依赖非常简单，只有vite和@vue/compiler-sfc.</p>
+<p><strong>Vite带来的优势主要体现在提升开发者在开发过程中的体验。</strong></p>
+<ul>
+<li>Dev Server无需等待，即时启动</li>
+<li>几乎实时的模块热更新</li>
+<li>所需文件按需编译，避免编译用不到的文件</li>
+<li>开箱即用，避免各种Loader和Plugin的配置</li>
+</ul>
+<p><strong>Vite的由来</strong></p>
+<ul>
+<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。</li>
+<li>Webpack Dev Serve冷启动时间会比较长</li>
+<li>Webpack HMR热更新的反应速度比较慢</li>
+</ul>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows安装MongoDB</title>
     <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
     <content><![CDATA[<blockquote>
@@ -1198,47 +1239,6 @@
       </categories>
       <tags>
         <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vite快速上手</title>
-    <url>/2022/01/03/Vite%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</url>
-    <content><![CDATA[<h3 id="Vite快速上手"><a href="#Vite快速上手" class="headerlink" title="Vite快速上手"></a>Vite快速上手</h3><p><strong>快速上手</strong></p>
-<p>Vite官方目前提供了一个比较简单的脚手架：create-vite-app，可以使用这个脚手架快速创建一个使用Vite构建的Vue.js应用。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ npm init vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ npm install<br>$ npm run dev<br></code></pre></td></tr></table></figure>
-
-<p>如果使用yarn:</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ yarn create vite-app &lt;project-name&gt;<br>$ <span class="hljs-built_in">cd</span> &lt;project-name&gt;<br>$ yarn<br>$ yarn dev<br></code></pre></td></tr></table></figure>
-
-<blockquote>
-<p>P.S.</p>
-<p>npm init或者yarn create是这两个包管理工具提供的新功能。</p>
-<p>其内部就是自动去安装一个create-<xxx>的模块（临时），然后自动执行这个模块中的bin。</p>
-<p>例如：</p>
-<p>yarn create react-app my-react-app就相当于先yarn gloable add create-react-app，然后自动执行create-react-app my-react-app</p>
-</blockquote>
-<p><strong>对比差异点</strong></p>
-<p>打开生成的项目，会发现就是一个很普通的Vue.js应用，没有太多特殊的地方。</p>
-<p>不过相比于之前vue-cli创建的项目或者是基于Webpack搭建的Vue.js项目，这里的开发依赖非常简单，只有vite和@vue/compiler-sfc.</p>
-<p><strong>Vite带来的优势主要体现在提升开发者在开发过程中的体验。</strong></p>
-<ul>
-<li>Dev Server无需等待，即时启动</li>
-<li>几乎实时的模块热更新</li>
-<li>所需文件按需编译，避免编译用不到的文件</li>
-<li>开箱即用，避免各种Loader和Plugin的配置</li>
-</ul>
-<p><strong>Vite的由来</strong></p>
-<ul>
-<li>如果应用比较复杂，使用Webpack的开发过程相对比没有那么丝滑。</li>
-<li>Webpack Dev Serve冷启动时间会比较长</li>
-<li>Webpack HMR热更新的反应速度比较慢</li>
-</ul>
-]]></content>
-      <categories>
-        <category>前端</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1283,6 +1283,55 @@
       </categories>
       <tags>
         <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vsftpd服务简介</title>
+    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
+<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
+<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
+<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
+<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
+<p><strong>主动模式与被动模式的比较：</strong>     </p>
+<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
+<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
+<ul>
+<li><p>IIS（FTP）、Serv-U</p>
+</li>
+<li><p>wu-ftpd、Proftpd</p>
+</li>
+<li><p>vsftpd（Very Secure FTP Daemon）</p>
+</li>
+</ul>
+<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
+<p>使用以下命令安装vsftpd:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
+
+
+<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
+
+<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
+<ul>
+<li>正常用户（系统用户）</li>
+<li>匿名用户（anonymous）</li>
+<li>虚拟用户(ftp-only)</li>
+</ul>
+<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
+<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
+<p>匿名用户共享</p>
+<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
+<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
+<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1351,55 +1400,6 @@
 <p>练习：挂载一个windows共享的文件夹？</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">mount -o username=Administrator,password=123456 //192.168.0.200/win-share /mnt/test/<br></code></pre></td></tr></table></figure>
 ]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vsftpd服务简介</title>
-    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
-<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
-<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
-<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
-<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
-<p><strong>主动模式与被动模式的比较：</strong>     </p>
-<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
-<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
-<ul>
-<li><p>IIS（FTP）、Serv-U</p>
-</li>
-<li><p>wu-ftpd、Proftpd</p>
-</li>
-<li><p>vsftpd（Very Secure FTP Daemon）</p>
-</li>
-</ul>
-<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
-<p>使用以下命令安装vsftpd:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
-
-
-<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
-
-<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
-<ul>
-<li>正常用户（系统用户）</li>
-<li>匿名用户（anonymous）</li>
-<li>虚拟用户(ftp-only)</li>
-</ul>
-<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
-<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
-<p>匿名用户共享</p>
-<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
-<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
-<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Linux</category>
       </categories>
@@ -1572,6 +1572,25 @@
       </categories>
       <tags>
         <tag>Automation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决MacOS通过gem安装rails后无法使用</title>
+    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
+<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
+
+<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
+
+<p>其他常用的排查命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
       </tags>
   </entry>
 </search>

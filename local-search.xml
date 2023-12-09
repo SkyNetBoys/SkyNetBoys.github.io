@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>解决MacOS通过gem安装rails后无法使用</title>
+    <link href="/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/"/>
+    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
+    
+    <content type="html"><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p><p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure><p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure><p>其他常用的排查命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>环境搭建</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Ruby</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java中的Optional</title>
     <link href="/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/"/>
     <url>/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/</url>
