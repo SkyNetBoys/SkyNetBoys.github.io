@@ -46,6 +46,68 @@
       </tags>
   </entry>
   <entry>
+    <title>Autowired的使用：推荐对构造函数进行注释</title>
+    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
+    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
+<blockquote>
+<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
+<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
+</blockquote>
+<p>之前我的习惯写法如下:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
+
+<p>按照建议应该写成下面的样子:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
+<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CentOS下搭建LAMP</title>
     <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
@@ -151,68 +213,6 @@
       </categories>
       <tags>
         <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Autowired的使用：推荐对构造函数进行注释</title>
-    <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
-    <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
-<blockquote>
-<p>Spring Team recommends “Always use constructor based dependency injection in your beans. Always use assertions for mandatory dependencies”.</p>
-<p>-&gt;　Spring建议”总是在您的bean中使用构造函数建立依赖注入。总是使用断言强制依赖”。</p>
-</blockquote>
-<p>之前我的习惯写法如下:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Autowired</span><br><span class="hljs-keyword">private</span> EnterpriseDbService service;<br></code></pre></td></tr></table></figure>
-
-<p>按照建议应该写成下面的样子:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> EnterpriseDbService service;<br><br><span class="hljs-meta">@Autowired</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">EnterpriseDbController</span><span class="hljs-params">(EnterpriseDbService service)</span> </span>&#123;<br>   <span class="hljs-keyword">this</span>.service = service;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>原因是：使用构造器注入的方法，<strong>可以明确成员变量的加载顺序</strong>。</p>
-<p>Java变量的初始化顺序为：静态变量或静态语句块–&gt;实例变量或初始化语句块–&gt;构造方法–&gt;@Autowired</p>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -639,73 +639,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Postfix环境搭建</title>
-    <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
-<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
-<p>常见的MUA软件有：</p>
-<ol>
-<li>Outlook</li>
-<li>Mac Mail</li>
-<li>Thunderbird</li>
-<li>Foxmail</li>
-<li>Mutt</li>
-</ol>
-<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
-<p><strong>IMAP、POP3</strong></p>
-<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
-<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
-<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
-<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
-<p><strong>IMAP的用户体验更好。</strong></p>
-<p>MTA</p>
-<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
-<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
-<p>所有的MTA都是对SMTP的一种实现</p>
-<p>Linux中最主流的MTA有：sendmail、postfix</p>
-<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
-<p>MDA</p>
-<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
-<p>Linux上，邮件默认保存目录是：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/var/spool/mail/username<br></code></pre></td></tr></table></figure>
-
-<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
-<p>Linux常用的MDA有：procmail、maildrop</p>
-<p>Sendmail、postfix默认使用的MDA是promail</p>
-<p>MRA</p>
-<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
-<p>Linux下使用最广泛的的MRA是：Dovecot</p>
-<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
-<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
-<ol>
-<li>postfix速度比sendmail约快3倍</li>
-<li>更加稳定健壮</li>
-<li>配置更加灵活</li>
-<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
-</ol>
-<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y postfix<br></code></pre></td></tr></table></figure>
-
-<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#修改主配置文件</span><br>[root@localhost postfix]<span class="hljs-comment"># vim main.cf		</span><br><br><span class="hljs-comment">#主要配置如下几个地方</span><br><span class="hljs-comment">#本机主机名</span><br>myhostname = mail.example.com<br><span class="hljs-comment">#域名</span><br>mydomain = example.com				<br><span class="hljs-comment">#设置由本机寄出去的邮件所使用的域名或主机名</span><br>myorigin = <span class="hljs-variable">$mydomain</span>			   		<br><span class="hljs-comment">#postfix所监听的网络</span><br>inet_interfaces = all			    <br><span class="hljs-comment">#设置可接受邮件的主机名和域名</span><br>mydestination = <span class="hljs-variable">$myhostname</span>, localhost.<span class="hljs-variable">$mydomain</span>, localhost, example.com	<br><span class="hljs-comment">#设置在什么网络内收发邮件</span><br>mynetworks = 192.169.0.0/24		   <br><span class="hljs-comment">#设置在什么网域内收发邮件</span><br>relay_domains = <span class="hljs-variable">$mydestination</span>	   <br><br><br>[root@localhost postfix]<span class="hljs-comment"># service postfix restart</span><br>关闭 postfix：                                             [确定]<br>启动 postfix：                                             [确定]<br><span class="hljs-comment">#切换默认的MTA</span><br>alterconfig –config mta，在选项中勾选postfix<br></code></pre></td></tr></table></figure>
-
-<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y dovecot<br></code></pre></td></tr></table></figure>
-
-<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
-<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
-<p>练习：</p>
-<ol>
-<li>配置foxmail</li>
-<li>搭建webmail</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>NFS文件系统</title>
     <url>/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/</url>
     <content><![CDATA[<h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" alt="nfs"></p>
@@ -783,6 +716,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Postfix环境搭建</title>
+    <url>/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h1 id="Postfix"><a href="#Postfix" class="headerlink" title="Postfix"></a>Postfix</h1><h2 id="电子邮件系统"><a href="#电子邮件系统" class="headerlink" title="电子邮件系统"></a>电子邮件系统</h2><p>电子邮件系统由用户代理MUA（Mail User Agent）以及邮件传输代理MTA（Mail Transfer Agent）,MDA（Mail Delivery Agent）邮件投递代理组成，MUA指用于收发Mail的程序，MTA指将来自MUA的信件转发给指定用户的程序，MDA就是将MTA接收的信件依照信件的流向（送到哪里）将该信件放置到本机账户下的邮件文件中（收件箱），当用户从 MUA 中发送一份邮件时，该邮件会被发送送到MTA，而后在一系列MTA中转发，直到它到达最终发送目标为止。<br><img src="postfix.png" alt="postfix">                               </p>
+<p><strong>MUA（Mail User Agent），称之为邮件用户代理，用户通过MUA接收邮件</strong></p>
+<p>常见的MUA软件有：</p>
+<ol>
+<li>Outlook</li>
+<li>Mac Mail</li>
+<li>Thunderbird</li>
+<li>Foxmail</li>
+<li>Mutt</li>
+</ol>
+<p>对于个人用户来讲，可能使用的最多还是网页方式查看电子邮件，这些网页也可以成为基于Web的MUA。</p>
+<p><strong>IMAP、POP3</strong></p>
+<p>MUA接受邮件使用的是IMAP或POP3这种标准邮件接收协议</p>
+<p>IMAP、POP3负责从邮件服务器上将特定用户的邮件抓取下来</p>
+<p>我们可以控制抓取后是否在邮件服务器上保存邮件</p>
+<p>I<strong>MAP主要优势在于客户端的所有操作都与邮件服务器同步，而POP3则是将邮件下载下来，所有的操作都在本地，不影响服务器上保存的邮件。</strong></p>
+<p><strong>IMAP的用户体验更好。</strong></p>
+<p>MTA</p>
+<p>SMTP（Simple Mail Transfer Prorocol）是邮件发送的标准协议，MUA通过SMTP协议与邮件服务器通信，实现邮件发送。</p>
+<p>SMTP就是我们所说的MTA（Mail Transfer Protocol）</p>
+<p>所有的MTA都是对SMTP的一种实现</p>
+<p>Linux中最主流的MTA有：sendmail、postfix</p>
+<p>MTA只负责邮件传输，邮件保存是有MDA完成的。</p>
+<p>MDA</p>
+<p>MDA（Mail Deliver Agent）负责将MTA接受到的邮件保存哎邮件服务器上，通常MTA与MDA是紧紧结合在一起的。</p>
+<p>Linux上，邮件默认保存目录是：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">/var/spool/mail/username<br></code></pre></td></tr></table></figure>
+
+<p>MDA除了保存邮件，更重要的是对邮件进行垃圾邮件处理和病毒扫描。</p>
+<p>Linux常用的MDA有：procmail、maildrop</p>
+<p>Sendmail、postfix默认使用的MDA是promail</p>
+<p>MRA</p>
+<p>MRA（Mail Receive Agent）实现IMAP、POP3等协议，负责与MUA交互，将服务器上的邮件通过IMAP或者POP3协议递送给客户端。</p>
+<p>Linux下使用最广泛的的MRA是：Dovecot</p>
+<p>为了安全起见，现代邮件一般会使用数字证书对传输协议进行加密，所以一啊不能需要支持的协议有：IMAP，POP3，IMAPS和POPS。</p>
+<h2 id="postfix简介"><a href="#postfix简介" class="headerlink" title="postfix简介"></a>postfix简介</h2><p>postfix是Wietse Venema在IBM的GPL协议之下开发的MTA（邮件传输代理）软件。postfix是Wietse Venema想要为使用最广泛的sendmail提供替代品的一个尝试。在Internet世界中，大部分的电子邮件都是通过sendmail来投递的，大约有100万用户使用sendmail，每天投递上亿封邮件。这真是一个让人吃惊的数字。Postfix试图更快、更容易管理、更安全，同时还与sendmail保持足够的兼容性。<br><img src="mail.png" alt="mail"><br><strong>postfix的优势：</strong></p>
+<ol>
+<li>postfix速度比sendmail约快3倍</li>
+<li>更加稳定健壮</li>
+<li>配置更加灵活</li>
+<li>大多数postfix进程运行在较低的权限下，安全性更高</li>
+</ol>
+<h2 id="安装postfix"><a href="#安装postfix" class="headerlink" title="安装postfix"></a>安装postfix</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y postfix<br></code></pre></td></tr></table></figure>
+
+<h3 id="配置postfix"><a href="#配置postfix" class="headerlink" title="配置postfix"></a>配置postfix</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#修改主配置文件</span><br>[root@localhost postfix]<span class="hljs-comment"># vim main.cf		</span><br><br><span class="hljs-comment">#主要配置如下几个地方</span><br><span class="hljs-comment">#本机主机名</span><br>myhostname = mail.example.com<br><span class="hljs-comment">#域名</span><br>mydomain = example.com				<br><span class="hljs-comment">#设置由本机寄出去的邮件所使用的域名或主机名</span><br>myorigin = <span class="hljs-variable">$mydomain</span>			   		<br><span class="hljs-comment">#postfix所监听的网络</span><br>inet_interfaces = all			    <br><span class="hljs-comment">#设置可接受邮件的主机名和域名</span><br>mydestination = <span class="hljs-variable">$myhostname</span>, localhost.<span class="hljs-variable">$mydomain</span>, localhost, example.com	<br><span class="hljs-comment">#设置在什么网络内收发邮件</span><br>mynetworks = 192.169.0.0/24		   <br><span class="hljs-comment">#设置在什么网域内收发邮件</span><br>relay_domains = <span class="hljs-variable">$mydestination</span>	   <br><br><br>[root@localhost postfix]<span class="hljs-comment"># service postfix restart</span><br>关闭 postfix：                                             [确定]<br>启动 postfix：                                             [确定]<br><span class="hljs-comment">#切换默认的MTA</span><br>alterconfig –config mta，在选项中勾选postfix<br></code></pre></td></tr></table></figure>
+
+<h2 id="dovecot配置"><a href="#dovecot配置" class="headerlink" title="dovecot配置"></a>dovecot配置</h2><p>安装dovecot</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">yum install –y dovecot<br></code></pre></td></tr></table></figure>
+
+<p>开启支持的协议<br><img src="code.png" alt="code"><br><strong>发送测试邮件：</strong></p>
+<p>mail –vs “test” <a href="mailto:kobe@bxy.com">kobe@bxy.com</a></p>
+<p>练习：</p>
+<ol>
+<li>配置foxmail</li>
+<li>搭建webmail</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PyQT5 GUI中内置CMD</title>
     <url>/2023/09/26/PyQT5-GUI%E4%B8%AD%E5%86%85%E7%BD%AECMD/</url>
     <content><![CDATA[<blockquote>
@@ -804,6 +804,61 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 解决办法是在py文件的每一行print()后面添加一行代码</span><br>sys.stdout.flush()<br></code></pre></td></tr></table></figure>
 
 <p>因为python中print()一次并不是立即打印，而是要等缓冲区满了再打印，用这种办法强制刷新缓冲区后，可以立即触发信号。</p>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Pytest使用介绍</title>
+    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
+<thead>
+<tr>
+<th>item</th>
+<th>unittest</th>
+<th>pytest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用例编写规则</td>
+<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
+<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
+</tr>
+<tr>
+<td>用例分类执行</td>
+<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
+<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
+</tr>
+<tr>
+<td>用例前置和后置</td>
+<td>提供了setUp/tearDown，只能针对所有case</td>
+<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
+</tr>
+<tr>
+<td>参数化</td>
+<td>需要依赖ddt库</td>
+<td>使用@pytest.mark.parametrize装饰器</td>
+</tr>
+<tr>
+<td>断言</td>
+<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
+<td>只有assert一个表达式，用起来比较方便</td>
+</tr>
+<tr>
+<td>报告</td>
+<td>使用HTMLTestRunnerNew库</td>
+<td>有pytest-HTML，allure插件</td>
+</tr>
+<tr>
+<td>失败重跑</td>
+<td>无此功能</td>
+<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
+</tr>
+</tbody></table>
 ]]></content>
       <categories>
         <category>自动化测试</category>
@@ -853,44 +908,6 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python Enum小结</title>
-    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
-<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
-<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
-<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
-<li>name不允许重复，value允许重复</li>
-<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
-<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
-</ul>
-<p>创建方式1：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<p>创建方式2：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
-
-<p>使用方式1:正常使用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
-
-<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
-
-<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
-<p>4:设置value唯一性，不允许出现相同的value</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -975,7 +992,7 @@
 <h4 id="log-rotation"><a href="#log-rotation" class="headerlink" title="log rotation"></a>log rotation</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log/file_2.log&quot;</span>, rotation=<span class="hljs-string">&#x27;10 KB&#x27;</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>    logger.info(<span class="hljs-string">&quot;this is a info log&quot;</span>)<br>    logger.debug(<span class="hljs-string">&quot;this is a debug log&quot;</span>)<br>    logger.warning(<span class="hljs-string">&quot;this is a warning log&quot;</span>)<br>    logger.error(<span class="hljs-string">&quot;this is a error log&quot;</span>)<br>    logger.critical(<span class="hljs-string">&quot;this is a critical log&quot;</span>)<br></code></pre></td></tr></table></figure>
 
 <p>关于rptation参数还有常见的如下用法:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;50M&quot;</span>)      <span class="hljs-comment"># 文件超过50M则另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;00:00&quot;</span>)    <span class="hljs-comment"># 每天00:00另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;1 week&quot;</span>)   <span class="hljs-comment"># 每周另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;10 days&quot;</span>)  <span class="hljs-comment"># 每10天另起一个文件</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;50MB&quot;</span>)      <span class="hljs-comment"># 文件超过50M则另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;00:00&quot;</span>)    <span class="hljs-comment"># 每天00:00另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;1 week&quot;</span>)   <span class="hljs-comment"># 每周另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;10 days&quot;</span>)  <span class="hljs-comment"># 每10天另起一个文件</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="其他常用设置"><a href="#其他常用设置" class="headerlink" title="其他常用设置"></a>其他常用设置</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># retention 参数可以设置日志保存时间，到时间后日志会自动清理，注意与 rotation 区分</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, retention=<span class="hljs-string">&quot;10 days&quot;</span>)<br><br><span class="hljs-comment"># compression 可以对关闭的日志（如 rotation 处理的日志）进行压缩，节约空间</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, compression=<span class="hljs-string">&quot;zip&quot;</span>)<br><br><span class="hljs-comment"># enqueue=True 可以支持异步写入，实现多进程安全</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># filter 参数可以设置日志的过滤规则</span><br><span class="hljs-comment"># 过滤不包含 hello 的日志</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, <span class="hljs-built_in">filter</span>=<span class="hljs-keyword">lambda</span> x: <span class="hljs-string">&quot;hello&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> x[<span class="hljs-string">&quot;message&quot;</span>])<br><br><span class="hljs-comment"># encoding 设置编码方式</span><br><span class="hljs-comment"># level 设置日志等级，大于该等级的日志会被记录</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>, level=<span class="hljs-string">&quot;INFO&quot;</span>)<br><br><span class="hljs-comment">#异步写入</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment">#序列化为json写入</span><br>logger.add(<span class="hljs-string">&quot;log1.log&quot;</span>, serialize=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
 
@@ -987,6 +1004,65 @@
 
 <p>pytest case调用</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">loguru使用</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-keyword">from</span> public_fun.log_fun <span class="hljs-keyword">import</span> get_logger<br><span class="hljs-keyword">from</span> assertpy <span class="hljs-keyword">import</span> assert_that<br>logger = get_logger()<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_fun1</span>():</span><br>    logger.info(<span class="hljs-string">&#x27;我需要比较1&#x27;</span>)<br>    assert_that(<span class="hljs-number">1</span>).is_not_equal_to(<span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Enum小结</title>
+    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
+<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
+<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
+<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
+<li>name不允许重复，value允许重复</li>
+<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
+<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
+</ul>
+<p>创建方式1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p>创建方式2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
+
+<p>使用方式1:正常使用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
+
+<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
+<p>4:设置value唯一性，不允许出现相同的value</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取Excel例子</title>
+    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
+    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>Excel  文件如下</li>
+</ul>
+<p><img src="excel.PNG" alt="excel"></p>
+<ul>
+<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
+</ul>
+<p><img src="html.PNG" alt="xueshengbiao"></p>
+]]></content>
       <categories>
         <category>自动化测试</category>
       </categories>
@@ -1069,82 +1145,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Pytest使用介绍</title>
-    <url>/2022/01/18/Pytest%E4%BD%BF%E7%94%A8%E4%BB%8B%E7%BB%8D/</url>
-    <content><![CDATA[<h3 id="unittest-vs-pytest"><a href="#unittest-vs-pytest" class="headerlink" title="unittest vs pytest"></a>unittest vs pytest</h3><table>
-<thead>
-<tr>
-<th>item</th>
-<th>unittest</th>
-<th>pytest</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>用例编写规则</td>
-<td>1.测试文件必须先import unittest<br>2.测试类必须继承unittest.TestCase<br>3.测试方法必须以”test_”开头<br>4.测试类必须要有unittest.main()方法</td>
-<td>1.测试文件名必须以”test_”开头或者”_test”结尾（如：test_ab.py）<br>2.测试方法必须以”test_”开头<br>3.测试类命名以”Test”开头</td>
-</tr>
-<tr>
-<td>用例分类执行</td>
-<td>默认执行全部用例，也可以通过加载testsuit，执行部分用例。</td>
-<td>可以通过@pytest.mark来标记类和方法，pytest.main加入参数(“-m”)可以只运行标记的类和方法</td>
-</tr>
-<tr>
-<td>用例前置和后置</td>
-<td>提供了setUp/tearDown，只能针对所有case</td>
-<td>pytest中的fixture显示更加灵活。可以任意自定义方法函数，只要加上@pytest.fixture()这个装饰器，那么被装饰的方法就可以被使用</td>
-</tr>
-<tr>
-<td>参数化</td>
-<td>需要依赖ddt库</td>
-<td>使用@pytest.mark.parametrize装饰器</td>
-</tr>
-<tr>
-<td>断言</td>
-<td>很多断言格式<br>1.assertEqual<br>2.assertln<br>3.assertTrue<br>4.assertFalse</td>
-<td>只有assert一个表达式，用起来比较方便</td>
-</tr>
-<tr>
-<td>报告</td>
-<td>使用HTMLTestRunnerNew库</td>
-<td>有pytest-HTML，allure插件</td>
-</tr>
-<tr>
-<td>失败重跑</td>
-<td>无此功能</td>
-<td>pytest支持用例执行失败重跑，pytest-rerunfailures插件</td>
-</tr>
-</tbody></table>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python读取Excel例子</title>
-    <url>/2020/02/23/Python%E8%AF%BB%E5%8F%96Excel%E4%BE%8B%E5%AD%90/</url>
-    <content><![CDATA[<h3 id="Python读取Excel例子"><a href="#Python读取Excel例子" class="headerlink" title="Python读取Excel例子"></a>Python读取Excel例子</h3><h4 id="使用到flask和pandas"><a href="#使用到flask和pandas" class="headerlink" title="使用到flask和pandas"></a>使用到flask和pandas</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> flask <span class="hljs-keyword">import</span> Flask<br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><br>app = Flask(__name__)<br><br><span class="hljs-meta">@app.route(<span class="hljs-params"><span class="hljs-string">&#x27;/&#x27;</span></span>)</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">show_excel</span>():</span><br>    df = pd.read_excel(<span class="hljs-string">&quot;./学生信息表.xlsx&quot;</span>)<br>    table_html = df.to_html()<br>    <span class="hljs-keyword">return</span> <span class="hljs-string">f&quot;&quot;&quot;</span><br><span class="hljs-string">        &lt;html&gt;</span><br><span class="hljs-string">            &lt;body&gt;</span><br><span class="hljs-string">                &lt;h1&gt;学生信息表&lt;/h1&gt;</span><br><span class="hljs-string">                &lt;div&gt;<span class="hljs-subst">&#123;table_html&#125;</span>&lt;/div&gt;</span><br><span class="hljs-string">            &lt;/body&gt;</span><br><span class="hljs-string">        &lt;/html&gt;</span><br><span class="hljs-string">    &quot;&quot;&quot;</span><br><span class="hljs-keyword">if</span> __name__==<span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    app.run(host=<span class="hljs-string">&quot;0.0.0.0&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>Excel  文件如下</li>
-</ul>
-<p><img src="excel.PNG" alt="excel"></p>
-<ul>
-<li>输出的HTML，使用<a href="http://localhost:5000访问：">http://localhost:5000访问：</a></li>
-</ul>
-<p><img src="html.PNG" alt="xueshengbiao"></p>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring MVC笔记</title>
     <url>/2020/02/08/Spring-MVC%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h4 id="Spring-MVC"><a href="#Spring-MVC" class="headerlink" title="Spring MVC"></a>Spring MVC</h4><p>Spring MVC是目前主流的实现MVC实际模式的企业级开发款框架，Spring框架的一个子模块，无需整合，开发起来更加便捷。</p>
@@ -1222,6 +1222,29 @@
       </tags>
   </entry>
   <entry>
+    <title>TestNG下DateProvider使用</title>
+    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<blockquote>
+<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
+</blockquote>
+<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
+
+<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行结果:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SpringBoot 笔记</title>
     <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
@@ -1280,26 +1303,45 @@
       </tags>
   </entry>
   <entry>
-    <title>TestNG下DateProvider使用</title>
-    <url>/2020/10/29/TestNG%E4%B8%8BDateProvider%E4%BD%BF%E7%94%A8/</url>
+    <title>Windows安装MongoDB</title>
+    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
     <content><![CDATA[<blockquote>
-<p>@DateProvider可以用来做数据驱动，数据源文件可以是Excel，XML也可以是TXT文本。</p>
+<ul>
+<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
+<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
+<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
+</ul>
 </blockquote>
-<h3 id="1-DataProvider与Test方法在同一个class中"><a href="#1-DataProvider与Test方法在同一个class中" class="headerlink" title="1.DataProvider与Test方法在同一个class中"></a>1.DataProvider与Test方法在同一个class中</h3><p>Demo:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemo</span> </span>&#123;<br>	<span class="hljs-comment">// DataProvide 作为数据提供者，提供几组数组，则引用他的test方法就会执行几次</span><br>	<span class="hljs-meta">@DataProvider(name = &quot;myData&quot;)</span><br>	<span class="hljs-keyword">public</span> Object[][] DataPrObjects() &#123;<br>		Object[][] obj = <span class="hljs-keyword">new</span> Object[][] &#123; &#123; <span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span> &#125;, &#123; <span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span> &#125; &#125;;<br>		<span class="hljs-keyword">return</span> obj;<br>	&#125;<br><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1, String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span> + data1 + <span class="hljs-string">&quot;:&quot;</span> + data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
+<li>例如：D:\Program Files\mongodb4.2.2</li>
+</ul>
+<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
+<li>配置到bin目录，并将目录加入到path中</li>
+</ul>
+<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
+<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
+<li>在data文件夹下创建”/db”空文件夹；</li>
+<li>在log文件夹下创建”mongo.log”空文件。</li>
+</ul>
+<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#数据库文件的存放位置</span><br><span class="hljs-attr">dbpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\data\db</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#日志文件存放的路径</span><br><span class="hljs-attr">logpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\log\mongo.log</span><br></code></pre></td></tr></table></figure>
 
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>
+<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">mongod -<span class="hljs-literal">-config</span> <span class="hljs-string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="hljs-literal">-install</span> -<span class="hljs-literal">-serviceName</span> <span class="hljs-string">&quot;MongoDB&quot;</span><br></code></pre></td></tr></table></figure>
 
-<h3 id="2-DataProvider与Test方法不在同一个class中"><a href="#2-DataProvider与Test方法不在同一个class中" class="headerlink" title="2.DataProvider与Test方法不在同一个class中"></a>2.DataProvider与Test方法不在同一个class中</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TestNGDemoNew</span> </span>&#123;<br>    <span class="hljs-comment">//在这个class中引用DataPro中的@DataProvider</span><br>    <span class="hljs-comment">//dataProviderClass填写@DataProvider所在类的全限定类名</span><br>	<span class="hljs-meta">@Test(dataProvider = &quot;myData&quot;,dataProviderClass = com.TestNGDemo.class)</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">TestDataProvider</span><span class="hljs-params">(String data1,String data2)</span> </span>&#123;<br>		System.out.println(<span class="hljs-string">&quot;-&gt;&quot;</span>+data1+<span class="hljs-string">&quot;:&quot;</span>+data2);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net <span class="hljs-built_in">start</span> MongoDB<br></code></pre></td></tr></table></figure>
 
-<p>运行结果:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">[RemoteTestNG] detected TestNG version <span class="hljs-number">6</span><span class="hljs-variable">.11</span><span class="hljs-variable">.0</span><br>-&gt;a1:a2<br>-&gt;b1:b2<br>-&gt;c1:c2<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;a1&quot;</span>, <span class="hljs-string">&quot;a2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;b1&quot;</span>, <span class="hljs-string">&quot;b2&quot;</span>)<br>PASSED: TestDataProvider(<span class="hljs-string">&quot;c1&quot;</span>, <span class="hljs-string">&quot;c2&quot;</span>)<br><br>===============================================<br>    Default test<br>    Tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br><br><br>===============================================<br>Default suite<br>Total tests run: <span class="hljs-number">3</span>, Failures: <span class="hljs-number">0</span>, Skips: <span class="hljs-number">0</span><br>===============================================<br></code></pre></td></tr></table></figure>]]></content>
+<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net stop MongoDB<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+]]></content>
       <categories>
-        <category>Java</category>
+        <category>环境搭建</category>
       </categories>
       <tags>
-        <tag>Automation</tag>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1372,48 +1414,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows安装MongoDB</title>
-    <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
-    <content><![CDATA[<blockquote>
-<ul>
-<li>MongoDB官网下载链接：<a href="https://www.mongodb.com/download-center/community">https://www.mongodb.com/download-center/community</a></li>
-<li>MongoDB官网安装教程：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/</a></li>
-<li>MongoDB 3.6.11版本，官网下载：<br>绿色版（.zip）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11.zip</a><br>安装版（.msi）：<a href="https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi">https://fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.6.11-signed.msi</a></li>
-</ul>
-</blockquote>
-<h3 id="自定义安装（解压）到："><a href="#自定义安装（解压）到：" class="headerlink" title="自定义安装（解压）到："></a>自定义安装（解压）到：</h3><ul>
-<li>例如：D:\Program Files\mongodb4.2.2</li>
-</ul>
-<h3 id="配置系统环境变量path："><a href="#配置系统环境变量path：" class="headerlink" title="配置系统环境变量path："></a>配置系统环境变量path：</h3><ul>
-<li>配置到bin目录，并将目录加入到path中</li>
-</ul>
-<h3 id="在安装路径下创建文件夹和文件："><a href="#在安装路径下创建文件夹和文件：" class="headerlink" title="在安装路径下创建文件夹和文件："></a>在安装路径下创建文件夹和文件：</h3><ul>
-<li>“/data” 和 “/log” 两个文件夹（”/data”文件夹下，用于存放数据库源数据；”/log”文件夹下，用于存放logger日志）；</li>
-<li>在data文件夹下创建”/db”空文件夹；</li>
-<li>在log文件夹下创建”mongo.log”空文件。</li>
-</ul>
-<h3 id="在安装路径下创建配置文件"><a href="#在安装路径下创建配置文件" class="headerlink" title="在安装路径下创建配置文件"></a>在安装路径下创建配置文件</h3> <figure class="highlight properties"><table><tr><td class="code"><pre><code class="hljs properties"><span class="hljs-comment">#数据库文件的存放位置</span><br><span class="hljs-attr">dbpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\data\db</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">#日志文件存放的路径</span><br><span class="hljs-attr">logpath</span>=<span class="hljs-string">D:\Program Files\mongodb4.2.2\log\mongo.log</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务"><a href="#使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务" class="headerlink" title="使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务."></a>使用超级管理员权限运行CMD，并运行下面的命令，将MongoDB加入到系统服务.</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">mongod -<span class="hljs-literal">-config</span> <span class="hljs-string">&quot;D:\Program Files\mongodb4.2.2\mongo.config&quot;</span> -<span class="hljs-literal">-install</span> -<span class="hljs-literal">-serviceName</span> <span class="hljs-string">&quot;MongoDB&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="启动MongoDB服务"><a href="#启动MongoDB服务" class="headerlink" title="启动MongoDB服务"></a>启动MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net <span class="hljs-built_in">start</span> MongoDB<br></code></pre></td></tr></table></figure>
-
-<h3 id="停止MongoDB服务"><a href="#停止MongoDB服务" class="headerlink" title="停止MongoDB服务"></a>停止MongoDB服务</h3> <figure class="highlight powershell"><table><tr><td class="code"><pre><code class="hljs powershell">net stop MongoDB<br></code></pre></td></tr></table></figure>
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -1578,20 +1578,49 @@
       </tags>
   </entry>
   <entry>
-    <title>查看APK所需权限命令</title>
-    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+    <title>性能测试笔记</title>
+    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<p>性能测试：</p>
 <ul>
-<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
-<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span><br>aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk<br><span class="hljs-meta">#</span><span class="bash">结果如下</span><br>package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;<br>install-location:&#x27;auto&#x27;<br>sdkVersion:&#x27;16&#x27;<br>targetSdkVersion:&#x27;28&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.INTERNET&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CAMERA&#x27;<br>uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.VIBRATE&#x27;<br>uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;<br>uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;<br>uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;<br>uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;<br>uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS<br></code></pre></td></tr></table></figure>
-通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+<li>所谓性能测试其实就是效率的测试。</li>
+</ul>
+<p>目前市场主流的性能测试工具：</p>
+<ul>
+<li>Jemter</li>
+<li>Loadrunner</li>
+<li>Locust</li>
+<li>gatling</li>
+</ul>
+<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
+<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
+<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
+<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
+<ul>
+<li><p>需求分析，分析系统的性能指标。</p>
+</li>
+<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
+</li>
+<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
+</li>
+<li><p>执行脚本，获取数据。</p>
+</li>
+<li><p>判定指标是否满足要求。</p>
+<ul>
+<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
+<li>如果不达标，进入到性能诊断</li>
+</ul>
+</li>
+<li><p>性能诊断</p>
+</li>
+<li><p>提供优化建议</p>
+</li>
 </ul>
 ]]></content>
       <categories>
-        <category>软件测试</category>
+        <category>性能测试</category>
       </categories>
       <tags>
-        <tag>Android</tag>
+        <tag>PT</tag>
       </tags>
   </entry>
   <entry>
@@ -1612,6 +1641,23 @@
       </categories>
       <tags>
         <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>查看APK所需权限命令</title>
+    <url>/2020/02/19/%E6%9F%A5%E7%9C%8BAPK%E6%89%80%E9%9C%80%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>在Android平台下测试app的安全性，经常会碰到查看当前apk所需权限的问题，一般遇到问题，采用两种方式:</p>
+<ul>
+<li>使用第三方软件管理软件，安装部署apk到Android平台，使用第三方软件查看</li>
+<li>使用aapt命令直接查看，例如：我们需要查看UC浏览器的权限<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">attp命令在Android SDK目录下的build-tools</span><br>aapt dump badging D:\Download\UCBrowser_V12.8.5.1065_android_pf145_(Build200216161452).apk<br><span class="hljs-meta">#</span><span class="bash">结果如下</span><br>package: name=&#x27;com.UCMobile&#x27; versionCode=&#x27;1065&#x27; versionName=&#x27;12.8.5.1065&#x27; compileSdkVersion=&#x27;28&#x27; compileSdkVersionCodename=&#x27;9&#x27;<br>install-location:&#x27;auto&#x27;<br>sdkVersion:&#x27;16&#x27;<br>targetSdkVersion:&#x27;28&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_COARSE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_FINE_LOCATION&#x27;<br>uses-permission: name=&#x27;android.permission.INTERNET&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.READ_PHONE_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CAMERA&#x27;<br>uses-permission: name=&#x27;android.permission.READ_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.WRITE_EXTERNAL_STORAGE&#x27;<br>uses-permission: name=&#x27;android.permission.VIBRATE&#x27;<br>uses-permission: name=&#x27;android.permission.WAKE_LOCK&#x27;<br>uses-permission: name=&#x27;android.permission.ACCESS_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_WIFI_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.INSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.UNINSTALL_SHORTCUT&#x27;<br>uses-permission: name=&#x27;android.permission.RECORD_AUDIO&#x27;<br>uses-permission: name=&#x27;android.permission.GET_TASKS&#x27;<br>uses-permission: name=&#x27;android.permission.SYSTEM_ALERT_WINDOW&#x27;<br>uses-permission: name=&#x27;android.permission.SET_WALLPAPER&#x27;<br>uses-permission: name=&#x27;android.permission.EXPAND_STATUS_BAR&#x27;<br>uses-permission: name=&#x27;android.permission.CHANGE_NETWORK_STATE&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher2.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.android.launcher3.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.oppo.launcher.permission.WRITE_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.READ_SETTINGS&#x27;<br>uses-permission: name=&#x27;com.huawei.launcher3.permission.WRITE_SETTINGS<br></code></pre></td></tr></table></figure>
+通过回显可以分析该APK所需权限是否与需求文档一致。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
       </tags>
   </entry>
   <entry>
@@ -1689,52 +1735,6 @@
       </categories>
       <tags>
         <tag>Ruby</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>性能测试笔记</title>
-    <url>/2021/10/04/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<p>性能测试：</p>
-<ul>
-<li>所谓性能测试其实就是效率的测试。</li>
-</ul>
-<p>目前市场主流的性能测试工具：</p>
-<ul>
-<li>Jemter</li>
-<li>Loadrunner</li>
-<li>Locust</li>
-<li>gatling</li>
-</ul>
-<p>所有的性能测试工具只是为了实现性能测试的一种手段和辅助的作用。</p>
-<p>实质上的性能测试是在系统效率上的测试，我们需要关注的是系统整体运行的效率，是否存在有影响效率的性能问题。</p>
-<p>对于单个核心接口进行性能测试，考虑它的并发最大能达到多少，是否满足性能指标。</p>
-<p>性能测试的流程：（和测试工具相关的步骤2~3）</p>
-<ul>
-<li><p>需求分析，分析系统的性能指标。</p>
-</li>
-<li><p>准备环境，包含工具、场景等一系列性能测试相关需求</p>
-</li>
-<li><p>准备脚本，基于不同的性能场景完成测试准备。</p>
-</li>
-<li><p>执行脚本，获取数据。</p>
-</li>
-<li><p>判定指标是否满足要求。</p>
-<ul>
-<li>如果达标，还会继续进行进一步的性能测试。（测试系统的阈值、测试系统是否具有抗风险的能力，系统是否具有自动扩容的能力）</li>
-<li>如果不达标，进入到性能诊断</li>
-</ul>
-</li>
-<li><p>性能诊断</p>
-</li>
-<li><p>提供优化建议</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>性能测试</category>
-      </categories>
-      <tags>
-        <tag>PT</tag>
       </tags>
   </entry>
 </search>
