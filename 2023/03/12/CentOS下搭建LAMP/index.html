@@ -19,21 +19,21 @@
     <meta name="description" content="LAMP简介Linux+Apache+Mysql +Perl&#x2F;PHP&#x2F;Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CentOS下搭建LAMP">
-<meta property="og:url" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/index.html">
+<meta property="og:url" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/index.html">
 <meta property="og:site_name" content="麦田守望者">
 <meta property="og:description" content="LAMP简介Linux+Apache+Mysql +Perl&#x2F;PHP&#x2F;Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
-<meta property="og:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/4.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/1.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/2.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/3.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/4.jpg">
 <meta property="article:published_time" content="2023-03-12T08:07:10.000Z">
 <meta property="article:modified_time" content="2023-03-12T08:19:50.950Z">
 <meta property="article:author" content="Edison">
 <meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://yoursite.com/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
+<meta name="twitter:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
   
   
   
@@ -75,7 +75,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -423,7 +423,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>CentOS下搭建LAMP</div>
-      <div>http://yoursite.com/2023/03/12/CentOS下搭建LAMP/</div>
+      <div>https://skynetboys.github.io/2023/03/12/CentOS下搭建LAMP/</div>
     </div>
     <div class="license-meta">
       
