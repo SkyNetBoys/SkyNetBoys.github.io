@@ -46,25 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -86,6 +67,25 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -334,6 +334,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java generics</title>
     <url>/2023/09/26/Java-generics/</url>
     <content><![CDATA[<blockquote>
@@ -380,50 +424,6 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -868,49 +868,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python Decorator</title>
-    <url>/2024/08/03/Python-Decorator/</url>
-    <content><![CDATA[<h3 id="Python-Decotator"><a href="#Python-Decotator" class="headerlink" title="Python Decotator"></a>Python Decotator</h3><p><img src="decorator.png" alt="decorator"></p>
-<blockquote>
-<p>装饰器（decorators）是 Python 中的一种高级功能，它允许你动态地修改函数或类的行为。</p>
-<p>装饰器是一种函数，它接受一个函数作为参数，并返回一个新的函数或修改原来的函数。</p>
-<p>装饰器的语法使用 <strong>@decorator_name</strong> 来应用在函数或方法上。</p>
-<p>Python 还提供了一些内置的装饰器，比如 <strong>@staticmethod</strong> 和 <strong>@classmethod</strong>，用于定义静态方法和类方法。</p>
-</blockquote>
-<p><strong>装饰器的应用场景：</strong></p>
-<ul>
-<li><strong>日志记录</strong>: 装饰器可用于记录函数的调用信息、参数和返回值。</li>
-<li><strong>性能分析</strong>: 可以使用装饰器来测量函数的执行时间。</li>
-<li><strong>权限控制</strong>: 装饰器可用于限制对某些函数的访问权限。</li>
-<li><strong>缓存</strong>: 装饰器可用于实现函数结果的缓存，以提高性能。</li>
-</ul>
-<p>我们先看下面这个例子，我们对hello()进行一些包装，实现一个记录函数运行时间的方法。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br>    <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br>hello = timing(hello)<br>hello()<br></code></pre></td></tr></table></figure>
-
-<p>上面的这个例子我们调用timing，实际上返回的还是hello这个函数的，其实什么都没有做。在实际业务中，我们希望timing返回一个新的函数，调用新函数就相当于调用了hello，开发中习惯叫这个新函数wrapper。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        <span class="hljs-keyword">return</span> f<br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello = timing(hello)<br><span class="hljs-comment"># 我们在这里print hello 实际上已经指向wrapper</span><br><span class="hljs-built_in">print</span>(hello)<br>hello()<br></code></pre></td></tr></table></figure>
-
-<p>我们简单实现以下函数计时器的逻辑</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        start_time = time.time()<br>        result = f()<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello = timing(hello)<br>hello()<br></code></pre></td></tr></table></figure>
-
-<p>到此实际上我们已经实现了装饰器的功能，但这种写法有点奇怪，我们可以使用Python的语法糖来实现</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        start_time = time.time()<br>        result = f()<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello()<br></code></pre></td></tr></table></figure>
-
-<h5 id="装饰器的参数处理"><a href="#装饰器的参数处理" class="headerlink" title="装饰器的参数处理"></a>装饰器的参数处理</h5><p>上面的例子是没有参数的情况，正常的业务处理中我们会面对各种各样的参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br>        start_time = time.time()<br>        result = f(*args, **kwargs)<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello_one</span>(<span class="hljs-params">name</span>):</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Hello, <span class="hljs-subst">&#123;name&#125;</span>&quot;</span>)<br><br>hello()<br>hello_one(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Tom&quot;</span>)<br></code></pre></td></tr></table></figure>
-
-<p>我们可以在wrapper上加入可变参数，这样就可以适配所有的参数场景。</p>
-<h5 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br>        start_time = time.time()<br>        result = f(*args, **kwargs)<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><br><span class="hljs-meta">@timing</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br><br>Foo()<br></code></pre></td></tr></table></figure>
-<p>上面的代码创建 Foo() 实例时，装饰器 @timing 会记录类的构造函数执行所需的时间。因此，打印出来的时间表示了调用 Foo() 实例化对象的时间消耗。</p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python Enum小结</title>
     <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
@@ -1047,6 +1004,49 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Decorator</title>
+    <url>/2024/08/03/Python-Decorator/</url>
+    <content><![CDATA[<h3 id="Python-Decotator"><a href="#Python-Decotator" class="headerlink" title="Python Decotator"></a>Python Decotator</h3><p><img src="decorator.png" alt="decorator"></p>
+<blockquote>
+<p>装饰器（decorators）是 Python 中的一种高级功能，它允许你动态地修改函数或类的行为。</p>
+<p>装饰器是一种函数，它接受一个函数作为参数，并返回一个新的函数或修改原来的函数。</p>
+<p>装饰器的语法使用 <strong>@decorator_name</strong> 来应用在函数或方法上。</p>
+<p>Python 还提供了一些内置的装饰器，比如 <strong>@staticmethod</strong> 和 <strong>@classmethod</strong>，用于定义静态方法和类方法。</p>
+</blockquote>
+<p><strong>装饰器的应用场景：</strong></p>
+<ul>
+<li><strong>日志记录</strong>: 装饰器可用于记录函数的调用信息、参数和返回值。</li>
+<li><strong>性能分析</strong>: 可以使用装饰器来测量函数的执行时间。</li>
+<li><strong>权限控制</strong>: 装饰器可用于限制对某些函数的访问权限。</li>
+<li><strong>缓存</strong>: 装饰器可用于实现函数结果的缓存，以提高性能。</li>
+</ul>
+<p>我们先看下面这个例子，我们对hello()进行一些包装，实现一个记录函数运行时间的方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-keyword">return</span> f<br>    <br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br>hello = timing(hello)<br>hello()<br></code></pre></td></tr></table></figure>
+
+<p>上面的这个例子我们调用timing，实际上返回的还是hello这个函数的，其实什么都没有做。在实际业务中，我们希望timing返回一个新的函数，调用新函数就相当于调用了hello，开发中习惯叫这个新函数wrapper。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        <span class="hljs-keyword">return</span> f<br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello = timing(hello)<br><span class="hljs-comment"># 我们在这里print hello 实际上已经指向wrapper</span><br><span class="hljs-built_in">print</span>(hello)<br>hello()<br></code></pre></td></tr></table></figure>
+
+<p>我们简单实现以下函数计时器的逻辑</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        start_time = time.time()<br>        result = f()<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello = timing(hello)<br>hello()<br></code></pre></td></tr></table></figure>
+
+<p>到此实际上我们已经实现了装饰器的功能，但这种写法有点奇怪，我们可以使用Python的语法糖来实现</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>():</span><br>        start_time = time.time()<br>        result = f()<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br>hello()<br></code></pre></td></tr></table></figure>
+
+<h5 id="装饰器的参数处理"><a href="#装饰器的参数处理" class="headerlink" title="装饰器的参数处理"></a>装饰器的参数处理</h5><p>上面的例子是没有参数的情况，正常的业务处理中我们会面对各种各样的参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br>        start_time = time.time()<br>        result = f(*args, **kwargs)<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello</span>():</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello World&quot;</span>)<br><br><span class="hljs-meta">@timing</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hello_one</span>(<span class="hljs-params">name</span>):</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Hello, <span class="hljs-subst">&#123;name&#125;</span>&quot;</span>)<br><br>hello()<br>hello_one(<span class="hljs-string">&quot;John&quot;</span>, <span class="hljs-string">&quot;Tom&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>我们可以在wrapper上加入可变参数，这样就可以适配所有的参数场景。</p>
+<h5 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h5><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">timing</span>(<span class="hljs-params">f</span>):</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">wrapper</span>(<span class="hljs-params">*args, **kwargs</span>):</span><br>        start_time = time.time()<br>        result = f(*args, **kwargs)<br>        end_time = time.time()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&quot;Total time =&gt; <span class="hljs-subst">&#123;end_time - start_time&#125;</span>&quot;</span>)<br>        <span class="hljs-keyword">return</span> result<br><br>    <span class="hljs-keyword">return</span> wrapper<br><br><br><span class="hljs-meta">@timing</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Foo</span>:</span><br>    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span>(<span class="hljs-params">self</span>):</span><br>        <span class="hljs-keyword">pass</span><br><br><br>Foo()<br></code></pre></td></tr></table></figure>
+<p>上面的代码创建 Foo() 实例时，装饰器 @timing 会记录类的构造函数执行所需的时间。因此，打印出来的时间表示了调用 Foo() 实例化对象的时间消耗。</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
@@ -1725,6 +1725,49 @@
       </tags>
   </entry>
   <entry>
+    <title>自动化用例中如何获得testcase名称</title>
+    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
+    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行输出</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String testcaseName = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-meta">@BeforeMethod</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeMethod</span><span class="hljs-params">(Method method)</span> </span>&#123;<br>    testcaseName = method.getName();<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>运行输出:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Automation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决MacOS通过gem安装rails后无法使用</title>
+    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
+<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
+
+<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
+
+<p>其他常用的排查命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>秋菊男的故事</title>
     <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
     <content><![CDATA[<blockquote>
@@ -1756,49 +1799,6 @@
       </categories>
       <tags>
         <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决MacOS通过gem安装rails后无法使用</title>
-    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
-<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
-
-<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
-
-<p>其他常用的排查命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Ruby</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自动化用例中如何获得testcase名称</title>
-    <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
-    <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行输出</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
-
-
-
-<h3 id="TestNG"><a href="#TestNG" class="headerlink" title="TestNG"></a>TestNG</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String testcaseName = <span class="hljs-string">&quot;&quot;</span>;<br><br><span class="hljs-meta">@BeforeMethod</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">beforeMethod</span><span class="hljs-params">(Method method)</span> </span>&#123;<br>    testcaseName = method.getName();<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span> </span>&#123;<br>    System.out.println(testcaseName);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>运行输出:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">testcase_001<br>testcase_002<br></code></pre></td></tr></table></figure>
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Automation</tag>
       </tags>
   </entry>
 </search>
