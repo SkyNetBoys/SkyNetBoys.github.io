@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="NFS文件系统 NFS文件系统 NFS是UNIX（Linux）系统之见进行文件共享的网络服务，NFS即网络文件系统（Network File System），是主机间通过网络进行文件共享的网络协议。NFS服务器提供的共享目录可以被NFS客户机作为文件系统挂载到目录（挂载点）中。NFS最早是由Sun公司提出的。  1.NFS的用途  NFS通常在局域网环境中使用，用于多于多台主机共享同一主机上的共享">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NFS文件系统">
+<meta property="og:url" content="https://skynetboys.github.io/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="NFS文件系统 NFS文件系统 NFS是UNIX（Linux）系统之见进行文件共享的网络服务，NFS即网络文件系统（Network File System），是主机间通过网络进行文件共享的网络协议。NFS服务器提供的共享目录可以被NFS客户机作为文件系统挂载到目录（挂载点）中。NFS最早是由Sun公司提出的。  1.NFS的用途  NFS通常在局域网环境中使用，用于多于多台主机共享同一主机上的共享">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/nfs.png">
+<meta property="article:published_time" content="2023-02-15T06:28:27.000Z">
+<meta property="article:modified_time" content="2023-02-15T06:41:02.233Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/nfs.png">
+  
+  
+  
+  <title>NFS文件系统 - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="NFS文件系统"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-15 14:28" pubdate>
+          February 15, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">NFS文件系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="NFS文件系统"><a href="#NFS文件系统" class="headerlink" title="NFS文件系统"></a>NFS文件系统</h3><p><img src="nfs.png" srcset="/img/loading.gif" lazyload alt="nfs"></p>
+<p><strong>NFS文件系统</strong></p>
+<p>NFS是UNIX（Linux）系统之见进行文件共享的网络服务，<strong>NFS即网络文件系统（Network File System）</strong>，是主机间通过网络进行文件共享的网络协议。<strong>NFS服务器提供的共享目录可以被NFS客户机作为文件系统挂载到目录（挂载点）中</strong>。NFS最早是由Sun公司提出的。</p>
+<ul>
+<li>1.NFS的用途</li>
+</ul>
+<p>NFS通常在局域网环境中使用，用于多于多台主机共享同一主机上的共享文件（目录）资源。由于NFS具有共享文件访问速度快、稳定性高等特点，在实际的生产系统中得到了广泛的应用。</p>
+<p>对于使用NFS进行系统之间文件的共享，通常可以进行一下概括：</p>
+<ul>
+<li><p>NFS是系统间提供文件共享的一种网络协议，与HTTP和FTP等用于在网络中传输文件的协议不同，NFS不需要将文件从服务器下载到本地系统来访问文件。</p>
+</li>
+<li><p>在使用NFS协议进行文件共享的系统中，可划分为服务器和客户机两部分角色：NFS服务器输出共享的目录供其他主机访问，NFS客户机读取NFS服务器中的共享目录。</p>
+</li>
+<li><p>通过NFS网络协议，作为NFS客户端的主机可以把NFS服务器中输出的共享目录（NFS文件系统）直接挂载（mount）到本机文件系统中的挂载点（目录），并且像访问本地文件系统一样访问已经挂载NFS文件系统。</p>
+</li>
+<li><p>在同一台主机中即可以作为NFS服务器为其他主机提供共享目录，也可以作为NFS客户机读取其他NFS服务器中的共享目录。</p>
+</li>
+</ul>
+<p><strong>NFS有三个主流发行版本</strong>：</p>
+<ol>
+<li><p> NFSv2</p>
+</li>
+<li><p>NFSv3</p>
+</li>
+<li><p>NFSv4.</p>
+</li>
+</ol>
+<p>CentOS6/REHEL6默认的NFS共享服务支持所有三个版本的客户端连接。</p>
+<p>NFS协议</p>
+<p>NFSv2、NFSv3默认需要使用rpc服务，所以计算机的rpc服务必须启动：</p>
+<p>rpc是远程进程调用，很多服务需要通过rpc获取一些端口信息，在Linux中rpc服务我们称之为rpcbind，我们可以将它通过以下命令启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">service rpcbind start<br>chkconfig rpcbind on<br></code></pre></td></tr></table></figure>
+
+<p>NFSv4不再需要rpc支持，并且是防火墙友好的。</p>
+<p>NFSv2、NFSv3既可以使用TCP协议进行传输、也可以使用UDP协议，UDP协议效率较高，但是不保证传输可靠性，不建议使用。NFSv4使用TCP协议进行传输。</p>
+<p>NFS服务默认是安装的，我们可以通过以下命令可以启动：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs shell">service nfs start<br>chkconfig nfs on<br></code></pre></td></tr></table></figure>
+
+<p>默认NFS需要使用5个端口，其中4个是动态的（nfs工作需要的端口），以及rpc服务的端口，动态端口无法通过防火墙，如果需要通过防火墙，则需要配置NFS使用指定的静态端口：</p>
+<p>配置NFS的配置文件/etc/sysconfig/nfs,添加静态端口设置：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell">MOUNT_PORT=&quot;4001&quot;		#挂载使用端口*<br>STATD_PORT=&quot;4002&quot;		#状态使用端口*<br>LOCKD_TCPPORT=&quot;4003&quot;	#TCP锁使用端口*<br>LOCKD_UDPPORT=&quot;4004&quot;	#UDP锁使用端口*<br></code></pre></td></tr></table></figure>
+
+<p>防火墙需要配置允许以上端口，以及NFS协议的2049端口，RPC的111端口允许通过，才能正常使用NFS。</p>
+<p><strong>NFS共享配置</strong></p>
+<p>NFS服务的共享配置文件为/etc/exports</p>
+<p>每一共享占用一行，格式如下：</p>
+<p>在允许的客户机处，我们可以选择一个网段，或者一个固定的主机IP地址，也可以是域名。</p>
+<p>共享目录   允许的客户主机（选项）</p>
+<p>如：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">/bxy-nfs   192.168.0.0/24(ro,saync)<br>/bxy-nfs   192.168.0.133(rw,sync)<br>/bxy-nfs   *.bxy.com<br><span class="hljs-meta">#</span><span class="bash"> 配置好共享后，可以使用以下命令启动共享：*</span><br>service nfs start<br><span class="hljs-meta">#</span><span class="bash"> 或</span><br>exportfs -r<br><span class="hljs-meta">#</span><span class="bash"> 可以通过以下命令查看当前共享状态</span><br>exportfs –v 	<br></code></pre></td></tr></table></figure>
+
+<p>NFS共享选项</p>
+<p>默认选项如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">-ro				# 只读共享<br>-sync			# 所有操作返回前必须已经写入磁盘<br>-wdelay     	# 延迟写操作，等待更多的写操作一起执行<br>-root_squash	# 防止远程root用户使用root权限对共享进行访问<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 常用选项：</span><br>-rw   			# 读写共享<br>-async          # 操作可以延迟写入磁盘，立即响应，可提高速度<br>-no_wdelay      # 关闭写延迟，需要与sync选项同时使用<br>-no_root_squash # 关闭root_squash<br></code></pre></td></tr></table></figure>
+
+<p>客户端挂载NFS共享</p>
+<p>客户端可以通过mount命令挂载NFS共享，命令格式如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mount -t nfs 192.168.1.100:/bxy-nfs /mnt<br></code></pre></td></tr></table></figure>
+
+<p>注：这里的192.168.1.100就是NFS服务器所在的地址</p>
+<p>也可以将配置信息写入到/etc/fstab中，在启动时自动挂载：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">192.168.1.100:/bxy-nfs /mnt nfs defaults 0 0<br></code></pre></td></tr></table></figure>
+
+<p>挂载的时候可以使用-o指定挂载选项，常用选项如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell">-ro 		# 只读挂载<br>-rw 		# 读写挂载<br>-vers=4 	# 指定使用NFSv4方式挂载<br><span class="hljs-meta">#</span><span class="bash"> 例如：</span><br>mount -t nfs 192.168.1.100:/bxy-nfs /mnt –rw<br></code></pre></td></tr></table></figure>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>NFS文件系统</div>
+      <div>https://skynetboys.github.io/2023/02/15/NFS文件系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 15, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/" title="samba服务简介">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">samba服务简介</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/" title="Python Enum小结">
+                        <span class="hidden-mobile">Python Enum小结</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,710 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="SMB简介 SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。SMB协议又称为CIFS（Common Internet File System）协议。   Samba是著名的开源软件项目，在Linux&#x2F;UNIX系统中实现了SMB网络协议，因此使得">
+<meta property="og:type" content="article">
+<meta property="og:title" content="samba服务简介">
+<meta property="og:url" content="https://skynetboys.github.io/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="SMB简介 SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。SMB协议又称为CIFS（Common Internet File System）协议。   Samba是著名的开源软件项目，在Linux&#x2F;UNIX系统中实现了SMB网络协议，因此使得">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/smb.png">
+<meta property="article:published_time" content="2023-02-16T01:10:29.000Z">
+<meta property="article:modified_time" content="2023-09-23T22:55:27.697Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2023/02/16/samba%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/smb.png">
+  
+  
+  
+  <title>samba服务简介 - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="samba服务简介"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-02-16 09:10" pubdate>
+          February 16, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">samba服务简介</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="SMB简介"><a href="#SMB简介" class="headerlink" title="SMB简介"></a>SMB简介</h2><blockquote>
+<p>SMB（Serevr Message Block）协议是windows中使用的文件共享协议，我们在Linux系统或者其他类Unix系统中（BSD、MAC、Unix）可以通过samba服务来实现SMB功能。SMB协议又称为CIFS（Common Internet File System）协议。</p>
+</blockquote>
+<p><img src="smb.png" srcset="/img/loading.gif" lazyload alt="smb"></p>
+<p>Samba是著名的开源软件项目，在Linux/UNIX系统中实现了SMB网络协议，因此使得跨平台的文件共享变得更加容易。在部署Windows、Linux/UNIX混合平台的企业环境时，使用Smaba可以很好地解决不同系统之间的文件互访问题。</p>
+<h3 id="samba主要功能"><a href="#samba主要功能" class="headerlink" title="samba主要功能"></a>samba主要功能</h3><p>samba服务是SMB的一个开源实现，主要功能如下：</p>
+<ul>
+<li>通过SMB协议进行文件共享</li>
+<li>通过SMB协议进行打印共享</li>
+<li>加入一个windows2000/2003/2008域环境</li>
+<li>通过windows域环境进行认证操作</li>
+</ul>
+<h3 id="samba安装"><a href="#samba安装" class="headerlink" title="samba安装"></a>samba安装</h3><p>samba的软件包组成:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs shell">samba-3.0.23c-2.i386.rpm<br>samba-client-3.0.23c-2.i386.rpm<br>samba-common-3.0.23c-2.i386.rpm<br>samba-swat-3.0.23c-2.i386.rpm<br>system-config-samba-1.2.39-1.el5.noarch.rpm<br><span class="hljs-meta">#</span><span class="bash">查看当前系统是否已经安装了samba</span><br>rpm –qa | grep samba<br><span class="hljs-meta">#</span><span class="bash">如果没有安装，我们执行以下命令，安装samba</span><br>yum install –y samba<br></code></pre></td></tr></table></figure>
+<p>samba拥有3个相关服务，分别是：</p>
+<ul>
+<li>smbd<br>  提供文件及打印共享功能，使用139，445端口</li>
+<li>nmbd<br>  提供NetBIOS名称解析，使用137端口（现在已经逐渐淘汰掉，使用DNS）</li>
+<li>winbendd<br>  提供对windows 2000\2003\2008的用户及组信息的解析功能</li>
+</ul>
+<p><strong>一般作为文件共享使用samba，则只需要smbd服务</strong></p>
+<h3 id="访问samba服务器"><a href="#访问samba服务器" class="headerlink" title="访问samba服务器"></a>访问samba服务器</h3><p>客户端访问samba服务器:</p>
+<ul>
+<li>Windows客户端直接使用以下方式连接即可：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">\\192.168.0.100\skynet<br></code></pre></td></tr></table></figure></li>
+<li>Linux或类Unix系统图形界面使用以下方式连接:<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">smb://192.168.0.100/skynet<br></code></pre></td></tr></table></figure></li>
+<li>Linux使用CLI下可以使用smbclient命令链接：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">注：smbclient默认是不安装的，需要单独安装</span><br>smbclient//192.168.0.100/skynet –U test<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">也可以通过mount命令挂载smb共享：</span><br>mount -o username=test //192.168.0.100/bxy-share /mnt/test/<br></code></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="samba配置"><a href="#samba配置" class="headerlink" title="samba配置"></a>samba配置</h3><p><strong>samba服务</strong><br>samba服务的主配置文件为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/samba/smb.conf<br></code></pre></td></tr></table></figure>
+
+
+<p>samba服务可以作为独立的服务器，也可以加入windows域环境使用。</p>
+<p><strong>samba作为独立服务器使用时，samba使用Linux用户作为其用户，但是单独需<br>要创建密码。</strong></p>
+<p>当加入windows域环境使用时，一般使用的是windows域用户。</p>
+<p>samba有两种安全模式：</p>
+<ul>
+<li>User-Level 默认安全模式，使用用户名、密码进行认证。</li>
+<li>Share-Level 只需要密码即可访问共享，但与部分windows客户端有兼容性问题，不推荐使用。（官方文档，但在实际的使用没有遇到此类问题）</li>
+</ul>
+<p>samba服务的主配置文件为</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs shell">/etc/samba/smb.conf<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">配置文件分为三个部分：</span><br>[global]        #定义全局性配置<br>[homes]         #定义用户家目录的共享配置<br>[printers]      #定义打印机共享配置<br></code></pre></td></tr></table></figure>
+
+<h3 id="Global配置"><a href="#Global配置" class="headerlink" title="Global配置"></a>Global配置</h3><p>samba常用的global配置如下：</p>
+<p>配置工作组信息：</p>
+<p>例如： </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash">设置当前的工作信息</span><br>workgroup=bxy     <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">服务器的简介</span><br>server string=this is bxy samba server    <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">配置安全模式</span><br>Security = user（默认是user）<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 设置服务器的安全级别，可设为以下4个值中的一个：</span><br>share    #可匿名访问<br>user     #需由本服务器验证用户名及密码<br>server   #由另一台服务器验证用户名及密码<br>domain   #由Windows域控制器验证用户名及密码<br>ads      #域环境<br></code></pre></td></tr></table></figure>
+
+<h3 id="用户家目录共享"><a href="#用户家目录共享" class="headerlink" title="用户家目录共享"></a>用户家目录共享</h3><p>Samba服务配置文件默认配置好了用户家目录共享，每一个Linux用户的家目录</p>
+<p>均可以使用smb协议访问：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs shell">[home]<br>Comment=Home Directories<br>Broseable=no<br>Writable=yes<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">为要通过smb协议访问家目录的用户创建samba密码：</span><br>smbpasswd -a 123456<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">启动smaba服务</span><br>Service smb start<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">通过smbclient登录验证用户共享</span><br>smbclient //your IP/skynet –U bxy<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建独立共享"><a href="#创建独立共享" class="headerlink" title="创建独立共享"></a>创建独立共享</h3><p>我们可以通过向/etc/samba/smb.conf 添加如下的配置</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs shell">[skynet-share]<br><span class="hljs-meta">#</span><span class="bash">共享注释信息</span><br>comment = This is a share directory. <br>path = /bxy-share<br>public = no <br>valid users = test<br>browsable=yes<br>writable = yes<br>create mask = 0755<br>directory mask = 0755<br></code></pre></td></tr></table></figure>
+
+<h3 id="创建匿名共享"><a href="#创建匿名共享" class="headerlink" title="创建匿名共享"></a>创建匿名共享</h3><p>如果我们需要创建一个不需要用户名密码就可以访问的开放共享，可以使用如下配置：</p>
+<p><strong>修改samba的安全级别为share</strong>：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs shell"><br>[global]<br>secuity=share<br>[bxy-share]<br>comment = This is a share directory. –共享注释信息<br>path = /bxy-share<br>read only=yes<br>guest only=yes<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">注意：使用share安全级别可能会与windows客户端不兼容，如果在非常严格的生产环境中，还是需要注意，避免使用。</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">其他：</span><br><span class="hljs-meta">#</span><span class="bash">可以使用testparm命令检查samba配置文件语法是否正确</span><br>testparm<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash">我们可以通过smbclient查看一个指定服务器都有哪些共享:</span><br>smbclient –L 192.168.0.102<br>smbclient –L 192.168.0.102 –U test<br></code></pre></td></tr></table></figure>
+
+<p>练习：挂载一个windows共享的文件夹？</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">mount -o username=Administrator,password=123456 //192.168.0.200/win-share /mnt/test/<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>samba服务简介</div>
+      <div>https://skynetboys.github.io/2023/02/16/samba服务简介/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>February 16, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/" title="vsftpd服务简介">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vsftpd服务简介</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/15/NFS%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" title="NFS文件系统">
+                        <span class="hidden-mobile">NFS文件系统</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

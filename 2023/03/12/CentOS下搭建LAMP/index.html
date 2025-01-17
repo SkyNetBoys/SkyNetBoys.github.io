@@ -1,0 +1,749 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="LAMP简介Linux+Apache+Mysql +Perl&#x2F;PHP&#x2F;Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CentOS下搭建LAMP">
+<meta property="og:url" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="LAMP简介Linux+Apache+Mysql +Perl&#x2F;PHP&#x2F;Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/1.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/2.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/3.jpg">
+<meta property="og:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/4.jpg">
+<meta property="article:published_time" content="2023-03-12T08:07:10.000Z">
+<meta property="article:modified_time" content="2023-03-12T08:19:50.950Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/logo.png">
+  
+  
+  
+  <title>CentOS下搭建LAMP - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CentOS下搭建LAMP"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-12 16:07" pubdate>
+          March 12, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          29 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">CentOS下搭建LAMP</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" srcset="/img/loading.gif" lazyload alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
+<table>
+<thead>
+<tr>
+<th align="center">WebSite</th>
+<th align="center">System</th>
+<th align="center">Server</th>
+<th align="center">Database</th>
+<th align="center">language</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Yahoo</td>
+<td align="center">FreeBSD + Linux</td>
+<td align="center">Apache</td>
+<td align="center">MySQL</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Facebook</td>
+<td align="center">FreeBSD</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Wikimedia</td>
+<td align="center">Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">Flickr</td>
+<td align="center">Redhat</td>
+<td align="center">Apache</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP + Perl</td>
+</tr>
+<tr>
+<td align="center">Sina</td>
+<td align="center">FreeBSD + Solaris</td>
+<td align="center">Apache + Nginx</td>
+<td align="center">MySQL + Memcached</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">YouTube</td>
+<td align="center">Suse Linux</td>
+<td align="center">Apache + Lighttpd</td>
+<td align="center">MySQL</td>
+<td align="center">Python</td>
+</tr>
+</tbody></table>
+<h3 id="搭建LNMP"><a href="#搭建LNMP" class="headerlink" title="搭建LNMP"></a>搭建LNMP</h3><p>源代码编译安装</p>
+<ol>
+<li>首先准备一下软件包，如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql-5.0.22.tar.gz<br>httpd-2.2.17.tar.gz<br>php-5.3.5.tar.gz<br></code></pre></td></tr></table></figure>
+
+<p>以上是LAMP搭建必备的安装包，可以去各个官方网站上下载，这三个安装包没有先后的安装顺序，先将以上三个包上出至Linux下的/usr/local/src目录下，并给予可执行权限。</p>
+<ol start="2">
+<li>安装mysql，这里要介绍mysql的源代码编译安装方式，进入已经部署好饿的Centos linux学习环境，通过命令ps -ef | grep mysql来查看是否有运行的mysql进程，然后可以通过一些命令来查找mysql是否已经安装，具体如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs bash">groupadd mysql<br><span class="hljs-comment">#创建mysql用户，并将用户指定至mysql组</span><br>useradd mysql -g mysql<br><span class="hljs-comment">#解压到mysql-5.0.22目录下</span><br>tar -zxvf mysql-5.0.22.tar.gz<br><span class="hljs-comment">#这里是配置mysql的安装目录</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/mysql                     <br>make<br><span class="hljs-comment">#安装</span><br>make install<br><span class="hljs-comment">#待安装完成之后，将当前目录下的配置文件拷贝到系统配置文件下，并更名为my.cnf</span><br>cp support-files/my-medium.cnf /etc/my.cnf          <br><span class="hljs-comment">#切换到mysql安装目录下</span><br><span class="hljs-built_in">cd</span> /usr/<span class="hljs-built_in">local</span>/mysql                                              <br><span class="hljs-comment">#将该目录的用户权限全部更改为mysql用户</span><br>chown -R mysql .                                                <br><span class="hljs-comment">#将该目录的用户组全部更改为mysql用户组</span><br>chgrp -R mysql .                                                <br><span class="hljs-comment">#将mysql目录的数据使用权限指定为mysql</span><br>bin/mysql_install_db --user=mysql                      <br>chown -R mysql var<br><span class="hljs-comment">#指定mysql用户启动mysql </span><br>bin/mysqld_safe --user=mysql &amp;                         <br><span class="hljs-comment">#执行这个命令用于设置或者更改数据库的密码</span><br>bin/mysqladmin -u root password 新密码<br><span class="hljs-comment">#这里将mysql的启动文件拷贝到系统的启动目录下</span><br>cp /usr/<span class="hljs-built_in">local</span>/src/mysql-5.0.22/support-files/mysql.server  /etc/rc.d/init.d/mysql      //<br><span class="hljs-comment">#给系统目录的mysql命令以可执行权限</span><br>chmod +x /etc/rc.d/init.d/mysql                         <br><span class="hljs-comment">#将mysql启动添加到系统自启动列表下</span><br>chkconfig --add mysql         <br><span class="hljs-comment">#当然这里还有另外一些方法来设置mysql自动启动，以上就是mysql源代码编译安装全过程，为了验证mysql安装是否成功，需要执行如下命令：</span><br><span class="hljs-comment">#//启动mysql数据库服务</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysqld_safe --user=mysql &amp;<br><span class="hljs-comment">#进入并访问mysql数据，如果进入mysql数据库命令行，说明mysql数据库安装成功。</span><br>/usr/<span class="hljs-built_in">local</span>/mysql/bin/mysql -uroot -proot              <br></code></pre></td></tr></table></figure>
+
+<p>如图所示：<br><img src="1.jpg" srcset="/img/loading.gif" lazyload alt="1">  </p>
+<ol start="3">
+<li>安装apache，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf httpd-2.2.4.tar.gz<br><span class="hljs-built_in">cd</span> httpd-2.2.4<br><span class="hljs-comment">#配置与mysql的关联，并启动动态连接库</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/apache --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --enable-module=so --enable-shared=max <br>mark<br>mark install<br></code></pre></td></tr></table></figure>
+
+<p>启动apache服务，如下图所示：<br><img src="2.jpg" srcset="/img/loading.gif" lazyload alt="2"><br>设置apache自动随操作系统启动，命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#将apache的启动程序命令放置系统启动文件下，当然mysql也可以这么设置</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/usr/local/apache/bin/apachectl start&quot;</span> &gt;&gt; /etc/rc.local          <br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>安装php，命令行如下：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -zxvf php-5.2.2.tar.gz<br><span class="hljs-built_in">cd</span> php-5.2.2<br><span class="hljs-comment">#这里是配置php与apache、mysql的关联</span><br>./configure --prefix=/usr/<span class="hljs-built_in">local</span>/php/ --with-mysql=/usr/<span class="hljs-built_in">local</span>/mysql --with-apxs2=/usr/<span class="hljs-built_in">local</span>/apache/bin/apxs --enable-sockets  <br>make<br>make install<br>cp php.ini-development /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini                      //这里需要注意的是，在新版的php配置文件将php.ini-dist更改成php.ini-development<br>vi /usr/<span class="hljs-built_in">local</span>/php/lib/php.ini   <br></code></pre></td></tr></table></figure>
+
+<p>上述就是PHP的安装过程。</p>
+<ol start="5">
+<li>测试<br>安装完成以上个包之后，需要更改apache的配置文件，来达到解析php文件的目的</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/conf/httpd.conf<br></code></pre></td></tr></table></figure>
+
+<p>通过“/”来查找到AddType application/x-gzip .tgz，这里需要注意的是，不是带有的注意标记的#，在找到AddType application/x-gzip .tgz的后面添加如图所示文件：<br><img src="3.jpg" srcset="/img/loading.gif" lazyload alt="3"></p>
+<p>添加文件为AddType application/x-httpd-php .php .phtml，表示apache服务中可以解析php格式文件<br>接下来要检查apache目录下生成的php动态连接库文件，在目录/usr/local/apache/modules，找到是否存在 libphp5.so文件<br>一系列安装结束之后，通过一个简单的php测试页面来测试LAMP环境搭建成功与否。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">vi /usr/<span class="hljs-built_in">local</span>/apache/htdocs/index.php<br></code></pre></td></tr></table></figure>
+
+<p>内容为:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs php+HTML">&lt;?php<br>phpinfo();<br>?&gt;<br></code></pre></td></tr></table></figure>
+
+<p>启动httpd<br>在浏览器上输入：<a target="_blank" rel="noopener" href="http://ip/index.php%EF%BC%8C%E6%98%BE%E7%A4%BA%E5%A6%82%E4%B8%8B%E9%A1%B5%E9%9D%A2%EF%BC%8C%E8%A1%A8%E6%98%8E%E6%88%90%E5%8A%9F%EF%BC%9B">http://ip/index.php，显示如下页面，表明成功；</a><br><img src="4.jpg" srcset="/img/loading.gif" lazyload alt="4"><br>里面分别显示php、apache和mysql的相关版本信息等内容。<br><strong>yum安装</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装apache</span><br>yum install –y httpd<br><span class="hljs-comment">#安装MySQL</span><br>yum install –y mysql-server mysql<br><span class="hljs-comment">#安装PHP及相关模块</span><br>yum install –y php php-mysql<br></code></pre></td></tr></table></figure>
+
+<p>练习：部署并发布禅道</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Linux/">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CentOS下搭建LAMP</div>
+      <div>https://skynetboys.github.io/2023/03/12/CentOS下搭建LAMP/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 12, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/19/Postfix%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="Postfix环境搭建">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Postfix环境搭建</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/" title="vsftpd服务简介">
+                        <span class="hidden-mobile">vsftpd服务简介</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

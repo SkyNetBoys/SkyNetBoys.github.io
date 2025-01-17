@@ -1,0 +1,704 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Op">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中的Optional">
+<meta property="og:url" content="https://skynetboys.github.io/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Op">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/Optional.png">
+<meta property="article:published_time" content="2023-11-26T11:16:29.000Z">
+<meta property="article:modified_time" content="2023-12-02T02:15:14.203Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="语言基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/Optional.png">
+  
+  
+  
+  <title>Java中的Optional - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java中的Optional"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-11-26 19:16" pubdate>
+          November 26, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          52 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java中的Optional</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <blockquote>
+<p>从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。<br>Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。</p>
+</blockquote>
+<p><img src="Optional.png" srcset="/img/loading.gif" lazyload alt="Optional"></p>
+<h4 id="传统的判空处理"><a href="#传统的判空处理" class="headerlink" title="传统的判空处理"></a>传统的判空处理</h4><p>我们先看这样一个例子，例如我们使用名字去查找个人信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> fullName;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;James&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;James Harden&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中存在的用户名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; James Harden</span><br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中没有的用户名</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; 报错NullPointerException，在Java中引用一个空引用的属性或者调用一个空引用的方法的时候，就会直接报NullPointerException</span><br><span class="hljs-comment">//为了避免报错，我们经常会在方法加上判空</span><br> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;Rose&quot;</span>);<br>	<span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) &#123;<br>		System.out.println(user.getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-comment">// 在查询为null的时候，我们就会自动创建一个默认的用户</span><br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-string">&quot;Jim Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在实际的代码逻辑中，会有大量的判空处理，我们采用上面的demo的话，会让我们的代码显得非常臃肿，而Optional的引入正好可以完美解决这个问题。</p>
+<h4 id="Optional的基本用法"><a href="#Optional的基本用法" class="headerlink" title="Optional的基本用法"></a>Optional的基本用法</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	Optional&lt;Object&gt; optionalBox = Optional.empty();<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isPresent());<br>	<span class="hljs-comment">// 打印true</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>	Optional&lt;String&gt; optionalBox = Optional.of(value);<br>	<span class="hljs-comment">// 打印true</span><br>    System.out.println(optionalBox.isPresent());<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>用of创建的对象必须包含值，你要确保传递给of方法的值部位null，否则还是会报NullPointerException。</p>
+<p>但是在实际处理业务中，我们不确定传入的对象是否为null，这时候我们就建议使用ofNullable.</p>
+<p>如果我们要从Optional这个盒子中取出值，我们可以使用get.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>Optional&lt;String&gt; optionalBox = Optional.ofNullable(value);<br>String value2 = optionalBox.get();<br></code></pre></td></tr></table></figure>
+
+<p>但是我们并不推荐使用get，这并不是Optional设计的初衷.</p>
+<p>接下来我们使用Optional来改造下开始的例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
+<p>orElseGet：只有在为空的情况下，才会去执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	optionalUser.orElseThrow(() -&gt; <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;User not found!!!&quot;</span>));<br>&#125;<br><span class="hljs-comment">//输出 =&gt; Exception in thread &quot;main&quot; java.lang.RuntimeException: User not found!!!</span><br></code></pre></td></tr></table></figure>
+
+<p>条件判断</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java">UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>optionalUser.ifPresent(user -&gt; System.out.println(user.getFullName()));<br><span class="hljs-comment">// 如果user存在对象，则执行语句，反之则什么也不做</span><br>optionalUser.ifPresentOrElse(<br>	user -&gt; System.out.println(user.getFullName()),<br>	() -&gt; System.out.println(<span class="hljs-string">&quot;User not Found!!!&quot;</span>)<br>);<br><span class="hljs-comment">//user存在执行System.out.println(user.getFullName())</span><br><span class="hljs-comment">//不存在则执行System.out.println(&quot;User not Found!!!&quot;)</span><br></code></pre></td></tr></table></figure>
+
+<p>过滤方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Optional&lt;User&gt; optionalUser2 = optionalUser.filter(user -&gt; user.getFullName().equals(<span class="hljs-string">&quot;Edison&quot;</span>));<br>System.out.println(optionalUser2.isPresent());<br></code></pre></td></tr></table></figure>
+
+<p>值的转换</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">Optional&lt;String&gt; optionalFullName = optionalUser.map(User::getFullName);<br>System.out.println(optionalFullName.get());<br></code></pre></td></tr></table></figure>
+
+<p>flatMap使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 我们改造下User</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;String&gt; <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> Optional.ofNullable(fullName);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_case_001</span><span class="hljs-params">()</span></span>&#123;<br>    Optional&lt;Optional&lt;String&gt;&gt; s = optionalUser.map(User::getFullName);<br>	Optional&lt;String&gt; optional = optionalUser.flatMap(User::getFullName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与Stream结合</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	Stream&lt;String&gt; a = optionalUser<br>                .map(User::getFullName)<br>                .stream();<br>	a.forEach(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="不推荐的使用场景"><a href="#不推荐的使用场景" class="headerlink" title="不推荐的使用场景"></a>不推荐的使用场景</h4><ul>
+<li>不应该用在class的字段，会增加额外的内存消耗，也是对象的序列化变得复杂</li>
+<li>不应该用在方法的参数，会使得方法的使用和理解变得复杂</li>
+<li>不应该用在构造器参数</li>
+<li>不应该用在集合的参数类型</li>
+<li>不建议使用get方法，可能会导致NoSuchElementException出现，推荐用ifPresent,orElse或者orElseThrow等方法</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java/" class="category-chain-item">Java</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80/">#语言基础</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java中的Optional</div>
+      <div>https://skynetboys.github.io/2023/11/26/Java中的Optional/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 26, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/" title="解决MacOS通过gem安装rails后无法使用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">解决MacOS通过gem安装rails后无法使用</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/21/Lambda-Expression-in-Java/" title="Lambda Expression in Java">
+                        <span class="hidden-mobile">Lambda Expression in Java</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

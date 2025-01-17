@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Appium环境安装（Windows环境）一、安装node.jsAppium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。1.到官网下载node.js：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F;，现在和操作系统匹配的版本。2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。3.安装完成后，运行cmd，输入node –v，如果安装">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appium环境安装(Windows环境)">
+<meta property="og:url" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="Appium环境安装（Windows环境）一、安装node.jsAppium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。1.到官网下载node.js：https:&#x2F;&#x2F;nodejs.org&#x2F;en&#x2F;download&#x2F;，现在和操作系统匹配的版本。2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。3.安装完成后，运行cmd，输入node –v，如果安装">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/nodejs.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/cmd.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/jdk.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/eclipse.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/adt.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/vm.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/appium.png">
+<meta property="og:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/java.png">
+<meta property="article:published_time" content="2019-11-23T03:15:54.000Z">
+<meta property="article:modified_time" content="2019-11-23T04:38:48.273Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="Appium">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2019/11/23/Appium%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85-Windows%E7%8E%AF%E5%A2%83/nodejs.png">
+  
+  
+  
+  <title>Appium环境安装(Windows环境) - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Appium环境安装(Windows环境)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2019-11-23 11:15" pubdate>
+          November 23, 2019 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          16 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Appium环境安装(Windows环境)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Appium环境安装（Windows环境）"><a href="#Appium环境安装（Windows环境）" class="headerlink" title="Appium环境安装（Windows环境）"></a>Appium环境安装（Windows环境）</h2><h4 id="一、安装node-js"><a href="#一、安装node-js" class="headerlink" title="一、安装node.js"></a>一、安装node.js</h4><p>Appium是使用nodejs实现的，所以node是解释器，首先需要确认安装好。<br>1.到官网下载node.js：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/%EF%BC%8C%E7%8E%B0%E5%9C%A8%E5%92%8C%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%8C%B9%E9%85%8D%E7%9A%84%E7%89%88%E6%9C%AC%E3%80%82">https://nodejs.org/en/download/，现在和操作系统匹配的版本。</a><br><img src="nodejs.png" srcset="/img/loading.gif" lazyload alt="nodejs"><br>2.获取到安装文件后，直接双击安装文件，根据程序的提示，完成nodejs的安装。<br>3.安装完成后，运行cmd，输入node –v，如果安装成功，会输出如下版本信息：<br><img src="cmd.png" srcset="/img/loading.gif" lazyload alt="cmd"><br>4.</p>
+<h4 id="二、配置Android-sdk环境"><a href="#二、配置Android-sdk环境" class="headerlink" title="二、配置Android sdk环境"></a>二、配置Android sdk环境</h4><p>1.安装jdk并配置环境变量<br>a)    在Java官方网站上下载相应系统的jdk文件安装，全部选择默认的安装路径即可安装完成<br>b)    配置JAVA_HOME, 新建 JAVA_HOME 环境变量，变量值是自己安装JDK 的路径，我的是：D:\Java\jdk1.8；<br>c)    配置ClASSPATH, 新建 CLASSPATH 环境变量，变量值是：%JAVA_HOME%/lib/dt.jar;%JAVA_HOME%/lib/tools.jar<br>d)    配置PATH, 找到PATH变量，追加如下目录：%JAVA_HOME%/bin;%JAVA_HOME%/jre/bin;<br>e)    验证安装是否成功<br><img src="jdk.png" srcset="/img/loading.gif" lazyload alt="jdk"><br>2.Android SDK环境搭建<br>a)    安装Eclipse<br><img src="eclipse.png" srcset="/img/loading.gif" lazyload alt="eclipse"><br>b)    安装ADT插件<br>启动Eclipse，点击菜单Help -&gt; Install New Software<br>在弹出的菜单中，点击Add，输入名称，然后在URL中输入：<a target="_blank" rel="noopener" href="http://dl-ssl.google.com/android/eclipse/">http://dl-ssl.google.com/android/eclipse/</a><br>之后点击Next，选择勾选ADT和NDK插件，选择安装即可，安装过程比较慢，需要耐心等待。<br>安装完成后，重启Eclipse后，点击Windows，在Windows下可以查看安装好的ADT插件。<br><img src="adt.png" srcset="/img/loading.gif" lazyload alt="adt"><br>c)    安装SDK Tools<br>解压下载下来的文件，尽量不要解压到带有中文路径的文件目录下，目录也不要过深，我的目录为：D:\Program Files\adt_bundle。<br>d)    配置Android SDK环境变量<br>i.    新建 ANDROID_HOME 环境变量，变量值是SDK解压的路径，我的是：D:\Program Files\adt_bundle<br>ii.    追加sdk如下目录到PATH变量<br>1.tools目录：%ANDROID_HOME%\tools<br>2.platform-tools目录：%ANDROID_HOME%\platform-tools<br>3.build-tools目录：%ANDROID_HOME%\build-tools\android-4.3<br>iii.配置Eclipse的ADT插件<br>1.双击打开eclipse，点击菜单栏中的选项 Window—&gt;Perferences<br>2.在打开的对话框中，查看第二选项 Android，后面有一个 SDK Loaction，如果在 SDKLocation 后面没有内容，则通过点击后面的按钮【Browser】按钮，找到自己所配置的SDK文件目录下选中， 然后点击【Apply】，如直接有路径可忽略，然后点击【OK】就好了。<br>配置完成后，在命令提示符下输入adb命令，看到有回显信息的时候，说明Android的环境命令已经安装完成。<br>3.虚拟机设置</p>
+<ul>
+<li>打开eclipse，点击菜单栏中的选项 Window—&gt;Android Virtual Device Manager，可以用来管理android emulator</li>
+<li>点击【create…】可以新建虚拟机</li>
+<li>选中虚拟机，然后点【Start】就可以启动该虚拟机</li>
+<li>android虚拟机启动比较慢，需要耐心等待，启动好后如下图<br><img src="vm.png" srcset="/img/loading.gif" lazyload alt="vm"></li>
+</ul>
+<h4 id="三、安装Appium环境"><a href="#三、安装Appium环境" class="headerlink" title="三、安装Appium环境"></a>三、安装Appium环境</h4><ol>
+<li><p>   下载安装文件：<a target="_blank" rel="noopener" href="https://bitbucket.org/appium/appium.app/downloads/">https://bitbucket.org/appium/appium.app/downloads/</a></p>
+</li>
+<li><p>   直接双击appium-installer.exe文件安装就好，桌面会生成一个appium的图标</p>
+</li>
+<li><p>   把node_modules的bin目录放到系统的Path路径里</p>
+</li>
+<li><p>检查appium所需的环境是否OK:<br>进入cmd命令行，输入appium-doctor ，出现以下提示，All Checks were successful ,说明环境成功。<br><img src="appium.png" srcset="/img/loading.gif" lazyload alt="appium"></p>
+<h4 id="四、Appium入门实例（Java-demo）"><a href="#四、Appium入门实例（Java-demo）" class="headerlink" title="四、Appium入门实例（Java demo）"></a>四、Appium入门实例（Java demo）</h4></li>
+<li><p>   启动Android模拟器<br><img src="java.png" srcset="/img/loading.gif" lazyload alt="java"></p>
+</li>
+</ol>
+<ul>
+<li><p>直接双击appium gui图标(如下图)：</p>
+</li>
+<li><p>点击右上角启动名按钮</p>
+<h4 id="五、问题备注："><a href="#五、问题备注：" class="headerlink" title="五、问题备注："></a>五、问题备注：</h4></li>
+<li><p>获取包名的方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">adb logcat &gt; d:\log.txt<br></code></pre></td></tr></table></figure>
+<p>搜索Displayed，找PACKAGE和Activity。</p>
+</li>
+<li><p>更改代理，加快SDK下载速度：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs html">mirrors.zzu.edu.cn 80<br></code></pre></td></tr></table></figure></li>
+<li><p>arm平台的虚拟机运行速度较慢，建议使用X86平台。</p>
+</li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" class="category-chain-item">自动化测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Appium/">#Appium</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Appium环境安装(Windows环境)</div>
+      <div>https://skynetboys.github.io/2019/11/23/Appium环境安装-Windows环境/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 23, 2019</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/" title="秋菊男的故事">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">秋菊男的故事</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/" title="CentOS6安装中文支持">
+                        <span class="hidden-mobile">CentOS6安装中文支持</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

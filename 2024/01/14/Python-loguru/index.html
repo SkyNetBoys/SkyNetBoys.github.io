@@ -1,0 +1,738 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Edison">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Python loguru 在使用Python进行程序开发的过程中，会遇到需要记录的日志的需求，常常会用到Python自带的logging模块，但是logging需要我们进行不同的初始化等相关工作。对应不熟悉该模块的同学来说，还是有些费劲的，比如需要配置 Handler&#x2F;Formatter 等。而且随着业务的复杂度提升, 对日志收集有着更高的要求, 例如: 日志分类, 文件存储, 异步写入, 自定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python loguru">
+<meta property="og:url" content="https://skynetboys.github.io/2024/01/14/Python-loguru/index.html">
+<meta property="og:site_name" content="麦田守望者">
+<meta property="og:description" content="Python loguru 在使用Python进行程序开发的过程中，会遇到需要记录的日志的需求，常常会用到Python自带的logging模块，但是logging需要我们进行不同的初始化等相关工作。对应不熟悉该模块的同学来说，还是有些费劲的，比如需要配置 Handler&#x2F;Formatter 等。而且随着业务的复杂度提升, 对日志收集有着更高的要求, 例如: 日志分类, 文件存储, 异步写入, 自定">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://skynetboys.github.io/2024/01/14/Python-loguru/loguru.png">
+<meta property="article:published_time" content="2024-01-14T01:42:35.000Z">
+<meta property="article:modified_time" content="2024-09-05T14:56:33.377Z">
+<meta property="article:author" content="Edison">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://skynetboys.github.io/2024/01/14/Python-loguru/loguru.png">
+  
+  
+  
+  <title>Python loguru - 麦田守望者</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"skynetboys.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>麦田里的守望者</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Python loguru"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-14 09:42" pubdate>
+          January 14, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python loguru</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="Python-loguru"><a href="#Python-loguru" class="headerlink" title="Python loguru"></a>Python loguru</h3><blockquote>
+<p>在使用Python进行程序开发的过程中，会遇到需要记录的日志的需求，常常会用到Python自带的logging模块，但是logging需要我们进行不同的初始化等相关工作。对应不熟悉该模块的同学来说，还是有些费劲的，比如需要配置 Handler/Formatter 等。而且随着业务的复杂度提升, 对日志收集有着更高的要求, 例如: 日志分类, 文件存储, 异步写入, 自定义类型等等。</p>
+<p>loguru 是一个 Python 简易且强大的第三方日志记录库，该库旨在通过添加一系列有用的功能来解决标准记录器的注意事项，从而减少 Python 日志记录的痛苦。</p>
+</blockquote>
+<p><img src="loguru.png" srcset="/img/loading.gif" lazyload alt="loguru"></p>
+<h4 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">pip install loguru<br></code></pre></td></tr></table></figure>
+
+<h4 id="log-to-console"><a href="#log-to-console" class="headerlink" title="log to console"></a>log to console</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><br>logger.debug(<span class="hljs-string">&quot;That&#x27;s it, beautiful and simple logging!&quot;</span>)<br><br><span class="hljs-comment">#console print</span><br><span class="hljs-comment">#2024-01-14 08:47:45.344 | DEBUG    | __main__:&lt;module&gt;:3 - That&#x27;s it, beautiful and simple logging!</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="log-formatiing"><a href="#log-formatiing" class="headerlink" title="log formatiing"></a>log formatiing</h4><p><code>loguru</code>默认格式是时间、级别、名称+模块和日志内容，其中名称+模块是写死的，一般场景下不建议修改，但在业务复杂的场景下，自定义模块名称，是非常有用的，我们可以通过<code>logger.configure</code>手工指定模块名称。如下如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><br><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><br>logger.configure(handlers=[<br>    &#123;<br>        <span class="hljs-string">&quot;sink&quot;</span>: sys.stderr,<br>        <span class="hljs-string">&quot;format&quot;</span>: <span class="hljs-string">&quot;&#123;time:YYYY-MM-DD HH:mm:ss.SSS&#125; |&lt;lvl&gt;&#123;level:8&#125;&lt;/&gt;| &#123;name&#125; : &#123;module&#125;:&#123;line:4&#125; | &lt;cyan&gt;mymodule&lt;/&gt; | - &lt;lvl&gt;&#123;message&#125;&lt;/&gt;&quot;</span>,<br>        <span class="hljs-string">&quot;colorize&quot;</span>: <span class="hljs-literal">True</span><br>    &#125;,<br>])<br><br>logger.debug(<span class="hljs-string">&#x27;this is debug&#x27;</span>)<br>logger.info(<span class="hljs-string">&#x27;this is info&#x27;</span>)<br>logger.warning(<span class="hljs-string">&#x27;this is warning&#x27;</span>)<br>logger.error(<span class="hljs-string">&#x27;this is error&#x27;</span>)<br>logger.critical(<span class="hljs-string">&#x27;this is critical&#x27;</span>)<br>logger.info(<span class="hljs-string">&quot;this is &#123;&#125;&quot;</span>, <span class="hljs-string">&quot;a info log&quot;</span>)<br>logger.info(<span class="hljs-string">&quot;this is &#123;&#125;&quot;</span>, <span class="hljs-number">3</span>)<br>logger.info(<span class="hljs-string">&quot;this is &#123;:.2f&#125;&quot;</span>, <span class="hljs-number">3</span>)<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> sys<br><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><br>logger.remove()<br>logger.add(sys.stdout, <span class="hljs-built_in">format</span>=<span class="hljs-string">&quot;&#123;time:YYYY-MM-DD at HH:mm:ss&#125; | &lt;red&gt;&#123;level&#125;&lt;/red&gt; | &lt;green&gt;&#123;file&#125;&lt;/green&gt; | &lt;b&gt;&lt;i&gt;&#123;message&#125;&lt;/i&gt;&lt;/b&gt;&quot;</span>)<br>logger.info(<span class="hljs-string">&quot;Hello, world!&quot;</span>)<br>logger.info(<span class="hljs-string">&quot;Hello, &#123;name&#125;!&quot;</span>, name=<span class="hljs-string">&quot;everyone&quot;</span>)<br><br></code></pre></td></tr></table></figure>
+
+
+
+<p>在 <code>format</code> 中，可以通过 <code>&#123;param&#125;</code> 的形式设置内容，通过 <code>&lt;tag&gt;&lt;/tag&gt;</code> 的形式设置格式。</p>
+<p>常见的内容参数有：</p>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">time</td>
+<td align="center">时间</td>
+</tr>
+<tr>
+<td align="center">level</td>
+<td align="center">日志等级</td>
+</tr>
+<tr>
+<td align="center">file</td>
+<td align="center">文件名</td>
+</tr>
+<tr>
+<td align="center">message</td>
+<td align="center">日志信息</td>
+</tr>
+<tr>
+<td align="center">path</td>
+<td align="center">文件路径</td>
+</tr>
+<tr>
+<td align="center">function</td>
+<td align="center">函数</td>
+</tr>
+<tr>
+<td align="center">line</td>
+<td align="center">行数</td>
+</tr>
+<tr>
+<td align="center">module</td>
+<td align="center">模块</td>
+</tr>
+<tr>
+<td align="center">process</td>
+<td align="center">进程信息</td>
+</tr>
+<tr>
+<td align="center">thread</td>
+<td align="center">线程信息</td>
+</tr>
+<tr>
+<td align="center">tzinfo</td>
+<td align="center">时区信息</td>
+</tr>
+<tr>
+<td align="center">exception</td>
+<td align="center">异常信息</td>
+</tr>
+</tbody></table>
+<h4 id="log-to-file"><a href="#log-to-file" class="headerlink" title="log to file"></a>log to file</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log/file_1.log&quot;</span>)  <span class="hljs-comment"># sink</span><br><br>logger.info(<span class="hljs-string">&quot;this is a info log&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="log-rotation"><a href="#log-rotation" class="headerlink" title="log rotation"></a>log rotation</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log/file_2.log&quot;</span>, rotation=<span class="hljs-string">&#x27;10 KB&#x27;</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>    logger.info(<span class="hljs-string">&quot;this is a info log&quot;</span>)<br>    logger.debug(<span class="hljs-string">&quot;this is a debug log&quot;</span>)<br>    logger.warning(<span class="hljs-string">&quot;this is a warning log&quot;</span>)<br>    logger.error(<span class="hljs-string">&quot;this is a error log&quot;</span>)<br>    logger.critical(<span class="hljs-string">&quot;this is a critical log&quot;</span>)<br></code></pre></td></tr></table></figure>
+
+<p>关于rptation参数还有常见的如下用法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;50 MB&quot;</span>)      <span class="hljs-comment"># 文件超过50M则另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;00:00&quot;</span>)    <span class="hljs-comment"># 每天00:00另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;1 week&quot;</span>)   <span class="hljs-comment"># 每周另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;10 days&quot;</span>)  <span class="hljs-comment"># 每10天另起一个文件</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="其他常用设置"><a href="#其他常用设置" class="headerlink" title="其他常用设置"></a>其他常用设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># retention 参数可以设置日志保存时间，到时间后日志会自动清理，注意与 rotation 区分</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, retention=<span class="hljs-string">&quot;10 days&quot;</span>)<br><br><span class="hljs-comment"># compression 可以对关闭的日志（如 rotation 处理的日志）进行压缩，节约空间</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, compression=<span class="hljs-string">&quot;zip&quot;</span>)<br><br><span class="hljs-comment"># enqueue=True 可以支持异步写入，实现多进程安全</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># filter 参数可以设置日志的过滤规则</span><br><span class="hljs-comment"># 过滤不包含 hello 的日志</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, <span class="hljs-built_in">filter</span>=<span class="hljs-keyword">lambda</span> x: <span class="hljs-string">&quot;hello&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> x[<span class="hljs-string">&quot;message&quot;</span>])<br><br><span class="hljs-comment"># encoding 设置编码方式</span><br><span class="hljs-comment"># level 设置日志等级，大于该等级的日志会被记录</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>, level=<span class="hljs-string">&quot;INFO&quot;</span>)<br><br><span class="hljs-comment">#异步写入</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment">#序列化为json写入</span><br>logger.add(<span class="hljs-string">&quot;log1.log&quot;</span>, serialize=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="常用的推荐设置"><a href="#常用的推荐设置" class="headerlink" title="常用的推荐设置"></a>常用的推荐设置</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><br>logger_dir = <span class="hljs-string">&quot;./log&quot;</span>  <span class="hljs-comment"># 这里是日志的存放目录，需要根据你的项目进行修改</span><br><br>log_path = os.path.join(logger_dir, <span class="hljs-string">f&#x27;<span class="hljs-subst">&#123;time.strftime(<span class="hljs-string">&quot;%Y%m&quot;</span>)&#125;</span>&#x27;</span>, <span class="hljs-string">&#x27;&#123;time:YYYY_MM_DD&#125;.log&#x27;</span>)<br>logger.add(<br>    log_path,<br>    rotation=<span class="hljs-string">&quot;00:00&quot;</span>,<br>    retention=<span class="hljs-string">&quot;30 days&quot;</span>,<br>    enqueue=<span class="hljs-literal">True</span>,<br>    encoding=<span class="hljs-string">&quot;utf-8&quot;</span>,<br>    level=<span class="hljs-string">&quot;INFO&quot;</span><br>)<br></code></pre></td></tr></table></figure>
+
+<h4 id="与PyTest结合使用"><a href="#与PyTest结合使用" class="headerlink" title="与PyTest结合使用"></a>与PyTest结合使用</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pytest<br><span class="hljs-keyword">from</span> _pytest.logging <span class="hljs-keyword">import</span> LogCaptureFixture<br><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">some_func</span>(<span class="hljs-params">i, j</span>):</span><br>    logger.info(<span class="hljs-string">&#x27;Oh no!&#x27;</span>)<br>    logger.info(<span class="hljs-string">&#x27;haha&#x27;</span>)<br>    <span class="hljs-keyword">return</span> i + j<br><br><span class="hljs-meta">@pytest.fixture</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">caplog</span>(<span class="hljs-params">caplog: LogCaptureFixture</span>):</span><br>    handler_id = logger.add(caplog.handler, <span class="hljs-built_in">format</span>=<span class="hljs-string">&quot;&#123;message&#125;&quot;</span>)<br>    <span class="hljs-keyword">yield</span> caplog<br>    logger.remove(handler_id)<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_some_func_logs_warning</span>(<span class="hljs-params">caplog</span>):</span><br>    <span class="hljs-keyword">assert</span> some_func(-<span class="hljs-number">1</span>, <span class="hljs-number">3</span>) == <span class="hljs-number">2</span><br>    <span class="hljs-keyword">assert</span> <span class="hljs-string">&quot;Oh no!&quot;</span> <span class="hljs-keyword">in</span> caplog.text<br><br></code></pre></td></tr></table></figure>
+
+<h4 id="简单封装日志方法"><a href="#简单封装日志方法" class="headerlink" title="简单封装日志方法"></a>简单封装日志方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> loguru <span class="hljs-keyword">import</span> logger<br><span class="hljs-keyword">import</span> os<br><br><br><span class="hljs-comment"># 获取项目路径</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_pro_path</span>():</span><br>    pro_path = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))<br>    <span class="hljs-keyword">return</span> pro_path<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_logger</span>():</span><br>    logger.add(os.path.join(get_pro_path(), <span class="hljs-string">&quot;mytest.log&quot;</span>), rotation=<span class="hljs-string">&quot;500 MB&quot;</span>)<br>    <span class="hljs-keyword">return</span> logger<br><br></code></pre></td></tr></table></figure>
+
+<p>pytest case调用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">loguru使用</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-keyword">from</span> public_fun.log_fun <span class="hljs-keyword">import</span> get_logger<br><span class="hljs-keyword">from</span> assertpy <span class="hljs-keyword">import</span> assert_that<br>logger = get_logger()<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_fun1</span>():</span><br>    logger.info(<span class="hljs-string">&#x27;我需要比较1&#x27;</span>)<br>    assert_that(<span class="hljs-number">1</span>).is_not_equal_to(<span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" class="category-chain-item">自动化测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Python/">#Python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Python loguru</div>
+      <div>https://skynetboys.github.io/2024/01/14/Python-loguru/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Edison</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 14, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/08/03/Python-Decorator/" title="Python Decorator">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Python Decorator</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/" title="解决MacOS通过gem安装rails后无法使用">
+                        <span class="hidden-mobile">解决MacOS通过gem安装rails后无法使用</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
