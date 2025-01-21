@@ -334,6 +334,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java generics</title>
     <url>/2023/09/26/Java-generics/</url>
     <content><![CDATA[<blockquote>
@@ -380,50 +424,6 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>Selenium</tag>
       </tags>
   </entry>
   <entry>
@@ -868,44 +868,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python Enum小结</title>
-    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
-<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
-<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
-<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
-<li>name不允许重复，value允许重复</li>
-<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
-<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
-</ul>
-<p>创建方式1：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<p>创建方式2：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
-
-<p>使用方式1:正常使用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
-
-<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
-
-<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
-<p>4:设置value唯一性，不允许出现相同的value</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python Decorator</title>
     <url>/2024/08/03/Python-Decorator/</url>
     <content><![CDATA[<h3 id="Python-Decotator"><a href="#Python-Decotator" class="headerlink" title="Python Decotator"></a>Python Decotator</h3><p><img src="decorator.png" alt="decorator"></p>
@@ -946,6 +908,44 @@
       </categories>
       <tags>
         <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Enum小结</title>
+    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
+<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
+<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
+<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
+<li>name不允许重复，value允许重复</li>
+<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
+<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
+</ul>
+<p>创建方式1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p>创建方式2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
+
+<p>使用方式1:正常使用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
+
+<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
+<p>4:设置value唯一性，不允许出现相同的value</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1663,7 +1663,8 @@
   <entry>
     <title>社戏</title>
     <url>/2025/01/17/%E7%A4%BE%E6%88%8F/</url>
-    <content><![CDATA[<p>我在倒数上去的二十年中，只看过两回中国戏，前十年是绝不看，因为没有看戏的意思和机会，那两回全在后十年，然而都没有看出什么来就走了。</p>
+    <content><![CDATA[<p><img src="xs1.png" alt="社戏"></p>
+<p>我在倒数上去的二十年中，只看过两回中国戏，前十年是绝不看，因为没有看戏的意思和机会，那两回全在后十年，然而都没有看出什么来就走了。</p>
 <p>第一回是民国元年我初到北京的时候，当时一个朋友对我说，北京戏最好，你不去见见世面么？我想，看戏是有味的，而况在北京呢。于是都兴致勃勃地跑到什么园，戏文已经开场了，在外面也早听到冬冬地响。我们挨进门，几个红的绿的在我的眼前一闪烁，便又看见戏台下满是许多头，再定神四面看，却见中间也还有几个空座，挤过去要坐时，又有人对我发议论，我因为耳朵已经喤喤的响着了，用了心，才听到他是说“有人，不行！”</p>
 <p>我们退到后面，一个辫子很光的却来领我们到了侧面，指出一个地位来。这所谓地位者，原来是一条长凳，然而他那坐板比我的上腿要狭到四分之三，他的脚比我的下腿要长过三分之二。我先是没有爬上去的勇气，接着便联想到私刑拷打的刑具，不由的毛骨悚然地走出了。</p>
 <p>走了许多路，忽听得我的朋友的声音道，“究竟怎的？”我回过脸去，原来他也被我带出来了。他很诧异地说，“怎么总是走，不答应？”我说，“朋友，对不起，我耳朵只在冬冬喤喤的响，并没有听到你的话。”</p>
