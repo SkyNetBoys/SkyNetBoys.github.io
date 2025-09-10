@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://skynetboys.github.io/2023/10/21/Lambda-Expression-in-Java/lambda.png">
 <meta property="article:published_time" content="2023-10-21T02:40:12.000Z">
-<meta property="article:modified_time" content="2024-01-14T00:42:50.495Z">
+<meta property="article:modified_time" content="2025-09-10T13:44:30.875Z">
 <meta property="article:author" content="Edison">
 <meta property="article:tag" content="语言基础">
 <meta name="twitter:card" content="summary_large_image">
@@ -326,7 +326,7 @@
 <p>Lambda表达式也可以像普通变量那样赋值给变量</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_email</span><span class="hljs-params">()</span> </span>&#123;  <br>	Message lambda = (name,title) -&gt; &#123;  <br>        System.out.println(<span class="hljs-string">&quot;This is a sms to &quot;</span>+title+<span class="hljs-string">&quot; &quot;</span> +name);  <br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success!&quot;</span>;  <br>    &#125;;  <br>	sendMessage(lambda);  <br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	    console print =&gt; </span><br><span class="hljs-comment">	    This is a sms to Mr Edison</span><br><span class="hljs-comment">		success!</span><br><span class="hljs-comment">	*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>有且只有一个抽象方法的interface上，同时我们成这样的接收为Functional Interface，同时我们可以在接口上加注解@FunctionalInterface  </p>
+<p>有且只有一个抽象方法的interface上，同时我们称这样的接口为Functional Interface，同时我们可以在接口上加注解@FunctionalInterface  </p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FunctionalInterface</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <span class="hljs-function">String <span class="hljs-title">send</span><span class="hljs-params">(String name,String title)</span></span>;  <br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>

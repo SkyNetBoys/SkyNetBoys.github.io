@@ -89,25 +89,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Docker命令小结</title>
-    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
-<li><p>Docker images查看所有本的主机上的镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>Docker search 搜索镜像</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CentOS下搭建LAMP</title>
     <url>/2023/03/12/CentOS%E4%B8%8B%E6%90%AD%E5%BB%BALAMP/</url>
     <content><![CDATA[<h3 id="LAMP简介"><a href="#LAMP简介" class="headerlink" title="LAMP简介"></a>LAMP简介</h3><p>Linux+Apache+Mysql +Perl/PHP/Python一组常用来搭建动态网站或者服务器的开源软件，本身都是各自独立的程序，但是因为常被放在一起使用，拥有了越来越高的兼容度，共同组成了一个强大的Web应用程序平台。随着开源潮流的蓬勃发展，开放源代码的LAMP已经与J2EE和.Net商业软件形成三足鼎立之势，并且该软件开发的项目在软件方面的投资成本较低，因此受到整个IT界的关注。从网站的流量上来说，70%以上的访问流量是LAMP来提供的，LAMP是最强大的网站解决方案,开发者在Windows操作系统下使用这些Linux环境里的工具称为使用WAMP。<br><img src="logo.png" alt="logo"><br>Linux 是免费开源软件，这意味着源代码可用的操作系统。<br><strong>Apache</strong><br>Apache 是使用中最受欢迎的一个开放源码的WEB服务器软件。<br><strong>MySQL</strong><br>MySQL 是多线程、多用户的SQL数据库管理系统。<br>MySQL 已拥有由Oracle公司自 2010 年 1 月 27 日通过SUN购买。SUN 最初于 2008 年 2 月 26 日收购 MySQL。<br><strong>PHP，Perl 或 Python</strong><br>PHP 是一种编程语言最初设计生产动态网站。PHP 是主要用于服务器端的应用程序软件。Perl 和 Python 类似。</p>
@@ -213,6 +194,25 @@
       </categories>
       <tags>
         <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker命令小结</title>
+    <url>/2021/07/04/Docker%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="Docker命令小结"><a href="#Docker命令小结" class="headerlink" title="Docker命令小结"></a>Docker命令小结</h3><ul>
+<li><p>Docker images查看所有本的主机上的镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker images<br>REPOSITORY                                             TAG       IMAGE ID       CREATED        SIZE<br>mysql                                                  latest    5c62e459e087   11 days ago    556MB<br>hello-world                                            latest    d1165f221234   4 months ago   13.3kB<br>centos                                                 latest    300e315adb2f   6 months ago   209MB<br>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g   latest    3fa112fd3642   5 years ago    6.85GB<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 解释</span><br>REPOSITORY	镜像的仓库源<br>TAG		镜像的标签<br>IMAGE ID 	镜像的ID<br>CREATED		镜像的创建时间<br>SIZE		镜像的大小<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项</span><br>-a, -all	# 列出所有镜像<br>-q, --quiet	# 只显示镜像的ID<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>Docker search 搜索镜像</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">[root@localhost ~]# docker search mysql<br>NAME                              DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql                             MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb                           MariaDB Server is a high performing open sou…   4200      [OK]<br>mysql/mysql-server                Optimized MySQL Server Docker images. Create…   823                  [OK]<br>mysql/mysql-cluster               Experimental MySQL Cluster Docker images. Cr…   88<br>centos/mysql-57-centos7           MySQL 5.7 SQL database server                   88<br>centurylink/mysql                 Image containing mysql. Optimized to be link…   59                   [OK]<br>databack/mysql-backup             Back up mysql databases to... anywhere!         44<br>deitch/mysql-backup               REPLACED! Please use http://hub.docker.com/r…   41                   [OK]<br>prom/mysqld-exporter                                                              39                   [OK]<br>tutum/mysql                       Base docker image to run a MySQL database se…   35<br>linuxserver/mysql                 A Mysql container, brought to you by LinuxSe…   30<br>schickling/mysql-backup-s3        Backup MySQL to S3 (supports periodic backup…   29                   [OK]<br>mysql/mysql-router                MySQL Router provides transparent routing be…   21<br>centos/mysql-56-centos7           MySQL 5.6 SQL database server                   20<br>arey/mysql-client                 Run a MySQL client from a docker container      17                   [OK]<br>fradelg/mysql-cron-backup         MySQL/MariaDB database backup using cron tas…   14                   [OK]<br>yloeffler/mysql-backup            This image runs mysqldump to backup data usi…   7                    [OK]<br>genschsa/mysql-employees          MySQL Employee Sample Database                  7                    [OK]<br>openshift/mysql-55-centos7        DEPRECATED: A Centos7 based MySQL v5.5 image…   6<br>devilbox/mysql                    Retagged MySQL, MariaDB and PerconaDB offici…   3<br>ansibleplaybookbundle/mysql-apb   An APB which deploys RHSCL MySQL                2                    [OK]<br>jelastic/mysql                    An image of the MySQL database server mainta…   1<br>widdpim/mysql-client              Dockerized MySQL Client (5.7) including Curl…   1                    [OK]<br>vitess/mysqlctld                  vitess/mysqlctld                                1                    [OK]<br>centos/mysql-80-centos7           MySQL 8.0 SQL database server                   1<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可选项，通过收藏来过滤</span><br>--fllter=STARS=3000	# 搜索出来的镜像就是STARS大于3000的<br>[root@localhost ~]# docker search mysql --filter=STARS=3000<br>NAME      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED<br>mysql     MySQL is a widely used, open-source relation…   11085     [OK]<br>mariadb   MariaDB Server is a high performing open sou…   4200      [OK]<br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
       </tags>
   </entry>
   <entry>
@@ -427,73 +427,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Java中的Optional</title>
-    <url>/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/</url>
-    <content><![CDATA[<blockquote>
-<p>从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。<br>Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。</p>
-</blockquote>
-<p><img src="Optional.png" alt="Optional"></p>
-<h4 id="传统的判空处理"><a href="#传统的判空处理" class="headerlink" title="传统的判空处理"></a>传统的判空处理</h4><p>我们先看这样一个例子，例如我们使用名字去查找个人信息：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> fullName;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;James&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;James Harden&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>我们模拟一个数据库中存在的用户名</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; James Harden</span><br></code></pre></td></tr></table></figure>
-
-<p>我们模拟一个数据库中没有的用户名</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; 报错NullPointerException，在Java中引用一个空引用的属性或者调用一个空引用的方法的时候，就会直接报NullPointerException</span><br><span class="hljs-comment">//为了避免报错，我们经常会在方法加上判空</span><br> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;Rose&quot;</span>);<br>	<span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) &#123;<br>		System.out.println(user.getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-comment">// 在查询为null的时候，我们就会自动创建一个默认的用户</span><br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-string">&quot;Jim Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>在实际的代码逻辑中，会有大量的判空处理，我们采用上面的demo的话，会让我们的代码显得非常臃肿，而Optional的引入正好可以完美解决这个问题。</p>
-<h4 id="Optional的基本用法"><a href="#Optional的基本用法" class="headerlink" title="Optional的基本用法"></a>Optional的基本用法</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	Optional&lt;Object&gt; optionalBox = Optional.empty();<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isPresent());<br>	<span class="hljs-comment">// 打印true</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>	Optional&lt;String&gt; optionalBox = Optional.of(value);<br>	<span class="hljs-comment">// 打印true</span><br>    System.out.println(optionalBox.isPresent());<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>用of创建的对象必须包含值，你要确保传递给of方法的值部位null，否则还是会报NullPointerException。</p>
-<p>但是在实际处理业务中，我们不确定传入的对象是否为null，这时候我们就建议使用ofNullable.</p>
-<p>如果我们要从Optional这个盒子中取出值，我们可以使用get.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>Optional&lt;String&gt; optionalBox = Optional.ofNullable(value);<br>String value2 = optionalBox.get();<br></code></pre></td></tr></table></figure>
-
-<p>但是我们并不推荐使用get，这并不是Optional设计的初衷.</p>
-<p>接下来我们使用Optional来改造下开始的例子</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
-<p>orElseGet：只有在为空的情况下，才会去执行。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	optionalUser.orElseThrow(() -&gt; <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;User not found!!!&quot;</span>));<br>&#125;<br><span class="hljs-comment">//输出 =&gt; Exception in thread &quot;main&quot; java.lang.RuntimeException: User not found!!!</span><br></code></pre></td></tr></table></figure>
-
-<p>条件判断</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>optionalUser.ifPresent(user -&gt; System.out.println(user.getFullName()));<br><span class="hljs-comment">// 如果user存在对象，则执行语句，反之则什么也不做</span><br>optionalUser.ifPresentOrElse(<br>	user -&gt; System.out.println(user.getFullName()),<br>	() -&gt; System.out.println(<span class="hljs-string">&quot;User not Found!!!&quot;</span>)<br>);<br><span class="hljs-comment">//user存在执行System.out.println(user.getFullName())</span><br><span class="hljs-comment">//不存在则执行System.out.println(&quot;User not Found!!!&quot;)</span><br></code></pre></td></tr></table></figure>
-
-<p>过滤方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;User&gt; optionalUser2 = optionalUser.filter(user -&gt; user.getFullName().equals(<span class="hljs-string">&quot;Edison&quot;</span>));<br>System.out.println(optionalUser2.isPresent());<br></code></pre></td></tr></table></figure>
-
-<p>值的转换</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;String&gt; optionalFullName = optionalUser.map(User::getFullName);<br>System.out.println(optionalFullName.get());<br></code></pre></td></tr></table></figure>
-
-<p>flatMap使用</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 我们改造下User</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;String&gt; <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> Optional.ofNullable(fullName);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_case_001</span><span class="hljs-params">()</span></span>&#123;<br>    Optional&lt;Optional&lt;String&gt;&gt; s = optionalUser.map(User::getFullName);<br>	Optional&lt;String&gt; optional = optionalUser.flatMap(User::getFullName);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>与Stream结合</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	Stream&lt;String&gt; a = optionalUser<br>                .map(User::getFullName)<br>                .stream();<br>	a.forEach(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="不推荐的使用场景"><a href="#不推荐的使用场景" class="headerlink" title="不推荐的使用场景"></a>不推荐的使用场景</h4><ul>
-<li>不应该用在class的字段，会增加额外的内存消耗，也是对象的序列化变得复杂</li>
-<li>不应该用在方法的参数，会使得方法的使用和理解变得复杂</li>
-<li>不应该用在构造器参数</li>
-<li>不应该用在集合的参数类型</li>
-<li>不建议使用get方法，可能会导致NoSuchElementException出现，推荐用ifPresent,orElse或者orElseThrow等方法</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Java命名规则总结</title>
     <url>/2020/03/24/Java%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<blockquote>
@@ -577,6 +510,73 @@
       </tags>
   </entry>
   <entry>
+    <title>Java中的Optional</title>
+    <url>/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/</url>
+    <content><![CDATA[<blockquote>
+<p>从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。<br>Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。</p>
+</blockquote>
+<p><img src="Optional.png" alt="Optional"></p>
+<h4 id="传统的判空处理"><a href="#传统的判空处理" class="headerlink" title="传统的判空处理"></a>传统的判空处理</h4><p>我们先看这样一个例子，例如我们使用名字去查找个人信息：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> fullName;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;James&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;James Harden&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中存在的用户名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; James Harden</span><br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中没有的用户名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; 报错NullPointerException，在Java中引用一个空引用的属性或者调用一个空引用的方法的时候，就会直接报NullPointerException</span><br><span class="hljs-comment">//为了避免报错，我们经常会在方法加上判空</span><br> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;Rose&quot;</span>);<br>	<span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) &#123;<br>		System.out.println(user.getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-comment">// 在查询为null的时候，我们就会自动创建一个默认的用户</span><br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-string">&quot;Jim Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在实际的代码逻辑中，会有大量的判空处理，我们采用上面的demo的话，会让我们的代码显得非常臃肿，而Optional的引入正好可以完美解决这个问题。</p>
+<h4 id="Optional的基本用法"><a href="#Optional的基本用法" class="headerlink" title="Optional的基本用法"></a>Optional的基本用法</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	Optional&lt;Object&gt; optionalBox = Optional.empty();<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isPresent());<br>	<span class="hljs-comment">// 打印true</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>	Optional&lt;String&gt; optionalBox = Optional.of(value);<br>	<span class="hljs-comment">// 打印true</span><br>    System.out.println(optionalBox.isPresent());<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>用of创建的对象必须包含值，你要确保传递给of方法的值部位null，否则还是会报NullPointerException。</p>
+<p>但是在实际处理业务中，我们不确定传入的对象是否为null，这时候我们就建议使用ofNullable.</p>
+<p>如果我们要从Optional这个盒子中取出值，我们可以使用get.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>Optional&lt;String&gt; optionalBox = Optional.ofNullable(value);<br>String value2 = optionalBox.get();<br></code></pre></td></tr></table></figure>
+
+<p>但是我们并不推荐使用get，这并不是Optional设计的初衷.</p>
+<p>接下来我们使用Optional来改造下开始的例子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
+<p>orElseGet：只有在为空的情况下，才会去执行。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	optionalUser.orElseThrow(() -&gt; <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;User not found!!!&quot;</span>));<br>&#125;<br><span class="hljs-comment">//输出 =&gt; Exception in thread &quot;main&quot; java.lang.RuntimeException: User not found!!!</span><br></code></pre></td></tr></table></figure>
+
+<p>条件判断</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>optionalUser.ifPresent(user -&gt; System.out.println(user.getFullName()));<br><span class="hljs-comment">// 如果user存在对象，则执行语句，反之则什么也不做</span><br>optionalUser.ifPresentOrElse(<br>	user -&gt; System.out.println(user.getFullName()),<br>	() -&gt; System.out.println(<span class="hljs-string">&quot;User not Found!!!&quot;</span>)<br>);<br><span class="hljs-comment">//user存在执行System.out.println(user.getFullName())</span><br><span class="hljs-comment">//不存在则执行System.out.println(&quot;User not Found!!!&quot;)</span><br></code></pre></td></tr></table></figure>
+
+<p>过滤方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;User&gt; optionalUser2 = optionalUser.filter(user -&gt; user.getFullName().equals(<span class="hljs-string">&quot;Edison&quot;</span>));<br>System.out.println(optionalUser2.isPresent());<br></code></pre></td></tr></table></figure>
+
+<p>值的转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;String&gt; optionalFullName = optionalUser.map(User::getFullName);<br>System.out.println(optionalFullName.get());<br></code></pre></td></tr></table></figure>
+
+<p>flatMap使用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 我们改造下User</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;String&gt; <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> Optional.ofNullable(fullName);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_case_001</span><span class="hljs-params">()</span></span>&#123;<br>    Optional&lt;Optional&lt;String&gt;&gt; s = optionalUser.map(User::getFullName);<br>	Optional&lt;String&gt; optional = optionalUser.flatMap(User::getFullName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与Stream结合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	Stream&lt;String&gt; a = optionalUser<br>                .map(User::getFullName)<br>                .stream();<br>	a.forEach(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="不推荐的使用场景"><a href="#不推荐的使用场景" class="headerlink" title="不推荐的使用场景"></a>不推荐的使用场景</h4><ul>
+<li>不应该用在class的字段，会增加额外的内存消耗，也是对象的序列化变得复杂</li>
+<li>不应该用在方法的参数，会使得方法的使用和理解变得复杂</li>
+<li>不应该用在构造器参数</li>
+<li>不应该用在集合的参数类型</li>
+<li>不建议使用get方法，可能会导致NoSuchElementException出现，推荐用ifPresent,orElse或者orElseThrow等方法</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>语言基础</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Lambda Expression in Java</title>
     <url>/2023/10/21/Lambda-Expression-in-Java/</url>
     <content><![CDATA[<blockquote>
@@ -629,7 +629,7 @@
 <p>Lambda表达式也可以像普通变量那样赋值给变量</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Test</span>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_message_email</span><span class="hljs-params">()</span> </span>&#123;  <br>	Message lambda = (name,title) -&gt; &#123;  <br>        System.out.println(<span class="hljs-string">&quot;This is a sms to &quot;</span>+title+<span class="hljs-string">&quot; &quot;</span> +name);  <br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;success!&quot;</span>;  <br>    &#125;;  <br>	sendMessage(lambda);  <br>	<span class="hljs-comment">/*</span><br><span class="hljs-comment">	    console print =&gt; </span><br><span class="hljs-comment">	    This is a sms to Mr Edison</span><br><span class="hljs-comment">		success!</span><br><span class="hljs-comment">	*/</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>有且只有一个抽象方法的interface上，同时我们成这样的接收为Functional Interface，同时我们可以在接口上加注解@FunctionalInterface  </p>
+<p>有且只有一个抽象方法的interface上，同时我们称这样的接口为Functional Interface，同时我们可以在接口上加注解@FunctionalInterface  </p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@FunctionalInterface</span>  <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Message</span> </span>&#123;  <br>    <span class="hljs-function">String <span class="hljs-title">send</span><span class="hljs-params">(String name,String title)</span></span>;  <br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Java</category>
@@ -911,44 +911,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Python Enum小结</title>
-    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
-<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
-<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
-<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
-<li>name不允许重复，value允许重复</li>
-<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
-<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
-</ul>
-<p>创建方式1：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
-
-<p>创建方式2：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
-
-<p>使用方式1:正常使用</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
-
-<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
-
-<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
-
-<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
-<p>4:设置value唯一性，不允许出现相同的value</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python loguru</title>
     <url>/2024/01/14/Python-loguru/</url>
     <content><![CDATA[<h3 id="Python-loguru"><a href="#Python-loguru" class="headerlink" title="Python loguru"></a>Python loguru</h3><blockquote>
@@ -1042,6 +1004,44 @@
 
 <p>pytest case调用</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-string">loguru使用</span><br><span class="hljs-string">&quot;&quot;&quot;</span><br><span class="hljs-keyword">from</span> public_fun.log_fun <span class="hljs-keyword">import</span> get_logger<br><span class="hljs-keyword">from</span> assertpy <span class="hljs-keyword">import</span> assert_that<br>logger = get_logger()<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">test_fun1</span>():</span><br>    logger.info(<span class="hljs-string">&#x27;我需要比较1&#x27;</span>)<br>    assert_that(<span class="hljs-number">1</span>).is_not_equal_to(<span class="hljs-number">1</span>)<br><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python Enum小结</title>
+    <url>/2022/08/14/Python-Enum%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>枚举类是一些具有特殊含义的类，比如用一个类表示月份，则该类的实例对象最多有 12 个，一周则有7个对象，Python 3.4 中新增加了 Enum 枚举类，对于这些实例化对象个数固定的类，可以用枚举类来定义。</p>
+<h4 id="枚举类定义"><a href="#枚举类定义" class="headerlink" title="枚举类定义"></a>枚举类定义</h4><ul>
+<li>只需要令其继承自 enum 模块中的 Enum 类，则证明这是一个枚举类</li>
+<li>枚举类的每个成员都由 2 部分组成，分别为 name 和 value</li>
+<li>name不允许重复，value允许重复</li>
+<li>和普通类的用法不同，枚举类不能用来实例化对象</li>
+<li>枚举类中各个成员的值，不能在类的外部做任何修改</li>
+</ul>
+<p>创建方式1：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br>Colors = Enum(<span class="hljs-string">&quot;Colors&quot;</span>,(<span class="hljs-string">&#x27;red&#x27;</span>,<span class="hljs-string">&#x27;green&#x27;</span>,<span class="hljs-string">&#x27;blue&#x27;</span>))<br><span class="hljs-comment"># 未指定值，默认从 1 开始递增</span><br><span class="hljs-built_in">print</span>(Colors.red.value)<br><span class="hljs-built_in">print</span>(Colors.green.value)<br><span class="hljs-built_in">print</span>(Colors.blue.value)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-number">1</span><br><span class="hljs-number">2</span><br><span class="hljs-number">3</span><br></code></pre></td></tr></table></figure>
+
+<p>创建方式2：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red = <span class="hljs-number">1</span><br>	green = <span class="hljs-number">2</span><br>	blue = <span class="hljs-number">3</span><br><br><span class="hljs-built_in">print</span>(Color.red)<br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;red&#x27;</span>])<br><span class="hljs-built_in">print</span>(Color(<span class="hljs-number">1</span>))<br><br><span class="hljs-built_in">print</span>(Color.red.value)<br><span class="hljs-built_in">print</span>(Color.red.name)<br><br><span class="hljs-keyword">for</span> color <span class="hljs-keyword">in</span> Color:<br>	<span class="hljs-built_in">print</span>(color)<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br>Color.red<br>Color.red<br><span class="hljs-number">1</span><br>red<br>Color.red<br>Color.green<br>Color.blue<br></code></pre></td></tr></table></figure>
+
+<p>使用方式1:正常使用</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-built_in">print</span>(Color.red==Color.green)<br><span class="hljs-built_in">print</span>(Color.red.name <span class="hljs-keyword">is</span> Color.green.name)<br><span class="hljs-comment">### 运行结果</span><br><span class="hljs-literal">False</span><br><span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
+
+<p>2:不能在类的外部做任何修改，下面语法的做法是错误的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">Color.red = <span class="hljs-number">4</span><br>报错：<br>    <span class="hljs-keyword">raise</span> AttributeError(<span class="hljs-string">&#x27;Cannot reassign members.&#x27;</span>)<br>AttributeError: Cannot reassign members.<br></code></pre></td></tr></table></figure>
+
+<p>3:枚举类中各个成员必须保证 name 互不相同，但 value 可以相同，举个例子：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum<br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>	red=<span class="hljs-number">1</span><br>	green=<span class="hljs-number">1</span><br>	blue=<span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><span class="hljs-comment">### 运行结果</span><br>Color.red<br></code></pre></td></tr></table></figure>
+
+<p>可以看到，Color 枚举类中 red 和 green 具有相同的值（都是 1），Python 允许这种情况的发生，它会将 green 当做是 red 的别名，因此当访问 green 成员时，最终输出的是 red。</p>
+<p>4:设置value唯一性，不允许出现相同的value</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#引入 unique</span><br><span class="hljs-keyword">from</span> enum <span class="hljs-keyword">import</span> Enum,unique<br><span class="hljs-comment">#添加 unique 装饰器</span><br><span class="hljs-meta">@unique</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>    <span class="hljs-comment"># 为序列值指定value值</span><br>    red = <span class="hljs-number">1</span><br>    green = <span class="hljs-number">1</span><br>    blue = <span class="hljs-number">3</span><br><span class="hljs-built_in">print</span>(Color[<span class="hljs-string">&#x27;green&#x27;</span>])<br><br><span class="hljs-comment">### 运行结果报错：</span><br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;test.py&quot;</span>, line <span class="hljs-number">3</span>, <span class="hljs-keyword">in</span> &lt;module&gt;<br>    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Color</span>(<span class="hljs-params">Enum</span>):</span><br>  File <span class="hljs-string">&quot;/python3.6/lib/enum.py&quot;</span>, line <span class="hljs-number">834</span>, <span class="hljs-keyword">in</span> unique<br>    (enumeration, alias_details))<br>ValueError: duplicate values found <span class="hljs-keyword">in</span> &lt;enum <span class="hljs-string">&#x27;Color&#x27;</span>&gt;: green -&gt; red<br></code></pre></td></tr></table></figure>
+
+]]></content>
       <categories>
         <category>自动化测试</category>
       </categories>
@@ -1641,6 +1641,26 @@
       </tags>
   </entry>
   <entry>
+    <title>物理班</title>
+    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
+    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
+<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
+<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
+<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
+<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
+<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
+<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
+<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
+<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
+]]></content>
+      <categories>
+        <category>读书</category>
+      </categories>
+      <tags>
+        <tag>杂文</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>社戏</title>
     <url>/2025/01/17/%E7%A4%BE%E6%88%8F/</url>
     <content><![CDATA[<p><img src="sx1.jpg" alt="社戏"></p>
@@ -1706,26 +1726,6 @@
       </tags>
   </entry>
   <entry>
-    <title>物理班</title>
-    <url>/2019/11/26/%E7%89%A9%E7%90%86%E7%8F%AD/</url>
-    <content><![CDATA[<p>物理班<br>[作者：刘嘉俊]<br>也许是一时的冲动，我进了物理班．<br>然后，我的大脑开始向一种科学方法进化，物理逐渐成为一种条件反射。在乘车时，我会不由自主地对我的身体进行受力分析，特别在转弯时，很多计算向心力的公式一下子充塞了我的大脑。在看足球的时候，会自觉地通过平抛运动的计算方法结合相对运动去判断球传得是否准确。至于语文课，根本就是用来补充晚上的睡眠不足。<br>这种痛苦的变化大概在开学后的两个月内完成，其间，我的学生手册上增加了不少不光彩的纪录，甚至我和同桌的分数相加才能和最高分打成平手，这是我从未想到过的。母亲对我的教育也让我很难忘，以前，她总说要好好读书不然就去扫大街，现在她却说不好好读书就等着下岗吧，看来环卫局同样要求学历了。不过对于哪种洋参丸效果最好，我是很了解的，这是母亲舍得智力投资的结果。<br>然后，我能说我充分适应了高三的学习环境，然后我发觉班里成员的改变”让我欢喜让我忧”。那么多的新面孔足以让我后悔当初班级沙文主义让我少认识不少应该早认识的人，那么多的新朋友或勉强成为朋友的人让我的通讯录丰富了不少。物理班，男女生的比例大约是2.46:1，女生资源的匮乏让整个教室不是太吵闹就是太沉闷，而男生资源的过剩又让我体会到了男生的贬值。<br>就在我的长吁短叹中，我认识了莹。说认识，其实早就认识了，就是同班同学嘛，不过却从来没有想到她是那样的有意思。开年级会的时候，因为实在找不到地方，她屈尊坐在我边上。说屈尊是因为我这种因为住的地方不太敏感从而没有什么市容监督所以一直很幸运地没被抓的人实在没有什么吸引她的地方。当年级组长在那里长篇大论到”我们这届学生水平总体还是不错”的时候，她轻轻地接上”我们一直在努力”;而说到”希望所有的同学都能达到分数线”的时候，她说”我们会做得更好”，都是广告词。我看看她，她耸耸肩，我认为物理班女生不太可爱的想法从此消失。<br>然后，有一次语文老师不知道出了什么问题在课堂上读了我的作文，说是写得很有新意。天知道那是我早上起来发现作文没写花了25分钟边吃早饭边涂的。下课后，莹跑来问我那里面”引用”的名言是哪里看到的，谁说的，很有道理。我说如果你觉得自己够出名的话，你说什么都能在前面加上”有位名人说过”，如果你觉得自己不够有名至少可以这样安慰自己。她笑了，我从来没见过那种明亮以至透明的笑容。<br>然后，我有了足够的证据证明万有引力的公式是错误的，因为虽然莹的质量不能与班主任相提并论，我却感到她的吸引力更大，至少我眼睛是那样感觉的。我很警惕这种危险的感觉，可在下决心阻止这种感觉之前的一秒钟我却想如果高三再不体验一下，这辈子就没有机会早恋了，那可亏大了。何况，以我对自己的评价，我也未必能抓住这次机会。<br>高三就是高三，只要你上了任何一节课，就不会再怀疑。虽然，你可以选择。对于上课，你可以选择认真听或抓紧时间做习题;对于作业，你可以选择做或不做，或者抄，然而老师也可以选择放弃你，找你去办公室，点名批评或者通知家长。我总是很认真地做作业，发扬雷锋精神，把有限的时间投入到无限的题海战术中去，虽然效果相当有限，但成绩单上让人眼睛一亮的分数却不再出现了。在这方面，莹与我有相当的共同语言。她可能比我稍微好一些，却比我更不在乎。有时候，她会拿着一些题目来问我，不是因为我厉害，而是因为我很耐心，耐心到用笨拙的办法艰难地完成，可能还有别的原因。而我，似乎很愿意被打扰，甚至期盼她的打扰。</p>
-<p>测验在一次次地进行，我的信心在一点点地消失。并不是我成绩不行，只是我觉得我像一台旧机器，每天吞吐着数量可怕的习题，所有的感觉就在这最强烈的感觉的阴影下渐渐麻木。绝大部分同学都是这样，教室里的生息真是气若游丝。<br>这时候，莹就更加引人注目。在回答老师问题的时候，她的声音总是潇洒而自信，虽然不常正确。对了，她会在老师转身的一刹那，竖起代表胜利的两根手指;错了，她会掩着嘴，作出无心之失的样子，老师也不会苛责。她是同学中最有人缘的，像她这样的人，这似乎很正常。<br>但是，我不知道她为什么有那么好的心情。<br>每天一放学，我就会以最快的速度塞好书包，冲出教室，骑上车回家，然后做作业复习。我一直认为学校里不适合思考问题，我宁可一个人。很多人喜欢在学校里做完作业再回家，他们总是相信互帮互助的效果，可我知道波的干涉除了能相互加强外也能够相互减弱。<br>然而，当我知道莹每天做完作业回家而且她家到我家的位移相当有限之后，我也开始每天留下，不知道是为什么。只有很少的几天，我和她同路，和她聊天，但是，聊天的主题不是将来的前途就是学习考试，很少例外。不过有一天，聊到流行音乐，这是我们能享受的不多的娱乐项目了。她问我喜不喜欢梁咏琪的歌，我说听过但那首《自由落体》里既没有加速度又没有高度或者末速度因此不知道是不是她和我同一个星球。她笑了，很透明的笑容。</p>
-<p>期中考试用了两天时间，那是相对轻松的两天，尽管我知道那以后是可怕的。<br>发布成绩的那天，果然。<br>吃午饭的时候，我看见莹趴在课桌上。10分钟后我回到教室，她还是这样。教室里只有我们两个人，我过去问她。她眼睛红着，说她考得不好，我说我考糊了，所以我们彼此彼此。我不知道怎么安慰她，从来没有知道过。我只能辞不达意地说了些无关痛痒的话，还好她很领情地心情变好了，而她终于没吃午饭。</p>
-<p>秋游就是两天以后。<br>可能是学校知道让这些深受迫害的考得好要庆祝考的差要发泄的学生在学校里发挥能量会给年纪比巴金还大的大楼造成毁灭性破坏所以就法外施恩让我们出去疯。<br>我们事先说好要是谁敢带课本去就让他头顶着书游街加上做“喷气式飞机”加上“砸烂他的狗头”，没有人不知趣。<br>然而，不是没有事故。<br>不知是哥们把我弄丢了还是我把他们弄丢了，反正我从WC出来就再也没有找到他们。但我在四处乱转的时候却碰到了莹，她说她把她们弄丢了。她还说既然你也是一个人那就跟着我，我不会亏待你的。说的跟真的一样，我这样做了。<br>然后我给她拍了一胶卷个人写真，用我的Nikon，也有了我和她的合影。<br>集合的时候我终于再次见到弄丢我的哥们和她弄丢的她们，我不知道如何解释如何会和莹在一起。莹很从容地说她拣到了一个装备精良技术精湛的她的个人免费摄影师。<br>从那一天以后，我不是撞机会和莹同路，而是每天。</p>
-<p>我问她，为什么她的心情总是比我好。<br>她说，比我心情好是应该的，看我哭丧着脸好象世界末日一样。在高三更要懂得放松自己的心情，用好的心情全力备战。<br>我问她，将来想干什么。她说要做吟游诗人，重新创立这个浪漫的职业，周游世界。<br>我只想当个摄影记者，罗伯特。卡帕那样的。她说她不想看我拍的最后一张照片。</p>
-<p>我们用”不要和化学班讨论动量守恒”代替”对牛弹琴”，据说在历史班的版本是“不要和研究两个球怎么撞的人说农民起义”。“不要推我”成了“不要对我做功”，“小心我把你扔出去”成了“小心我让你做平抛运动”……每个班都有些能把学科特点联系到任何东西上的高手，物理班是莹。</p>
-<p>在我们结束解析几何部分的第二天，老师说学校有个捐助失学儿童的倡议。我对莹说，要是那些可怜的孩子知道高三是什么样，他们宁可失学。莹笑着，认真而夸张地点了点头。<br>我知道有很多同学去弹子房真实地演示动量守恒，我不敢，只能呆在家里做考卷，突然发现家里考卷多的让我懊丧。学期过去了68%，考卷总重量是11。35公斤，如果在赤道由于离地心较远会轻一点。我带文件夹上学，因为我同时发现每天只要带老师上课要讲的考卷就可以了。却被老师训了一顿，说学生要有学生的样子。我不知道满的文件夹和空的书包里的东西有何不同，但我知道高三老师很在乎我们一举一动而且不花时间解释道理。<br>为了迎接3+1考试的复习很早就开始了，整整一个月。我们很小规模地庆祝了一下圣诞节就投入到热火朝天的复习中去了。老师忘了下课铃是干什么的，我可以理解;老师布置作业时忘了我们还要睡觉，我可以理解;老师对体育课后满头大汗的男生大发雷霆，我可以理解……我发现我对老师体谅起来，因为我不够体谅自己。<br>那次题为《话说考试》的作文被称为有史以来平均水平最高的作文，老师说我们有真情实感。我想到一句诗—-“国家不幸诗家幸，赋到沧桑句便工。”稍微改一下就很能形容这种情况。<br>在这样的环境里，莹还是经常和我在一起。不过，开始经常较量测验的成绩，经常一起复习。不同的局势，我们有不同方式的交流。因为我们成绩都在上升，老师没有干涉。<br>显然，莹没有以前那么开朗了。很少， 我能看到她那明亮而透明的笑容了。虽然她的苦笑仍比任何人都甜蜜，我知道她心里有了高三的烙印。<br>她解题时经常用手比划出函数图像或者左手定则和右手定则，动作舒展而优美。我总是在心里默想。她兴奋或者生气的时候会拿书来砸我。在这样的局势里，我不会生气了，也兴奋不起来。<br>这样，一直到3+1考试结束。</p>
-<p>寒假，只有有限的几天，如果除去春节不得不到处转悠的几天，和做寒假作业需要的时间。我和莹用了一天出去。这是我们第一次有预谋的”约会”。<br>在那个时候考试的成绩还不知道，感觉总是有的。成绩都写在我们脸上。相互看了一眼然后相视一笑。<br>莹的心情总是清楚地写在她的一举一动中:她并不愉快。<br>我或者她，从来没有直接对对方有过什么直接的表示。这天，她褪下她手腕上的许愿砂，送给我;我，给她我脖子上的子弹坠。<br>在必胜客，我们享用我们的午餐。看着心形的心意匹萨放在面前，视觉效果非常好。<br>她说下个学期惨了，必须非常拚命，不然只能读高四了。<br>我说我也一样，差不多只能破釜沉舟了。<br>她说，我们分兵突进，各自为战，在大学会合。<br>我手中的餐刀自由落体。我看她，她是不得已的。我想我能理解。<br>我说，虽然路程不同，位移是一样的，可以。<br>餐厅的背景音乐是《笨鸟先飞》，然后我注意到我面前的那块匹萨，被我消灭了很大的一块。我知道，能在大学会合，已经不是加不加油的问题，而是加不加核燃料的问题。<br>下午，我们去看了日本电影《情书》，这是一个和物理无关的一天的最后议程。</p>
-<p>我知道，现在是高三，我们在物理班。<br>事实就是这么简单。</p>
-]]></content>
-      <categories>
-        <category>读书</category>
-      </categories>
-      <tags>
-        <tag>杂文</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>秋菊男的故事</title>
     <url>/2019/11/23/%E7%A7%8B%E8%8F%8A%E7%94%B7%E7%9A%84%E6%95%85%E4%BA%8B/</url>
     <content><![CDATA[<blockquote>
@@ -1760,25 +1760,6 @@
       </tags>
   </entry>
   <entry>
-    <title>解决MacOS通过gem安装rails后无法使用</title>
-    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
-<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
-
-<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
-
-<p>其他常用的排查命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Ruby</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>自动化用例中如何获得testcase名称</title>
     <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
     <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -1800,6 +1781,25 @@
       </categories>
       <tags>
         <tag>Automation</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决MacOS通过gem安装rails后无法使用</title>
+    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
+<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
+
+<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
+
+<p>其他常用的排查命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
       </tags>
   </entry>
 </search>
