@@ -46,6 +46,25 @@
       </tags>
   </entry>
   <entry>
+    <title>CentOS6安装中文支持</title>
+    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<p>安装中文支持包。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
+
+<p>一.安装中文支持</p>
+<p>方法1：在安装光盘找到包进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
+
+<p>方法2：使用yum进行安装</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Autowired的使用：推荐对构造函数进行注释</title>
     <url>/2020/09/13/Autowired%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A%E6%8E%A8%E8%8D%90%E5%AF%B9%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%BF%9B%E8%A1%8C%E6%B3%A8%E9%87%8A/</url>
     <content><![CDATA[<h3 id="Autowired的使用：推荐对构造函数进行注释"><a href="#Autowired的使用：推荐对构造函数进行注释" class="headerlink" title="@Autowired的使用：推荐对构造函数进行注释"></a>@Autowired的使用：推荐对构造函数进行注释</h3><p>在编写代码的时候，使用@Autowired注解是，发现IDE报的一个警告，如下：</p>
@@ -67,25 +86,6 @@
       </categories>
       <tags>
         <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CentOS6安装中文支持</title>
-    <url>/2019/11/10/CentOS6%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<p>安装中文支持包。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>
-
-<p>一.安装中文支持</p>
-<p>方法1：在安装光盘找到包进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">rpm -ivh fonts-chinese-3.02-9.6.el5.noarch.rpm<br>rpm -ivh fonts-ISO8859-2-75dpi-1.0-17.1.noarch.rpm<br></code></pre></td></tr></table></figure>
-
-<p>方法2：使用yum进行安装</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install fonts-chinese<br>yum install fonts-ISO8859-2<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -334,6 +334,50 @@
       </tags>
   </entry>
   <entry>
+    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
+    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
+    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
+<li>JDK1.8</li>
+<li>Maven/Gradle</li>
+<li>Eclipse/IDEA</li>
+<li>Cucumber</li>
+</ul>
+<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
+<li><p>创建Maven项目（IDEA为例）</p>
+<ul>
+<li><p>update pom文件，引入cucumber和selenium的依賴</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增feature文件</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
+</li>
+<li><p>生成step:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>新增runner</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行Runner</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>查看Report</p>
+<p><img src="hellocucumber.png" alt="1593647038145"></p>
+</li>
+<li><p>拓展，改用Gradle</p>
+<p>…</p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java generics</title>
     <url>/2023/09/26/Java-generics/</url>
     <content><![CDATA[<blockquote>
@@ -383,47 +427,70 @@
       </tags>
   </entry>
   <entry>
-    <title>Java+Selenium+Cucumber+Maven/Gradle环境搭建</title>
-    <url>/2020/07/02/Java-Selenium-Cucumber-Maven-Gradle%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
-    <content><![CDATA[<h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><ul>
-<li>JDK1.8</li>
-<li>Maven/Gradle</li>
-<li>Eclipse/IDEA</li>
-<li>Cucumber</li>
-</ul>
-<h4 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h4><ul>
-<li><p>创建Maven项目（IDEA为例）</p>
-<ul>
-<li><p>update pom文件，引入cucumber和selenium的依賴</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>io.cucumber<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>cucumber-junit<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>2.4.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.seleniumhq.selenium<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>selenium-java<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>3.14.0<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增feature文件</p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><code class="hljs groovy"><span class="hljs-attr">Feature:</span> Hello World<br><br>  Scenario <span class="hljs-attr">Outline:</span> Baidu Page<br>    Given user fill <span class="hljs-keyword">in</span> the <span class="hljs-string">&quot;&lt;keyword&gt;&quot;</span><br>    And click the search button<br>    Then user can get the result<br><br>    <span class="hljs-symbol">Examples:</span><br>      | keyword |<br>      | java    |<br><br></code></pre></td></tr></table></figure>
-</li>
-<li><p>生成step:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> BaiduPage page = <span class="hljs-keyword">new</span> BaiduPage();<br><br><span class="hljs-meta">@Given(&quot;^user fill in the \&quot;([^\&quot;]*)\&quot;$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_fill_in_the</span><span class="hljs-params">(String keyword)</span> </span>&#123;<br>        page.goToBaidu(keyword);<br>&#125;<br><br><span class="hljs-meta">@And(&quot;^click the search button$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">click_the_search_button</span><span class="hljs-params">()</span> </span>&#123;<br>        page.clickSearchBtn();<br>&#125;<br><br><span class="hljs-meta">@Then(&quot;^user can get the result$&quot;)</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">user_can_get_the_result</span><span class="hljs-params">()</span> </span>&#123;<br>        page.verify();<br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>新增runner</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@RunWith(Cucumber.class)</span><br><span class="hljs-meta">@CucumberOptions(</span><br><span class="hljs-meta">        plugin = &#123;&quot;json:target/cucumber/cucumber.json&quot;, &quot;html:target/cucumber&quot;, &quot;pretty&quot;&#125;,</span><br><span class="hljs-meta">        features = &#123;&quot;src/main/resources/feature/abc.feature&quot;&#125;)</span> <br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MyRunner</span> </span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行Runner</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml">Given user fill in the &quot;java&quot; # BaiduStep.user_fill_in_the(String)<br>And click the search button   # BaiduStep.click_the_search_button()<br>Then user can get the result  # BaiduStep.user_can_get_the_result()<br><br>1 Scenarios (1 passed)<br>3 Steps (3 passed)<br>0m8.945s<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>查看Report</p>
-<p><img src="hellocucumber.png" alt="1593647038145"></p>
-</li>
-<li><p>拓展，改用Gradle</p>
-<p>…</p>
-</li>
-</ul>
-</li>
+    <title>Java中的Optional</title>
+    <url>/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/</url>
+    <content><![CDATA[<blockquote>
+<p>从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。<br>Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。</p>
+</blockquote>
+<p><img src="Optional.png" alt="Optional"></p>
+<h4 id="传统的判空处理"><a href="#传统的判空处理" class="headerlink" title="传统的判空处理"></a>传统的判空处理</h4><p>我们先看这样一个例子，例如我们使用名字去查找个人信息：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> fullName;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;James&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;James Harden&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中存在的用户名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; James Harden</span><br></code></pre></td></tr></table></figure>
+
+<p>我们模拟一个数据库中没有的用户名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; 报错NullPointerException，在Java中引用一个空引用的属性或者调用一个空引用的方法的时候，就会直接报NullPointerException</span><br><span class="hljs-comment">//为了避免报错，我们经常会在方法加上判空</span><br> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;Rose&quot;</span>);<br>	<span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) &#123;<br>		System.out.println(user.getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-comment">// 在查询为null的时候，我们就会自动创建一个默认的用户</span><br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-string">&quot;Jim Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在实际的代码逻辑中，会有大量的判空处理，我们采用上面的demo的话，会让我们的代码显得非常臃肿，而Optional的引入正好可以完美解决这个问题。</p>
+<h4 id="Optional的基本用法"><a href="#Optional的基本用法" class="headerlink" title="Optional的基本用法"></a>Optional的基本用法</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	Optional&lt;Object&gt; optionalBox = Optional.empty();<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isPresent());<br>	<span class="hljs-comment">// 打印true</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>	Optional&lt;String&gt; optionalBox = Optional.of(value);<br>	<span class="hljs-comment">// 打印true</span><br>    System.out.println(optionalBox.isPresent());<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>用of创建的对象必须包含值，你要确保传递给of方法的值部位null，否则还是会报NullPointerException。</p>
+<p>但是在实际处理业务中，我们不确定传入的对象是否为null，这时候我们就建议使用ofNullable.</p>
+<p>如果我们要从Optional这个盒子中取出值，我们可以使用get.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>Optional&lt;String&gt; optionalBox = Optional.ofNullable(value);<br>String value2 = optionalBox.get();<br></code></pre></td></tr></table></figure>
+
+<p>但是我们并不推荐使用get，这并不是Optional设计的初衷.</p>
+<p>接下来我们使用Optional来改造下开始的例子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
+<p>orElseGet：只有在为空的情况下，才会去执行。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	optionalUser.orElseThrow(() -&gt; <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;User not found!!!&quot;</span>));<br>&#125;<br><span class="hljs-comment">//输出 =&gt; Exception in thread &quot;main&quot; java.lang.RuntimeException: User not found!!!</span><br></code></pre></td></tr></table></figure>
+
+<p>条件判断</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>optionalUser.ifPresent(user -&gt; System.out.println(user.getFullName()));<br><span class="hljs-comment">// 如果user存在对象，则执行语句，反之则什么也不做</span><br>optionalUser.ifPresentOrElse(<br>	user -&gt; System.out.println(user.getFullName()),<br>	() -&gt; System.out.println(<span class="hljs-string">&quot;User not Found!!!&quot;</span>)<br>);<br><span class="hljs-comment">//user存在执行System.out.println(user.getFullName())</span><br><span class="hljs-comment">//不存在则执行System.out.println(&quot;User not Found!!!&quot;)</span><br></code></pre></td></tr></table></figure>
+
+<p>过滤方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;User&gt; optionalUser2 = optionalUser.filter(user -&gt; user.getFullName().equals(<span class="hljs-string">&quot;Edison&quot;</span>));<br>System.out.println(optionalUser2.isPresent());<br></code></pre></td></tr></table></figure>
+
+<p>值的转换</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;String&gt; optionalFullName = optionalUser.map(User::getFullName);<br>System.out.println(optionalFullName.get());<br></code></pre></td></tr></table></figure>
+
+<p>flatMap使用</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 我们改造下User</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;String&gt; <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> Optional.ofNullable(fullName);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_case_001</span><span class="hljs-params">()</span></span>&#123;<br>    Optional&lt;Optional&lt;String&gt;&gt; s = optionalUser.map(User::getFullName);<br>	Optional&lt;String&gt; optional = optionalUser.flatMap(User::getFullName);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>与Stream结合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	Stream&lt;String&gt; a = optionalUser<br>                .map(User::getFullName)<br>                .stream();<br>	a.forEach(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="不推荐的使用场景"><a href="#不推荐的使用场景" class="headerlink" title="不推荐的使用场景"></a>不推荐的使用场景</h4><ul>
+<li>不应该用在class的字段，会增加额外的内存消耗，也是对象的序列化变得复杂</li>
+<li>不应该用在方法的参数，会使得方法的使用和理解变得复杂</li>
+<li>不应该用在构造器参数</li>
+<li>不应该用在集合的参数类型</li>
+<li>不建议使用get方法，可能会导致NoSuchElementException出现，推荐用ifPresent,orElse或者orElseThrow等方法</li>
 </ul>
 ]]></content>
       <categories>
         <category>Java</category>
       </categories>
       <tags>
-        <tag>Selenium</tag>
+        <tag>语言基础</tag>
       </tags>
   </entry>
   <entry>
@@ -501,73 +568,6 @@
 <li><p>循环计数变量通常采用字母 i，j，k 或者 counter。而数组应该总是用下面的方式来命名：objectType[]或 byte[] buffer。</p>
 </li>
 </ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>语言基础</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Java中的Optional</title>
-    <url>/2023/11/26/Java%E4%B8%AD%E7%9A%84Optional/</url>
-    <content><![CDATA[<blockquote>
-<p>从 Java 8 引入的一个很有趣的特性是 Optional 类。Optional 类主要解决的问题是臭名昭著的空指针异常（NullPointerException） —— 每个 Java 程序员都非常了解的异常。<br>本质上，这是一个包含有可选值的包装类，这意味着 Optional 类既可以含有对象也可以为空。<br>Optional 是 Java 实现函数式编程的强劲一步，并且帮助在范式中实现。但是 Optional 的意义显然不止于此。</p>
-</blockquote>
-<p><img src="Optional.png" alt="Optional"></p>
-<h4 id="传统的判空处理"><a href="#传统的判空处理" class="headerlink" title="传统的判空处理"></a>传统的判空处理</h4><p>我们先看这样一个例子，例如我们使用名字去查找个人信息：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> fullName;<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> User <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;James&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>, <span class="hljs-string">&quot;James Harden&quot;</span>);<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">null</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>我们模拟一个数据库中存在的用户名</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; James Harden</span><br></code></pre></td></tr></table></figure>
-
-<p>我们模拟一个数据库中没有的用户名</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;James&quot;</span>);<br>	System.out.println(user.getFullName());<br><br>&#125;<br><span class="hljs-comment">// 打印结果 =&gt; 报错NullPointerException，在Java中引用一个空引用的属性或者调用一个空引用的方法的时候，就会直接报NullPointerException</span><br><span class="hljs-comment">//为了避免报错，我们经常会在方法加上判空</span><br> <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	User user = userRepository.findUserByName(<span class="hljs-string">&quot;Rose&quot;</span>);<br>	<span class="hljs-keyword">if</span> (user != <span class="hljs-keyword">null</span>) &#123;<br>		System.out.println(user.getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br><span class="hljs-comment">// 在查询为null的时候，我们就会自动创建一个默认的用户</span><br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Jim&quot;</span>, <span class="hljs-string">&quot;Jim Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>在实际的代码逻辑中，会有大量的判空处理，我们采用上面的demo的话，会让我们的代码显得非常臃肿，而Optional的引入正好可以完美解决这个问题。</p>
-<h4 id="Optional的基本用法"><a href="#Optional的基本用法" class="headerlink" title="Optional的基本用法"></a>Optional的基本用法</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	Optional&lt;Object&gt; optionalBox = Optional.empty();<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isPresent());<br>	<span class="hljs-comment">// 打印true</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>	Optional&lt;String&gt; optionalBox = Optional.of(value);<br>	<span class="hljs-comment">// 打印true</span><br>    System.out.println(optionalBox.isPresent());<br>    <span class="hljs-comment">// 打印false</span><br>	System.out.println(optionalBox.isEmpty());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>用of创建的对象必须包含值，你要确保传递给of方法的值部位null，否则还是会报NullPointerException。</p>
-<p>但是在实际处理业务中，我们不确定传入的对象是否为null，这时候我们就建议使用ofNullable.</p>
-<p>如果我们要从Optional这个盒子中取出值，我们可以使用get.</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">String value = <span class="hljs-string">&quot;Edison&quot;</span>;<br>Optional&lt;String&gt; optionalBox = Optional.ofNullable(value);<br>String value2 = optionalBox.get();<br></code></pre></td></tr></table></figure>
-
-<p>但是我们并不推荐使用get，这并不是Optional设计的初衷.</p>
-<p>接下来我们使用Optional来改造下开始的例子</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserRepository</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;User&gt; <span class="hljs-title">findUserByName</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">if</span> (name.equals(<span class="hljs-string">&quot;Edison&quot;</span>)) &#123;<br>            <span class="hljs-keyword">return</span> Optional.of(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;James&quot;</span>,<span class="hljs-string">&quot;Harden&quot;</span>));<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">return</span> Optional.empty();<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	User user = optionalUser.get();<br>	System.out.println(user.getFullName());<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	<span class="hljs-keyword">if</span> (optionalUser.isPresent()) &#123;<br>		System.out.println(optionalUser.get().getFullName());<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		User defaultUser = <span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>, <span class="hljs-string">&quot;Green&quot;</span>);<br>		System.out.println(defaultUser.getFullName());<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>截至到目前我们看到这和开始的例子本质上区别不大，代码仍不够简洁，这也不是Optional设计的初衷，接下来我们使用函数式变成改造下代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 正确的取值方式</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	User user = optionalUser.orElse(<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Neo&quot;</span>,<span class="hljs-string">&quot;Green&quot;</span>));<br>	System.out.println(user.getFullName());<br>	User user2 = optionalUser.orElseGet(()-&gt;<span class="hljs-keyword">new</span> User(<span class="hljs-string">&quot;Hello&quot;</span>,<span class="hljs-string">&quot;World&quot;</span>));<br>	System.out.println(user2.getFullName());<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>orElse：不管传入的是空还是非空，都会执行传入的这个参数（都会去直接new User()）</p>
-<p>orElseGet：只有在为空的情况下，才会去执行。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison1&quot;</span>);<br>	optionalUser.orElseThrow(() -&gt; <span class="hljs-keyword">new</span> RuntimeException(<span class="hljs-string">&quot;User not found!!!&quot;</span>));<br>&#125;<br><span class="hljs-comment">//输出 =&gt; Exception in thread &quot;main&quot; java.lang.RuntimeException: User not found!!!</span><br></code></pre></td></tr></table></figure>
-
-<p>条件判断</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>optionalUser.ifPresent(user -&gt; System.out.println(user.getFullName()));<br><span class="hljs-comment">// 如果user存在对象，则执行语句，反之则什么也不做</span><br>optionalUser.ifPresentOrElse(<br>	user -&gt; System.out.println(user.getFullName()),<br>	() -&gt; System.out.println(<span class="hljs-string">&quot;User not Found!!!&quot;</span>)<br>);<br><span class="hljs-comment">//user存在执行System.out.println(user.getFullName())</span><br><span class="hljs-comment">//不存在则执行System.out.println(&quot;User not Found!!!&quot;)</span><br></code></pre></td></tr></table></figure>
-
-<p>过滤方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;User&gt; optionalUser2 = optionalUser.filter(user -&gt; user.getFullName().equals(<span class="hljs-string">&quot;Edison&quot;</span>));<br>System.out.println(optionalUser2.isPresent());<br></code></pre></td></tr></table></figure>
-
-<p>值的转换</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">Optional&lt;String&gt; optionalFullName = optionalUser.map(User::getFullName);<br>System.out.println(optionalFullName.get());<br></code></pre></td></tr></table></figure>
-
-<p>flatMap使用</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 我们改造下User</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> String name;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">getName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> Optional&lt;String&gt; <span class="hljs-title">getFullName</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> Optional.ofNullable(fullName);<br>    &#125;<br><br>    <span class="hljs-keyword">private</span> String fullName;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">User</span><span class="hljs-params">(String name, String fullName)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>        <span class="hljs-keyword">this</span>.fullName = fullName;<br>    &#125;<br><br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">test_case_001</span><span class="hljs-params">()</span></span>&#123;<br>    Optional&lt;Optional&lt;String&gt;&gt; s = optionalUser.map(User::getFullName);<br>	Optional&lt;String&gt; optional = optionalUser.flatMap(User::getFullName);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>与Stream结合</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>	UserRepository userRepository = <span class="hljs-keyword">new</span> UserRepository();<br>	Optional&lt;User&gt; optionalUser = userRepository.findUserByName(<span class="hljs-string">&quot;Edison&quot;</span>);<br>	Stream&lt;String&gt; a = optionalUser<br>                .map(User::getFullName)<br>                .stream();<br>	a.forEach(System.out::println);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="不推荐的使用场景"><a href="#不推荐的使用场景" class="headerlink" title="不推荐的使用场景"></a>不推荐的使用场景</h4><ul>
-<li>不应该用在class的字段，会增加额外的内存消耗，也是对象的序列化变得复杂</li>
-<li>不应该用在方法的参数，会使得方法的使用和理解变得复杂</li>
-<li>不应该用在构造器参数</li>
-<li>不应该用在集合的参数类型</li>
-<li>不建议使用get方法，可能会导致NoSuchElementException出现，推荐用ifPresent,orElse或者orElseThrow等方法</li>
-</ul>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -951,80 +951,6 @@
       </tags>
   </entry>
   <entry>
-    <title>RobotFramework学习笔记</title>
-    <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
-<p>简介：RF是一个基于Python语言开发的，可扩展的，是以关键字驱动模式的自动化测试框架，RF最新的版本是2019年的7月份发布的，7月份之前只能支持到Python2.7，目前的最新版本已经可以支持到Python3.7</p>
-</blockquote>
-<h4 id="关键字驱动和数据驱动的区别？"><a href="#关键字驱动和数据驱动的区别？" class="headerlink" title="关键字驱动和数据驱动的区别？"></a>关键字驱动和数据驱动的区别？</h4><ul>
-<li><p>关键字驱动：表示把项目中的一些逻辑封装成关键字（一个函数,例如login,register）,调用不同的关键字组合实现不同地 业务逻辑，从而驱动测试用例的执行。</p>
-</li>
-<li><p>数据驱动：数据驱动是把测试用例里面的数据提取到Excel或者YAML文件里面，然后通过改变Excel或者YAML中的数据驱动测试用例执行。</p>
-</li>
-</ul>
-<p>特点：</p>
-<ol>
-<li>编写用例简单，可以用robot,txt,tsv或html的格式编写用例。</li>
-<li>自动生成HTML格式的测试报告和日志。(HTMLTestRunner.py,allure)</li>
-<li>除了自带的类库外，还有很多的使用的扩展类库。</li>
-<li>可以根据项目需要自定义一些关键字。</li>
-<li>可以使用GUI的方式运行，可以和SVN、GIT以及Jenkins集成</li>
-</ol>
-<h3 id="二、RF环境安装"><a href="#二、RF环境安装" class="headerlink" title="二、RF环境安装"></a>二、RF环境安装</h3><ol>
-<li><p>安装Python3.7.3（过高的python版本可能存在兼容性问题），并配置环境变量</p>
-</li>
-<li><p>使用管理员的身份打开DOS窗口。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework==3.1<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>在DOS窗口安装RIDE工具。（开发IDE）</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework-ride<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework-ride<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>运行RIDE图标或者DOS窗口输入ride.py</p>
-</li>
-</ol>
-<h3 id="三、创建RF项目"><a href="#三、创建RF项目" class="headerlink" title="三、创建RF项目"></a>三、创建RF项目</h3><ol>
-<li>创建项目：new project<ol>
-<li>注意：输入项目名称，选则项目路径，选则Dictionary目录</li>
-</ol>
-</li>
-<li>创建测试套件（是测试用例的载体） new testsuite<ol>
-<li>注意：选则File</li>
-<li>关注：Edit页签，主要有四大块<ol>
-<li>Setting设置：<ol>
-<li>描述</li>
-<li>测试套件之前的准备工作</li>
-<li>测试套件之后的准备工作</li>
-<li>测试用例之前的准备工作</li>
-<li>测试用例之后的准备工作</li>
-<li>测试用例模板</li>
-<li>测试用例超时的时间</li>
-<li>强制标记</li>
-<li>默认标记</li>
-</ol>
-</li>
-<li>Import导入外部文件</li>
-<li>定义内部变量：</li>
-<li>定义元数据：</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>创建测试用例 new testcase</li>
-<li>创建业务关键字（资源文件，它是自定义关键字的载体。） new resource<ol>
-<li>注意:只能在文件夹下面创建，并且是txt格式。</li>
-</ol>
-</li>
-<li>创建用户自定义关键字 new user keyword</li>
-</ol>
-]]></content>
-      <categories>
-        <category>自动化测试</category>
-      </categories>
-      <tags>
-        <tag>RobotFramework</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python loguru</title>
     <url>/2024/01/14/Python-loguru/</url>
     <content><![CDATA[<h3 id="Python-loguru"><a href="#Python-loguru" class="headerlink" title="Python loguru"></a>Python loguru</h3><blockquote>
@@ -1105,7 +1031,7 @@
 
 <h4 id="log-rotation"><a href="#log-rotation" class="headerlink" title="log rotation"></a>log rotation</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log/file_2.log&quot;</span>, rotation=<span class="hljs-string">&#x27;10 KB&#x27;</span>)<br><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">100</span>):<br>    logger.info(<span class="hljs-string">&quot;this is a info log&quot;</span>)<br>    logger.debug(<span class="hljs-string">&quot;this is a debug log&quot;</span>)<br>    logger.warning(<span class="hljs-string">&quot;this is a warning log&quot;</span>)<br>    logger.error(<span class="hljs-string">&quot;this is a error log&quot;</span>)<br>    logger.critical(<span class="hljs-string">&quot;this is a critical log&quot;</span>)<br></code></pre></td></tr></table></figure>
 
-<p>关于rptation参数还有常见的如下用法:</p>
+<p>关于rotation参数还有常见的如下用法:</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python">logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;50 MB&quot;</span>)      <span class="hljs-comment"># 文件超过50M则另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;00:00&quot;</span>)    <span class="hljs-comment"># 每天00:00另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;1 week&quot;</span>)   <span class="hljs-comment"># 每周另起一个文件</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, rotation=<span class="hljs-string">&quot;10 days&quot;</span>)  <span class="hljs-comment"># 每10天另起一个文件</span><br></code></pre></td></tr></table></figure>
 
 <h4 id="其他常用设置"><a href="#其他常用设置" class="headerlink" title="其他常用设置"></a>其他常用设置</h4><figure class="highlight python"><table><tr><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># retention 参数可以设置日志保存时间，到时间后日志会自动清理，注意与 rotation 区分</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, retention=<span class="hljs-string">&quot;10 days&quot;</span>)<br><br><span class="hljs-comment"># compression 可以对关闭的日志（如 rotation 处理的日志）进行压缩，节约空间</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, compression=<span class="hljs-string">&quot;zip&quot;</span>)<br><br><span class="hljs-comment"># enqueue=True 可以支持异步写入，实现多进程安全</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment"># filter 参数可以设置日志的过滤规则</span><br><span class="hljs-comment"># 过滤不包含 hello 的日志</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, <span class="hljs-built_in">filter</span>=<span class="hljs-keyword">lambda</span> x: <span class="hljs-string">&quot;hello&quot;</span> <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> x[<span class="hljs-string">&quot;message&quot;</span>])<br><br><span class="hljs-comment"># encoding 设置编码方式</span><br><span class="hljs-comment"># level 设置日志等级，大于该等级的日志会被记录</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, encoding=<span class="hljs-string">&quot;utf-8&quot;</span>, level=<span class="hljs-string">&quot;INFO&quot;</span>)<br><br><span class="hljs-comment">#异步写入</span><br>logger.add(<span class="hljs-string">&quot;log.log&quot;</span>, enqueue=<span class="hljs-literal">True</span>)<br><br><span class="hljs-comment">#序列化为json写入</span><br>logger.add(<span class="hljs-string">&quot;log1.log&quot;</span>, serialize=<span class="hljs-literal">True</span>)<br></code></pre></td></tr></table></figure>
@@ -1147,46 +1073,6 @@
       </categories>
       <tags>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot 笔记</title>
-    <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
-<p>简化Spring应用开发的一个框架</p>
-<p>整个Sping技术栈的一个大整合</p>
-<p>J2EE开发的一站式解决方案</p>
-</blockquote>
-<h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2. 微服务"></a>2. 微服务</h3><p>2014年，由Martin Fowler提出</p>
-<p>微服务：架构风格（服务微化）<br>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；<br>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；<br><a href="https://martinfowler.com/articles/microservices.html">详细参照微服务文档</a></p>
-<h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3. Spring Boot HelloWorld"></a>3. Spring Boot HelloWorld</h3><p>一个功能：<br>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
-<h4 id="1-主程序类，主入口类"><a href="#1-主程序类，主入口类" class="headerlink" title="(1).主程序类，主入口类"></a>(1).主程序类，主入口类</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个spring boot应用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorldMainApplication</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//spring应用启动起来</span><br>        SpringApplication.run(HelloWorldMainApplication.class,args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>@SpringBootApplication: Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类。</p>
-<p>@SpringBootConfiguration:Spring Boot的配置类：<br>    标注在某个类上，表示这是一个Spring Boot的配置类；<br>    @Configuration：配置类上来标注这个注解<br>        配置类 —— 配置文件；配置类也是容器中的一个组件；@Component</p>
-<p>@EnableAutoConfiguration：开启自动配置功能：<br>    以前我们需要配置的东西，Spring Boot帮助我们自动配置；@EnableAutoConfiguration告诉Spring Boot开启自动配置功能；这样自动配置才能生效；</p>
-<h3 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h3><h4 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="(1)配置文件"></a>(1)配置文件</h4><p>SpringBoot使用一个全局的配置文件，配置文件名是固定的：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">application.properties<br>application.yml/application.yaml<br></code></pre></td></tr></table></figure>
-
-<p>配置文件的作用，修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好。</p>
-<p>YAML-&gt;(YAML  Aln’t Markup Language)<br>YAML:以数据为中心，比json、xml等更适合做配置文件<br>YAML:配置例子</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="2-YAML语法"><a href="#2-YAML语法" class="headerlink" title="(2)YAML语法"></a>(2)YAML语法</h4><p>1、基本语法<br>K:V 表示一对键值对(空格必须有):<br>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span><br>  <span class="hljs-attr">path:</span>	<span class="hljs-string">/hello</span><br>  <span class="hljs-comment"># 属性和值也是大小写敏感；</span><br></code></pre></td></tr></table></figure>
-
-<p>2、值的写法<br>字面量：普通的值(数字，字符串，布尔)<br>K:V:字面直接来写：<br>    字符串默认不用加上单引号或者双引号<br>    “”:双引号:不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思<br>    ‘’:  单引号:会转义字符，特殊字符最终只是一个普通的字符串变量<br>对象、Map(属性和值)(键值对)</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs YAML"><span class="hljs-comment">#K:V</span><br><span class="hljs-comment">#对象还是K:V的方式</span><br><span class="hljs-attr">friends:</span><br>   	<span class="hljs-attr">lastName:</span> <span class="hljs-string">zhangsan</span><br>	<span class="hljs-attr">age:</span> <span class="hljs-number">20</span><br><span class="hljs-comment">#行内写法：</span><br><span class="hljs-attr">friend:</span> &#123;<span class="hljs-attr">lastName:</span> <span class="hljs-string">zhangsan</span>,<span class="hljs-attr">age:</span> <span class="hljs-number">18</span>&#125;<br><span class="hljs-comment">#数组(List、Set)</span><br><br><span class="hljs-comment">#用-值表示数组中的一个元素</span><br><span class="hljs-attr">pets:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">cat</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">dog</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">pig</span><br><span class="hljs-comment">#  行内写法：</span><br><span class="hljs-attr">pets:</span> [<span class="hljs-string">cat</span>,<span class="hljs-string">dog</span>,<span class="hljs-string">pig</span>]<br></code></pre></td></tr></table></figure>
-
-<h4 id="3-获取配置文件值"><a href="#3-获取配置文件值" class="headerlink" title="(3)获取配置文件值"></a>(3)获取配置文件值</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//javaBean</span><br><span class="hljs-meta">@PropertySource</span><br></code></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>SpringBoot</tag>
       </tags>
   </entry>
   <entry>
@@ -1264,6 +1150,120 @@
       </categories>
       <tags>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SpringBoot 笔记</title>
+    <url>/2019/11/27/SpringBoot-%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="一-Spring-Boot入门"><a href="#一-Spring-Boot入门" class="headerlink" title="一. Spring Boot入门"></a>一. Spring Boot入门</h2><h3 id="1-Spring-Boot简介"><a href="#1-Spring-Boot简介" class="headerlink" title="1. Spring Boot简介"></a>1. Spring Boot简介</h3><blockquote>
+<p>简化Spring应用开发的一个框架</p>
+<p>整个Sping技术栈的一个大整合</p>
+<p>J2EE开发的一站式解决方案</p>
+</blockquote>
+<h3 id="2-微服务"><a href="#2-微服务" class="headerlink" title="2. 微服务"></a>2. 微服务</h3><p>2014年，由Martin Fowler提出</p>
+<p>微服务：架构风格（服务微化）<br>一个应用应该是一组小型服务；可以通过HTTP的方式进行互通；<br>每一个功能元素最终都是一个可独立替换和独立升级的软件单元；<br><a href="https://martinfowler.com/articles/microservices.html">详细参照微服务文档</a></p>
+<h3 id="3-Spring-Boot-HelloWorld"><a href="#3-Spring-Boot-HelloWorld" class="headerlink" title="3. Spring Boot HelloWorld"></a>3. Spring Boot HelloWorld</h3><p>一个功能：<br>浏览器发送hello请求，服务器接收请求并处理，响应Hello World字符串；</p>
+<h4 id="1-主程序类，主入口类"><a href="#1-主程序类，主入口类" class="headerlink" title="(1).主程序类，主入口类"></a>(1).主程序类，主入口类</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@SpringBootApplication</span> 来标注一个主程序类，说明这是一个spring boot应用</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SpringBootApplication</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorldMainApplication</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br>        <span class="hljs-comment">//spring应用启动起来</span><br>        SpringApplication.run(HelloWorldMainApplication.class,args);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>@SpringBootApplication: Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类。</p>
+<p>@SpringBootConfiguration:Spring Boot的配置类：<br>    标注在某个类上，表示这是一个Spring Boot的配置类；<br>    @Configuration：配置类上来标注这个注解<br>        配置类 —— 配置文件；配置类也是容器中的一个组件；@Component</p>
+<p>@EnableAutoConfiguration：开启自动配置功能：<br>    以前我们需要配置的东西，Spring Boot帮助我们自动配置；@EnableAutoConfiguration告诉Spring Boot开启自动配置功能；这样自动配置才能生效；</p>
+<h3 id="4-配置文件"><a href="#4-配置文件" class="headerlink" title="4.配置文件"></a>4.配置文件</h3><h4 id="1-配置文件"><a href="#1-配置文件" class="headerlink" title="(1)配置文件"></a>(1)配置文件</h4><p>SpringBoot使用一个全局的配置文件，配置文件名是固定的：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java">application.properties<br>application.yml/application.yaml<br></code></pre></td></tr></table></figure>
+
+<p>配置文件的作用，修改SpringBoot自动配置的默认值；SpringBoot在底层都给我们自动配置好。</p>
+<p>YAML-&gt;(YAML  Aln’t Markup Language)<br>YAML:以数据为中心，比json、xml等更适合做配置文件<br>YAML:配置例子</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-YAML语法"><a href="#2-YAML语法" class="headerlink" title="(2)YAML语法"></a>(2)YAML语法</h4><p>1、基本语法<br>K:V 表示一对键值对(空格必须有):<br>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是同一个层级的</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">server:</span><br>  <span class="hljs-attr">port:</span> <span class="hljs-number">8080</span><br>  <span class="hljs-attr">path:</span>	<span class="hljs-string">/hello</span><br>  <span class="hljs-comment"># 属性和值也是大小写敏感；</span><br></code></pre></td></tr></table></figure>
+
+<p>2、值的写法<br>字面量：普通的值(数字，字符串，布尔)<br>K:V:字面直接来写：<br>    字符串默认不用加上单引号或者双引号<br>    “”:双引号:不会转义字符串里面的特殊字符，特殊字符会作为本身想表示的意思<br>    ‘’:  单引号:会转义字符，特殊字符最终只是一个普通的字符串变量<br>对象、Map(属性和值)(键值对)</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><code class="hljs YAML"><span class="hljs-comment">#K:V</span><br><span class="hljs-comment">#对象还是K:V的方式</span><br><span class="hljs-attr">friends:</span><br>   	<span class="hljs-attr">lastName:</span> <span class="hljs-string">zhangsan</span><br>	<span class="hljs-attr">age:</span> <span class="hljs-number">20</span><br><span class="hljs-comment">#行内写法：</span><br><span class="hljs-attr">friend:</span> &#123;<span class="hljs-attr">lastName:</span> <span class="hljs-string">zhangsan</span>,<span class="hljs-attr">age:</span> <span class="hljs-number">18</span>&#125;<br><span class="hljs-comment">#数组(List、Set)</span><br><br><span class="hljs-comment">#用-值表示数组中的一个元素</span><br><span class="hljs-attr">pets:</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">cat</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">dog</span><br><span class="hljs-bullet">-</span> <span class="hljs-string">pig</span><br><span class="hljs-comment">#  行内写法：</span><br><span class="hljs-attr">pets:</span> [<span class="hljs-string">cat</span>,<span class="hljs-string">dog</span>,<span class="hljs-string">pig</span>]<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-获取配置文件值"><a href="#3-获取配置文件值" class="headerlink" title="(3)获取配置文件值"></a>(3)获取配置文件值</h4><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//javaBean</span><br><span class="hljs-meta">@PropertySource</span><br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>SpringBoot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RobotFramework学习笔记</title>
+    <url>/2021/10/10/RobotFramework%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="一、RobotFramework简介和特点"><a href="#一、RobotFramework简介和特点" class="headerlink" title="一、RobotFramework简介和特点"></a>一、RobotFramework简介和特点</h3><blockquote>
+<p>简介：RF是一个基于Python语言开发的，可扩展的，是以关键字驱动模式的自动化测试框架，RF最新的版本是2019年的7月份发布的，7月份之前只能支持到Python2.7，目前的最新版本已经可以支持到Python3.7</p>
+</blockquote>
+<h4 id="关键字驱动和数据驱动的区别？"><a href="#关键字驱动和数据驱动的区别？" class="headerlink" title="关键字驱动和数据驱动的区别？"></a>关键字驱动和数据驱动的区别？</h4><ul>
+<li><p>关键字驱动：表示把项目中的一些逻辑封装成关键字（一个函数,例如login,register）,调用不同的关键字组合实现不同地 业务逻辑，从而驱动测试用例的执行。</p>
+</li>
+<li><p>数据驱动：数据驱动是把测试用例里面的数据提取到Excel或者YAML文件里面，然后通过改变Excel或者YAML中的数据驱动测试用例执行。</p>
+</li>
+</ul>
+<p>特点：</p>
+<ol>
+<li>编写用例简单，可以用robot,txt,tsv或html的格式编写用例。</li>
+<li>自动生成HTML格式的测试报告和日志。(HTMLTestRunner.py,allure)</li>
+<li>除了自带的类库外，还有很多的使用的扩展类库。</li>
+<li>可以根据项目需要自定义一些关键字。</li>
+<li>可以使用GUI的方式运行，可以和SVN、GIT以及Jenkins集成</li>
+</ol>
+<h3 id="二、RF环境安装"><a href="#二、RF环境安装" class="headerlink" title="二、RF环境安装"></a>二、RF环境安装</h3><ol>
+<li><p>安装Python3.7.3（过高的python版本可能存在兼容性问题），并配置环境变量</p>
+</li>
+<li><p>使用管理员的身份打开DOS窗口。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework==3.1<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>在DOS窗口安装RIDE工具。（开发IDE）</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#安装</span><br>pip install robotframework-ride<br><span class="hljs-comment">#卸载</span><br>pip uninstall robotframework-ride<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>运行RIDE图标或者DOS窗口输入ride.py</p>
+</li>
+</ol>
+<h3 id="三、创建RF项目"><a href="#三、创建RF项目" class="headerlink" title="三、创建RF项目"></a>三、创建RF项目</h3><ol>
+<li>创建项目：new project<ol>
+<li>注意：输入项目名称，选则项目路径，选则Dictionary目录</li>
+</ol>
+</li>
+<li>创建测试套件（是测试用例的载体） new testsuite<ol>
+<li>注意：选则File</li>
+<li>关注：Edit页签，主要有四大块<ol>
+<li>Setting设置：<ol>
+<li>描述</li>
+<li>测试套件之前的准备工作</li>
+<li>测试套件之后的准备工作</li>
+<li>测试用例之前的准备工作</li>
+<li>测试用例之后的准备工作</li>
+<li>测试用例模板</li>
+<li>测试用例超时的时间</li>
+<li>强制标记</li>
+<li>默认标记</li>
+</ol>
+</li>
+<li>Import导入外部文件</li>
+<li>定义内部变量：</li>
+<li>定义元数据：</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>创建测试用例 new testcase</li>
+<li>创建业务关键字（资源文件，它是自定义关键字的载体。） new resource<ol>
+<li>注意:只能在文件夹下面创建，并且是txt格式。</li>
+</ol>
+</li>
+<li>创建用户自定义关键字 new user keyword</li>
+</ol>
+]]></content>
+      <categories>
+        <category>自动化测试</category>
+      </categories>
+      <tags>
+        <tag>RobotFramework</tag>
       </tags>
   </entry>
   <entry>
@@ -1349,6 +1349,37 @@
       </tags>
   </entry>
   <entry>
+    <title>git clone中常见问题的总结</title>
+    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
+<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>方法2: 浅层克隆，深度设置为1</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
+<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
+</blockquote>
+<ul>
+<li>解决方法</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
+
+
+
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Windows安装MongoDB</title>
     <url>/2020/01/11/Windows%E5%AE%89%E8%A3%85MongoDB/</url>
     <content><![CDATA[<blockquote>
@@ -1391,37 +1422,6 @@
       </tags>
   </entry>
   <entry>
-    <title>git clone中常见问题的总结</title>
-    <url>/2020/11/15/git-clone%E4%B8%AD%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E7%9A%84%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h3 id="国内速度慢"><a href="#国内速度慢" class="headerlink" title="国内速度慢"></a>国内速度慢</h3><ul>
-<li>方法1：重新设置全局的通信缓存大小，增加git缓冲区大小</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.postBuffer 524288000<br>git config --list<br></code></pre></td></tr></table></figure>
-
-<ul>
-<li>方法2: 浅层克隆，深度设置为1</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> http://github.com/target.git --depth 1  <span class="hljs-comment"># target.git 为目标地址</span><br><span class="hljs-built_in">cd</span> target  <span class="hljs-comment">#先进入库路径下</span><br>git fetch --unshallow <span class="hljs-comment"># 获取完整库</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="证书错误"><a href="#证书错误" class="headerlink" title="证书错误"></a>证书错误</h3><blockquote>
-<p>fatal: unable to access <a href="https://github.com/subying/jsbook.git/">https://github.com/subying/jsbook.git/</a>: SSL certificate problem: unable to get local issuer certificate<br>提示SSL证书错误。这个错误并不重要是系统证书的问题，系统判断到这个行为会造成不良影响，所以进行了阻止，只要设置跳过SSL证书验证就可以了</p>
-</blockquote>
-<ul>
-<li>解决方法</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global http.sslVerify <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
-
-
-
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>git命令小结--健忘症患者必备(持续更新中)</title>
     <url>/2020/02/23/git%E5%91%BD%E4%BB%A4%E5%B0%8F%E7%BB%93-%E5%81%A5%E5%BF%98%E7%97%87%E6%82%A3%E8%80%85%E5%BF%85%E5%A4%87/</url>
     <content><![CDATA[<h3 id="Git备忘录"><a href="#Git备忘录" class="headerlink" title="Git备忘录"></a>Git备忘录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#状态查看操作</span><br><span class="hljs-comment">#查看工作区，暂存区状态</span><br>git status<br><br><span class="hljs-comment">#添加操作</span><br><span class="hljs-comment">#将工作区的&quot;新建/修改&quot;添加到暂存区</span><br>git add [file name]<br><br><span class="hljs-comment">#提交操作</span><br><span class="hljs-comment">#将暂存区的内容提交到本地库</span><br>git commit -m <span class="hljs-string">&quot;commit messgae&quot;</span> [file name]<br><br><span class="hljs-comment">#查看历史记录操作</span><br><span class="hljs-comment">#多屏显示控制方式：（空格向下翻页，b向上翻页，q退出）</span><br>git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --pretty=oneline<br>git <span class="hljs-built_in">log</span> --oneline<br><br><span class="hljs-comment">#HEAD@&#123;移动到当前版本需要多少步&#125;</span><br>git reflog<br><br>89b2a4e (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: update testcase <span class="hljs-keyword">for</span> WeChat<br>2c8d14a HEAD@&#123;1&#125;: commit: add 2 testcases <span class="hljs-keyword">for</span> WeChat.<br><br><br><span class="hljs-comment">#删除文件并找回</span><br><br><span class="hljs-comment">#比较文件差异</span><br></code></pre></td></tr></table></figure>
@@ -1432,55 +1432,6 @@
       </categories>
       <tags>
         <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vsftpd服务简介</title>
-    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
-    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
-<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
-<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
-<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
-<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
-<p><strong>主动模式与被动模式的比较：</strong>     </p>
-<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
-<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
-<ul>
-<li><p>IIS（FTP）、Serv-U</p>
-</li>
-<li><p>wu-ftpd、Proftpd</p>
-</li>
-<li><p>vsftpd（Very Secure FTP Daemon）</p>
-</li>
-</ul>
-<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
-<p>使用以下命令安装vsftpd:</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
-
-
-<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
-
-<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
-<ul>
-<li>正常用户（系统用户）</li>
-<li>匿名用户（anonymous）</li>
-<li>虚拟用户(ftp-only)</li>
-</ul>
-<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
-<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
-<p>匿名用户共享</p>
-<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
-<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
-<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
-<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1580,6 +1531,55 @@
       </categories>
       <tags>
         <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vsftpd服务简介</title>
+    <url>/2023/02/20/vsftpd%E6%9C%8D%E5%8A%A1%E7%AE%80%E4%BB%8B/</url>
+    <content><![CDATA[<h2 id="FTP简介"><a href="#FTP简介" class="headerlink" title="FTP简介"></a>FTP简介</h2><p><img src="VSFTPD.png" alt="VSFTPD"></p>
+<p>FTP是TCP/IP网络上两台计算机传送文件的协议，FTP是在TCP/IP网络和INTERNET上最早使用的协议之一。尽管World Wide Web(WWW)已经替代了FTP的大多数功能，FTP仍然是通过Internet把文件从客户机复制到服务器上的一种途径。FTP客户机可以给服务器发出命令来下载文件，上传文件，创建或改变服务器上的目录。原来的FTP软件多是命令行操作，有了像CUTEFTP这样的图形界面软件，使用FTP传输变得方便易学。主要使用它进行“上载”。即向服务器传输文件。由于FTP协议的传输速度比较快，我们在制作诸如“软件下载”这类网站时喜欢用FTP来实现，同时我们这种服务面向大众，不需要身份认证，即“匿名FTP服务器”。</p>
+<p>FTP使用TCP协议作为底层传说协议，提供了数据传输的可靠性，FTP的标准端口为20，21，20是数据端口，21位指令接口。</p>
+<h3 id="FTP主动模式"><a href="#FTP主动模式" class="headerlink" title="FTP主动模式"></a>FTP主动模式</h3><p><img src="zdmode.jpg" alt="zdmode"></p>
+<h3 id="FTP被动模式"><a href="#FTP被动模式" class="headerlink" title="FTP被动模式"></a>FTP被动模式</h3><p><img src="bdmode.jpg" alt="bdmode"></p>
+<p><strong>主动模式与被动模式的比较：</strong>     </p>
+<p>主动FTP对FTP服务器的管理和安全很有利，但对客户端的管理不利，因为FTP服务器企图与客户端的高位随机端口建立连接，而这个端口很有可能被客户端的防火墙阻塞掉。被动FTP对FTP客户端的管理有利，但对服务器端的管理不利。因为客户端要与服务器端建立两个连接，其中一个连到一个高位随机端口，而这个端口很有可能被服务器端的防火墙阻塞掉。目前，ftp服务器一般工作在被动模式。</p>
+<h3 id="vsftpd服务"><a href="#vsftpd服务" class="headerlink" title="vsftpd服务"></a>vsftpd服务</h3><p><strong>常见的FTP服务器程序</strong></p>
+<ul>
+<li><p>IIS（FTP）、Serv-U</p>
+</li>
+<li><p>wu-ftpd、Proftpd</p>
+</li>
+<li><p>vsftpd（Very Secure FTP Daemon）</p>
+</li>
+</ul>
+<p>vsftpd 是“very secure FTP daemon”的缩写，安全性是它的一个最大的特点。vsftpd 是一个 UNIX 类操作系统上运行的服务器的名字，它可以运行在诸如 Linux、BSD、Solaris、 HP-UNIX等系统上面，是一个完全免费的、开发源代码的ftp服务器软件，支持很多其他的 FTP 服务器所不支持的特征。比如：非常高的安全性需求、带宽限制、良好的可伸缩性、可创建虚拟用户、支持IPv6、速率高等。</p>
+<p>使用以下命令安装vsftpd:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd的启动与关闭：</span><br>service vsftpd start<br>service vsftpd stop<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd相关配置文件及目录如下：</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> vsftpd主配置文件</span><br>/etc/vsftpd/vsftpd.conf   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers   <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> ftp共享目录</span><br>/var/ftp                <br><br>/var/ftp/xferlog       <br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 用户控制列表文件</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 黑名单(不允许通过FTP登录)</span><br>/etc/vsftpd/ftpusers  <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 控制名单（由配置文件控制是白名单还是黑名单）</span><br>/etc/vsftpd/user_list  <br></code></pre></td></tr></table></figure>
+
+
+<h3 id="vsftpd主配置文件"><a href="#vsftpd主配置文件" class="headerlink" title="vsftpd主配置文件"></a>vsftpd主配置文件</h3><p><strong>vsftpd的主配置文件/etc/vsftpd/vsftpd.conf</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户访问，匿名用户访问的时候是被映射为系统的ftp用户，它的家目录为/var/ftp，故我们用匿名访问的时候，访问的是/var/ftp的目录（这个目录的权限请不要随意改动，如果改动可能造成无法访问）。</span><br>anonymous_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许本地用户登录ftp，登录之后是用户的家目录，但uid号小于500的用户都不允许登录</span><br>local_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户是否有上传权限</span><br>write_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 本地用户上传的文件的反向掩码。而用户访问ftp对文件的实际权限是：所访问目录和这个文件权限的交集</span><br>local_umask=022<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许匿名用户上传文件</span><br>anon_upload_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有创建目录的权限</span><br>anon_mkdir_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户是否有删除和重名名文件的权限</span><br>anon_other_write_enable=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 匿名用户只能下载全局可读的文件，即文件的属组，属主，其他用户都有读权限</span><br>anon_world_readable_only=NO<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户切换目录时，定义的欢迎信息。可以在家目录中定义一个.message的文件</span><br>dirmessage_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否打开传输日志</span><br>xferlog_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用20号端口进行数据传输，这样会工作在主动模式</span><br>connect_from_port_20=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户上传了文件，是否更改该上传的文件属主，并且属主更改为哪个用户</span><br>chown_uploads=YES<br>chown_username=whoever<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义传输日志的位置，默认在/var/<span class="hljs-built_in">log</span>/messages中</span><br>xferlog_file=/var/log/xferlog<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义日志的格式</span><br>xferlog_std_format=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 会话的超时时间</span><br>idle_session_timeout=600<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 数据连接的超时时间</span><br>data_connection_timeout=120<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 指定一个安全用户账号,让FTP服务器用作完全隔离和没有特权的独立用户。一般不启用</span><br>nopriv_user=ftpsecure<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否允许运行特殊的ftp命令<span class="hljs-string">&quot;async ABOR&quot;</span>，一般不启用</span><br>async_abor_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以ascii形式传输，一般不启用</span><br>ascii_upload_enable=YES<br>ascii_download_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 登录ftp的欢迎信息</span><br>ftpd_banner=Welcome to blah FTP service.<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否要禁止匿名用户使用某些邮件地址,如果是输入禁止的邮件地址的路径和文件名，可防Dos攻击</span><br>deny_email_enable=YES<br>banned_email_file=/etc/vsftpd/banned_emails<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当这个文件中的用户登录时，把其用户的目录锁定，不能随意切换，对保证系统的安全重要。</span><br>chroot_list_enable=YES<br>chroot_list_file=/etc/vsftpd/chroot_list<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 把所有登录的用户都锁进自己的家目录，不能随意切换</span><br>chroot_local_user=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 当用户查看ftp服务器上目录文件时，支持递归显示</span><br>ls_recurse_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 以独立守护进程工作</span><br>listen=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用ipv6地址上监听</span><br>listen_ipv6=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 定义以pam实现ftp用户认证，根据/etc/pam.d/vsftpd定义进行认证</span><br>pam_service_name=vsftpd<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用用户列表，并且只允许/etc/vsftpd/user_list文件中的用户登录</span><br>userlist_enable=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 启用用户列表，禁止此列表/etc/vsftpd/usr_list中定义的用户登录</span><br>userlist_deny=YES<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 是否启用tcp_wrapper对vsftpd的控制</span><br>tcp_wrappers=YES<br></code></pre></td></tr></table></figure>
+
+<h3 id="FTP用户"><a href="#FTP用户" class="headerlink" title="FTP用户"></a>FTP用户</h3><p>vsftpd使用用户作为管理单位，想要访问某个ftp共享文件，必须使用特定的用户身份登录，我们可以配置一下几种类型的用户：</p>
+<ul>
+<li>正常用户（系统用户）</li>
+<li>匿名用户（anonymous）</li>
+<li>虚拟用户(ftp-only)</li>
+</ul>
+<p>默认情况下，vsftpd在安装的时候会创建一个ftp用户，这个用户就是作为匿名用户使用，ftp用户默认的家目录指向的是/var/ftp。任何没有访问限制的问价都可以通过匿名用户共享。</p>
+<p>每一个系统中的用户都可以通过ftp方式访问自己的家目录。</p>
+<p>匿名用户共享</p>
+<p>vsftpd安装好之后可以直接启动使用，不需要进行任何配置，默认的情况下匿名用户可以登录使用，普通系统中的用户可以通过ftp方式访问自己的家目录。</p>
+<h3 id="命令行工具"><a href="#命令行工具" class="headerlink" title="命令行工具"></a>命令行工具</h3><p><strong>lftp</strong></p>
+<p>我们可以通过lftp命令作为ftp客户端使用，通过以下命令安装lftp</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell">yum install –y lftp<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> lftp默认使用匿名用户登录：</span><br>lftp 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 可以指定登录用户：</span><br>lftp –u test 192.168.0.133<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> FTP基本命令</span><br><span class="hljs-meta">#</span><span class="bash"> 使用get命令可以从ftp服务器上下载文件</span><br>lftp 192.168.0.100<br><br>cd pu<br>get demo.tar.gz<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 使用put命令可以将一个文件上传到ftp服务器上：</span><br>lftp –u test 192.168.0.133<br>cd DownLoad<br>put demo.txt<br><span class="hljs-meta">#</span><span class="bash"> 注意：只有登录的用户对某个文件夹具有写的权限，就可以进行上传操作。</span><br></code></pre></td></tr></table></figure>
+<h3 id="匿名用户上传"><a href="#匿名用户上传" class="headerlink" title="匿名用户上传"></a>匿名用户上传</h3><p>默认情况vsftpd只允许匿名用户访问，但是不允许使用匿名用户上传文件，我们可以通过以下方式配置匿名用户上传：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><code class="hljs shell"><span class="hljs-meta">#</span><span class="bash"> 修改vsftpd.conf</span><br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 开启匿名用户（默认）</span><br>anonymous_enable=YES        <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开你匿名用户上传功能</span><br>anon_upload_enable=YES      <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 打开匿名用户创建文件夹功能</span><br>anon_mkdir_write_enable=YES <br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 赋予匿名用户上传使用的文件夹以写的权限：</span>  <br>chmod 777 /var/ftp/pub<br><span class="hljs-meta"></span><br><span class="hljs-meta">#</span><span class="bash"> 注意：不可以将匿名用户家目录设置为777权限，只能设置子目录，否则vsftpd将禁止访问匿名用户的家目录。</span><br><span class="hljs-meta">#</span><span class="bash"> 拓展：类似DropBox的创建-&gt;（权限可以设置为2733）</span><br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1765,6 +1765,25 @@
       </tags>
   </entry>
   <entry>
+    <title>解决MacOS通过gem安装rails后无法使用</title>
+    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
+<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
+
+<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
+
+<p>其他常用的排查命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>Ruby</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>自动化用例中如何获得testcase名称</title>
     <url>/2020/12/05/%E8%87%AA%E5%8A%A8%E5%8C%96%E7%94%A8%E4%BE%8B%E4%B8%AD%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97testcase%E5%90%8D%E7%A7%B0/</url>
     <content><![CDATA[<h3 id="JUnit"><a href="#JUnit" class="headerlink" title="JUnit"></a>JUnit</h3><figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Rule</span><br><span class="hljs-keyword">public</span> TestName testName = <span class="hljs-keyword">new</span> TestName();<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_001</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br><br><span class="hljs-meta">@Test</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testcase_002</span><span class="hljs-params">()</span></span>&#123;<br>    System.out.println(testName.getMethodName());<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -1786,25 +1805,6 @@
       </categories>
       <tags>
         <tag>Automation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>解决MacOS通过gem安装rails后无法使用</title>
-    <url>/2023/12/09/%E8%A7%A3%E5%86%B3MacOS%E9%80%9A%E8%BF%87gem%E5%AE%89%E8%A3%85rails%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p>升级ruby的版本后，当我尝试使用rails时，无法使用该命令。</p>
-<p>当我们使用homebrew安装ruby后，使用sudo gem install rails进行安装，安装完成后，使用以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">$ rails --version <br></code></pre></td></tr></table></figure>
-
-<p>会出现找不到该命令的问题，排除$PATH配置问题后，进行如下设置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gem update --system<br>gem install bundler<br>gem install rails<br></code></pre></td></tr></table></figure>
-
-<p>其他常用的排查命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看 ruby 的安装目录</span><br><span class="hljs-built_in">which</span> -a ruby<br><span class="hljs-comment"># 使用如下命令列出 ruby 在 brew 当中的下载文件</span><br>brew list ruby<br><span class="hljs-comment"># 强制卸载 ruby </span><br>brew uninstall --force ruby<br><span class="hljs-comment"># 清除 ruby 依赖文件使用如下命令</span><br>brew autoremove<br></code></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>环境搭建</category>
-      </categories>
-      <tags>
-        <tag>Ruby</tag>
       </tags>
   </entry>
 </search>
